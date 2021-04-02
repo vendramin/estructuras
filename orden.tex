@@ -1,0 +1,217 @@
+\chapter{Grupos cíclicos}
+\label{orden}
+
+\begin{definition}
+	\index{Grupo!cíclico}
+	Un grupo $G$ se dice \textbf{cíclico} si $G=\langle g\rangle$ para algún
+	$g\in G$.
+\end{definition}
+
+Un grupo cíclico $G$ generado por el elemento $g$ estará compuesto entonces por las potencias
+de $g$, es decir $G=\langle g\rangle=\{g^k:k\in\Z\}$. Todo grupo cíclico es
+entonces en particular un grupo abeliano.
+
+\begin{examples}\
+\begin{enumerate}
+	\item $\Z=\langle 1\rangle=\langle -1\rangle$. 
+	\item $\Z/n=\langle 1\rangle$.
+	\item $G_n=\langle \exp(2i\pi/n)\rangle$.  
+\end{enumerate}	
+\end{examples}
+
+\begin{example}
+	$\mathcal{U}(\Z/8)\ne\langle 3\rangle$. De hecho, $\langle 3\rangle=\{1,3\}\subsetneq\{1,3,5,7\}=\mathcal{U}(\Z/8)$. 	
+\end{example}
+
+Antes de resolver el siguiente ejercicio, es conveniente recordar cómo son los subgrupos de $\Z$. 
+
+\begin{exercise}
+	Todo subgrupo de un grupo cíclico es también un grupo cíclico. 
+\end{exercise}
+
+%\begin{proof}
+%	Sea $G=\langle g\rangle$ un grupo cíclico y sea $H$ un subgrupo de $G$. Sin perder generalidad podemos suponer que $H$ es no trivial, es decir $H\ne\{1\}$. Sea 
+%	\[
+%	n=\min\{k\in\N:g^k\in H\}.
+%	\]
+%	
+%\end{proof}
+
+
+%\begin{proof}
+%	Demostremos la primera afirmación. Supongamos que $G=\langle g\rangle$. Si $k\in\Z\setminus\{-1,1\}$ es tal que $G=\langle g^k\rangle$, entonces, en particular, $g^{km}=g$ para algún $m\in\Z$. Luego $g^{km-1}=1$, con $km-1\ne0$. Esto implica que $g$ tiene orden finito, una contradicción.  
+%	 
+%	Demostremos ahora la segunda afirmación. Supongamos primero que $G=\langle g^k\rangle$ y que $d=\gcd(k,n)>1$. Entonces 
+%	$m=n/d<n$ y luego $g^{mk}=(g^n)^{k/d}=1$.
+%	
+%	Recíprocamente, si $k$ y $n$ son coprimos, existen
+%	$r,s\in\Z$ tales que $rk+sn=1$. Como entonces
+%	\[
+%		g=g^1=g^{rk+sn}=(g^k)^r(g^{n})^s=(g^k)^r,
+%	\]
+%	se concluye que $G=\langle g\rangle=\langle g^k\rangle$. 
+%\end{proof}
+
+\begin{definition}
+	\index{Orden!de un elemento de un grupo}
+	Sean $G$ un grupo y $g\in G$. El \textbf{orden} de $g$ 
+	se define como el orden del subgrupo generado por $g$. Notación: 
+	$|g|=|\langle g\rangle|$.
+\end{definition}
+
+\begin{theorem}
+	Sean $G$ un grupo, $g\in G$ y $n\in\N$. Las siguientes afirmaciones son
+	equivalentes:
+	\begin{enumerate}
+		\item $|g|=n$.
+		\item $n=\min\{k\in\N:g^k=1\}$.
+		\item Para todo $k\in\Z$, $g^k=1\Longleftrightarrow n\mid k$.
+		\item $\langle g\rangle=\{1,g,\dots,g^{n-1}\}$ y los
+			$1,g,\dots,g^{n-1}$ son todos distintos.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Veamos que $(1)\implies(2)$. 
+	Si $g=1$ entonces $n=1$. Supongamos entonces que $g\ne1$. Como $\langle g\rangle=\{g^k:k\in\Z\}$, 
+	sabemos que existen enteros positivos $i>j$ tales que $g^i=g^j$, es decir $g^{i-j}=1$. En particular,
+	el conjunto $\{k\in\N:g^k=1\}$ es no vacío y posee entonces elemento mínimo, digamos
+	\[
+	d=\min\{k\in\N:g^k=1\}.
+	\] 
+	Tenemos entonces que $\langle g\rangle\subseteq\{1,g,\dots,g^{d-1}\}\subseteq\langle g\rangle$. En efecto, si $g^k\in\langle g\rangle$, entonces $k=dq+r$ para $q,r\in\Z$ con $0\leq r<d$. Como $g^d=1$,  
+	\[
+	g^k=g^{dq+r}=(g^d)^qg^r=g^r\in\{1=g^0,g,g^2,\dots,g^{d-1}\}
+	\]
+	Por otro lado, es trivial observar que $\{1,g,\dots,g^{d-1}\}\subseteq \langle g\rangle$ y que 
+	$\{1,g,\dots,g^{d-1}\}$ tiene $d$ elementos. 
+	%Este conjunto tiene además $d$ elementos (pues si $g^i=g^j$ para $i,j\in\{0,1,\dots,d-1\}$ con $i>j$, entonces $g^{j-i}=1$ y luego 
+	%$i=j$ por la minimalidad de $d$). En consecuencia, $n=d$. 
+%	Tomemos el mínimo
+%	$k>1$ tal que $1,g,g^{2},\dots,g^{k-1}$ son elementos distintos, y sea
+%	$j\in\{0,\dots,k-1\}$ tal que $g^{k}=g^{j}$. Afirmamos que $g^{k}=1$. Si
+%	$g^{k}=g^{j}$ para algún $j\geq1$, entonces $g^{k-j}=1$ con $k-j\leq
+%	k-1<k$, una contradicción. Afirmamos ahora que $\langle
+%	g\rangle=\{1,g,g^{2},\dots,g^{k-1}\}$.  La inclusión $\supseteq$ trivial.
+%	Para probar la otra inclusión, sea $g^{l}\in\langle g\rangle$.  Escribimos
+%	$l=kq+r$ con $0\leq r<k$, y entonces $g^{l}=g^{kq+r}=g^{r}$.
+
+	Ahora demostremos que $(2)\implies(3)$. Supongamos que $g^k=1$. Si
+	escribimos $k=nt+r$ con $0\leq r<n$, entonces $g^k=g^{nt+r}=g^r$. La
+	minimalidad de $n$ implica entonces que $r=0$ y luego $n$ divide a $k$.
+	Recíprocamente, si $k=nt$ para algún $t\in\Z$, entonces $g^k=(g^n)^t=1$.
+
+	Demostremos que $(3)\implies(4)$. Es trivial que
+	$\{1,g,\dots,g^{n-1}\}\subseteq\langle g\rangle$. Para demostrar la otra
+	inclusión, escribimos $k=nt+r$ con $0\leq r\leq n-1$. Entonces
+	\[
+		g^k=g^{nt+r}=(g^n)^tg^r=g^r
+	\]
+	pues por hipótesis $g^n=1$. Para ver que los 
+	$1,g,\dots,g^{n-1}$ son todos distintos, basta observar que si $g^k=g^l$ con $0\leq
+	k<l\leq n-1$, entonces, como $g^{l-k}=1$ y además $0<l-k\leq n-1$, se concluye $n\leq l-k$ ya que
+	por hipótesis $n$ divide a $l-k$, una contradicción. 
+	 
+	La implicación $(4)\implies(1)$ es trivial. 
+\end{proof}
+
+Veamos una aplicación de la proposición anterior:
+
+\begin{corollary}
+Si $G$ es un grupo y $g\in G$ tiene orden $n$, entonces 
+\[
+|g^m|=\frac{n}{\gcd(n,m)}.
+\]		
+\end{corollary}
+
+\begin{proof}
+Sea $k$ tal que $(g^m)^k=1=g^{mk}$. Esto es equivalente a decir que $n$ divide a $km$, pues $g$ tiene orden $n$. A su vez esto 
+es equivalente a pedir que    
+$n/d$ divida a $mk/d$, donde $d=\gcd(n,m)$. En consecuencia, como los enteros $n/d$ y $m/d$ son coprimos, $(g^m)^k=1$ es equivalente a pedir que $n/d$ divida a $k$, que implica que $g^m$ tiene orden $n/d$.  
+\end{proof}
+
+\begin{exercise}
+Sea $G$ un grupo y sea $g\in G$. Demuestre que las siguientes afirmaciones son equivalentes:
+\begin{enumerate}
+\item $g$ tiene orden infinito.
+\item El conjunto $\{k\in\N:g^k=1\}$ es vacío. 
+\item Si $g^k=1$, entonces $k=0$.
+\item Si $k\ne l$, entonces $g^k\ne g^l$.  	
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+Sea $G$ un grupo y sea $g\in G\setminus\{1\}$. Demuestre las siguientes afirmaciones: 
+\begin{enumerate}
+\item $|g|=2$ si y sólo si $g=g^{-1}$.
+\item $|g|=|g^{-1}|$. 
+\item Si $|g|=nm$', entonces $|g^m|=n$.  
+\end{enumerate}	
+\end{exercise}
+
+\begin{exercise}
+\index{Torsión!de un grupo abeliano}
+	Sea $G$ un grupo abeliano. Demuestre que $T(G)=\{g\in G:|g|<\infty\}$ es un subgrupo de $G$. Calcule $T(\C^\times)$. 
+\end{exercise}
+
+\begin{exercise}
+	Sea $G=\langle g\rangle$ un grupo cíclico. 
+	\begin{enumerate}
+		\item Si $G$ es infinito, los únicos generadores de $G$ son $g$ y $g^{-1}$.
+		\item Si $G$ es finito de orden $n$, $G=\langle g^k\rangle$ si y sólo
+			si $k$ es coprimo con $n$.
+	\end{enumerate}
+\end{exercise}
+
+El siguiente ejercicio es un caso particular del teorema de Cauchy, que veremos más adelante. 
+
+\begin{exercise}
+\label{xca:orden2}
+Demuestre que todo grupo de orden par contiene un elemento de orden dos. 	
+\end{exercise}
+
+Mostremos ahora algunos órdenes de elementos concretos: 
+
+\begin{example}
+En $\Sym_3$ tenemos los siguiente:
+\[
+|\id|=1,\quad
+|(12)|=|(13)|=|(23)|=2,\quad
+|(123)|=|(132)|=3.
+\]	
+\end{example}
+
+\begin{example}
+En $\Z$ todo elemento no nulo tiene orden infinito.	
+\end{example}
+
+\begin{example}
+En $\Z\times\Z/6$ hay elementos de orden finito y elementos de orden infinito. Por ejemplo, $(1,0)$ tiene orden infinito y 
+$(0,1)$ tiene orden seis. 
+\end{example}
+
+\begin{exercise}
+Calcule los órdenes de los elementos de $\Z/6$.	
+\end{exercise}
+
+\begin{example}
+La matriz $\begin{pmatrix}1&1\\0&1\end{pmatrix}\in\GL_2(\R)$ tiene orden infinito. 
+\end{example}
+
+\begin{example}
+El grupo $G_\infty=\bigcup_{n\geq1}G_n$ es abeliano e infinito. Todo elemento de $G_\infty$ tiene orden finito. 
+\end{example}
+
+\begin{exercise}
+Pruebe que la matrix $a=\begin{pmatrix}1&-1\\1&0\end{pmatrix}$ tiene orden cuatro, que la matrix $b=\begin{pmatrix}0&1\\-1&-1\end{pmatrix}$ tiene orden tres
+y calcule el orden de $ab$.%=\begin{pmatrix}1&1\\0&1\end{pmatrix}$ tiene orden infinito. 
+\end{exercise}
+
+\begin{exercise}
+Calcule el orden de la matriz $\begin{pmatrix}1&1\\-1&0\end{pmatrix}\in\GL_2(\R)$. 	
+\end{exercise}
+
+\begin{exercise}
+Demuestre que en $\D_n$ se tiene $|r^js|=2$ y $|r^j|=n/\gcd(n,j)$. Demuestre además que $\D_n$ tiene orden $2n$. 	
+\end{exercise}
+

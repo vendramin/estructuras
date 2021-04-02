@@ -1,0 +1,177 @@
+\chapter{Polinomios}
+
+\index{Polinomio!en una variable}
+Sea $R$ un anillo conmutativo. 
+Un polinomio con coeficientes en $R$ es una expresión
+de la forma
+\[
+	f=a_nX^n+a_{n-1}X^{n-1}+\cdots+a_1X+a_0=\sum_{i=0}^n a_nX^i,
+\]
+donde $n\in\N_0$. El conjunto de polinomios en una variable 
+con coeficientes en $R$ será denotado por $R[X]$. 
+
+Diremos que $f$ y $g=b_nX^n+b_{n-1}X^{n-1}+\cdots+b_1X+b_0$ son iguales si y
+sólo si $ a_i=b_i$ para todo $i\in\{0,1,\dots,n\}$. 
+
+\index{Grado!de un polinomio}
+\index{Polinomio!constante}
+El grado de un polinomio $f=\sum_{i=0}^na_iX^i$ se define como el menor entero positivo tal que $a_n\ne0$. Un polinomio de grado cero
+será denominado \textbf{polinomio constante}.
+
+\index{Polinomio!mónico}
+\index{Coeficiente principal!de un polinomio}
+Un polinomio $f=\sum_{i=0}^na_iXî$ de grado $n$ se dice \textbf{mónico} si su \textbf{coeficiente principal} es igual a uno, es decir $a_n=1$.   
+Si 
+\[
+f=\sum a_iX^i,\quad
+g=\sum b_jX^j,
+\]
+donde omitimos los índices de la sumatoria para aliviar un poco la notación, se definen la
+suma y el producto como
+\[
+f+g=\sum (a_k+b_k)X^k,
+gh=\sum\sum a_ib_jX^{i+j}.
+\]
+Con estas operaciones, $R[X]$ es un anillo conmutativo. Además $R$ puede pensarse como un subanillo de $R[X]$ pues
+existe un morfismo inyectivo de anillos $R\to R[X]$.  
+
+\begin{example}
+Si $f$ es un polinomio mónico y $g$ es un polinomio, existen entonces únicos $q\in R[X]$ y $r\in R[X]$ tales que
+\[
+g=fq+r,
+\]
+donde $r=0$ o bien $\deg r<\deg f$. Por ejemplo, si
+\[
+f=X^5+X^4-3X^3+4X^2+2X,\quad
+g=X^4+3X^3-X^2-6X-2
+\]
+entonces $q=X-2$ y $r=4X^3+8X^2-8X-4$ pues $f=(X-2)g+(4X^3+8X^2-8X-4)$. 
+\end{example}
+
+El algoritmo de división podrá hacerse siempre que el coeficiente principal de $f$ sea una unidad del anillo $R$. En particular, siempre podremos
+utilizar el algoritmo de división cuando el anillo $R$ es en realidad un cuerpo y $f\ne 0$.  
+
+\begin{proposition}
+Si $g\in R[X]$ y $\alpha\in R$, el resto de dividir al polinomio $g$ por $X-\alpha$ es $g(\alpha)$. En particular, $X-\alpha$ divide al polinomio  
+$g$ en $R[X]$ si y sólo si $g(\alpha)=0$. 
+\end{proposition}
+
+\begin{proof}
+Hay que evaluar en $\alpha$ la expresión $g=(X-\alpha)q+r$. 	
+\end{proof}
+
+
+\begin{proposition}
+\label{pro:polinomios}
+Sea $\varphi\colon R\to S$ un morfismo de anillos y sea $\alpha\in S$. Existe un único morfismo de anillos $\Phi\colon R[X]\to S$ 
+tal que $\Phi(X)=\alpha$ y tal que $\Phi$ coincide con $\varphi$ en los polinomios constantes.  	
+\end{proposition}
+
+\begin{proof}[Bosquejo de la demostración]
+Si $f=\sum a_iX^i$, definimos 
+\[
+\Phi(f)=\Phi(\sum a_iX^i)=\sum\Phi(a_i)\Phi(X)^i=\sum\Phi(a_i)\alpha^i,
+\] 	
+y así $\Phi$ quedaría unívocamente determinado. Dejamos como ejercicio demostrar que $\Phi$ es un morfismo de anillos. 
+%Veamos que $\Phi$ es un morfismo de anillos:
+%\begin{align*}
+%\Phi&\left((\sum a_iXî)(\sum b_jX^j)\right)
+%=\Phi\left(\sum\sum a_ib_jX^{i+j}\right)
+%=\sum\sum\Phi(a_ib_jX^{i+j})\\
+%&=\sum\sum\Phi(a_i)\Phi(b_j)\alpha^{i+j}
+%=\left(\sum\Phi(a_i)\alpha^i\right)\left(\sum\Phi(b_j)\alpha^j\right)
+%=\Phi(f)\Phi(g).   	
+%\end{align*}
+\end{proof}
+
+\begin{example}
+Sea $\varphi\colon\R[X]\to\R$, $X\mapsto 2$. Entonces $\ker\varphi$ es el ideal   
+$(X-2)$ de $\R[X]$ generado por $X-2$ pues 
+\[
+\ker\varphi=\{g\in\R[X]:g(2)=0\}
+=\{g\in\R[X]:g=(X-2)q\text{ para algún $q\in\R[X]$}\}.
+\] 	
+\end{example}
+
+El resultado que sigue es análogo al teorema~\ref{thm:Z}.
+
+\begin{theorem}
+Sea $K$ un cuerpo. Todo ideal de $K[X]$ es principal. Más aún, todo ideal $I$ no nulo de $K[X]$
+está generado por el único polinomio mónico de menor grado que está contenido en $I$.  	
+\end{theorem}
+
+\begin{proof}
+	Sea $I$ un ideal de $K[X]$. Si $I=\{0\}$, entonces $I$ es principal. Supongamos que $I\ne\{0\}$ 
+	y sea $f\in I\setminus\{0\}$ de grado mínimo. Sin perder generalidad, podemos suponer que $f$ es mónico pues
+	si no lo fuera, digamos $f=a_nX^n+\cdots$ con $a_n\ne 0$, entonces solamente hay que reemplaar a $f$ 
+	por el polinomio $a_n^{-1}f$. 
+	
+	Veamos que $I=(f)$. Vamos a demostrar la inclusión no trivial. Sea $g\in I$. Escribimos
+	$g=fq+r$ para ciertos $q,r\in K[X]$, donde $r=0$ o bien $\deg r<\deg f$. Si $r\ne 0$, entonces $r=g-fq\in I$, 
+	una contradicción a la minimalidad del grado de $f$. Luego $r=0$ y entonces $f$ divide a $g$, es decir
+	$g\in (f)$.   
+\end{proof}
+
+
+\index{Monomio}
+Nos interesará también estudiar anillos de polinomios en varias variables. Un \textbf{monomio} 
+en las variables $X_1,\dots,X_n$ es un producto de la forma
+\[
+X_1^{i_1}X_2^{i_2}\cdots X_n^{i_n}
+\]
+donde $i_1,\dots,i_n\geq0$. A veces conviene utilizar la siguiente notación: si $i=(i_1,\dots,i_n)$, entonces 
+\[
+X^i=X_1^{i_1}X_2^{i_2}\cdots X_n^{i_n}.
+\]  
+El monomio $X^0$, donde $0=(0,0,\dots,0)$, será denotado por $1$. 
+
+Un polinomio en las variables $X_1,\dots,X_n$ 
+con coeficientes en $R$ es una combinación lineal (sobre $R$) de finitos 
+monomios, es decir
+\[
+f=f(X_1,\dots,X_n)=\sum a_iX^i,
+\]
+donde la suma se recorre sobre todos los multi-índices $i=(i_1,\dots,i_n)$, los coeficientes $a_i$ son elementos del anillo $R$
+y solamente finitos de esos coeficientes son distintos de cero. El conjunto de los polinomios en las variables
+$X_1,\dots,X_n$ con coeficientes en $R$ será denotado por $R[X_1,\dots,X_n]$. 
+
+\begin{exercise}
+Demuestre que 
+la proposición~\ref{pro:polinomios} vale también en el caso de polinomios en varias variables.
+\end{exercise} 
+
+%\index{Polinomio!homogéneo}
+%Un polinomio donde todos sus monomios con coeficiente no nulo son de grado $d$ se denomina \textbf{homogéneo}
+
+\begin{example}
+Si $R$ es un anillo, $R[X]$ es un anillo. Podemos considerar entonces el anillo de polinomios $R[X,Y]=(R[X])(Y)=R[X][Y]$. 
+Sabemos que si utilizamos las identificaciones pertinentes, podemos pensar que $R\subseteq R[X]\subseteq (R[X])[Y]$ son subanillos. Si 
+	$\varphi\colon R\to R[X][Y]$ la inclusión, existe entonces un único morfismo de anillos $\Psi\colon R[X,Y]\to R[X][Y]$ que extiende a $\varphi$ y tal que
+	$\Psi(X)=X$ y $\Phi(Y)=Y$. Puede demostrarse que $\Psi$ es biyectivo y luego, en consecuencia,
+	\[
+R[X,Y]\simeq R[X][Y].
+\]
+\end{example}
+
+\begin{example}
+Veamos que $\R[X,Y]/(X)\simeq\R[Y]$. Consideramos el morfismo sobreyectivo $\varphi\colon\R[X,Y]\to\R[Y]$, $\varphi(f(X,Y))=f(0,Y)$. Afirmamos
+que $\ker\varphi=(X)$. En efecto, para probar que $\ker\varphi\subseteq (X)$ observamos que si
+\[
+f(X,Y)=f_0(Y)+f_1(Y)X+\cdots+f_n(Y)X^n,
+\]
+donde $f_i(Y)\in\R[Y]$ para todo $i\in\{0,1,\dots,n\}$, entonces 
+\[
+0=\varphi(f(X,Y))=f(0,Y)=f_0(Y).
+\] 
+Luego $f(X,Y)=f_1(Y)X+\cdots+f_n(Y)X^n=X(f_1(Y)+\cdots+f_n(Y)X^{n-1})\in (X)$. La otra inclusión es trivial. 
+El primer teorema de isomorfismos, entonces, implica que $\R[X,Y]/(X)\simeq\R[Y]$.  
+\end{example}
+
+\begin{exercise}
+Demuestre que $\R[X]/(X^2-1)\simeq\R\times\R$.	
+\end{exercise}
+
+\begin{exercise}
+Demuestre que $\Q[X]/(X-2)\simeq\Q$. 	
+\end{exercise}
+	

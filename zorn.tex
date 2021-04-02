@@ -1,0 +1,236 @@
+\chapter{El lema de Zorn}
+
+\index{Conjunto!parcialmente ordenado}
+\index{Poset}
+Un conjunto no vacío $R$ se dirá \textbf{parcialmente ordenado} si posee una relación $X$ en $R\times R$ (es decir, $X\subseteq R\times R$)
+tal que 
+\begin{enumerate}   	
+\item $(r,r)\in X$ para todo $r\in R$,
+\item $(r,s)\in X$ y $(s,t)\in X$ implican que $(r,t)\in X$, y además
+\item $(r,s)\in X$ y $(s,r)\in X$ implican que $r=s$.
+\end{enumerate}
+
+La notación que utilizaremos es la siguiente: $(r,s)\in X\Longleftrightarrow r\leq s$. Un conjunto parcialmente ordenado será denotado entonces como el par $(R,\leq)$. Las 
+tres condiciones anteriores pueden reescribirse así:
+\begin{enumerate}
+\item $r\leq r$ para todo $r\in R$.
+\item $r\leq s$ y $s\leq t$ implican que $r\leq t$.
+\item $r\leq s$ y $s\leq r$ implican que $r=s$.
+\end{enumerate}
+
+Otra notación que utilizaremos frecuentemente: $r<s\Longleftrightarrow r\leq s$ y además $r\ne s$.
+
+\index{Elementos!comparables en un poset}
+Sea $(R,\leq)$ un conjunto parcialmente ordenado y sean $r,s\in R$. Diremos que $r$ y $s$ son \textbf{comparables}
+si $r\leq s$ o bien $s\leq r$. 	
+
+\begin{example}
+Sea $U=\{1,2,3,4,5\}$ y sea $T$ el conjunto de subconjuntos de $U$. Definimos 
+la relación $C\leq D\Longleftrightarrow C\subseteq D$. Luego $T$ es un conjunto parcialmente ordenado. Los
+subconjuntos $\{1,2\}$ y $\{3,4\}$ no son comparables. 
+\end{example}
+
+Si $(R,\leq)$ es un conjunto parcialmente ordenado, diremos que un elemento $r\in R$ es \textbf{maximal} en $R$ 
+si para todo $t\in R$ comparable con $r$, se tiene que $t\leq r$, es decir: para todo $t\in R$ tal que $r\leq t$ se tiene $r=t$. 	
+
+\begin{example}
+$(\Z,\leq)$ no tiene elementos maximales.
+\end{example}
+
+\begin{example}
+Sea $R=\{(x,y)\in\R^2:y\leq 0\}$. Definimos la relación de orden parcial 
+\[
+(x_1,y_1)\leq (x_2,y_2)\Longleftrightarrow x_1=x_2\text{ y además }y_1\leq y_2.
+\]
+Entonces $(R,\leq)$ es un conjunto parcialmente ordenado. Cada elemento de la forma $(x,0)$ 
+es un elemento maximal, pues si $(x,0)\leq (x_1,y_1)$, entonces $x=x_1$ y además $y_1=0$. En conclusión, $R$ tiene
+una infinidad de elementos maximales. 	
+\end{example}
+
+
+\index{Cota superior}
+\index{Lema!de Zorn}
+\index{Cadena}
+Si $R$ es un conjunto parcialmente ordenado, una \textbf{cota superior} de un subconjunto no vacío $S$ de $R$ 
+será un elemento $u\in R$ tal que $s\leq u$ para todo $s\in S$. 
+
+
+\begin{example}
+El conjunto $S=\{6\Z,12\Z,24\Z\}$ de subgrupos de $\Z$ 
+es totalmente ordenado con la inclusión. El elemento $6\Z=6\Z\cup 12\Z\cup 24\Z$ es
+cota superior de $S$. 	
+\end{example}
+
+Un subconjunto no vacío $S$ de $R$ 
+será una \textbf{cadena} si dos elementos cualesquiera de $S$ son comparables. El \textbf{lema de Zorn} 
+afirma lo siguiente:
+
+
+\begin{quote}
+Si $R$ es un conjunto parcialmente ordenado tal que toda cadena en $R$ admite una cota superior en $R$, entonces
+$R$ contiene un elemento maximal.	
+\end{quote}
+
+Como se ve, el lema de Zorn nada tiene de intuitivo. Curiosamente, es lógicamente equivalente al axioma de elección y al principio de buena ordenación. 
+En realidad, el lema 
+de Zorn es un axioma y no un resultado que debe demostrare. 
+
+En vez de profundizar más en los aspectos lógicos del lema de Zorn y sus equivalencias, nos contentaremos con dar una aplicación.
+
+\begin{definition}
+\index{Ideal!maximal}
+	Sea $R$ un anillo. Diremos que un ideal $I\ne R$ es \textbf{maximal} si dado un ideal $J$ de $R$ tal que 
+	$I\subseteq J$, entonces $I=J$ o bien $J=R$.  
+\end{definition}
+
+\begin{example}
+Si $p$ es un número primo, entonces $p\Z$ es un ideal maximal de $\Z$.
+\end{example}
+
+\begin{exercise}
+Sea $R$ un anillo. Entonces $R$ es un cuerpo si y sólo si $\{0\}$ es un ideal maximal. 	
+\end{exercise}
+
+\begin{exercise}
+Sea $R$ un anillo. Un ideal $I$ de $R$ es maximal si y sólo si $R/I$ es un cuerpo.
+\end{exercise}
+
+Ahora sí, el teorema.
+
+\begin{theorem}
+Sea $R$ un anillo. Todo ideal $I\ne R$ está contenido en un ideal maximal. En particular, todo anillo tiene ideales maximales. 
+\end{theorem}
+
+\begin{proof}
+Sea 
+\[
+X=\{J\subseteq R:J\text{ es un ideal tal que }I\subseteq J\subsetneq R\}.
+\]
+Como $I\in X$, entonces $X$ es no vacío. Luego 
+$X$ es un conjunto parcialmente ordenado con la inclusión. Si $C$ es una cadena en $X$, entonces $\cup_{J\in C}J\in X$
+es una cota superior para $C$, pues $\cup_{J\in C}J$ es un ideal de $R$ y $1\not\in \cup_{J\in C}J$, lo que
+implica que $\cup_{J\in C}J\ne R$. Por el lema de Zorn, existe entonces $M\in X$ un elemento maximal. 
+
+Afirmamos que $M$ es un ideal maximal de $R$. En efecto, si $M_1$ es un ideal propio de $R$ tal que $M\subseteq M_1$, entonces
+$I\subseteq M_1$ y luego $M_1\in X$, lo que implica que $M=M_1$ pues $M$ es maximal en $X$.   
+\end{proof}
+
+En el teorema anterior, el hecho crucial es la existencia de la unidad del anillo. 
+De hecho, el álgebra no conmutativa nos muestra que existen anillos (no son anillos unitarios, obviamente) 
+que no poseen ideales maximales.
+
+\begin{example}
+Sea $K$ un cuerpo. 
+Los ideales maximales de $K[X]$ son los ideales principales generados por los polinomios mónicos irreducibles. En efecto,
+si $I$ es un ideal maximal, entonces $I=(f)$ para algún $f\in K[X]$, pues sabemos que $K[X]$ es principal. Si $\deg f=n$ y 
+$a$ es el coeficiente principal de $f$, entonces $g=a^{-1}f$ es un polinomio mónico tal que
+\[
+(a^{-1}f)=(f).
+\] 
+Podemos suponer entonces, sin perder generalidad, que $f$ es mónico. Si $f$ es irreducible y $(f)\subseteq J\subseteq K[X]$, escribimos
+$J=(g)$ para algún $g\in K[X]$. Entonces $f=gh$ para algún $h\in K[X]$, lo que implica que $g$ o $h$ son constantes. Si $g$ es constante, 
+entonces $(g)=K[X]$. Si $h$ es constante, digamos $h=a\in K$, entonces $f=ga$, lo que implica que $g=a^{-1}f\in (f)$ y luego $I=J$.   
+\end{example}
+
+%\begin{definition}
+%\end{definition}
+\begin{exercise}
+Sea $R$ un dominio de ideales principales. Demuestre que $p\in R$ es irreducible si y sólo si $(p)$ es un ideal maximal. 	
+\end{exercise}
+
+Un caso particular del ejercicio anterior. Si $K$ es un cuerpo, $f\in K[X]$ es irreducible si y sólo si el
+ideal $(f)$ es maximal.  
+
+\begin{example}
+Sean $K$ un cuerpo y $S$ un dominio íntegro. Si $\varphi\in K[X]\to S$ es un morfismo de anillos, entonces $\ker \varphi=\{0\}$ o bien $\ker\varphi$ es maximal. En efecto,
+como $K[X]$ es principal, sabemos que $\ker\varphi=(f)$ para algún $f\in K[X]$. Si $\ker\varphi=0$, no hay nada que demostrar. 
+Si $f$ es irreducible, entonces $(f)$ es maximal. En caso contrario, 
+digamos $f=gh$, tenemos 
+\[
+0=\varphi(f)=\varphi(gh)=\varphi(g)\varphi(h).
+\]
+Como $S$ es un dominio íntegro, $\varphi(g)=0$ o bien $\varphi(h)=0$. Sin perder generalidad, podemos suponer que $\varphi(g)=0$,
+es decir $g\in\ker \varphi$. Luego $(f)\subseteq (g)=\ker\varphi$ y entonces $h$ es una unidad, una contradicción. 
+\end{example}
+
+\begin{example}
+El ideal $(X^2+2X+2)$ es maximal en $\Q[X]$ pues 
+\[
+X^2+2X+2=(X+1)^2+1>0
+\]
+es irreducible en $\Q[X]$, por ser un polinomio de grado dos sin raíces racionales.  	
+\end{example}
+
+\begin{exercise}
+Demuestre que $R/I$ es un cuerpo si y sólo si $I$ es un ideal maximal.	
+\end{exercise}
+	
+\begin{example}
+Sea $R=(\Z/2)[X]$. Como $X^2+X+1$ es irreducible en $R$, el ideal $I=(X^2+X+1)$ es maximal. Luego $R/I$ es un cuerpo.
+\end{example}
+
+\begin{exercise}
+\label{xca:Jacobson}
+Sea $R$ un anillo conmutativo y sea $J(R)$ la intersección de todos
+los ideales maximales de $R$. Pruebe que $x\in J(R)$ si y sólo si
+$1-xy\in\mathcal{U}(R)$ para todo $y\in R$. 
+\end{exercise}
+
+\begin{exercise}
+\label{xca:maxZn}
+Los ideales maximales de $\Z/n$ son de la forma $I=Z/p$ donde $p$ es un primo que divide a $n$.
+\end{exercise}
+
+Veamos ahora una aplicación a la teoría de grupos. 
+
+\index{Subgrupo!maximal}
+Un subgrupo propio $M$ de un grupo $G$ se dice \textbf{maximal} si $M\subseteq H\subseteq G$ para algún subgrupo $H$ de $G$ implica que
+$M=H$ o $H=G$, es decir que el subgrupo $M$ es maximal con respecto a la inclusión entre los subgrupos propios de $G$. Quizá sería
+mejor definir estos subgrupos como maximal-propio, pero, tal como se hace en la literatura, nos quedaremos con la terminología estándar.  
+
+\begin{exercise}
+	Demuestre que $M\leq\Z$ es maximal si y sólo si $M=p\Z$ para algún primo $p$. 
+\end{exercise}
+
+\begin{exercise}
+    Demuestre que $\Q$ no tiene subgrupos maximales.        
+\end{exercise}
+
+\begin{exercise}
+        Demuestre que todo subgrupo propio de un grupo finito está contenido en
+        algún subgrupo maximal.
+\end{exercise}
+
+El resultado del ejercicio anterior puede extenderse a grupos finitamente generados gracias al lema de Zorn. 
+
+\begin{theorem}
+Sea $G$ un grupo no trivial y finitamente generado. Todo subgrupo propio de $G$ está contenido en un subgrupo maximal.  	
+\end{theorem}
+
+\begin{proof}
+	Supongamos que $G=\langle g_1,\dots,g_n\rangle$ y sea $K$ un subgrupo propio de $G$. Para cada $j\in\{0,\dots,n\}$ se define
+	$G_j=\langle K,g_1,\dots,g_j\rangle$. Como
+	\[
+	K=G_0\subseteq G_1\subseteq G_2\subseteq\cdots\subseteq G_n=G,
+	\]
+	existe entonces $l=\max\{j:0\leq j\leq n-1,\,G_j\ne G\}$. Luego $G_{l+1}=\langle G_l,g_{l+1}\rangle=G$ y
+	además $g_{l+1}\not\in G_l$. Sea
+	\[
+	S=\{H:H\leq G,\,G_l\subseteq H,\,g_{l+1}\not\in H\}
+	\]
+	ordenado parcialmente con la inclusión. Como $G_l\in S$, entonces $S\ne\emptyset$. Dejamos como ejercicio
+	demostrar que si $\{H_i:i\in I\}\subseteq S$ es
+	totalmente ordenado, entonces $H=\cup_{i\in I}H_i$ es una cota superior de $S$. Por el lema de Zorn sabemos
+	entonces que $S$ tiene un elemento maximal, digamos $M$, es decir que $M$ es maximal con 
+	respecto a las siguientes propiedades: $M\leq G$, $G_l\subseteq M$ y $g_{l+1}\not\in M$.   
+	
+	Vamos a demostrar ahora que $M$ es un subgrupo maximal de $G$ que contiene a $K$. 
+	Como $K\subseteq G_l\subseteq M$, entonces $M$ contiene a $K$. Para ver que $M$ es maximal, supongamos que
+	$M\leq L\leq G$. Si $g_{l+1}\not\in L$, entonces, por definición, $L	\in S$, pero esto contradice la maximalidad
+	del conjunto $M$. Luego $g_{l+1}\in L$, lo que implica que $\langle M,g_{l+1}\rangle\subseteq L$. Como $G_l\subseteq M$, entonces
+	\[
+	G=G_{l+1}=\langle G_l,g_{l+1}\rangle\subseteq \langle M,g_{l+1}\rangle.   
+	\]
+	En consecuencia, $G\subseteq L$ y luego $L=G$. 
+\end{proof}
+

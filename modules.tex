@@ -1,0 +1,510 @@
+\chapter{Módulos}
+\label{modulos}
+
+Un módulo sobre un anillo $R$ será un grupo aditivo junto con un morfismo
+de anillos $R\to\End(M)$, que será la acción de $R$ en $M$. Al traducir
+qué significa tener tal morfismo de anillos, obtenemos la siguiente definición:
+
+\begin{definition}
+\index{Módulo!sobre un anillo}
+Sea $R$ un anillo. Un grupo abeliano aditivo $M$ junto con una operación
+$R\times M\to M$, $(x,m)\mapsto x\cdot m$, 
+será un \textbf{módulo} (a izquierda) sobre $R$ (o también $R$-módulo a izquierda) si
+se cumplen las siguientes propiedades:
+\begin{enumerate}
+\item $(r_1+r_2)\cdot m=x_1\cdot m+x_2\cdot m$ para todo $r_1,r_2\in R$ y $m\in M$.
+\item $r\cdot (m_1+m_2)=r\cdot m_1+x\cdot m_2$ para todo $r\in R$ y $m_1,m_2\in M$.
+\item $r_1\cdot (r_2\cdot m)=(r_1r_2)\cdot m$ para todo $r_1,r_2\in R$ y $m\in M$.
+\item $1\cdot m=m$ para todo $m\in M$.	
+\end{enumerate}
+\end{definition}
+
+Similarmente uno puede definir módulos a derecha. 
+
+Tabajaremos con módulos a izquierda, por lo tanto los llamaremos simplemente módulos y no habrá peligro de confusión.  Muchas veces no haremos referencia al anillo
+sobre el que se define el módulo.
+
+\begin{example}
+Si $R$ es un cuerpo, entonces un $R$-módulo 	es un espacio vectorial. 
+\end{example}
+
+\begin{example}
+Todo grupo abeliano es un $\Z$-módulo.	
+\end{example}
+
+\begin{example}
+\index{Representación!regular de un anillo}
+Si $R$ es un anillo, entonces $R$ es un $R$-módulo con $x\cdot m=xm$. 
+Este módulo es la \textbf{representación regular (a izquierda)} de $R$.  
+La notación que utilizaremos para este módulo será $M=\prescript{}{R}R$. 
+\end{example}
+
+\begin{example}
+Si $R$ es un anillo, $R^n=\{(x_1,\dots,x_n):x_1,\dots,x_n\in R\}$ 
+es un $R$-módulo con 
+$r\cdot (x_1,\dots,x_n)=(rx_1,\dots,rx_n)$. 
+\end{example}
+
+\begin{example}
+Si $R$ es un anillo, $M_{m,n}(R)$ es un $R$-módulo.
+\end{example}
+
+El siguiente ejemplo explica por qué es útil 
+pedir que un morfismo $f$ 
+de anillos cumpla con la condición $f(1)=1$. 
+
+\begin{example}
+\label{exa:f(1)=1}
+Si $f\colon R\to S$ es un morfismo de anillos y $M$ es un $S$-módulo con la acción $(s,m)\mapsto sm$, entonces
+$M$ es un $R$-módulo con $r\cdot m=f(r)m$ para $r\in R$ y $m\in M$. En efecto,
+\begin{align*}
+&1\cdot m=f(1)m=1m=m,\\
+&r_1\cdot (r_2\cdot m)=f(r_1)(r_2\cdot m)=f(r_1)(f(r_2)m)=(f(r_1)f(r_2))m=f(r_1r_2)m
+\end{align*}
+para todo $r_1,r_2\in R$ y $m\in M$.	  	
+\end{example}
+
+El ejemplo siguiente es particularmente importante.
+
+\begin{example}
+Sean $R=\R[X]$, $T\colon\R^n\to\R^n$ una transformación lineal y $M=\R^n$, entonces $M$ es un $R$-módulo con 
+\[
+\left(\sum_{i=0}^na_iX^i\right)\cdot v=\sum_{i=0}^na_iT^i(v).
+\]	
+\end{example}
+
+\begin{example}
+\index{Producto directo!de módulos}
+Si $\{M_i|i\in I\}$ es una familia de módulos, entonces  	
+\[
+\prod_{i\in I}M_i=\{(m_i)_{i\in I}:m_i\in M_i\text{ para todo $i\in I$}\}
+\]
+es un módulo con
+la operación 
+$x\cdot (m_i)_{i\in I}=(x\cdot m_i)_{i\in I}$, 
+donde el símbolo $(m_i)_{i\in I}$ denota a la función $I\to M_i$, $i\mapsto m_i$.
+Este módulo se conoce como el \textbf{producto directo} de los $M_i$.
+\end{example}
+
+\begin{example}
+\index{Suma directa!de módulos}
+Si $\{M_i|i\in I\}$ es una familia de módulos, entonces  	
+\[
+\bigoplus_{i\in I}M_i=\{(m_i)_{i\in I}:m_i\in M_i\text{ para todo $i\in I$ y $m_i=0$ salvo finitos $i\in I$}\}
+\]
+es un módulo con la operación
+$x\cdot (m_i)_{i\in I}=(x\cdot m_i)_{i\in I}$. 
+Este módulo se conoce como la \textbf{suma directa} de los $M_i$. 
+\end{example}
+
+\begin{exercise}
+Si $M$ es un módulo, entonces
+\begin{enumerate}
+\item $0\cdot m=0$ para todo $m\in M$,
+\item $x\cdot 0=0$ para todo $x\in R$ y además
+\item $-m=(-1)\cdot m$ para todo $m\in M$. 	
+\end{enumerate}
+\end{exercise}
+
+\begin{example}
+$M=\Z/6$ es un $\Z$-módulo tal que $3\cdot 2=0$ pero $3\ne 0$ (en $\Z$) y $2\ne 0$ (en $\Z/6$).  
+\end{example}
+
+\begin{definition}
+\index{Submódulo}
+	Sea $M$ un $R$-módulo. Un subconjunto $S$ de $M$ será un \textbf{submódulo} de $M$ si $(S,+)$ es un subgrupo de $(M,+)$ y además
+	$x\cdot s\in S$ para todo $x\in R$ y $s\in S$. 
+\end{definition}
+
+\begin{examples}
+Sea $M$ un $R$-módulo. 
+\begin{enumerate}
+\item $\{0\}$ y $M$ son submódulos de $M$.
+\item Si $R$ es un cuerpo, $S$ es un submódulo de $M$ si y sólo si $S$ es un subespacio de $M$.
+\item Si $R=\Z$, entonces $S$ es un submódulo si y sólo si $S$ es un subgrupo de $M$. 	
+\end{enumerate}
+\end{examples}
+
+\begin{example}
+Si $M=\prescript{}{R}R$, entonces $S\subseteq M$ es un submódulo si y sólo si $S$ es un ideal a izquierda de $R$
+\end{example}
+
+\begin{example}
+Si $V$ es un espacio vectorial y $T\colon V\to V$ es una transformación lineal, entonces
+$V$ es un $K[X]$-módulo con 
+\[
+\left(\sum_{i=0}^na_iX^i\right)\cdot v=\sum_{i=0}^na_iT^i(v).
+\]
+Un submódulo $W$ será entonces un subespacio $T$-invariante de $V$, es decir un subspacio vectorial de $V$ 
+tal que $T(W)\subseteq W$. 
+\end{example}
+
+\begin{exercise}
+Demuestre que un subconjunto $S$ de $M$ es un submódulo si y sólo si $r_1s_1+r_2s_2\in S$ para
+todo $r_1,r_2\in R$ y $_1,s_2\in S$. 	
+\end{exercise}
+
+\begin{exercise}
+Si $S$ y $T$ son submódulos de $M$, entonces 
+\[
+S+T=\{s+t:s\in S,\,t\in T\}
+\]
+es un submódulo de $M$.
+\end{exercise}
+
+\begin{definition}
+\index{Morfismo!de módulos}
+Sean $M$ y $N$ módulos sobre $R$. 
+Un \textbf{morfismo} de módulos es una función $f\colon M\to N$ tal que $f(x+y)=f(x)+f(y)$ y 
+$f(r\cdot x)=r\cdot f(x)$ para todo $x,y\in M$ y $r\in R$. 
+\end{definition}
+
+\begin{exercise}
+Sea $f\colon M\to N$ un morfismo de módulos. 
+\begin{enumerate}
+\item Si $S$ es un submódulo de $M$, entonces $f(S)$ es un submódulo de $N$.
+\item Si $T$ es un submódulo de $N$, entonces $f^{-1}(T)$ es un submódulo de $M$.
+\end{enumerate}
+\end{exercise}
+
+\index{Núcleo!de un morfismo de módulos}
+\index{Monomorfismo!de módulos}
+\index{Epimorfismo!de módulos}
+\index{Isomorfismo!de módulos}
+Si $f\in\Hom_R(M,N)$, se define el \textbf{núcleo} de $f$ como el submódulo 
+\[
+\ker f=f^{-1}(\{0\})=\{m\in M:f(m)=0\}
+\]
+de $M$. Diremos que $f$ es un \textbf{monomorfismo} si $f$ es inyectiva, que
+es un \textbf{epimorfismo} si $f$ es sobreyectiva y que es un \textbf{isomorfismo} 
+si $f$ es biyectiva. 
+
+\begin{exercise}
+Sea $f\in\Hom_R(M,N)$. Son equivalentes:
+\begin{enumerate}
+\item $f$ es monomorfismo.
+\item $\ker f=\{0\}$.
+\item Para todo módulo $T$ y todo $g,h\in\Hom_R(T,M)	$, $f\circ g=f\circ h\implies g=h$.
+\item Para todo módulo $T$ y todo $g\in\Hom(T,M)$, $f\circ g=0\implies g=0$.
+\end{enumerate}
+\end{exercise}
+
+
+\begin{example}
+	Sea $R=
+		\begin{pmatrix}
+			\R & 0\\
+			0 & \R
+		\end{pmatrix}$. 
+	Veamos que
+	$\begin{pmatrix}
+			\R\\
+			0
+		\end{pmatrix}
+		\not\simeq\begin{pmatrix}
+			0\\
+			\R
+		\end{pmatrix}$
+	como $R$-módulos, donde la estructura de módulos está dada por la multiplicación usual de matrices. 
+	Sea 
+	$f\colon\begin{pmatrix}
+			0\\
+			\R
+		\end{pmatrix}
+		\to\begin{pmatrix}
+			\R\\
+			0
+		\end{pmatrix}$  
+	un isomorfismo de módulos y sea 
+	$x_0\in\R\setminus\{0\}$ 
+	tal que $f\begin{pmatrix}0\\1\end{pmatrix}=\begin{pmatrix}x_0\\0\end{pmatrix}$. Entonces
+	\[
+	f\begin{pmatrix}
+	0\\
+	1\end{pmatrix}
+	=f\left(\begin{pmatrix}
+	0&0\\
+	0&1\end{pmatrix}
+	\cdot 
+	\begin{pmatrix}
+	0\\
+	1
+	\end{pmatrix}\right)
+	=\begin{pmatrix}
+	0&0\\
+	0&1\end{pmatrix}\cdot f\begin{pmatrix}0\\1\end{pmatrix}
+	=\begin{pmatrix}
+	0&0\\
+	0&1
+	\end{pmatrix}
+	\cdot 
+	\begin{pmatrix}		
+	x_0\\
+	0
+	\end{pmatrix}
+	=\begin{pmatrix}
+	0\\
+	0
+	\end{pmatrix},
+	\]	
+	una contradicción pues $f$ es inyectiva.   
+\end{example}
+
+\index{Suma directa!de módulos}
+\index{Complemento!de un submódulo}
+\index{Sumando directo!de un módulo}
+Si $S$ y $T$ son submódulos de $M$, diremos que $M$ es \textbf{suma directa} de $S$ y $T$ si 
+$M=S+T$ y además $S\cap T=\{0\}$. La notación que utilizaremos en este caso será $M=S\oplus T$. Observemos que
+si $M=S\oplus T$, entonces 
+todo $m\in M$ puede escribirse unívocamente como $m=s+t$ para ciertos $s\in S$ y $t\in T$. En efecto,
+la descomposición existe gracias a que $M=S+T$. Si $m\in M$ se descompone como
+$m=s+t=s_1+t_1$, donde $s,s_1\in S$ y $t,t_1\in T$, entonces
+$-s_1+s=t_1-t\in S\cap T=\{0\}$ y luego $s=s_1$ y $t=t_1$.  Si $M=S\oplus T$, el submódulo $S$ es un \textbf{sumando directo} de $M$ y el submódulo $T$ es un \textbf{complemento} para $S$ en $M$.   	
+\begin{examples}\
+	\begin{enumerate}
+	\item Para todo módulo $M$, los submódulos $\{0\}$ y $M$ son sumandos directos de $M$.
+	\item Si $M=\R^2$ con la estructura usual de espacio vectorial, entonces todo subespacio de $M$ es un sumando directo. 	
+	\end{enumerate}
+\end{examples}
+
+\begin{example}
+Si $M=\Z$ como $\Z$-módulo, $m\Z$ es sumando directo de $M$ si y sólo si $m\in\{0,1\}$, pues $n\Z\cap m\Z=\{0\}$ si y sólo si $nm=0$.
+\end{example}
+
+\begin{proposition}
+\index{Proyector}
+Un módulo $N$ es isomorfo a un sumando directo del módulo $M$ si y sólo si 
+existen morfismos $i\colon N\to M$ y $p\colon M\to N$ 
+tales que $p\circ i=\id_N$. En este caso, $M=\ker p\oplus i(N)$.  
+\end{proposition}
+
+\begin{proof}
+	Supongamos que $N$ es isomorfo a un sumando directo de $M$, es decir $M=S\oplus T$ y sea $s\colon N\to S$ un isomorfismo. Para
+	cada $m\in M$ existen únicos $s\in S$ y $t\in T$ tales que $m=s+t$. Definimos entonces el epimorfismo 
+	$q\colon M\to S$, $m\mapsto s$. Observemos que $q(m)=m$ si y sólo si $m\in S$, 
+	es decir que $q$ es un \textbf{proyector} de $M$ sobre $S$ con respecto a $T$. 
+	Definimos además el morfismo 
+	$i\colon N\to M$, $n\mapsto s(n)$, y el morfismo $p\colon M\to N$, $m\mapsto s^{-1}(q(m))$. Como $s(n)\in S$, 
+	\[
+	p(i(n))=p(s(n))=s^{-1}(q(s(n)))=s^{-1}(s(n))=n
+	\]
+	para todo $n\in N$. 
+	
+	Demostremos ahora la recíproca. Afirmamos que $i$ es monomorfismo: si $i(n)=0$, entonces
+	$n=p(i(n))=p(0)=0$. Luego $i\colon N\to i(N)$ es un isomorfismo. 
+	Veamos ahora que $M=\ker p\oplus i(N)$. Si $m\in M$, entonces
+	\[
+	m=m-i(p(m))+i(p(m))\in\ker p+i(N),
+	\] 
+	pues
+	$p(m-i(p(m)))=p(m)-p(m)=0$. Si $m\in\ker p\cap i(N)$, entonces $0=p(m)$ y además $m=i(n)$ para algún $n\in N$. Entonces
+	$0=p(m)=p(i(n))=n$ y luego $m=0$.      
+\end{proof}
+
+La \textbf{suma directa} de submódulos puede extenderse a un número finito de sumandos. 
+Si $S_1,\dots,S_n$ son submódulos de $M$, diremos que
+$M=S_1\oplus\cdots\oplus S_n$ si todo $m\in M$ puede escribirse unívocamente
+como $m=s_1+\cdots+s_n$ para ciertos $s_1\in S_1,\dots,s_n\in S_n$. 
+
+\begin{exercise}
+Demuestre que $M=S_1\oplus\cdots\oplus S_n$ si y sólo si
+$M=S_1+\cdots+S_n$ y además 
+\[
+S_i\cap\left(\sum_{j\ne i}S_j\right)=\{0\}
+\]	
+para todo $i\in\{1,\dots,n\}$.
+\end{exercise}
+
+\begin{exercise}
+Si $\{S_i:i\in I\}$ es una familia de submódulos de $M$, entonces $\cap_{i\in I}S_i$ es un submódulo de $M$.
+\end{exercise}
+
+\begin{example}
+Sea $T\colon\R^2\to\R^2$, $T(x,y)=(0,y)$ y sea $M=\R^2$ con la estructura de $\R[X]$-módulo dada por
+\[
+\left(\sum_{i=0}^n a_iX^i\right)\cdot (x,y)=\sum_{i=0}^n a_iT(x,y).
+\]
+Vamos a demostrar que
+$\{0\}$, $M$, $\R\times\{0\}$ y $\{0\}\times\R$ son los únicos submódulos de $M$. Si $N$ es un submódulo no nulo de $M$, sea
+$(x_0,y_0)\in N\setminus\{(0,0)\}$. Si $(x,y)\in M$ es tal que $xy\ne 0$, entonces
+\[
+\left(\frac{x}{x_0}+\left(\frac{y}{y_0}-\frac{x}{x_0}\right)X\right)\cdot (x_0,y_0)=(x,y) 
+\]
+y luego $N=M$. Si $y_0=0$, entonces $N=\R\times\{0\}$, pues $\frac{x}{x_0}\cdot (x_0,0)=(x,0)$. Si $x_0=0$, entonces
+$N=\{0\}\times\R$, pues 
+$\frac{y}{y_0}\cdot (0,y_0)=(0,y)$ 
+\end{example}
+
+
+\begin{example}
+Sea $M=\R^2$ como $\R[X]$-módulo con la acción
+\[
+\left(\sum_{i=0}^n a_iX^i\right)\cdot (x,y)=\sum_{i=0}^n a_iT^i(x,y),
+\]
+donde $T\colon M\to M$, $T(x,y)=(y,x)$. 
+Vamos a calcular todos los submódulos de $M$. 
+Si $N\subseteq M$ es un submódulo entonces $N$ es un espacio vectorial real. Supongamos que $N\ne\{(0,0)\}$ y que $N\ne\R^2$. Como entonces $\dim N=1$, 
+sea $\{(a_0,b_0)\}$ una base de $N$. Como $N$ es un submódulo,
+$(b_0,a_0)=X\cdot (a_0,b_0)\in N$. En particular, existe $\lambda\in\R$ tal que $(b_0,a_0)=\lambda (a_0,b_0)$. Como $(a_0,b_0)\ne(0,0)$, sin perder generalidad
+podemos suponer que $a_0\ne 0$. Esto implica que
+$\lambda^2 a_0=\lambda (\lambda a_0)=\lambda b_0=a_0$ y entonces $\lambda^2=1$. Si $\lambda=1$, entonces
+$a_0=b_0$. Si $\lambda=-1$, entonces $a_0=-b_0$. En conclusión, $N$ está generado por $(1,1)$ o por $(1,-1)$.  
+\end{example}
+
+\begin{example}
+Si $V$ es un espacio vectorial y $T\colon V\to V$ es una transformación lineal, entonces
+$V$ es un $K[X]$-módulo con 
+\[
+\left(\sum_{i=0}^n a_iX^i\right)\cdot v=\sum_{i=0}^n a_iT^i(v).
+\]
+Si $g\colon V\to V$ es un morfismo de $K[X]$-módulos, entonces $g$ conmuta con $T$, pues
+\[
+(g\circ T)(v)=g(T(v))=g(X\cdot v)=X\cdot g(v)=T(g(v))=(T\circ g)(v)
+\]
+para todo $v\in V$.
+%Sea $K$ un cuerpo y sea $M$ un $K[X]$-módulo. Entonces $M$ es un $K$-espacio vectorial con la restricción 
+%de la acción de $K[X]$ en $M$. 
+%
+%Si $f\colon M\to M$, $f(m)=X\cdot m$, entonces $f$ es una transformación lineal. 
+%
+%Si $V$ es un $K$-espacio vectorial y $f\colon V\to V$ es una transformación lineal, definimos
+%$p\cdot v=p(f)(v)$ para $p\in K[X]$ y $v\in V$. Entonces $M$ es un $K[X]$-módulo si y sólo si $M$ es un $K$-espacio vectorial
+%y $x\cdot v=f(v)$ para alguna transformación lineal $f\colon V\to V$. 
+%
+%Además, si $g\colon M\to M$ es un morfismo de $K[X]$-módulos, entonces $g\colon M\to M$ es una transformación lineal que conmuta con $f$
+%pues 
+%\[
+%g(f(v))=g(X\cdot v)=X\cdot g(v)=f(g(v)).
+%\]
+\end{example}
+
+Sea $\Hom_R(M,N)$ el conjunto de morfismos de módulos $M\to N$. 
+
+\begin{example}
+\label{exa:Hom}
+Veamos que $\Hom_R(M,N)$ es un $Z(R)$-módulo. Si $f\in\Hom_R(M,N)$ y $r\in R$, definimos la función 
+$r\cdot f\colon M\to N$, $m\mapsto f(r\cdot m)$, que es un morfismo de grupos abelianos. 
+Si $r,s\in Z(R)$, entonces $f$ es un morfismo pues
+\begin{align*}
+(r\cdot (s\cdot f))(m)&=
+(s\cdot f)(r\cdot m)\\
+&=f(s\cdot (r\cdot m))=f((sr)\cdot m)=f( (rs)\cdot m)=((rs)\cdot f)(m). 
+\end{align*} 	
+\end{example}
+
+\index{Módulo!cociente}
+\index{Epimorfismo!canónico de módulos}
+Si $M$ es un módulo y $N$ es un submódulo, entonces $M/N$ es un grupo abeliano y el morfismo
+canónico $\pi\colon M\to M/N$, $x\mapsto x+N$, es un morfismo sobreyectivo de grupos. Veamos que 
+el \textbf{cociente} $M/N$ es un módulo con 
+\[
+r\cdot (x+N)=(r\cdot x)+N,
+\]
+donde $r\in R$ y $x\in M$. Para esto, tenemos que ver la buena definición de la acción en $M/N$. Si $x+N=y+N$, entonces, como
+$x-y\in N$, se tiene que 
+\[
+r\cdot x-r\cdot y=r\cdot (x-y)\in N,
+\]
+es decir $r\cdot (x+N)=r\cdot (y+N)$. Dejamos como ejercicio demostrar que la función $\pi\colon M\to M/N$, $x\mapsto x+N$, es
+un morfismo sobreyectivo de módulos. 
+
+\begin{example}
+Si $R=M=\Z$ y $N=2\Z$, entonces $M/N\simeq\Z/2$. 
+\end{example}
+
+\begin{example}
+Sea $R$ un anillo conmutativo. Veamos que $M\simeq\Hom_R(\prescript{}{R}R,M)$. 
+Como $R$ es un anillo conmutativo, $\Hom_R(\prescript{}{R}R,M)$ es un módulo, ver ejemplo~\ref{exa:Hom}.
+Sea $\varphi\colon M\to\Hom_R(\prescript{}{R}R,M)$, $m\mapsto f_m$, donde $f_m\colon R\to M$, $r\mapsto r\cdot m$. Para ver que $\varphi$ está bien definida
+hay que observar que $\varphi(m)\in\Hom_R(\prescript{}{R}R,M)$, es decir 
+\[
+f_m(r+s)=(r+s)\cdot m=r\cdot m+s\cdot m,\quad
+f_m(rs)=(rs)\cdot m=r\cdot (s\cdot m)=r\cdot f_m(s).
+\]
+
+Para ver que $\varphi$ es morfismo primero vemos que $\varphi(m+n)=\varphi(m)+\varphi(n)$ para todo $m,n\in M$, pues 
+\begin{align*}
+\varphi(m+n)(r)&=f_{m+n}(r)=r\cdot (m+n)\\
+&=r\cdot m+r\cdot n=f_m(r)+f_n(r)=\varphi(m)(r)+\varphi(n)(r).
+\end{align*}
+Además $\varphi(r\cdot m)=r\cdot\varphi(m)$ para 
+todo $r\in R$ y $m\in M$, pues 
+\begin{align*}
+%\varphi(r\cdor m)(s)=f_{r\cdot m}(s)=(r\cdot \varphi(m))(s).
+%
+\varphi(r\cdot m)(s)&=f_{r\cdot m}(s)
+%(r\cdot f_m)(s)=f_m(rs)\\
+=s\cdot (r\cdot m)
+=(sr)\cdot m\\
+&=(rs)\cdot m=f_m(rs)=\varphi(m)(rs)=(r\cdot\varphi(m))(s).
+%&=(rs)\cdot m=(sr)\cdot m=s\cdot (r\cdot m)\\
+%&=f_{r\cdot m}(s)=\varphi(r\cdot m)(s)=(r\cdot \varphi)(m)(s). 
+\end{align*}
+
+Falta ver que $\varphi$ es un isomorfismo. 
+Veamos primero que $\varphi$ es monomorfismo. Si $\varphi(m)=0$, entonces $r\cdot m=\varphi(m)(r)=0$ para todo $r\in R$. En particular, 
+$m=1\cdot m=0$. 	Veamos ahora que $\varphi$ es epimorfismo. Si $f\in\Hom_R(\prescript{}{R}R,M)$, sea $m=f(1)$. Entonces $\varphi(m)=f$ pues
+$\varphi(m)(r)=r\cdot m=r\cdot f(1)=f(r)$.
+\end{example}
+
+Tal como hicimos con grupos, puede demostrarse que si $M$ es un módulo y $N$ es un submódulo de $M$, el par
+$(M/N,\pi\colon M\to M/N)$ tiene las siguientes propiedades:
+\begin{enumerate}
+\item $N\subseteq \ker \pi$.
+\item Si $f\colon M\to T$ es un morfismo tal que $N\subseteq \ker f$, entonces existe un único morfismo $\varphi\colon M/N\to T$ tal que $\varphi\circ\pi =f$.  
+\end{enumerate}
+
+\index{Teoremas de isomorfismos!para módulos}
+Recordemos que si $S$ y $T$ son submódulos de un módulo $M$, entonces
+$S\cap T$ y $S+T=\{s+t:s\in S,\,t\in T\}$ son ambos submódulos de $M$. 
+Se tienen entonces los teoremas de isomorfismos. 
+\begin{enumerate}
+	\item Si $f\in\Hom_R(M,N)$, entonces $M/\ker f\simeq f(M)$.
+	\item Si $T\subseteq N\subseteq M$ son submódulos, entonces 
+	\[
+	\frac{M/T}{N/T}\simeq M/N
+	\]
+	\item Si $S$ y $T$ son submódulos de $M$, entonces $(S+T)/S\simeq T/(S\cap T)$. 
+\end{enumerate}
+
+\begin{example}
+Si $R$ es un cuerpo y $V$ es un $R$-módulo, entonces $V$ es un espacio vectorial. 
+Si $S$ y $T$ son subespacios de $V$, entonces son submódulos de $V$. 
+El segundo teorema de isomorfismos nos dice que $(S+T)/T\simeq S/(S\cap T)$, 
+un isomorfismo de espacios vectoriales. Al aplicar dimensión, 
+\[
+\dim(S+T)-\dim T=\dim(S)-\dim(S\cap T).
+\]
+\end{example}
+
+\begin{example}
+Si $S$ es un sumando directo de $M$ y $T$ es un complemento para $S$, entonces $T\simeq M/S$, pues
+\[
+M/S=(S\oplus T)/S\simeq T/(S\cap T)=T/\{0\}\simeq T
+\]
+por el segundo teorema de isomorfismos. Luego todos los complementos
+de $S$ en $M$ serán isomorfos.  	
+\end{example}
+
+Puede demostrarse además el teorema de la correspondencia, que afirma que existe una correspondencia biyectiva 
+entre los submódulos de $M/N$ y los submódulos de $M$ que contienen a $N$. La correspondencia está dada
+por $S\mapsto \pi^{-1}(S)$ y $\pi(T)\mapsfrom T$. 
+
+\begin{exercise}
+Sea $f\in\Hom_R(M,N)$. Son equivalentes: 
+\begin{enumerate}
+\item $f$ es epimorfismo.
+\item $N/f(M)\simeq\{0\}$. 
+\item Para todo módulo $T$ y todo $g,h\in\Hom_R(N,T)$, $g\circ f=h\circ f\implies g=h$.
+\item Para todo módulo $T$ y todo $g\in\Hom_R(N,T)$, $g\circ f=0\implies g=0$. 
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+\label{xca:mod_iso_max}
+    Sea $R$ un anillo conmutativo y sean $M_1$ y $M_2$ ideales
+    maximales de $R$. Pruebe que $R/M_1\simeq R/M_2$ como $R$-módulos 
+    si y sólo si existe $r\in R\setminus M_2$ tal que $rM_1\subseteq M_2$. 
+\end{exercise}
+
+

@@ -1,0 +1,158 @@
+\chapter{Subgrupos permutables}
+
+\index{Producto!de subgrupos}
+Si $H$ y $K$ son subgrupos de un grupo $G$, definimos
+\[
+	HK=\{hk:h\in H,\,k\in K\}.
+\]
+Observemos que 
+\[
+H\cup K\subseteq HK\subseteq\langle H\cup K\rangle.
+\]
+Nos interesa saber cuándo $XY$ es un subgrupo de $G$. 
+Observemos que $HK\leq G$ si y sólo si $\langle H\cup K\rangle=HK$. 
+
+\begin{proposition}
+	Sean $H$ y $K$ subgrupos de un grupo $G$. Entonces $HK$ es un subgrupo de
+	$G$ si y sólo si $HK=KH$.
+\end{proposition}
+
+\begin{proof}
+	Supongamos que $HK=KH$. Como $1\in H\cap K$, el conjunto $HK$ es no vacío.
+	Si $h\in H$ y $k\in K$, entonces $(hk)^{-1}=k^{-1}h^{-1}\in KH=HK$. Además
+	$(HK)(HK)=H(KH)K=H(HK)K=(HH)(KK)=HK$ y luego $HK$ es cerrado para la
+	multiplicación. 
+
+	Supongamos ahora que $HK$ es un subgrupo de $G$. Como $H\subseteq HK$,
+	$K\subseteq HK$ y además $HK$ es cerrado para la multiplicación,
+	$KH\subseteq (HK)(HK)\subseteq HK$. Recíprocamente, sea $g\in HK$. 
+	Como $g^{-1}\in HK$, existen $h\in H$ y $k\in K$ tales que $g^{-1}=hk$.
+	Luego $HK\subseteq KH$ pues 
+	$g=k^{-1}h^{-1}\in KH$.
+\end{proof}
+
+\begin{proposition}
+Sean $H$ y $K$ subgrupos de $G$. Si $H$ es normal en $G$, entonces $HK$ es un subgrupo de $G$.
+\end{proposition}
+
+\begin{proof}
+Nos alcanza con demostrar que $HK=KH$. Veamos primero que $HK\subseteq KH$. Si $x=hk\in HK$, entonces $x=k(k^{-1}hk)\in KH$ pues $k^{-1}hk\in H$. Para demostrar
+la otra inclusión, sea $y=kh\in KH$. Entonces $y=(khk^{-1})k\in HK$ pues $khk^{-1}\in H$. \end{proof}
+
+
+\begin{example}
+Sea $G=\Sym_4$. Los subgrupos $H=\langle (12)\rangle$ y $K=\langle (34)\rangle$ cumplen que $HK=KH=\{\id,(12),(34),(12)(34)\}$ es un subgrupo de $\Sym_4$. Es interesante observar que aquí ni $H$ ni $K$ son normales en $G$.  
+\end{example}
+
+\begin{exercise}
+Demuestre que si $H$ y $K$ son subgrupos normales de $G$, entonces $HK$ es también normal en $G$.
+\end{exercise}
+
+\begin{exercise}
+Sean $G$ un grupo y $S$ un subgrupo de $G$. 
+Si $'T\leq N_G(S)$, entonces $TS$ es un grupo y además $S\leq TS$. 
+\end{exercise}
+
+\index{Subgrupos!permutables}
+Dos subgrupos $H$ y $K$ de un grupo $G$ se dirán \textbf{permutables} si $HK=KH$. 
+El siguiente resultado será de mucha utilidad más adelante.
+
+\begin{theorem}
+\label{thm:|HK|}
+	Sean $H$ y $K$ subgrupos finitos de un grupo $G$. Entonces
+	\[
+		|HK|=\frac{|H||K|}{|H\cap K|}.
+	\]
+\end{theorem}
+	
+\begin{proof}
+Sea $L=H\cap K$. 
+Descomponemos al grupo $H$ como unión disjunta de coclases de $L$, digamos 
+$H=\cup_{i=1}^k x_iL$, donde $k=(H:L)$. Observemos que $LK=K$, pues $L\subseteq K$ y además $K\subseteq 1K\subseteq LK$. 
+Entonces
+\[
+HK=\bigcup_{i=1}^k x_iLK=\bigcup_{i=1}^k x_iK,
+\]
+%pues $x_iLK=x_iK$ para todo $i\in\{1,\dots,k\}$, ya que como $L\subseteq K$ y $1\in L$. 
+En particular, como la unión es disjunta, 
+%Veamos que esta unión es disjunta. Si $x_iLK\cap x_jLK\ne\emptyset$ para algún $i\ne j$, sea $y\in x_iLK\cap x_jLK$. Como $L\subseteq K$, 
+%entonces $y\in x_iLK\cap x_jLK\subseteq x_iK\cap x_jK$ y luego $x_iK=x_jK$, una contradicción. Como la unión~\ref{eq:HK} es disjunta y 
+%$|x_iLK|=|LK|$ para todo ,
+\[
+|HK|=\sum_{i=1}^k |x_iK|=k|K|=\frac{|H||K|}{|H\cap K|}.\qedhere
+\] 
+\end{proof}
+
+%\begin{proof}
+%	Sea $Q=H\cap K$ y sea 
+%	\[
+%		\theta\colon H\times K\to HK,\quad
+%		\theta(h,k)=hk,
+%	\]
+%	La función $\theta$ es claramente sobreyectiva. 
+%	
+%	Vamos a demostrar que si $x\in HK$, entonces $|\theta^{-1}(x)|=|H\cap K|$.  Si $x\in HK$, entonces
+%	$x=hk$ para algún $h\in H$ y $k\in K$. Alcanza con ver que 
+%	\[
+%	\theta^{-1}(x)=\{(h\gamma,\gamma^{-1} k):\gamma\in H\cap K\}.
+%	\]
+%    Veamos la inclusión no trivial. Si $(h_1,k_1)\in\theta^{-1}(x)$, entonces
+%    \[
+%    \theta(h_1,k_1)=h_1k_1=x=hk.
+%    \] 
+%    En consecuencia, $\gamma=h^{-1}h_1=kk_1^{-1}\in H\cap K$. Luego 
+%    $(h_1,k_1)=(h\gamma,\gamma^{-1}k)$ para algún $\gamma\in H\cap K$. Como la otra inclusión es trivial, el teorema queda demostrado
+%    al observar que
+%    \[
+%    |HK|=\frac{|H\times K|}{|H\cap K|}=\frac{|H||K|}{|H\cap K|}.\qedhere
+%    \] 
+%\end{proof}
+
+Es importante remarcar que en el teorema anterior no es necesario pedir que $HK$ sea un subgrupo de $G$. 
+Como una primera aplicación, daremos otra demostración del resultado que vimos en el corolario~\ref{cor:p_menor} en la página~\pageref{cor:p_menor}.
+
+\begin{quote}
+	Sea $p$ el menor número primo que divide al orden de un grupo finito  
+	$G$ y sea $H$ un subgrupo de $G$ índice $p$. Entonces $H$ es normal en $G$. 
+\end{quote}
+
+Si $\{gHg^{-1}:g\in G\}=\{H\}$, entonces $H$ es normal en $G$. Supongamos que existe $g\in G$ tal que
+$H\ne g^{-1}Hg=K$. Como $(H:H\cap K)$ divide al orden de $H$ y todos los divisores primos de $|G|$ son $\geq p$, sabemos que $(H:H\cap K)\geq p$. Luego
+\[
+|HK|=\frac{|H||K|}{|H\cap K|}\geq p|K|=|G|
+\]
+pues $(G:H)=p$ y $|K|=|H|$. En particular, $HK=G$. Como $K=g^{-1}Hg$, se tiene que 
+$g=h(g^{-1}h_1g)$ para ciertos $h,h_1\in H$. Luego 
+\[
+1=hg^{-1}h_1\implies h_1h=g\in H\implies H=K,
+\]
+una contradicción.
+
+% todo: agregar un ejemplo de HK tal que no sea subgrupo
+
+\begin{example}
+Sean $G=\Sym_3$, $H=\langle (12)\rangle$ y $K=\langle (23)\rangle$. En este caso, 
+\[
+HK=\{\id,(12),(23),(123)\}
+\]
+no es un subgrupo de $G$ ya que el teorema de Lagrange implica que $G$ no 
+tiene subgrupos de orden cuatro. Otra forma de ver que $HK$ no es un subgrupo 
+es observar que $KH=\{\id,(12),(23),(132)\}\ne HK$. 
+\end{example}
+
+\begin{example}
+Sean $G=\Sym_3$, $H=\langle (12)\rangle$ y $K=\langle (123)\rangle$. 
+Como $K$ es normal en $G$, entonces $HK$ es un subgrupo de $G$. El teorema
+de Lagrange nos dice que $HK$ tiene orden seis y luego $G=HK$. 
+Todo elemento $g\in G$ puede escribirse unívocamente como $g=hk$ para $h\in H$ y $k\in K$ (esto puede
+demostrarse considerando todos los posibles casos u 
+observando que $H\cap K=\{\id\}$). Esto implica que la función
+\[
+H\times K\to G,\quad 
+(h,k)\mapsto hk,
+\]
+es una biyección. Es importante remarcar que esta biyección no se lleva bien 
+con la multiplicación de $G$ (más adelante haremos más precisa esta observación y 
+simplemente diremos que la función no es un morfismo de grupos), 
+ya que en general $(h_1k_1)(h_2k_2)\ne (h_1h_2)(k_1k_2)$. 
+\end{example}

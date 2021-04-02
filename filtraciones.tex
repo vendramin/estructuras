@@ -1,0 +1,171 @@
+\chapter{El teorema de Jordan--Hölder}
+
+\begin{definition}
+\index{Serie de composición}	
+\index{Factores!de una serie de composición}
+\index{Longitud!de una serie de composición}
+Una sucesión de subgrupos $G=G_0\supseteq G_1\supseteq\cdots\supseteq G_r=\{1\}$ de un grupo $G$ es una
+\textbf{serie de composición} si cada $G_{i+1}$ es normal en $G_i$ y cada cociente 
+$G_i/G_{i+1}$ es simple. En ese caso, el entero $r$ es la \textbf{longitud} de la serie de composición
+y los cocientes son los \textbf{factores} de la serie de composición. 
+\end{definition}
+
+\begin{example}
+$\Sym_5\supseteq\Alt_5\supseteq\{1\}$ es una serie de composición de $\Sym_5$.	
+\end{example}
+
+\begin{example}
+$\Z$ no admite una serie de composición pues $\Z$ no es simple y cada subgrupo $S$ de $\Z$ cumple que 
+$S\simeq n\Z\simeq\Z$.  	
+\end{example}
+
+Vimos en el ejemplo anterior que no todo grupo admite una serie de composición. Sin embargo, todo grupo
+finito sí lo hará. Esa será nuestra primera observación. 
+
+% todo: ejercicio, N maximal-normal <=> G/N simple
+
+\begin{proposition}
+Si $G$ es un grupo finito, entonces $G$ admite una serie de composición.	
+\end{proposition}
+
+\begin{proof}
+Procederemos por inducción en el orden de $G$. 
+Si $G$ es simple, entonces $G\supseteq\{1\}$ es una serie de composición. Si $G$ no es simple, $G$ contiene un subgrupo normal propio $N\ne\{1\}$, que además puede tomarse maximal sobre los subgrupos normales de $G$. La maximal de $N$ entro los normales de $G$ implica que $G/N$ es un grupo simple. Por hipótesis inductiva, $N$ admite una serie de composición
+\begin{gather*}
+N=N_0\supseteq N_1\supseteq\cdots\supseteq N_r=\{1\}
+\shortintertext{y entonces}
+G\supseteq N=N_0\supseteq N_1\supseteq\cdots\supseteq N_r=\{1\}
+\end{gather*}
+es una serie de composición para $G$ pues $G/N$ es simple.
+\end{proof}
+
+\begin{definition}
+\index{Equivalencia!de series de composición}
+Dos series de composición
+\begin{align*}
+G=G_0\supseteq G_1\supseteq\cdots\supseteq G_r=\{1\}, &&
+G=H_0\supseteq H_1\supseteq\cdots\supseteq H_r=\{1\}	
+\end{align*}
+de un grupo $G$ se dirán \textbf{equivalentes} si existe $\sigma\in\Sym_r$ tal que 
+\[
+G_{i-1}/G_i\simeq H_{\sigma(i)-1}/H_{\sigma(i)}
+\]
+para todo $i\in\{1,\dots,n\}$.  
+\end{definition}
+
+\begin{example}
+Sea $G=\langle x\rangle\simeq\Z/6$. Las series de composición
+\[
+G\supseteq\langle x^2\rangle=G_1\supseteq\{1\},\quad
+G\supseteq\langle x^3\rangle=H_1\supseteq\{1\}
+\]
+son equivalentes por la permutación $\sigma=(12)\in\Sym_2$. Observar que $G/G_1\simeq\Z/3$ y $G/H_1\simeq\Z/2$. 	
+\end{example}
+
+Nuestro objetivo es demostrar el teorema de Jordan--Hölder, que afirma que todo grupo que admita una serie de composición, tendrá esencialmente 
+una única serie de composición módulo equivalencia. Antes de ir directamente al teorema, necesitamos un resultado previo. 
+
+\begin{lemma}
+Sea $G=G_0\supseteq G_1\supseteq \cdots\supseteq G_r=\{1\}$ una serie de composición para $G$ y sea $N$ un subgrupo normal de $G$. Entonces $N$ 
+también admite una serie de composición.	
+\end{lemma}
+
+\begin{proof}
+Para cada $i$, sea $N_i=G_i\cap N$. Como ejercicio, se demuestra que  
+\[
+N=N_0\supseteq N_1\supseteq\cdots\supseteq N_r=\{1\}
+\]
+y que además $N_{i+1}$ es normal en $N_i$ para todo $i$. Como
+\[
+N\cap G_{i+1}=N\cap (G_i\cap G_{i+1})=(N\cap G_i)\cap G_{i+1}
+\]
+para todo $i$, entonces
+\[
+\frac{N_i}{N_{i+1}}=\frac{N\cap G_i}{N\cap G_{i+1}}=\frac{N\cap G_i}{(N\cap G_i)\cap G_{i+1}}
+\simeq \pi(N\cap G_i)%\unlhd\pi(G_i)=\frac{G_i}{G_{i+1}}.
+\]
+donde $\pi\colon G_i\to G_i/G_{i+1}$ es el morfismo canónico. En efecto, la restricción $\pi|_{N_i}$ tiene núcleo
+$(N_i\cap G_i)\cap G_{i+1}=(N\cap G_{i+1})$ y entonces, por el primer teorema de isomorfismos, $\pi(N_i)=\pi(N\cap G_i)\simeq (N\cap G_i)/(N\cap G_{i+1})$.   
+Como $\pi(N\cap G_i)$ es un subgrupo normal del grupo simple $\pi(G_i)=G_i/G_{i+1}$, se sigue que $N_i=N_{i+1}$ o bien $N_i/N_{i+1}=G_i/G_{i+1}$. Luego de remover
+las posibles repeticiones obtememos entonces una serie de composición para $N$.   	
+\end{proof}
+
+Ahora sí, el teorema.
+
+\begin{theorem}[Jordan--Hölder]
+\index{Teorema!de Jordan--Hölder}
+Si $G$ es un grupo que admite una serie de composición, entonces todas las series de composición de $G$ tienen la misma longitud y son además equivalentes. 	
+\end{theorem}
+
+% Falta la referencia al ejercicio
+
+\begin{proof}
+Sean 
+\begin{align*}
+G=G_0\supseteq G_1\supseteq\cdots\subseteq G_r=\{1\}, &&
+G=H_0\supseteq H_1\supseteq\cdots\supseteq H_s=\{1\}	
+\end{align*}
+dos series de composición de $G$. Procederemos por inducción en $r$. Si $r=1$, entonces $G$ es simple y el teorema queda demostrado trivialmente. Si $r>1$, 
+supongamos que el resultado vale para todos los grupos que admiten una series de composición de longitud $<r$. 
+
+Si $G_1=H_1$, entonces $G_1$ admite dos series
+de longitudes $r-1$ y $s-1$, respectivamente, y entonces, por hipótesis inductiva, $r=s$ y además las series de composición son equivalentes.  
+
+Si $G_1\ne H_1$, como $G_1$ y $H_1$ son ambos normales en $G$, entonces $G_1H_1$ es también normal en $G$ (esto es un ejercicio que dejamos en la página ??). Como
+$G/G_1$ es simple y $G_1\unlhd G_1H_1\unlhd G$, entonces $G_1=G_1H_1$ o bien $G_1H_1=G$, pues $G_1$ es maximal entre todos los subgrupos normales de $G$. Como $G/H_1$ es simple, $H_1$ es maximal entre todos los subgrupos normales de $G$, y entonces $H_1=G_1H_1$ o bien $G_1H_1=G$. En conclusión, $G_1H_1=G$. Sea $K=G_1\cap H_1$.
+Entonces $K$ es normal en $G$ y además
+\[
+G/G_1=\frac{G_1H_1}{G_1}\simeq H_1/K,
+\quad
+G/H_1=\frac{G_1H_1}{H_1}\simeq G_1/K.
+\]
+Luego $H_1/K$ y $G_1/K$ son ambos grupos simples. Gracias al lema anterior sabemos que $K$ también admite una serie de composición, digamos
+\[
+K=K_0\supseteq K_1\supseteq\cdots\supseteq K_t=\{1\}.
+\]
+Luego 
+\[
+G_1\supseteq G_2\supseteq\cdots\supseteq G_r=\{1\},
+\quad
+G_1\supseteq K=K_0\supseteq K_1\supseteq\cdots\supseteq K_t=\{1\},
+\]
+son ambas series de composición para $G_1$. La hipótesis inductiva implica entonces que $r-1=t+1$, es decir $t=r-2$, y además que estás series de composición son equivalentes. Similarmente, 
+\[
+H_1\supseteq H_2\supseteq\cdots\supseteq H_s=\{1\},\quad
+H_1\supseteq K=K_0\supseteq K_1\supseteq\cdots\supseteq K_t=\{1\}
+\]
+son series de composición para $H_1$ y además $s-1=t+1=r-1$, lo que implica que $r=s$. Como las series de composición 
+\[
+G=G_0\supseteq G_1\supseteq K_0\supseteq\cdots\supseteq K_t=\{1\},\quad
+G=H_0\supseteq H_1\supseteq K_0\supseteq\cdots\supseteq K_t=\{1\},
+\]
+son equivalentes, las series
+\[
+G=G_0\supseteq G_1\supseteq\cdots\supseteq G_r=\{1\},
+\quad
+G=H_0\supseteq H_1\supseteq\cdots\supseteq H_r=\{1\},
+\]
+también son equivalentes. 
+\end{proof}
+
+Veamos un corolario muy simpático.
+
+\begin{corollary}[teorema fundamental de la aritmética]
+	Los primos y sus multiplicidades que aparecen en la factorzación de un entero $n\geq2$ están unívocamente determinados por $n$.
+\end{corollary}
+
+\begin{proof}
+Escribamos $n=p_1\cdots p_k$, donde los primos $p_1,\dots,p_k$ no son necesariamente distintos. Si $G=\langle x\rangle\simeq\Z/n$ es cíclico de orden $n$, entonces
+\[
+G=\langle x\rangle\supseteq \langle x^{p_1}\rangle\supseteq \langle x^{p_1p_2}\rangle\supseteq\cdots\supseteq \langle x^{p_1\cdots p_{k-1}}\rangle\supseteq\{1\}
+\]
+es una serie de composición con factores de orden $p_1p_2,\dots,p_k$, respectivamente. Si $n=q_1\dots q_l$ es otra factorización de $n$ como producto de primos, entonces
+\[
+G=\langle x\rangle\supseteq \langle x^{q_1}\rangle\supseteq \langle x^{q_1q_2}\rangle\supseteq\cdots\supseteq \langle x^{q_1\cdots q_{l-1}}\rangle\supseteq\{1\}
+\]
+es también una serie de composición. Por el teorema de Jordan--Hölder, $k=l$ y además las series son equivalentes, algo que se traduce en poder reordenar los primos
+$q_1,\dots,q_k$ y obtener como $p_1,\dots,p_k$. 
+\end{proof}
+
+
+ 

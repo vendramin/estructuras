@@ -1,0 +1,440 @@
+\chapter{Módulos libres}
+
+\begin{definition}
+\index{Conjunto!linealmente independiente}
+Sea $X$ un subconjunto de un módulo $M$. Diremos que $X$ es \textbf{linealmente independiente}
+si para cada $k\in\N$, $r_1,\dots,r_k\in R$ y $m_1,\dots,m_k\in X$ tales que 
+$r_1\cdot m_1+\cdots+r_k\cdot m_k=0$ se tiene que $r_1=\cdots=r_k=0$. 
+Un conjunto que no es linealmente independiente se dirá \textbf{linealmente dependiente}.\end{definition}
+
+La independencia lineal en módulos es levemente distinta a la que conocemos para
+espacios vectoriales. En módulos la dependencia lineal no garantiza que uno de los elementos del conjunto
+pueda escribirse como combinación lineal de los otros, ya que en el anillo $R$ no siempre podremos dividir.
+
+\begin{example}
+Consideramos $\Z$ como $\Z$-módulo. 
+El conjunto $\{2,3\}\subseteq\Z$ es linealmente dependiente pues $(-3)\cdot 2+2\cdot 3=0$. Observemos
+que $2$ no es un múltiplo entero de $3$, tampoco $3$ es un múltiplo entero de $2$.   	
+\end{example}
+
+\begin{example}
+El conjunto $\{1\}$ del módulo $\prescript{}{R}R$ es linealmente independiente. Si $r$ es un 
+divisor de cero de $R$, entonces $\{r\}$ es linealmente dependiente.	
+\end{example}
+
+En módulos, un conjunto minimal de generadores puede ser linealmente dependiente. 
+
+\begin{example}
+Sea $R=M_2(\R)$ y sea $M=\begin{pmatrix} 0 & \R\\ 0 & \R\end{pmatrix}$. Dejamos como ejercicio demostrar
+que $M$ es un módulo sobre el anillo $R$ con la multiplicación usual de matrices. 
+El conjunto $\left\{\begin{pmatrix} 0&1\\0&0\end{pmatrix}\right\}$ es un 
+conjunto minimal de generadores y es linealmente dependiente. 	
+\end{example}
+
+\begin{example}
+Sea $M=\Q$ como $\Z$-módulo. Si $x\in\Q\setminus\{0\}$, entonces $\{x\}$ es linealmente independiente. Si $x,y\in\Q$ son tales
+que $x\ne y$, entonces $\{x,y\}$ es linealmente dependiente. 	
+\end{example}
+
+Si $V$ es un espacio vectorial y $v\in V\setminus\{0\}$, entonces $\{v\}$ es linealmente independiente, pues
+si $\lambda\ne0$ y $v\ne 0$, entonces $\lambda v\ne 0$. 
+En la teoría de módulos, las cosas pueden ser distintas. 
+
+\begin{example}
+Todo subconjunto del $\Z$-módulo $\Z/n$ es linealmente dependiente. 
+\end{example}
+
+\begin{exercise}
+Sea $f\in\Hom_R(M.N)$ y sea $X$ un subconjunto de $M$. 
+\begin{enumerate}
+\item Si $X$ es linealmente dependiente, entonces $f(X)$ también.
+\item Si $X$ es linealmente independiente y $f$ es monomorfismo, entonces $f(X)$ es linealmente independiente.
+\item Si $M=(X)$ y $f$ es epimorfismo, entonces $N=(f(X))$. 	
+\end{enumerate}
+\end{exercise}
+
+\begin{definition}
+	\index{Base}
+	Sea $M$ un módulo. Un subconjunto $B$ de $M$ es una \textbf{base} de $M$ si 
+	es linealmente independiente y además $(B)=M$. Un módulo $M$ se dice \textbf{libre} si 
+	admite una base.  
+\end{definition}
+
+\begin{examples}\
+\begin{enumerate}
+	\item Todo espacio vectorial es un módulo libre.
+	\item $\prescript{}{R}R$ es libre con base $\{1\}$. 
+	\item El $\Z$-módulo $\Q$ no es libre.  
+	\item $R^n$ es libre como $R$-módulo.
+\end{enumerate}	
+\end{examples}
+
+\begin{example}
+Las únicas bases de $\Z$ como $\Z$-módulo son $\{1\}$ y $\{-1\}$.	
+\end{example}
+
+El ejemplo siguiente es bien conocido en el caso de espacios vectoriales. Los módulos
+sobre anillos de división son muy similares a los espacios vectoriales 
+y por esa razón se los llama 
+\textbf{espacios vectoriales sobre anillos de división}.
+
+\begin{example}
+\index{Espacios vectoriales}
+\index{Módulos!sobre anillos de división}
+Sea $R$ un anillo de división y sea $M$ un $R$-módulo no nulo finitamente generado. 
+Vamos a demostrar las siguientes propiedades: 
+\begin{enumerate}
+\item Todo conjunto finito de generadores contiene una base. En particular, $M$ es libre. 
+\item Todo conjunto linealmente independiente puede extenderse a una base.
+\item Dos bases cualesquiera tienen la misma cantidad de elementos. 
+\end{enumerate}
+
+Para demostrar la primera afirmación procederemos por inducción en la cantidad de generadores de $M$. Si $M=(m)$, entonces
+$\{m\}$ es base pues $\{m\}$ es linealmente independiente: si $r\cdot m=0$ y $r\ne 0$, entonces
+\[
+m=1\cdot m=(r^{-1}r)\cdot m=r^{-1}\cdot (r\cdot m)=0.
+\]
+Si vale para $k-1$ generadores, sea $M=(m_1,\dots,m_k)$. Si $\{m_1,\dots,m_k\}$ no es linealmente
+independiente, entonces existen $r_1,\dots,r_k\in R$ no todos cero tales
+que
+\[
+r_1\cdot m_1+\cdots+r_k\cdot m_k=0.
+\]
+Sin perder generalidad podemos suponer que $r_k\ne 0$. Entonces
+\[
+v_k=\sum_{i=1}^{k-1} (r_k^{-1}r_i)\cdot m_i\in (m_1,\dots,m_{k-1}).
+\]
+Como entonces $M=(m_1,\dots,m_k)=(m_1,\dots,m_{k-1})$, la hipótesis inductiva implica que
+$M$ es libre. 
+
+Vamos a demostrar ahora que todo
+conjunto $X$ linealmente independiente puede extenderse a una base. 	Sea $X=\{x_1,\dots,x_k\}$ tal que $M=(X)$. 
+Como $M\ne\{0\}$, sin perder generalidad podemos suponer que $x_1\ne 0$. Como $R$ es de división,
+el conjunto $\{x_1\}$ es linealmente independiente, pues si $r\ne 0$ y $r\cdot x_1=0$, entonces 
+\[
+x_1=1\cdot r=(r^{-1}r)\cdot x_1=r^{-1}\cdot (r\cdot x)=r^{-1}\cdot 0=0.
+\]
+Sea $Y=\{y_1,\dots,y_l\}$ un subconjunto de $X$ maximal tal que $Y$ es linealmente independiente. Veamos que $X\subseteq (Y)$. Sea $x\in X$. Si $x\not\in Y$,  
+entonces, como $Y\subseteq Y\cup \{x\}$, la maximalidad de $Y$ implica que $\{x\}\cup Y$ es linealmente dependiente, es decir
+que existen $r,r_1,\dots,r_k\in R$ no todos cero tales que
+\[
+r\cdot x+\sum_{i=1}^l r_i\cdot y_i=0.
+\]
+Si $r=0$, entonces $r_1=\cdots=r_l=0$ porque los $y_j$ son linealmente independientes, una contradicción. Luego $r\ne 0$ y entonces
+\[
+x=-\sum_{i=1}^l (-r^{-1}r_i)\cdot y_i\in (Y).
+\]
+Luego $X\subseteq (Y)$. En conclusión $Y$ es una base de $M$ pues $M=(Y)$ 
+y además $Y$ es linealmente independiente. 
+
+Demostremos que dos bases finitas cualesquiera tienen la misma cantidad de elementos. 
+Para eso es suficiente demostrar
+que si $X$ e $Y$ son conjuntos finitos linealmente independientes
+tales que $(X)\subseteq (Y)$, entonces $|X|\leq |Y|$. Supongamos que $|X|=k$ e $|Y|=l$. 
+Procederemos por inducción en $l$. Si $l=1$ y $k>1$, entonces
+exiten $r_1,r_2\in R$ tales que $x_1=r_1\cdot y_1$ y $x_2=r_2\cdot y_1$. Luego
+\[
+x_2=r_2\cdot y_1=r_2\cdot (r_1^{-1}\cdot x_1)=(r_2r_1^{-1})\cdot x_1,
+\]
+una contradicción pues $\{x_1,x_2\}$ es linealmente independiente. 
+Supongamos ahora que el resultado 
+es verdadero para $l-1$ y sea $l=|Y|$. Para cada $j$ escribimos
+\[
+x_j = \sum_{i=1}^l r_{ji}\cdot y_i,
+\]
+donde $r_{ji}\in R$. Si $r_{j1}\ne 0$ para todo $j$, entonces 
+$x_j=\sum_{i=2}^l r_{ji}\cdot y_i$ para todo $j$ y luego $(X)\subseteq (y_2,\dots,y_l)$, que implica que
+$|X|\leq l-1<l=|Y|$. Si existe $j$ tal que $r_{j1}\ne 0$, sin perder generalidad podemos
+suponer que $r_{11}\ne 0$. Para cada $j\in\{2,\dots,k\}$ sea
+\[
+z_j = x_j-(r_{j1}r_{11}^{-1})\cdot x_1.
+\]
+Como $z_j\in (y_2,\dots,y_l)$ para todo $j$ y los $z_j$ son linealmente independientes, 
+la hipótesis inductiva impica que $k-1\leq l-1$, es decir $|X|\leq |Y|$.  
+\end{example}
+
+\index{Dimensión!de un módulo sobre un anillo de división}
+\index{Dimensión!de un espacio vectorial}
+El ejemplo anterior nos permite hablar de 
+la \textbf{dimensión} de un módulo sobre un anillo de división. 
+
+\begin{example}
+El anillo $\R[X]$ es un $\R$-módulo libre con base $\{1,X,X^2,\dots\}$. También es un $\R[X]$-módulo libre con base $\{1\}$.  	
+\end{example}
+
+\begin{exercise}
+Demuestre que el conjunto $\{(a,b),(c,d)\}$ es base del $\Z$-módulo $\Z\times\Z$ si y sólo si $ad-bc\in\{-1,1\}$. 
+\end{exercise}
+
+En particular, $\{(1,0),(0,1)\}$ es una base de $\Z\times\Z$ como $\Z$-módulo. 
+
+\begin{example}
+Si $u\in\mathcal{U}(R)$, entonces $\{u\}$ es una base de $\prescript{}{R}R$. Recíprocamente, si $R$ es un dominio íntegro y  
+$\{z\}$ es una base de $\prescript{}{R}R$, entonces $z\in\mathcal{U}(R)$, pues, como
+$1=yz$ para algún $y\in R$, también se tiene que $zy=1$ pues  
+\[
+(zy-1)z=z(yz)-z=z1-z=z-z=0.
+\]	
+\end{example}
+
+\begin{example}
+Sea $I$ un conjunto no vacío. El $R$-módulo $R^{(I)}$ es libre con base $\{e_i:i\in I\}$, donde 
+\[
+(e_i)_j=\begin{cases}
+	1 & \text{si $i=j$},\\
+	0 & \text{si $i\ne j$.}
+	\end{cases}	
+\]
+\end{example}
+
+\begin{example}
+Si $R=M_2(\Z)$, entonces $M=\prescript{}{R}R$ es libre con base $\left\{\begin{pmatrix}	1&0\\0&1\end{pmatrix}\right\}$. El submódulo
+$N=\begin{pmatrix}\Z&0\\\Z&0\end{pmatrix}$ no admite una base como $R$-módulo.	
+\end{example}
+
+A diferencia de lo que pasa con espacios vectoriales, el tamaño de una base
+no es un invariante. 
+
+\begin{example}
+Sea $V$ el espacio vectorial (complejo) con base infinita $e_0,e_1,e_2,\dots$ y sea $R=\End(V)$ con la estructura
+de anillo dada por 
+\[
+(f+g)(v)=f(v)+g(v),\quad
+(fg)(v)=f(g(v))
+\]
+para $f,g\in R$ y $v\in V$. 
+
+Sea $M=\prescript{}{R}R$. 
+Sabemos que $\{\id\}$ es una base para $R$.  
+Mostraremos que $M$ admite también una base que tiene dos elementos.  
+Si $r,s\in R$ son tales que
+\begin{align*}
+&r(e_{2n})=e_n, && r(e_{2n+1})=0,\\
+&s(e_{2n})=0,&& s(e_{2n+1})=e_{2n},
+\end{align*}
+entonces $\{r,s\}$ es base de $M$. 
+
+Si $f\in R$, entonces
+$f=\alpha r+\beta s$, donde $\alpha\colon V\to V$, $e_n\mapsto f(e_{2n})$ para todo $n\in\N$, y $\beta\in V\to V$, $e_n\mapsto f(e_{2n+1})$ para todo $n\in\N$. En efecto,
+\begin{align*}
+&(\alpha r+\beta s)(e_{2n})=\alpha(r(e_{2n}))+\beta(s(e_{2n}))=f(e_{2n}),\\
+&(\alpha r+\beta s)(e_{2n+1})=\alpha(r(e_{2n+1}))+\beta(s(e_{2n+1}))=f(e_{2n+1}).
+\end{align*}
+Además $\{r,s\}$ es linealmente independiente, pues si $\alpha r+\beta s=0$ para $\alpha,\beta\in R$, entonces al evaluar 
+en los $e_{2n}$ se obtiene que $\alpha=0$ y al evaluar en los $e_{2n+1}$ se obtiene que $\beta=0$.   
+\end{example} 
+
+\begin{example}
+Si $M$ es un módulo libre con base $X$ y $N$ es un módulo libre con base $Y$, entonces
+$M\oplus N$ es un módulo libre con base 
+\[
+\{(x,0):x\in X\}\cup \{(0,y):y\in Y\}.
+\]	
+\end{example}
+
+\begin{exercise}
+Sea $R$ es un anillo conmutativo. Si $M$ y $N$ son libres y finitamente generados, entonces
+$\Hom_R(M,N)$ es libre y finitamente generado.	
+\end{exercise}
+
+% Como $R$ es conmutativo, $\Hom_R(M,N)$ es un $R$-módulo. Si $\{m_1,\dots,m_k\}$ es base de $M$ 
+% y $\{n_1,\dots,n_l\}$ es base de $N$, entonces definimos para cada $i\in\{1,\dots,k\}$ y $j\in\{1,\dots,l\}$ 
+% definimos $f_{ij}$ 
+% \[
+% f_{ij}(m_k)=\begin{cases}
+% n_j & \text{si $k=i$},\\
+% 0 & \text{si $k\ne i$}.
+% \end{cases}
+% \]
+% Entonces $\{i_ij}$ es base de $\Hom_R(M,N)$. 
+Veamos algunos resultados básicos que nos permiten entender qué significa tener un módulo libre. 
+
+\begin{proposition}
+Si $M$ es libre, entonces existe un subconjunto $\{m_i:i\in I\}$ de $M$ tal que 
+para cada $m\in M$ existen únicos $r_i\in R$, $i\in I$, 
+donde $r_i=0$ salvo finitos $i\in I$ 
+tales que $m=\sum r_i\cdot m_i$. 
+\end{proposition}
+
+\begin{proof}
+Como $M$ es libre, existe una base $\{m_i:i\in I\}$ de $M$. Si $m\in M$, entonces
+podemos escribir $m=\sum r_i\cdot m_i$ (suma finita) para ciertos $r_i\in I$. Veamos que los $r_i$ son únicos. Si $m=\sum s_i\cdot m_i$, entonces
+$\sum (r_i-s_i)\cdot m_i=0$. La independencia lineal del conjunto $\{m_i:i\in I\}$ implica entonces que $r_i=s_i$ para todo $i\in I$.  	
+\end{proof}
+
+\begin{proposition}
+\label{pro:libre}
+Sea $M$ libre con base $\{m_i:i\in I\}$ y sea $N$ un submódulo de $M$. Si $\{n_i:i\in I\}$ es un módulo, existe
+un único $f\in\Hom_R(M,N)$ tal que $f(m_i)=n_i$ para todo $i\in I$.  
+\end{proposition}
+
+\begin{proof}[Bosquejo de la demostración]
+Basta con observar que el único morfismo $f\colon M\to N$ debe definirse como $f(\sum r_im_i)=\sum r_i\cdot n_i$.  	
+\end{proof}
+
+Una aplicación sencilla de la proposición anterior:
+
+\begin{example}
+Veamos que no existe un epimorfismo $\Z\to\Z\times\Z$ (de $\Z$-módulos). En efecto, si $f\colon\Z\to\Z\times\Z$ es un epimorfismo, 
+sea $\{u,v\}$ una base de $\Z\times\Z$. Entonces $f(k)=u$ y $f(l)=v$ para ciertos $k,l\in\Z$. La proposición~\ref{pro:libre} implica
+que existe un morfismo $g\colon\Z\times\Z\to\Z$ tal que $g(u)=k$ y $g(v)=l$. En particular, $f\circ g=\id_{\Z\times\Z}$ y luego 
+$g$ es un monomorfismo. 	Como 
+\[
+g(lu-kv)=lg(u)-kg(v)=lk-kl=0,
+\]
+se tiene entonces que $lu-kv=0$ y luego $k=l=0$, pues $\{u,v\}$ es linealmente independiente, una contradicción.  
+\end{example}
+
+Otra propiedad importante de los módulos libres:
+
+\begin{proposition}
+Si $M$ es libre, entonces $M\simeq R^{(I)}$ para algún conjunto $I$.
+\end{proposition}
+
+\begin{proof}
+Supongamos que $M$ es libre con base $\{m_i:i\in I\}$. Vimos una proposición que nos dice que 
+existe un único morfismo $f\in\Hom_R(M,R^{(I)})$ tal que 
+$f(m_i)=e_i$ para todo $i\in I$, donde 
+\[
+(e_i)_j=\begin{cases}
+	1 & \text{si $i=j$},\\
+	0 & \text{si $i\ne j$.}
+	\end{cases}	
+\]	
+Veamos que $f$ es un isomorfismo. 
+Primero veamos que $f$ es epimorfismo: dado $(r_i)_{i\in I}\in R^{(I)}$, entonces
+$f(\sum r_i\cdot m_i)=(r_i)_{i\in I}$. Para ver que es monomorfismo:
+\[
+0=f(\sum r_i\cdot m_i)=\sum r_i\cdot f(m_i)=\sum r_i\cdot e_i\implies r_i=0\text{ para todo $i\in I$}.\qedhere
+\]
+\end{proof}
+
+\begin{corollary}
+Todo módulo es (isomorfo a un) cociente de un módulo libre.
+\end{corollary}
+
+\begin{proof}
+Si $M$ es un módulo, vamos a demostrar que existe un módulo libre $L$ y un epimorfismo $f\in\Hom_R(L,M)$, ya que
+entonces $L/\ker f\simeq M$ por el primer teorema de isomorfismos. Sea 
+$\{m_i:i\in I\}$ un conjunto de generadores de $M$, que siempre existe, ya que podríamos tomar por ejemplo el conjunto
+$\{m:m\in M\}$ y sea $L=R^{(I)}$. Entonces $L$ es libre y $f\colon R^{(I)}\to M$, $e_i\mapsto m_i$, es un epimorfismo. 
+\end{proof}
+
+Otra propiedad importante de los módulos libres:
+
+\begin{proposition}
+	Si $M$ es un módulo libre, $f\in\Hom_r(N,T)$ es un epimorfismo y $h\in\Hom_R(M,T)$, entonces existe
+	$\varphi\in\Hom_R(M,N)$ tal que $f\circ \varphi=h$. 
+	% todo: diagrama
+\end{proposition}
+
+\begin{proof}
+Si $\{m_i:i\in I\}$ es base de $M$, como $f$ es un epimorfismo, para cada $i\in I$ existe $n_i\in N$ tal que $f(n_i)=h(m_i)$. Como 
+$M$ es libre, existe un único morfismo $\varphi\colon M\to N$ tal que $\varphi(m_i)=n_i$ para todo $i\in I$. Este morfismo
+cumple $f\circ \varphi=h$. 
+\end{proof}
+
+%\index{Sumando directo!de un submódulo}
+%Recordemos que un submódulo $N$ de $M$ es un \textbf{sumando directo} de $M$ si existe un submódulo $T$ de $M$ tal que
+%$M=N\oplus T$. 
+
+\index{Cuerpo!de fracciones}
+Sea $R$ un dominio íntegro y sea $S=R\setminus\{0\}$. 
+
+En el conjunto $R\times S$ definimos
+la siguiente relación:
+\[
+(r,s)\sim (r_1,s_1)\Longleftrightarrow rs_1-r_1s=0.
+\]
+
+Dejamos como ejercicio verificar que $\sim$ es una relación de equivalencia. 
+
+La clase
+de equivalencia del par $(r,s)$ será denotada por $r/s$ o bien $\frac{r}{s}$. 
+
+Puede demostrarse que 
+el conjunto
+$K(R)=(R\times S)/{\sim}$ de clases de equivalencia 
+es un cuerpo con las operaciones
+\begin{equation}
+\label{eq:K(R)}
+\frac{r}{s}+\frac{r_1}{s_1}=\frac{rs_1+r_1s}{ss_1},
+\quad
+\frac{r}{s}\frac{r_1}{s_1}=\frac{rr_1}{ss_1}.
+\end{equation}
+$K(R)$ se llama el \textbf{cuerpo de fracciones} de $R$. 
+Por ejemplo, 
+$K(\Z)=\Q$.
+
+Para demostrar que $K(R)$ es un cuerpo primero
+debemos ver que las operaciones~\ref{eq:K(R)} están bien definidas. Por ejemplo, si $r/s\sim r'/s'$ y $r_1/s_1\sim r_1'/s_1'$, entonces
+$r/s+r_1/s_1\sim r'/s'+r_1'/s_1'$. En efecto,
+como $r/s\sim r'/s'$, entonces $rs'-r's=0$. Similarmente, $r_1s_1'-r_1's_1=0$, pues $r_1/s_1\sim r_1'/s_1'$. Luego 
+\begin{gather*}
+\frac{rs_1+r_1s}{ss_1}=\frac{r's_1'+r_1's'}{s's_1'}
+\shortintertext{pues}
+(rs_1+r_1s)s's_1'=rs_1s's_1'+r_1ss's_1'
+=r'ss_1s_1'+r_1's_1ss'
+=(r's_1'+r_1's)ss_1.
+\end{gather*}
+De la misma forma se demuestra que el producto también está bien definido. Dejamos como ejercicio
+verificar que con estas operaciones $K(R)$ es un cuerpo. 
+
+\begin{theorem}
+Sea $R$ un dominio íntegro. 
+Si $M$ es un módulo libre y finitamente generado, entonces dos bases cualesquiera de $M$ 
+tienen la misma cantidad de elementos.
+\end{theorem}
+
+\begin{proof}
+Sea $K=K(R)$ el cuerpo de fracciones de $R$. Es sencillo verificar que el grupo abeliano  
+$V=\Hom_R(M,K)$ es un $K$-espacio vectorial con la acción 
+\[
+(\lambda f)(m)=\lambda f(m),
+\]
+donde $\lambda\in K$, $f\in V$ y $m\in M$.
+
+El espacio vectorial $V$ tiene bien definida su dimensión. 
+Calculemos entonces $\dim V$. Para eso, sea $\{e_1,\dots,e_n\}$ una base de $M$. 
+Para cada $i\in\{1,\dots,n\}$ sea
+\[
+f_i\colon M\to K,\quad
+e_j\mapsto\begin{cases}
+1 & \text{si $i=j$},\\
+0 & \text{si $i\ne j$}.
+\end{cases}
+\]
+Veamos que $\{f_1,\dots,f_n\}$ es base de $V$. Es un conjunto de generadores de $V$ pues 
+si $f\in V$, entonces
+\[
+f=\sum_{i=1}^n f(e_i)f_i,
+\]
+pues estos morfismos coinciden en los elementos de una base de $M$, es decir 
+$f(e_j)=(\sum_{i=1}^n f(e_i)f_i)(e_j)$ para todo $j\in\{1,\dots,n\}$.    
+Además $\{f_1,\dots,f_n\}$ es linealmente independiente, pues si $0=\sum_{i=1}^n\lambda_if_i$, 
+entonces, al evaluar en cada $e_j$, se tiene que 
+\begin{align*}
+0=\left(\sum_{i=1}^n \lambda_if_i\right)(e_j)=\lambda_j
+\end{align*}
+para todo $j\in\{1,\dots,n\}$. Luego $n=\dim V$. 
+\end{proof}
+
+\begin{definition}
+\index{Rango!de un módulo}
+Sea $R$ un dominio íntegro. Si $M$ es un módulo finitamente generado, se 
+define el \textbf{rango} de $M$ como el cardinal de una base de $M$. Si $M$ no es finitamente
+generado diremos que el rango de $M$ es infinito. El rango del módulo $M$ será denotado por $\rank(M)$.   
+\end{definition}
+
+
+El teorema anterior puede extenderse para módulos sobre anillos conmutativos. En consecuencia,
+la noción de rango de un módulo queda bien definida para módulos sobre anillos conmutativos.
+En efecto, sea $F$ un módulo libre con base en un conjunto $X$. 
+Como $R$ es conmutativo, sabemos que $R$ admite un ideal 
+maximal $I$. Como $I$ es maximal, el cociente $K=R/I$ es entonces un cuerpo. Puede verificarse
+que el subconjunto
+\[
+I\cdot F=\left\{\sum_{i=1}^n r_i\cdot x_i:n\in\N,\,r_1,\dots,r_n\in I\right\}
+\]
+es un submódulo de $F$. El módulo cociente $V=F/(I\cdot F)$ es un $K$-espacio
+vectorial con base $\{x+I\cdot F:x\in X\}$. Luego $|X|=\dim V$. 

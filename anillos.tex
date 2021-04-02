@@ -1,0 +1,159 @@
+\chapter{Anillos}
+
+En esta parte trataremos sobre algunas propiedades básicas de ciertas
+estructuras que se conocen como anillos conmutativos. Si bien los anillos no conmutativos tienen gran importancia dentro de la matemática, 
+las aplicaciones que daremos en este curso, estarán basadas en la teoría de anillos conmutativos.
+
+\begin{definition}
+Un anillo es un conjunto $R$ con dos operaciones binarias, una suma $(x,y)\mapsto x+y$ y un producto $(x,y)\mapsto xy$ de forma tal que  
+se cumplen las siguientes propiedades:
+\begin{enumerate}
+\item $(R,+)$ es un grupo abeliano (escrito aditivamente).
+\item $(xy)z=x(yz)$ para todo $x,y,z\in R$.
+\item Existe $e\in R$ tal que $xe=ex=x$ para todo $x\in R$.
+\item $x(y+z)=xy+xz$ para todo $x,y,z\in R$.
+\item $(x+y)z=xz+yz$ para todo $x,y,z\in R$.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+Un anillo $R$ se dirá \textbf{conmutativo} si $xy=yx$ para todo $x,y\in R$.
+\end{definition}
+
+\begin{examples}
+$\N$ no es un anillo. En cambio, 
+$\Z$, $\Q$, $\R$ y $\C$ sí son anillos conmutativos.
+\end{examples}
+
+\begin{example}
+$\Z/n$ es un anillo conmutativo.
+\end{example}
+
+\begin{example}
+Si $R$ es un anillo, entonces 
+\[
+R[X]=\left\{\sum_{i=0}^n a_iX^i:n\in\N_0,\,a_0,\dots,a_n\in R\right\}
+\]
+es un anillo con las operaciones usuales.    	
+\end{example}
+
+Como dijimos al principio del capítulo, los anillos no conmutativos tienen gran importancia dentro de la matemática. Para convencernos, 
+tenemos el siguiente ejemplo. Si $n\geq2$, entonces 
+$M_n(\R)=R^{n\times n}$ es un anillo no conmutativo con las operaciones usuales. 
+
+\begin{exercise}
+Si $A$ es un grupo abeliano, entonces $\End(A)$ es un anillo conmutativo con 
+las operaciones
+\[
+(f+g)(x)=f(x)+g(x),\quad
+(fg)(x)=f(g(x)).
+\]	
+\end{exercise}
+
+Si $R$ es un anillo, es fácil verificar las siguientes propiedades:
+\begin{enumerate}
+	\item $x0=0x=0$ para todo $x\in R$.
+	\item $x(-y)=-xy$ para todo $x,y\in R$.
+	\item Si $1=0$, entonces $|R|=1$. Este anillo se conoce como el \textbf{anillo nulo}.
+\end{enumerate}
+
+Si $R$ es un anillo y $S$ es un subconjunto de $R$, diremos que 
+$S$ es cerrado por multiplicación si $S\cdot S\subseteq S$, 
+es decir $st\in S$ si $s,t\in S$. 
+
+\begin{definition}
+\index{Subanillo}
+Sea $R$ un anillo. 
+Un \textbf{subanillo} de $R$ es un subconjunto $S$ de $R$ tal que $(S,+)$ es un subgrupo abeliano de $(R,+)$, $S$ es cerrado por multiplicación y además $1\in S$. 
+\end{definition}
+
+\begin{examples}\
+\begin{enumerate}
+\item $\Z\subseteq \Q\subseteq\R\subseteq\C$ son subanillos. 
+\item $\Z$ es un subanillo de $\Z$.
+\item $\Z[i]=\{a+bi:a,b\in\Z\}$ es un subanillo de $\C$. 
+\item $\Q[\sqrt{2}]=\{a+b\sqrt{2}:a,b\in\Q\}$ es un subanillo de $\R$.
+\end{enumerate}
+\end{examples}
+
+\begin{example}
+\index{Centro!de un anillo}
+Si $R$ es un anillo, $Z(R)=\{x\in R:xy=yx\text{ para todo $y\in R$}\}$ es un subanillo de $R$. Se denomina el \textbf{centro} de $R$.
+\end{example}
+
+\begin{exercise}
+Si $S$ es un subanillo de $R$, entonces $0_S=0_R$. 
+Además si $x\in S$, el inverso aditivo de $x$ en $S$ coincide con el inverso aditivo de $x$ en $R$.	
+\end{exercise}
+
+\begin{exercise}
+Si $S$ y $T$ son subanillos de $R$, entonces $S\cap T$ es también un subanillo de $R$.	
+\end{exercise}
+
+El resultado del ejercicio anterior puede generalizarse a una intersección arbitraria de subanillos. 
+
+\begin{exercise}
+Si $R_1\subseteq R_2\subseteq\cdots$ es una sucesión de subanillos de un anillo $R$, entonces $\cup_{i\geq1}R_i$ es un subanillo de $R$.	
+\end{exercise}
+
+\begin{definition}
+\index{Unidad!de un anillo}
+Sea $R$ es un anillo. Un elemento $x\in R$ es una \textbf{unidad} si existe $y\in R$ tal que $xy=yx=1$.   	
+\end{definition}
+
+Si un elemento $x$ es una unidad, entonces el inverso $y$ tal que $xy=yx=1$ es único. Esto nos permite 
+escribir $y=x^{-1}$.  
+El \textbf{grupo de unidades} de $R$ se define como
+\[
+\mathcal{U}(R)=\{x\in R:x\text{ es una unidad}\}.
+\]
+
+En anillos no conmutativos conviene distinguir unidades, unidades a derecha y unidades a izquierda, ya que todos
+estos conceptos son diferentes. Veamos un ejemplo. Sea $R=\End(V)$, donde $V$ es un espacio vectorial
+con base $e_1,e_2,\dots$. Sea $f\in R$ tal que $f(e_i)=e_{i+1}$ para todo $i$ y sea $g\in R$ tal que
+\[
+g(e_i)=\begin{cases}
+0 & \text{si $i=1$},\\
+e_{i-1} & \text{si $i>1$}.	
+\end{cases}
+\]
+Entonces $g\circ f=\id$ pero $f\circ g\ne\id$ pues $f(g(e_1))=f(0)=0$. 
+Luego $f$ no es una unidad. En caso contrario, existe $h\in R$ tal que $f\circ h=h\circ f=\id$ y entonces
+\[
+g=g\circ\id=g\circ (f\circ h)=(g\circ f)\circ h=\id\circ h=h,
+\]
+una contradicción. 
+
+\begin{definition}
+\index{Anillo!de división}
+Diremos que un anillo $R$ es de \textbf{división} si $\mathcal{U}(R)=R\setminus\{0\}$.  	
+\end{definition}
+
+\begin{example}
+Sea 
+\[
+R=\R+\R i+\R j+\R k=\{a+bi+cj+dk:a,b,c,d\in\R\}
+\]
+Entonces $R$ es un anillo de división no conmutativo con la suma usual y 
+la multiplicación inducida por 
+$i^2=j^2=k^2=-1$, $ij=k$, $jk=i$, $ki=j$. 
+\end{example}
+
+\begin{definition}
+\index{Cuerpo}
+Un \textbf{cuerpo} es un anillo de división conmutativo. 	
+\end{definition}
+
+\begin{examples}
+$\Q$, $\R$ y $\C$ son cuerpos. Si $p$ es un número primo, entonces $\Z/p$ es un cuerpo.	
+\end{examples}
+
+\begin{example}
+$\Q[\sqrt{2}]=\{x+\sqrt{2}y:x,y\in\Q\}$ es un cuerpo con las operaciones usuales. 	
+\end{example}
+
+
+
+
+
+

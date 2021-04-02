@@ -1,0 +1,51 @@
+\chapter{El teorema de los ceros de Hilbert}
+
+En este capítulo daremos una versión elemental de un
+caso particular del teorema de los ceros de Hilbert.
+Primero necesitamos un lema.
+
+\begin{lemma}
+\begin{enumerate}
+    \item Si $\C$ es un subanillo de $R$, entonces $R$ es un espacio vectorial complejo.
+    \item Si $M$ es un ideal maximal de $\C[X_1,\dots,X_n]$, entonces $E=\C[X_1,\dots,X_n]/M$ está generado por una cantidad numerable de elementos.
+    \item Si $V$ es un espacio vectorial generado por una cantidad numerable de elementos, entonces cada subconjunto de $V$ 
+    linealmente independiente es finito o infinito numerable. 
+    \item Si $\C(X)=F(\C[X])$ es un espacio vectorial complejo y el conjunto $\{(X-\alpha)^{-1}:\alpha\in\C\}$ es linealmente independiente.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+
+\end{proof}
+
+Necesitamos además el siguiente lema sobre el cuerpo de fracciones de un dominio. 
+
+\begin{lemma}
+Sea $R$ un dominio íntegro. 
+\begin{enumerate}
+    \item La función $\varphi\colon R\to F(R)$, $x\mapsto \frac{x}{1}$, es un morfismo inyectivo de anillos.
+    \item Si $f\colon R\to S$ es un morfismo de anillos tal que $f(x)\in\mathcal{U}(S)$ para todo $x\in R$, entonces existe
+    un único morfismo $g\colon F(R)\to S$ de anillos tal que $g\circ\varphi=f$.
+    \item Si $\varphi\colon R\to F(R)$ es la inclusión y $E$ es un cuerpo y $f\colon R\to E$ es un morfismo inyectivo de anillos, entonces existe un único morfismo 
+    $g\colon F(R)\to E$ de anillos tal que $g|_R=f$. 
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{theorem}[de los ceros de Hilbert]
+\index{Teorema!de los ceros de Hilbert}
+Los ideales maximales de $\C[X_1,\dots,X_n]$ están en biyección con 
+los puntos de $\C^n$.
+\end{theorem}
+
+\begin{proof}
+Sea $M$ un idela maximal de $\C[X_1,\dots,X_n]$. Como $E=\C[X_1,\dots,X_n]/M$ es un cuerpo, la restricción
+$f_i=\pi|_{\C[X_i]}\colon\C[X_i]\to E$ es un morfismo inyectivo de anillos. Entonces $\ker f_i=\{0\}$ o bien $\ker f_i$ es un ideal maximal. Los ideales 
+maximales de $\C[X_i]$ son de la forma $X_i-a_i$ para $a_i\in\C$. 
+
+Afirmamos que $\ker f_i=\{0\}$. De lo contrario...
+
+\end{proof}

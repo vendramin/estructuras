@@ -1,0 +1,212 @@
+\chapter{Producto semidirecto}
+
+Primero comenzaremos con una descripción alternativa del producto directo de dos grupos que vimos en el capítulo~\ref{grupos}. 
+
+\begin{theorem}
+\index{Producto!directo de grupos}
+Sea $G$ un grupo y sean $H$ y $K$ subgrupos normales de $G$. Si $G=HK$ y $H\cap K=\{1\}$, entonces $G\simeq H\times K$.
+\end{theorem}
+
+\begin{proof}
+Sea $f\colon G\to H\times K$, $f(g)=(h,k)$, donde $h\in H$ y $k\in K$ son únicos tales que $g=hk$. Esto tiene sentido pues si $g\in G$ entonces $g=hk$ para algún $h\in H$ y $k\in K$; si además $g=h_1h_1$ para $h_1\in H$ y $k_1\in K$, entonces, como $hk=h_1k_1$, se tiene que $h_1^{-1}h=k_1k^{-1}\in H\cap K=\{1\}$ y luego $h=h_1$ y $k=k_1$.
+
+Veamos que si $g=hk$ y $g_1=h_1k_1$ para $h,h_1\in H$ y $k,k_1\in K$, entonces $kh_1=h_1k$. En efecto, $[k,h_1]=kh_1k^{-1}h_1^{-1}\in H\cap K=\{1\}$ pues la normalidad de $H$ y $K$ implican que $ kh_1k^{-1}\in H$ y $h_1k^{-1}h_1^{-1}\in K$.
+
+La observación anterior nos permite demostrar que $f$ es un morfismo de grupos. Si $g=hk$ y $g_1=h_1k_1$ con $h,h_1\in H$ y $k,k_1\in K$, entonces, como $f(g)=(h,k)$ y $f(g_1)=(h_1,k_1)$, tenemos que
+\[
+f(gg_1)=f((hk)(h_1k_1))=f(h(kh_1)k_1)=f((hh_1)(kk_1))=(hh_1,kk_1).
+\]
+Queda como ejercicio demostrar que $f$ es biyectiva. 
+\end{proof}
+
+\index{Factorización exacta!de grupos}
+Un grupo $G$ se dice que admite una factorización exacta mediante los subgrupos $H$ y $K$ si $G=HK$ y adenás $H\cap K=\{1\}$. 
+El teorema anterior puede entonces enunciarse con la siguiente terminología: Si un grupo admite una factorización exacta mediante dos subgrupos normales, entonces es isomorfo al producto directo de esos subgrupos. 
+
+\begin{example}
+Sea $G=\Sym_3$ y sean $H=\langle (123)\rangle\unlhd G$ y $K=\langle (12)\rangle$. Observemos que $K$ no es normal en $G$, no podemos utilizar el teorema anterior. Tenemos $G=HK$ y $H\cap K=\{\id\}$, pero $H\times K\simeq\Z/3\times\Z/2\not\simeq\Sym_3$ pues $\Z/3\times\Z/2$ es un grupo abeliano y $\Sym_3$ no lo es.
+\end{example}
+
+Mencionamos a continuación un corolario sencillo. La demostración quedará como ejercicio. 
+
+\begin{corollary}
+Sean $A$ un subgrupo normal de $H$ y $B$ un subgrupo normal de $K$. Entonces $A\times B$ es un subgrupo normal de $H\times K$ y vale además que
+\[
+\frac{H\times K}{A\times B}\simeq(H/A)\times(K/B).
+\]	
+\end{corollary}
+
+\begin{proof}[Bosquejo de la demostración]
+Sea $\varphi\colon H\times K\to(H/A)\times(K/B)$, $\varphi(h,k)=(hA,kB)$. Dejamos como ejercicio verficar que $\varphi$ es un isomorfismo de grupos tal que $\ker\varphi=A\times B$. Al aplicar el primer teorema de isomorfismos tendremos entonces el resultado deseado. 
+\end{proof}
+
+Veremos a continuación qué pasa cuando solamente uno de los factores es normal. Nos encontraremos con un grupo que admite una factorización exacta donde uno de los subgrupos es normal.  
+
+\begin{definition}
+\index{Complemento}
+Sea $G$ un grupo y sean $K$ un subgrupo normal de $G$ y $Q$ un subgrupo de $G$. Diremos que $Q$ es un \textbf{complemento} de $K$ en $G$ si $K\cap Q=\{1\}$ y $G=KQ$.
+\end{definition} 
+
+\begin{example}
+Sea $G=\Sym_3$ y sea $K=\langle (123)\rangle\unlhd G$. Los subgrupos $\langle (12)\rangle$, $\langle (13)\rangle$ y $\langle (23)\rangle$ son complementos de $K$ en $G$. 
+\end{example}
+
+El ejemplo anterior nos muestra que los complementos no son únicos. Sin embargo, sí son únicos salvo isomorfismos pues cualquier complemento será isomorfo a $G/K$. En efecto, gracias a los teoremas de isomorfismo, 
+\[
+G/K\simeq KQ/K\simeq Q/K\cap Q=Q/\{1\}\simeq Q.
+\] 
+
+\begin{definition}
+\index{Producto!semidirecto de grupos}
+Diremos que un grupo $G$ es un \textbf{producto semidirecto} de $Q$ en $K$ si $K$ es normal en $G$ y además $K$ admite un complemento en $G$ isomorfo a $Q$. La notación que utilizaremos será $G=K\rtimes Q$
+\end{definition}
+
+Veamos algunas caracterizaciones del producto semidirecto. 
+
+\begin{proposition}
+Sea $K$ un subgrupo normal de $G$. Las siguientes afirmaciones son equivalentes:
+\begin{enumerate}
+\item $K$ admite un complemento en $G$.
+\item Existe 	un subgrupo $Q$ de $G$ tal que cada $g\in G$ se escribe unívocamente como $g=xy$ con $x\in K$ e $y\in Q$.
+\item Existe un morfismo $s\colon G/K\to G$ tal que $\pi\circ s=\id_{G/K}$, donde $\pi\colon G\to G/K$, $g\mapsto Kg$,' es el morfismo canónico.
+\item Existe un morfismo $\rho\colon G\to G$ tal que $\ker\rho=K$ y la restricción $\rho|_{\rho(G)}$ es igual a la identidad.  
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Veamos que $(1)\implies(2)$. Si $Q$ es un complemento de $K$, entonces $G=KQ$ y $K\cap Q=\{1\}$. En particular, si $g\in G$, entonces $g=xy$ para $x\in K$ e $y\in Q$. Y la escritura es única pues si además $g=x_1y_1$ con $x_1\in K$ e $y_1\in Q$, entonces $x_1^{-1}x=yy_1^{-1}\in K\cap Q=\{1\}$ y luego $x=x_1$ y también $y=y_1$.  
+
+Veamos que $(2)\implies(3)$. Sea $s\colon G/K\to G$, $s(Kg)=y$ si $g=xy$ con $x\in K$ e $y\in Q$. (Es importante observar que 
+acá, para definir $s$, nos es conveniente utilizar coclases a derecha.) Veamos que $s$ está bien definida. Para eso, tenemos que ver que si $Kg=Kg_1$, entonces $s(Kg)=s(Kg_1)$. Si escribimos $g=xy$ y $g_1=x_1y_1$ con $x,x_1\in K$ e $y,y_1\in Q$, entonces
+Como $Kg=Kg_1$, sabemos que $xyy_1^{-1}x_1^{-1}=gg_1^{-1}\in K$, es decir $yy_1^{-1}\in x^{-1}Kx_1=K$ pues $x,x_1\in K$. Luego $yy_1^{-1}\in K\cap Q=\{1\}$ y entonces $y=y_1$. Veamos ahora que $\pi\circ s=\id_{G/K}$. Si $g=xy$ con $x\in K$ e $y\in Q$, entonces  
+$(\pi\circ s)(Kg)=\pi(y)=Ky=Kxy=Kg$.
+
+Veamos ahora que $(3)\implies(4)$. Sea $\rho=s\circ\pi$. Es claro que $\rho$ es un morfismo, pues es composición de morfismos. Calculamos:
+\[
+\rho(\rho(g))=\rho( (s\circ\pi)(g))=\rho(s(Kg))=((s\circ\pi)\circ s)(Kg)=s(Kg)=\rho(g).
+\]
+Por último, calculamos $\ker\rho$. Si $g\in\ker\rho$, entonces $s(\pi(g))=\rho(g)=1$. Luego
+\[
+\pi(g)=\pi(s(\pi(g)))=\pi(1)=1_{G/K},
+\]  
+es decir $g\in\ker\pi=K$. 
+
+Por último, demostremos que $(4)\implies(1)$. Afirmamos que $Q=\rho(G)$ es un complemento para $K$ en $G$. Veamos primero que $K\cap Q=\{1\}$: si $x\in K\cap Q$, entonces $x=\rho(g)$ para algún $g\in G$ y además 
+\[
+1=\rho(x)=\rho(\rho(g))=\rho(g).
+\]
+Luego $g\in\ker\rho=K$ y entonces $x=1$. Veamos ahora que $G=KQ$. Para demostrar que $G\subseteq KQ$ observamos que
+\[
+g=(g\rho(g^{-1}))\rho(g)
+\]
+y que $g\rho(g^{-1})\in K=\ker\rho$ pues $\rho(g\rho(g^{-1}))=	\rho(g)\rho(g^{-1})=1$.  
+\end{proof}
+
+\begin{example}
+$\Sym_n=\Alt_n\rtimes\Z/2$ pues $Q=\langle (12)\rangle\simeq\Z/2$ es un complemento para el subgrupo normal $\Alt_n$ de $\Sym_n$. 
+\end{example}
+
+La siguiente proposición permite construir productos semidirectos. La demostración quedará como ejercicio. 
+
+\begin{proposition}
+Sean $K$ y $Q$ grupos y sea $\theta\colon Q\to\Aut(K)$, $x\mapsto\theta_x$, un morfismo de grupos. 
+El conjunto $K\times Q$ con la operación
+\[
+(a,x)(b,y)=(a\theta_x(b),xy)
+\]
+es un grupo. Este grupo será denotado por $K\rtimes_\theta Q$. 
+\end{proposition}
+
+\begin{proof}[Bosquejo de la demostración]
+Dejamos como ejercicio verificar que la operación es asociativa. Hay que verificar además que el elemento neutro de $K\rtimes_\theta Q$ será $(1,1)$ y
+que el inverso de $(a,x)\in K\rtimes_\theta Q$ será $(\theta_{x^-1}(a^{-1}),x^{-1})$. 
+\end{proof}
+
+El grupo que construimos en la proposición anterior es, de hecho, un producto semidirecto. En efecto, es un producto semidirecto de los subgrupos  
+\begin{align*}
+K\times\{1\}=\{(a,1):a\in K\}\simeq K,&&
+\{1\}\times Q=\{(1,x):x\in Q\}\simeq Q
+\end{align*}
+de $K\rtimes_\theta Q$. Observar que $K\times\{1\}$ es normal en $K\rtimes_\theta Q$. Es importante remarcar que si identificamos al subgrupo normal $K\rtimes\{1\}$ con $K$ y al subgrupo  
+$\{1\}\rtimes Q$ con $Q$, podemos escribir 
+\[
+\theta_x(a)=xax^{-1}
+\]
+para todo $x\in Q$ y $a\in K$.
+
+%\begin{proposition}
+%Sean $K$ y $Q$ dos grupos y sea $\theta\colon Q\to\Aut(K)$ un morfismo de grupos. Entonces $K\rtimes_\theta Q$ es un 
+%producto semidirecto tal que
+%\[
+%(\theta_x(a),1)=(1,x)(a,1)(1,x)^{-1}.
+%\]
+%\end{proposition}
+%
+%\begin{proof}[Bosquejo de la demostración]
+%Sea $\pi\colon K\rtimes_\theta Q\to Q$, $\pi(a,x)=x$. Entonces $\pi$ es un morfismo sobreyectivo. Como
+%\begin{align*} 
+%\ker\pi&=\{(a,1):a\in K\}\simeq K,\\
+%\{1\}\times Q&=\{(1,x):x\in Q\}\simeq Q,
+%\end{align*}
+%podemos identificar estos grupos con $K$ y $Q$, respectivamente. Luego, gracias a esta identificación,  
+%$G=(\ker\pi)\rtimes (\{1\}\times Q)=K\rtimes Q$.  %y además $\theta_x(a)=xax^{-1}$.   
+%\end{proof}
+%
+% explicar
+
+\begin{proposition}
+Si $G$ es un producto semidirecto del subgrupo normal $K$ con el subgrupo $Q$, existe un morfismo de grupos $\theta\colon Q\to\Aut(K)$
+tal que $G\simeq K\rtimes_\theta Q$.  
+\end{proposition}
+
+\begin{proof}[Bosquejo de la demostración]
+Para $x\in Q$ sea $\theta_x\colon K\to K$, $\theta_x(a)=xax^{-1}$. Ya vimos que $\theta_x\in\Aut(K)$ y que $Q\to\Aut(K)$, $x\mapsto\theta_x$ es un morfismo de grupos. Queda verificar que 
+la función $K\rtimes_\theta Q\to G$, $(a,x)\mapsto ax$, es un morfismo biyectivo de grupos. 
+\end{proof}
+
+Veamos algunos ejemplos.
+
+\begin{example}
+Sean $N\simeq \Z/n$ y $H\simeq\Z/2=\{0,1\}$. La función $\theta\colon H\to\Aut(N)$, $1\mapsto (x\mapsto x^{-1})$, es un morfismo de grupos. Sea $G=N\rtimes_\theta H$. 
+Entonces $G\simeq\D_n$, el grupo diedral de orden $2n$. 
+
+Recordemos que 
+\[
+\D_n=\langle r,s:r^n=s^2=1, srs^{-1}=r^{-1}\rangle.
+\]
+Supongamos que $N=\langle x\rangle$ y que $H=\langle y\rangle$. Entonces $|(x,1)|=n$ y $|(1,y)|=2$. Además
+\begin{align*}
+(1,y)(x,1)(1,y)^{-1} &= (\varphi_y(x),y)(1,y)=(\varphi_y(x),y^2)\\
+&=(\varphi_y(x),1)=(x^{-1},1)=(x,1)^{-1}.
+\end{align*}
+Si $u=(x,1)$ y $v=(1,y)$, entonces $u^n=v^2=(1,1)$ y además $vuv^{-1}=u^{-1}$. Esto significa que existe un morfismo de grupos
+$\D_n\to G$ que además es sobreyectivo (pues $G$ está generado por $u$ y $v$). Además $|G|=|N||H|=2n$, luego $G$ también tiene orden $2n$ y en consecuencia $G\simeq\D_n$. 
+\end{example}
+
+\begin{example}
+Sea $K=\{\id,(12)(34),(13)(24),(14)(23)\}$, que sabemos es normal en $\Alt_4$ y sea $H=\langle (123)\rangle\simeq\Z/3$. Como $K\cap H$ es un subgrupo de $H$ y $K$ y además
+los órdenes de $K$ y $H$ son coprimos, $H\cap K=\{\id\}$. Luego $\Alt_4=K\rtimes H$. 	
+\end{example}
+
+\begin{example}
+Tal como en el ejercicio anterior, sea $K$ el subgrupo de Klein de $\Sym_4$. 
+Sea $H=\{\sigma\in\Sym_4:\sigma(4)=4\}$, que es un subgrupo de $\Sym_4$ isomorfo a $\Sym_3$. Simplemente al observar los elementos vemos que $H\cap K=\{\id\}$ y luego
+$\Sym_4=K\rtimes H$.   	
+\end{example}
+
+\begin{example}
+Si $n\geq5$, $\Alt_n$ no es un producto semidirecto de subgrupos propios (pues $\Alt_n$ es simple para todo $n\geq5$). 	
+\end{example}
+
+\begin{example}
+Sea $K\simeq\Z/3$ y sea $Q=\Z/4$. Como $\Hom(Q,\Aut(K))=\{1,\tau\}$, donde 
+\[
+\tau\colon\Z/4\to\Aut(\Z/3)=\{\id,\rho\}\simeq\Z/2,\quad 1\mapsto\rho,
+\]
+el producto semidirecto $T=K\rtimes_t Q$ es un grupo no abeliano de orden 12. Además $T\not\simeq\Alt_4$ pues, por ejemplo, $|(2,2)|=6$ y sabemos que en $\Alt_4$ no existen elementos de orden seis. 
+\end{example}
+
+
+
+% todo: El grupo Aff(R) es un producto semidirecto
+% todo: Necesitamos más ejemplos de producto semidirecto

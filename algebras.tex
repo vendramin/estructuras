@@ -1,0 +1,177 @@
+\chapter{Álgebras}
+
+En este capítulo veremos cierto tipo de anillos que además son espacios vectoriales de forma que
+la acción por escalares y la estructura de anillo son compatibles. 
+Este concepto es de gran importancia en álgebra. 
+
+\begin{definition}
+	\label{Álgebra}
+	\label{Álgebra!asociativa}
+	\label{Álgebra}
+	Un espacio vectorial $A$ sobre un cuerpo $K$ es un \textbf{algebra} sobre $K$
+	(o una $K$-álgebra) si posee una multiplicación asociativa $A\times A\to A$,
+	$(a,b)\mapsto ab$, tal que
+	$(\lambda a+\mu b)c=\lambda(ac)+\mu(bc)$ y 
+	$a(\lambda b+\mu c)=\lambda(ab)+\mu(ac)$ 
+	para todo $a,b,c\in A$ y $\lambda,\mu\in K$. Existe además un 
+	elemento $1_A\in A$ tal que $1_Aa=a1_A=a$
+	para todo $a\in A$.
+\end{definition}
+
+\index{Álgebra!conmutativa}
+Un álgebra $A$ se dirá \textbf{conmutativa} si $ab=ba$ para todo $a,b\in A$. 
+
+\index{Álgebra!dimensión}
+La \textbf{dimensión} de un álgebra $A$ es la dimensión de $A$ como $K$-espacio
+vectorial. Justamente esta es quizá una de las claves de la definición, 
+un álgebra es en particular un espacio vectorial y cuando sea necesario podremos 
+utilizar argumentos que involucren el concepto de dimensión. 
+
+\begin{example}
+	Todo cuerpo $K$ es una $K$-álgebra. 
+\end{example}
+
+\begin{example}
+\index{Álgebra!de polinomios}
+	Si $K$ es un cuerpo, $K[X]$ es una $K$-álgebra. 
+\end{example}
+
+Similarmente, el anillo de polinomios $K[X,Y]$ y el anillo $K[[X]]$ de series de potencias son ejemplos de álgebras sobre el cuerpo $K$. 
+
+\begin{example}
+\index{Álgebra!de matrices}
+	Si $A$ es un álgebra, entonces $M_n(A)$ es un álgebra. 
+\end{example}
+
+\begin{example}
+El conjunto de funciones continuas $[0,1]\to\R$ es un álgebra sobre $\R$ con las operaciones usuales, $(f+g)(x)=f(x)+g(x)$, $(fg)(x)=f(x)g(x)$. 
+\end{example}
+
+
+\index{Morfismo!de álgebras}
+Un \textbf{morfismo de álgebras} es un morfismo de anillos $f\colon A\to B$ que es además una transformación lineal. Observemos 
+que es necesario pedir que un morfismo de álgebras sea una transformación lineal, por ejemplo, la conjugación 
+$\C\to \C$, $z\mapsto\overline{z}$, es un morfismo de anillos que no es un morfismo de álgebras sobre $\C$. 
+
+\begin{definition}
+	\index{Álgebra!ideal de un}
+	Un \textbf{ideal} de un álgebra es un ideal del anillo que además es un
+	subespacio. 
+\end{definition}
+
+Análogamente se definen ideales a izquierda y a derecha de un álgebra.
+
+	Si $A$ es un álgebra, entonces todo ideal a izquierda 
+	del anillo $A$ es un ideal a izquierda del
+	álgebra $A$. Si $L$ es un ideal de $A$ y $\lambda\in K$ y $x\in L$,
+	entonces
+	\[
+		\lambda x=\lambda (1_Ax)=(\lambda 1_A)x
+	\]
+	y luego, como $\lambda 1_A\in A$, se concluye que $\lambda L=(\lambda
+	1_A)L\subseteq L$. Análogamente se demuestra que todo ideal a derecha del
+	anillo unitario $A$ es también un ideal de $A$ como álgebra. 
+
+\begin{exercise}
+	Demuestre que si $A$ es un álgebra, entonces todo ideal a derecha
+	del anillo $A$ es un ideal a derecha del álgebra $A$.
+\end{exercise}
+
+Puede demostrarse que si 
+$A$ es un álgebra e $I$ es un ideal de $A$, entonces el anillo cociente $A/I$ 
+tiene una única estructura de álgebra que hace que el morfismo canónico 
+$A\to A/I$, $a\mapsto a+I$, sea un morfismo de álgebras. 
+
+\begin{example}
+\index{Álgebra!de polinomios truncados}
+Si $n\in\N$, entonces $K[X]/(X^n)$ es un álgebra de dimensión finita, se conoce como el \textbf{álgebra de polinomios truncados}.  \end{example}
+
+\index{Elemento!algebraico}
+\index{Álgebra!algebraica}
+Sea $A$ un álgebra. Un elemento $a\in A$ se dice
+\textbf{algebraico} sobre $A$ si existe un polinomio no nulo $f\in K[X]$
+tal que $f(a)=0$. Si todo elemento de $A$ es algebraico, $A$ se dice
+\textbf{algebraica}. Por ejemplo, sabemos que en la $\Q$-álgebra $A=\R$ el elemento $\sqrt{2}$ es algebraico, pues $\sqrt{2}$ es raíz del polinomio $X^2-2\in\Q[X]$,  
+y que $\pi$ no lo es. Todo elemento de $\R$ como $\R$-álgebra es algebraico.
+
+\begin{proposition}
+	\label{lem:algebraica}
+	Toda álgebra de dimensión finita es algebraica. 
+\end{proposition}
+
+\begin{proof}
+   Sea $A$ un álgebra de dimensión finita $n$    
+	y sea $a\in A$. Como el conjunto 
+	$\{1,a,a^2,\dots,a^n\}$ es linealmente dependendiente, existe un polinomio
+	no nulo $f\in k[X]$ tal que $f(a)=0$.
+\end{proof}
+
+\index{Álgebra!de grupo}
+Sea $K$ un cuerpo y sea $G$ un grupo finito. El \textbf{álgebra de grupo} $K[G]$ es el
+$K$-espacio vectorial con base $\{g:g\in G\}$ con la estructura de álgebra dada
+por el producto
+\[
+	\left(\sum_{g\in G}\lambda_gg\right)\left(\sum_{h\in G}\mu_hh\right)
+	=\sum_{g,h\in G}\lambda_g\mu_h(gh).
+\]
+Observemos que el álgebra $K[G]$ es conmutativa si y sólo si $G$ es abeliano. 
+Además $\dim K[G]=|G|$. 
+
+\begin{example}
+Sea $G=\{1,g,g^2\}$ el grupo cíclico de orden tres y sea $A=\C[G]$ el álgebra (compleja) del grupo $G$. Si 
+$\alpha=a_11+a_2g+a_3g^2$ y $\beta=b_11+b_2g+b_3g^2\in A$, donde $a_1,a_2,a_3,b_1,b_2,b_3\in\C$, 
+entonces la suma de $A$ está dada por
+\begin{gather*}
+\alpha+\beta=(a_1+b_1)1+(a_2+b_2)g+(a_3+b_3)g^2
+\shortintertext{y el producto por}
+\alpha\beta=(a_1b_1+a_2b_3+a_3b_2)1+(a_1b_2+a_2b_1+a_3b_3)g+(a_1b_3+a_2b_2+a_3b_1)g^2.
+\end{gather*}
+\end{example}
+
+\index{Ideal!de aumentación}
+Si $G$ es un grupo finito no trivial,  
+entonces $K[G]$ posee ideales propios no triviales. 
+Esto es porque el conjunto 
+\[
+	I(G)=\left\{\sum_{g\in G}\lambda_gg\in K[G]:\sum_{g\in G}\lambda_g=0\right\}
+\]
+es un ideal propio y no nulo de $K[G]$ (pues $\dim I(G)=\dim K[G]-1$). Este
+conjunto se conoce como el \textbf{ideal de aumentación} de $K[G]$.
+
+\begin{exercise}
+	Sea $G=C_n$ el grupo ciclico de orden $n$ (escrito multiplicativamente).
+	Demuestre que $K[G]\simeq K[X]/(X^n-1)$. 
+\end{exercise}
+
+\begin{proposition}
+Si $G$ es un grupo finito no trivial, entonces $K[G]$ tiene divisores de cero.	
+\end{proposition}
+
+\begin{proof}
+Sea $g\in G\setminus\{1\}$ y sea $n$ el orden de $g$. Para ver que $K[G]$ tiene divisores
+de cero alcanza con observar que 
+$(1-g)(1+g+\cdots+g^{n-1})=0$. 
+\end{proof}
+
+Si $A$ es un álgebra, entonces $\mathcal{U}(A)$ es el grupo de unidades del anillo $A$. 
+La proposición que sigue se conoce como la propiedad universal del álgebra de grupo.
+
+\begin{proposition}
+Sean $A$ un álgebra y $G$ un grupo finito. Si $f\colon G\to\mathcal{U}(A)$ es un morfismo de grupos, entonces
+existe un único morfismo $\varphi\colon K[G]\to A$ de álgebras tal que la restricción
+$\varphi|_G$ de $\varphi$ al grupo $G$ es igual a $f$, es decir 	$\varphi|_G=f$. 
+\end{proposition}
+
+\begin{proof}
+Como $G$ es base de $K[G]$, puede verificarse que 
+el morfismo $\varphi$ de álgebras 
+queda unívocametne determinado por 
+\[
+\varphi\left(\sum_{g\in G}\lambda_gg\right)=\sum_{g\in G}\lambda_gf(g).\qedhere
+\]	
+\end{proof}
+
+La proposición anterior nos dice que si $G$ es un grupo finito y $A$ es un álgebra, 
+para definir un morfismo de álgebras $K[G]\to A$ 
+alcanza con tener un morfismo de grupos $G\to\mathcal{U}(A)$.  
+

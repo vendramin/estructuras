@@ -1,0 +1,349 @@
+\chapter{El teorema de Maschke}
+
+\index{Representación!de un grupo}
+Si $G$ es un grupo finito, un morfismo de grupos $G\to\GL(V)$, donde $V$ es un espacio
+vectorial complejo de dimensión finita, se dice una 
+\textbf{representación} de $G$. Si el espacio vectorial $V$ tiene dimensión $n$, al fijar una base 
+para $V$ podemos considerar $G\to\GL(V)\simeq\GL_n(\C)$.
+ 
+\begin{example}
+Como $\Sym_3=\langle (12),(123)\rangle$, la función $\rho\colon \Sym_3\to\GL_3(\C)$,
+\[
+(12)\mapsto\begin{pmatrix}
+0 & 1 & 0\\
+1 & 0 & 0\\
+0 & 0 & 1
+\end{pmatrix},\quad
+(123)\mapsto\begin{pmatrix}
+0 & 0 & 1\\
+1 & 0 & 0\\
+0 & 1 & 0
+\end{pmatrix}
+\] 
+es una representación de $\Sym_3$. 
+\end{example}
+
+\begin{example}
+Como el grupo de cuaterniones $Q_8=\{1,-1,i,-i,j,-j,k,-k\}$ está generado por $\{i,j\}$, 
+la función $\rho\colon G\to\GL_2(\C)$, 
+\[
+i\mapsto\begin{pmatrix}
+i & 0\\
+0 & i
+\end{pmatrix},
+\quad
+j\mapsto\begin{pmatrix}
+0 & -1\\
+1 & 0	
+\end{pmatrix}
+\]
+es una representación de $Q_8$.
+\end{example}
+
+\begin{example}
+Sea $G=\langle g\rangle$ cíclico de orden seis. 
+La función $\rho\colon G\to\GL_2(\C)$, 
+\[
+g\mapsto
+\begin{pmatrix}
+1&1\\
+-1&0
+\end{pmatrix}
+\] 
+es una representación del grupo $G$ cíclico de orden seis. 
+\end{example}
+
+\begin{example}
+Sea $G=\langle g\rangle$ cíclico de orden cuatro. 
+La función $\rho\colon G\to\GL_2(\C)$, 
+\[
+g\mapsto
+\begin{pmatrix}
+0&-1\\
+1&0
+\end{pmatrix}
+\] 
+es una representación del grupo $G$ cíclico de orden cuatro. 
+\end{example}
+
+Observemos que existe una correspondencia biyectiva 
+\[
+\{\text{representaciones de $G$}\}\leftrightarrow\{\text{$\C[G]$-módulos de dimensión finita}\}.
+\]
+Si $\rho\colon G\to\GL(V)$ es una representación, entonces 
+$V$ es un $\C[G]$-módulo con
+\[
+\left(\sum_{g\in G}\lambda_gg\right)\cdot v=\sum_{g\in G}\lambda_g\rho(g)(v).
+\]
+Recíprocamente, si $V$ es un $\C[G]$-módulo, entonces $\rho\colon G\to\GL(V)$, 
+$\rho(g)(v)=g\cdot v$, es una representación de $G$ en $V$. Puede verificarse que estas
+construcciones son una la inversa de la otra.  
+
+\begin{definition}
+\index{Módulo!simple}
+\index{Módulo!irreducible}
+Un módulo $M$ se dice \textbf{simple} (o irreducible) si $M\ne\{0\}$ y $M$ no tiene
+submódulos propios no triviales.  
+\end{definition}
+
+\begin{example}
+Si $A$ es un álgebra, vimos que todo $A$-módulo es un espacio vectorial. Los módulos
+de dimensión uno serán entonces módulos simples.
+\end{example}
+
+\begin{example}
+Sea $G=\langle g\rangle$ cíclico de orden tres y sea $M=\R^3$ con la estructura de $\R[G]$-módulo 
+dada por $g\cdot (x,y,z)=(y,z,x)$. El conjunto
+\[
+N=\{(x,y,z)\in\R^3:x+y+z=0\}
+\]
+es un submódulo de $M$. Veamos que $N$ es simple. Si $N$ contiene un submódulo no trivial $S$, 
+sea $(x_0,y_0,z_0)\in S\setminus\{(0,0,0)\}$. Como $S$ es un submódulo, 
+\[
+(y_0,z_0,x_0)=g\cdot (x_0,y_0,z_0)\in S.
+\]
+Afirmamos
+que $\{(x_0,y_0,z_0),(y_0,z_0,x_0)\}$ es un conjunto linealmente independiente. 	Si existe $\lambda\in\R$ 
+tal que $\lambda(x_0,y_0,z_0)=(y_0,z_0,x_0)$, entonces $x_0=\lambda^3 x_0$. Como $x_0=0$ implica que 
+$y_0=z_0=0$, entonces $\lambda=1$. En particular, $x_0=y_0=z_0$, una contradicción, pues $x_0+y_0+z_0=0$. 
+Luego $\dim S=2$ y entonces
+$S=N$. 
+\end{example}
+
+\begin{example}
+Sea $M=\R^2$ con la estructura de $\R[X]$-módulo dada por
+\[
+\left(\sum_{i=0}^n a_iX^i\right)\cdot m=\sum_{i=0}^n a_iT^i(m).
+\]
+donde $T\colon\R^2\to\R^2$, $T(x,y)=(y,-x)$. 
+Veamos que $M$ es simple. Si $N$ es un submódulo no nulo, sea $(x_0,y_0)\in N\setminus\{(0,0)\}$. Si $(x,y)\in M$, veamos que 
+existen
+$\alpha,\beta\in\R$ tales que
+\[
+(\alpha+\beta X)\cdot (x_0,y_0)=(x,y).
+\]
+En efecto, basta tomar 
+\[
+\alpha=\frac{x_0x+y_0y}{x_0^2+y_0^2},\quad
+\beta=\frac{y_0x-x_0y}{x_0^2+y_0^2},
+\]
+pues
+\begin{align*}
+(\alpha+\beta X)\cdot (x_0,y_0)&=\alpha(x_0,y_0)+\beta\cdot (X\cdot (x_0,y_0))\\
+&=(\alpha x_0,\alpha y_0)+(\beta y_0,-\beta x_0)\\
+&=(\alpha x_0+\beta y_0,\alpha y_0-\beta x_0)\\
+&=(x,y).	
+\end{align*}
+\end{example}
+
+\begin{definition}
+\index{Módulo!semisimple}
+\index{Módulo!completamente reducible}
+Un módulo $M$ se dice \textbf{semisimple} (o completamente reducible) 
+si es suma directa de módulos simples.
+\end{definition}
+
+Vimos en el capítulo anterior que si $M$ es un módulo, se dice que un submódulo $S$ de $M$ se complementa en $M$ si existe un submódulo $T$ de $M$ tal que $M=S\oplus T$.
+
+\begin{lemma}
+Si $p\colon M\to M$ es un morfismo tal que $p^2=p$, entonces 
+\[
+M=\ker p\oplus p(M).
+\]
+\end{lemma}
+
+\begin{proof}
+	Como $p$ es un morfismo, $\ker p$ y $p(M)$ son submódulos de $M$. 
+	Para ver que $M=\ker p+p(M)$ alcanza con observar que todo $m\in M$ puede escribirse como
+	$m=(m-p(m))+p(m)$ 
+	y que $m-p(m)\in\ker p$ pues 
+	\[
+	p(m-p(m))=p(m)-p^2(m)=p(m)-p(m)=0. 
+	\]
+	Veamos ahora que $\ker p\cap p(M)=\{0\}$. Si $m\in\ker p\cap p(M)$, escribimos $m=p(m_1)$ para algún $m_1\in M$. Como entonces 
+	$0=p(m)=p^2(m_1)=m_1$, se concluye que $m=0$.   
+\end{proof}
+
+\index{Proyección}   
+Recordemos que 
+una \textbf{proyección} (o proyector) de un módulo $M$ es un   
+morfismo $p\colon M\to M$ tal que $p^2=p$. 
+ 
+\begin{lemma}
+Si $A$ es un álgebra y $M$ es un $A$-módulo de dimensión finita tal que
+todo submódulo de $M$ se complementa, entonces $M$ es semisimple.
+\end{lemma}
+
+\begin{proof}
+Procederemos por inducción en $\dim M$. Si $M=\{0\}$ el resultado es trivial. Si $M\ne\{0\}$, 
+sea $S$ un submódulo no nulo de $M$ de dimensión minimal. En particular, $S$ es simple. Por hipótesis sabemos que existe un submódulo $T$ de $M$ tal que $M=S\oplus T$. Como $\dim T<\dim M$, la hipótesis inductiva implica que $T$ es suma directa de módulos simples. Luego $M$ también lo es. 
+\end{proof}
+
+El lema anterior vale también para módulos arbitrarios sobre anillos. Sin embargo, la demostración 
+requiere el uso del lema de Zorn.
+
+\begin{example}
+Sea $R=M_2(\C)$ y sea $M=\prescript{}{R}R$. Los subconjuntos
+\[
+I=\begin{pmatrix}
+\C&0\\
+\C&0
+\end{pmatrix},\quad
+J=\begin{pmatrix}
+0&\C\\
+0&\C
+\end{pmatrix}
+\]
+son submódulos de $M$ tales que $M\simeq I\oplus J$. Veamos que $M$ es semisimple, es decir que
+$I$ y $J$ son simples. 
+
+Si $S$ es un submódulo no nulo de $I$, sea 
+$\begin{pmatrix}
+a&0\\
+c&0
+\end{pmatrix}\in S$ no nulo. Supongamos que 
+$a\ne 0$, el caso $c\ne 0$ es similar. Entonces
+\[
+\begin{pmatrix}
+a^{-1} & 0\\
+0 & 0\end{pmatrix}
+\begin{pmatrix}
+a&0\\
+c&0
+\end{pmatrix}
+=\begin{pmatrix}
+1&0\\
+0&0
+\end{pmatrix}\in S.
+\]
+Análogamente se demuestra que $\begin{pmatrix}0&0\\1&0\end{pmatrix}\in S$. Luego $S=I$ y entonces $I$ es simple.  
+La misma técnica nos permite demostrar que $J$ es simple.
+\end{example}
+
+Es importante observar que si $A$ es un álgebra y $M$ es un módulo
+semisimple de dimensión finita, entones $M$ es suma directa de finitos simples. 
+
+\begin{theorem}[Maschke]
+\index{Teorema!de Maschke}
+Sea $G$ un grupo finito y sea $M$ un $\C[G]$-módulo de dimensión finita. Entonces
+$M$ es semisimple.
+\end{theorem}
+
+\begin{proof}
+Gracias al lema anterior, alcanza con demostrar que todo submódulo $S$ de $M$ se complementa. 
+Como, en particular, $S$ es un subespacio de $M$, existe un subespacio $T_0$ de $M$ 
+tal que $M=S\oplus T_0$ (como espacios vectoriales). Vamos a usar el espacio vectorial
+$T_0$ para construir un submódulo $T$ de $M$ que complementa a $S$. Como $M=S\oplus T_0$, 
+cada $m\in M$ puede escribirse unívocamente como $m=s+t_0$ para ciertos $s\in S$ y $t_0\in T$. 
+Podemos definir entonces la transformación lineal 
+\[
+p_0\colon M\to S,\quad
+p_0(m)=s,
+\]
+donde $m=s+t_0$ con $s\in S$ y $t_0\in T$. 
+Observemos que si $s\in S$, entonces $p_0(s)=s$. En particular, $p_0^2=p_0$ pues
+$p_0(m)\in S$. 
+
+El problema 
+es que $p_0$ no es, en general, un morfismo de $\C[G]$-módulos. Promediamos
+sobre el grupo $G$ para conseguir un morfismo de grupos: Sea 
+\[
+p\colon M\to S,\quad
+p(m)=\frac{1}{|G|}\sum_{g\in G}g^{-1}\cdot p_0(g\cdot m).
+\]
+
+Primero demostramos que $p$ es un morfismo de $\C[G]$-módulos. Alcanza con ver que
+$p(g\cdot m)=g\cdot p(m)$ para todo $g\in G$ y $m\in M$. En efecto,
+\[
+p(g\cdot m)=\frac{1}{|G|}\sum_{h\in G}h^{-1}\cdot p_0(h\cdot (g\cdot m))
+=\frac{1}{|G|}\sum_{h\in G}(gh^{-1})\cdot p_0(h\cdot m)=g\cdot p(m).
+\]
+
+Veamos ahora que $p(M)=S$. La inclusión $\subseteq$ es trivial, pues $S$ es un submódulo de $M$ 
+y además $p_0(M)\subseteq S$. Recíprocamente, si $s\in S$, entonces $g\cdot s\in S$, pues
+$S$ es un submódulo. Luego 
+$s=g^{-1}\cdot (g\cdot s)=g^{-1}\cdot p_0(g\cdot s)$ y en consecuencia
+\[
+s=\frac{1}{|G|}\sum_{g\in G}g^{-1}\cdot (g\cdot s)=\frac{1}{|G|}\sum_{g\in G}g^{-1}\cdot (p_0(g\cdot s))=p(s).
+\]
+Como $p(m)\in S$ para todo $m\in M$, entonces $p^2(m)=p(m)$, es decir que $p$ es un proyector en $S$. Luego $S$ se complementa en $M$, es decir $M=S\oplus\ker(p)$.
+\end{proof} 
+
+La misma demostración del teorema de Maschke vale para el álgebra de grupo real o racional. 
+La descomposición de un módulo sobre el álgebra de grupo dependerá
+fuertemente del cuerpo sobre el que se trabaje. 
+
+\begin{example}
+Sea $G=\langle g\rangle$ el grupo cíclico de orden cuatro y sea $\rho_g=\begin{pmatrix}
+0&-1\\
+1&0\end{pmatrix}$. 
+Sea $M=\C^{2\times 1}$ con la estructura de $\C[G]$-módulo dada por 
+\[
+g\cdot\begin{pmatrix}u\\v\end{pmatrix}
+%\begin{pmatrix}0&-1\\1&0\end{pmatrix}\begin{pmatrix}u\\v\end{pmatrix}
+=\begin{pmatrix}-v\\u\end{pmatrix},
+\]
+es decir, si $a,b,c,d\in\C$, entonces 
+\[
+(a1+bg+cg^2+dg^3)\cdot\begin{pmatrix}u\\v\end{pmatrix}
+=\begin{pmatrix}
+(a-d)u+(c-b)v\\
+(1-b)u+(a-d)v
+\end{pmatrix}.
+\]
+Sabemos por el teorema de Maschke que $M$ es semisimple. Veamos cómo descomponer el módulo $M$ como suma directa de simples. 
+Como $\dim M=2$, tendremos que $M$ es suma directa de dos submódulos de dimensión uno. 
+Observemos que si $S$ es un submódulo tal que $\{0\}\subsetneq S\subsetneq M$, 
+entonces $\dim S=1$. Además 
+\[
+S=\left\{\lambda\begin{pmatrix}
+u_0\\
+v_0
+\end{pmatrix}:\lambda\in\C\right\}
+\text{ es un submódulo de $M$}
+\Longleftrightarrow
+\begin{pmatrix}
+u_0\\
+v_0
+\end{pmatrix}
+\text{ es autovector de $\rho_g$}.
+\]
+Como la matriz $\rho_g$ tiene polinomio característico $X^2+1$, se sigue 
+que  
+$\begin{pmatrix}
+i\\
+1\end{pmatrix}$ es autovector de $\rho_g$ de autovalor $-i$ y que
+$\begin{pmatrix}
+-i\\
+1\end{pmatrix}$ es autovector de autovalor $i$. 
+Luego $M$ se descompone en suma directa de simples como 
+\[
+M=\C\begin{pmatrix}
+i\\
+1\end{pmatrix}
+\oplus
+\C
+\begin{pmatrix}
+-i\\
+1\end{pmatrix}
+\]
+\end{example}
+
+Observar que en ejemplo anterior pudimos descomponer a la matriz $\rho_g$ 
+gracias a la existencia de autovectores, algo 
+que no pasaría si consideramos módulos sobre el álgebra de grupo real.   
+
+\begin{example}
+Sea $G=\langle g\rangle$ el grupo cíclico de orden cuatro y sea $\rho_g=\begin{pmatrix}
+0&-1\\
+1&0\end{pmatrix}$. 
+Sea $M=\R^{2\times 1}$ con la estructura de $\R[G]$-módulo dada por 
+\[
+g\cdot\begin{pmatrix}u\\v\end{pmatrix}
+=\begin{pmatrix}-v\\u\end{pmatrix}.
+\]
+Tal como hicimos en el ejemplo anterior, 
+como $\dim M=2$, si $S$ es un submódulo de $M$ tal que $\{0\}\subsetneq S\subsetneq M$, entonces $\dim S=1$. 
+Pero como $\rho_g$ no tiene autovectores reales, $M$ no tendrá submódulos de dimensión uno.  
+En consecuencia, $M$ es simple como $\R[G]$-módulo. 
+\end{example}

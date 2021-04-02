@@ -1,0 +1,114 @@
+\chapter{El teorema chino del resto}
+
+En este capítulo veremos una generalización del conocido teorema chino del resto válida para anillos conmutativos. 
+Empezaremos con algunas observaciones básicas. 
+
+\begin{definition}
+\index{Ideales!coprimos}
+Sea $R$ un anillo conmutativo y sean $I$ y $J$ ideales de $R$. Diremos que $I$ y $J$ son \textbf{coprimos}
+si $I+J=R$. 	
+\end{definition}
+
+La terminología está justificada por la siguiente observación.
+
+\begin{example}
+Si $R=\Z$, $I=(a)$ y $J=(b)$, entonces $I$ y $J$ serán coprimos si y sólo si existen $r,s\in\Z$ tales que $ra+sb=1$, es decir si y sólo si $\gcd(a,b)=1$. 	
+\end{example}
+
+Si $I$ y $J$ son ideales de $R$, entonces
+\[
+IJ=\left\{\sum_{i=1}^mu_iv_i:m\in\N_0,\,u_i\in I,\,v_i\in J\right\}
+\]
+es también un ideal de $R$. Vale además que $IJ\subseteq I\cap J$. La igualdad no siempre vale, tal como nos muestra el siguiente ejemplo.
+
+\begin{example}
+Si $R=\Z$ y además $I=J=(2)$, entonces $IJ=(4)\subsetneq (2)=I\cap J$. 	
+\end{example}
+
+Sin embargo, si $I$ y $J$ son ideales coprimos de un anillo conmutativo $R$, entonces $IJ=I\cap J$. En efecto, para demostrar la inclusión no trivial, 
+sea $x\in I\cap J$. Entonces $1=u+v$ para ciertos $u\in I$ y $v\in J$ pues los ideales son coprimos, y luego 
+\[
+x=x1=x(u+v)=xu+xv\in IJ. 
+\]
+
+
+\begin{theorem}[teorema china del resto]
+\index{Teorema!chino del resto}
+Sea $R$ un anillo conmutativo y sean $I$ y $J$ ideales coprimos de $R$. Si $u,v\in R$, existe $x\in R$ tal que
+$\pi_I(x)=\pi_I(u)$ y $\pi_J(x)=\pi_J(v)$, donde $\pi_I\colon R\to R/I$ y $\pi_J\colon R\to R/J$ son los morfismos canónicos. 
+\end{theorem}
+
+\begin{proof}
+	Como $I$ y $J$ son coprimos, existen $a\in I$ y $b\in J$ tales que $1=a+b$. Si $x=av+bu$, entonces 
+	\[
+	x-u=av+(b-1)u=av-au=a(v-u)\in I.
+	\]
+	Similarmente, $x-v\in J$. Luego $\pi_I(x-u)=0$ y entonces $\pi_I(x)=\pi_I(u)$. Análogamente, como $\pi_J(x-v)=0$, se tiene que $\pi_J(x)=\pi_J(v)$.   
+\end{proof}
+
+Si escribimos 
+$x\equiv u\bmod I\Longleftrightarrow x-u\in I$ y 
+$x\equiv v\bmod J\Longleftrightarrow x-v\in J$, 
+entonces el teorema chino del resto garantinza la existencia de $x\in R$ tal que 
+\[
+\begin{cases}
+x\equiv u\bmod I,\\
+x\equiv v\bmod J.
+\end{cases}
+\]
+
+\begin{corollary}
+Si $R$ es un anillo conmutativo y $I$ y $J$ son ideales coprimos de $R$, entonces
+$R/(I\cap J)\simeq (R/I)\times(R/J)$.	
+\end{corollary}
+
+\begin{proof}
+Sea $f\colon R\to (R/I)\times (R/J)$, $f(a)=(\pi_I(a),\pi_J(a))$. Claramente, $f$ es un morfismo tal que $\ker f=I\cap J$. 
+Gracias al teorema anterior, $f$ es sobreyectivo. En efecto,
+Si $(u+I,v+J)\in R/I\times R/J$, entonces existe $x\in R$ tal que $x-u\in I$ y $x-v\in J$, es decir
+$f(x)=(u+I,v+J)$. El primer teorema de isomorfismos concluye la demostración.  	
+\end{proof}
+
+Veamos qué pasa con el resultado anterior en el caso particular $R=\Z$. 
+Sean $a,b\in\Z$ tales que $\gcd(a,b)=1$. Si $u,v\in\Z$, entonces, al utilizar el corolario con $I=(a)$ y $J=(b)$, 
+tenemos garantizada la existencia de $x\in\Z$ tal que
+\[
+\begin{cases}
+x\equiv u\bmod a,\\
+x\equiv v\bmod b,	
+\end{cases}
+\]
+para todo $u,v\in\Z$. 
+
+\begin{exercise}
+Si $I_1,\dots,I_n$ son ideales de un anillo conmutativo $R$, entonces
+\[
+I_1\cdots I_n=\left\{\sum_{j=1}^m a_{1j}\cdots a_{nj}:m\in\N_0,\,a_{ij}\in I_i,\,1\leq j\leq m,\,1\leq i\leq n\right\}
+\]
+es un ideal de $R$. Puede demostrarse además que si $I_1$ es un ideal coprimo con $I_j$ para todo $j\in\{2,\dots,n\}$ entonces
+$I_1$ y $I_2\cdots I_n$ son también ideales coprimos. 
+\end{exercise}
+
+El ejercicio anterior nos permite extender el teorema chino del resto a finitos ideales. Supongamos que $R$ es un anillo conmutativo y que
+$I_1,\dots,I_n$ son ideales de $R$ tales que $I_i$ e $I_j$ son coprimos siempre que $i\ne j$. Si $x_1,\dots,x_n\in R$, puede demostrarse que
+entonces existe $x\in R$ 
+tal que $\pi_i(x_i)=\pi_i(x)$ para todo $i\in\{1,\dots,n\}$, donde $\pi_i\colon R\to R/I_i$ es el morfismo canónico. En este caso, además,
+\[
+R/(I_1\cap\cdots\cap I_n)\simeq (R/I_1)\times\cdots\times (R/I_n).
+\]
+
+Un hecho sorprendente. El teorema de interpolación de Lagrange es en realidad un caso particular del teorema chino del resto en el anillo de polinomios $R=\R[X]$. En efecto,
+si $x_1,\dots,x_k\in\R$ son tales que $x_i\ne x_j$ y fijamos elementos $y_1,\dots,y_k\in\R$, entonces, gracias a la versión abstracta del teorema chino del resto aplicado
+a los ideales coprimos $I_j=(X-x_j)$ para $j\in\{1,\dots,k\}$, se garantizará la existencia de una única solución 
+módulo $(X-x_1)\cdots (X-x_k)$ del sistema
+\[
+\begin{cases}
+f\equiv y_1\bmod (X-x_1),\\
+f\equiv y_1\bmod (X-x_2),\\
+\vdots\\
+f\equiv y_1\bmod (X-x_k).	
+\end{cases}
+\]
+El sistema tendrá en particular una única solución de grado $k-1$, 
+que es lo que conocemos como el polinomio interpolador de Lagrange.
+

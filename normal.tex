@@ -1,0 +1,345 @@
+\chapter{Cocientes}
+\label{cocientes}
+
+Si $G$ es un grupo y $N$ es un subgrupo de $G$, nos interesa saber cuándo 
+el conjunto $G/N$ de coclases es un grupo con 
+la operación $G/N\times G/N\to G/N$,  
+$(xN,yN)\mapsto xyN$, es decir, cuándo esta operación está 
+bien definida. ¿Qué significa eso? Queremos que esa operación sea una función. 
+Para eso, se necesita que si $xN=x_1N$ y además $yN=y_1N$, entonces
+$xyN=x_1y_1N$. Veamos cómo puede interpretarse esa condición. Si $x^{-1}x_1\in N$ y 
+$y^{-1}y_1\in N$, entonces $x_1=xn$ y además $y_1=ym$ para ciertos $m,n\in N$. Entonces
+\[
+(xy)^{-1}(x_1y_1)=y^{-1}x^{-1}x_1y_1=y^{-1}nym\in N
+\]
+si y sólo si $y^{-1}ny\in N$. 
+
+\begin{example}
+Si $G=\Sym_3$ y $H=\langle (12)\rangle$, entonces $(xN,yN)\mapsto xyN$ no es una función. Para verlo, primero recordemos que 
+$G/H=\{H,(123)H,(132)H\}$, donde 
+$H=(12)H$, $(123)H=(13)H$ y $(132)H=(23)H$. Tenemos
+\[
+(132)N=(13)(23)N=(13)N(23)N=(123)N(132)N=N,
+\]
+una contradiccion. 
+\end{example}
+
+\begin{definition}
+	\index{Subgrupo!normal}
+	Sea $G$ un grupo. 
+	Un subgrupo $N$ de $G$ se dice \textbf{normal} si $gNg^{-1}\subseteq N$ para todo
+	$g\in G$. Notación: si $N$ es normal en $G$, entonces $N\unlhd G$.
+\end{definition}
+
+Si $G$ es un grupo abeliano, todo subgrupo de $G$ es normal en $G$. 
+
+\begin{proposition}
+\label{pro:normalidad}
+Sea $N$ un subgrupo de $G$. Las siguientes afirmaciones son equivalentes:
+\begin{enumerate}
+	\item $gNg^{-1}\subseteq N$ para todo $g\in G$.
+	\item $gNg^{-1}=N$ para todo $g\in G$.
+	\item $gN=Ng$ para todo $g\in G$.
+\end{enumerate}	
+\end{proposition}
+
+\begin{proof}
+Demostremos que $(1)\implies (2)$, que es la única implicación no trivial. Si $n\in N$ y $g\in G$, entonces
+$n=g(g^{-1}ng)g^{-1}\in gNg^{-1}$. 	
+\end{proof}
+
+\begin{proposition}
+	Sea $N$ un subgrupo de $G$. Las siguientes propiedades son equivalentes:
+	\begin{enumerate}
+		\item $N$ es normal en $G$.
+		\item $(gN)(hN)=(gh)N$ para todo $g,h\in G$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Vamos a demostrar que $(1)\implies(2)$. Sea $g\in G$. Como $gNg^{-1}=N$,
+	entonces $(gN)(hN)=g(Nh)N=g(hN)N=(gh)N$. Veamos ahora que $(2)\implies(1)$. Si $g\in G$, entonces
+	$gNg^{-1}\subseteq (gN)(g^{-1}N)=(gg^{-1})N=N$. 
+\end{proof}
+
+\begin{examples}
+Si $G$ es un grupo, entonces 
+$\{1\}$ y $G$ son subgrupos normales de $G$.
+\end{examples}
+
+\begin{example}
+\index{Centro!de un grupo}
+Si $G$ es un grupo, $Z(G)$ es un subgrupo normal de $G$. Más aún, si $N\leq Z(G)$, entonces $N\unlhd G$. 	
+\end{example}
+
+\begin{example}
+Si $G$ es un grupo, entonces $[G,G]$ es un subgrupo normal de $G$ pues si $x\in [G,G]$ y $g\in G$, entonces 
+$gxg^{-1}=(gxg^{-1}x^{-1})x=[g,x]x\in [G,G]$. Alternativamente, 
+\[
+g\left(\prod_{i=1}^k[x_i,y_i]\right)g^{-1}=\prod_{i=1}^k [gx_ig^{-1},gy_ig^{-1}]
+\]
+para todo $g,x_1,\dots,x_k,y_1,\dots,y_k\in G$. 	
+\end{example}
+
+\begin{example}
+Para todo $n\in\N$, $\Alt_n$ es un subgrupo normal de $\Sym_n$. 
+De hecho, si $\sigma\in\Alt_n$ y $\tau\in\Sym_n$, entonces $\tau\sigma\tau^{-1}\in\Alt_n$ pues  
+\[
+\sgn(\tau\sigma\tau^{-1})=\sgn(\sigma)=1. 
+\]
+\end{example}
+
+\begin{example}
+Si $N$ es un subgrupo de $G$ tal que $(G:N)=2$, entonces $N$ es normal en $G$. Queremos demostrar que $gN=Ng$ para todo $g\in G$. Sea $g\in G$. Si $g\in N$, entonces $gN=Ng$. Si $g\not\in N$, entonces
+$gN\ne N$. Como $(G:N)=2$, podemos escribir a $G$ como $G=N\cup gN$ (unión disjunta). En consecuencia, $gN=G\setminus N$. Similarmente se demuestra que
+$Ng=G\setminus N$ y luego $gN=Ng$. 	
+\end{example}
+
+\begin{example}
+El ejemplo anterior nos permite demostrar que $\langle (123)\rangle\unlhd\Sym_3$. Por otro lado, $\langle (12)\rangle$ no es normal en $\Sym_3$ pues
+por ejemplo $(13)(12)(13)=(23)\not\in\langle(12)\rangle$. 
+\end{example}
+
+\begin{example}
+$\SL_n(\R)$ es normal en $\GL_n(\R)$ pues si $g\in\GL_n(\R)$ y $x\in\SL_n(\R)$, entonces $\det(gxg^{-1})=(\det g)(\det x)(\det g)^{-1}=1$. 
+\end{example}
+
+\begin{example}
+\index{Grupo!de Klein}
+El grupo de Klein $K=\{\id,(12)(34),(13)(24),(14)(23)\}$ es normal en $\Sym_4$. 
+\end{example}
+
+%\begin{example}
+%\end{example}
+
+\index{Producto!semidirecto}
+En el ejercicio siguiente nos encontramos con un caso particular del producto semidirecto de dos grupos, una construcción general que resulta de mucha utilidad. 
+
+\begin{exercise}
+\index{Producto!semidirecto}
+Sea $G=\Z/p\times(\Z/p)^\times$ el grupo dado por la operación 
+\[
+(x,y)(u,v)=(x+yu,yv).
+\]	
+Demuestre que $\{(x,1):x\in\Z/p\}$ es normal en $G$ y que $\{(0,y):y\in(\Z/p)^\times\}$ no es normal en $G$. 
+\end{exercise}
+
+El siguiente ejercicio es útil:
+
+\begin{exercise}
+\index{Normalizador!de un subgrupo}
+Si $S$ es un subgrupo de $G$, se define el \textbf{normalizador} de $S$ en $G$ al subgrupo
+\[
+N_G(S)=\{g\in G:gSg^{-1}=S\}.
+\]	
+Demuestre que valen las siguientes afirmaciones:
+\begin{enumerate}
+\item $S\unlhd N_G(S)$.
+\item Si $S\leq T\leq G$ y $S\unlhd T$, entonces $T\leq N_G(S)$.
+\end{enumerate}
+\end{exercise}
+
+El ejercicio anterior nos dice que el normalizador de un subgrupo $S$ en $G$ es el mayor subgrupo de $G$ que contiene a $S$ como subgrupo normal. 
+ 
+Veamos algunos ejemplos de subgrupos normales un poco más difíciles. Primero calcularemos los subgrupos normales de $\Alt_4$. 
+
+\begin{example}
+\index{Subgrupos!normales de $\Alt_4$}
+Vamos a demostrar que 
+$\{\id\}$, $K=\{\id,(12)(34),(13)(24),(14)(23)\}$ y $\Alt_4$ son los únicos subgrupos normales de $\Alt_4$. 
+ 	
+Como $\Alt_4=\{\text{3-ciclos}\}\cup K$, $K$ es el único subgrupo de $\Alt_4$ con cuatro elementos, y esto implica que $K$ es normal en $\Alt_4$ (pues cada conjugado $gKg^{-1}$ también será un subgrupo de $\Alt_4$ de cuatro elementos). Sea $N\ne\{\id\}$ un subgrupo normal de $\Alt_4$. Si $N$ contiene un 3-ciclo, digamos
+$(abc)\in N$. entonces
+\[
+(acd)=(bcd)(abc)(bcd)^{-1}\in N
+\]
+y luego $N=\Alt_4$ (pues todos los 3-ciclos están en $N$). Supongamos entonces que $N$ no contiene 3-ciclos. Entonces algún elemento no trivial de $K$ 
+pertenece a $N$, digamos $(ab)(cd)\in N$. En consecuencia, 
+\[
+(ac)(bd)=(bcd)(ab)(cd)(bcd)^{-1}\in N,\quad
+(ad)(bc)=(ab)(cd)(ac)(bd)\in N
+\]
+y luego $N=K$. 
+\end{example}
+ 
+Es importante remarcar que la normalidad no es transitiva.
+
+\begin{exercise}
+\index{Grupo!diedral}
+Sea $G=\D_4$ el grupo diedral de tamaño ocho y sean $N=\langle s,r^2\rangle$ y $H=\langle s\rangle$. Demuestre que 
+$H$ es normal en $N$, $N$ es normal en $G$ pero $H$ no es normal en $G$.    
+\end{exercise} 
+ 
+Vamos a calcular ahora los subgrupos normales de $\Sym_4$. 
+  
+\begin{example}
+\index{Subgrupos!normales de $\Sym_4$}
+Vamos a demostrar que $\{\id\}$, $K$, $\Alt_4$ y $\Sym_4$ son los únicos subgrupos normales de $\Sym_4$.
+
+Sea $N$ un subgrupo normal de $\Sym_4$. Si $N\subseteq\Alt_4$, entonces $N$ es normal en $\Alt_4$ y luego, por lo visto en el ejemplo anterior, $N=\{\id\}$, 
+$N=K$ o bien $N=\Alt_4$. Supongamos entonces que $N\not\subseteq\Alt_4$, es decir $N$ contiene una permutación impar. Si $\sigma\in\Sym_4$ es una permutación impar, entonces $\sigma$ es una trasposición o $\sigma$ es un 4-ciclo. 
+
+Si $N$ contiene una trasposición, entonces todas las trasposiciones
+también pertenecen a $N$ pues
+\[
+\tau(ij)\tau^{-1}=(\tau(i)\,\tau(j))
+\]
+para todo $\tau\in\Sym_4$. En este caso, $N=\Sym_4$ pues $\Sym_4$ está generado por trasposiciones.   
+
+Si $N$ contiene un 4-ciclo, todos los 4-ciclos también están en $N$ pues
+\[
+\tau(ijkl)\tau^{-1}=(\tau(i)\,\tau(j)\,\tau(k)\,\tau(l))
+\]
+para todo $\tau\in\Sym_4$ y además $K\subseteq N$ pues
+\[
+(ac)(bd)=(abcd)^2.
+\]
+Esto nos dice que $|N|\geq10$. Como además $K\subseteq N$, se tiene que $|N\cap\Alt_4|\geq 5$. Por otro lado, $N\cap\Alt_4$ es un subgrupo normal de $\Alt_4$. 
+Por lo visto en el ejemplo anterior, $N\cap\Alt_4=\Alt_4\subseteq N$. En conclusión, $N=\Sym_4$.   
+\end{example}
+
+\begin{theorem}
+\label{Grupo!cociente}
+Si $N$ es un subgrupo normal de $G$, entonces $G/N$ es un grupo con la operación $(xN)(yN)=(xy)N$.  
+\end{theorem}
+
+\begin{proof}
+Sabemos que la normalidad de $N$ en $G$ garantiza la buena definición de la operación. Calculos rutinarios, que dejamos como ejercicio, demuestran que 
+esta operación transforma al conjunto $G/N$ en un grupo. 
+\end{proof}
+
+% todo: Mover cocientes de S4 al capítulo de isomorfismos
+No estamos en condiciones de poder entender qué tipo de grupo obtenemos
+como grupo cociente, ya que para eso es necesario poder entender qué significa 
+que dos grupos sean "iguales" aunque parezcan distintos. 
+ 
+%Veamos cómo son los posibles cocientes de $\Sym_4$. 
+% todo: Listar las coclases de S4 por K, i.e. los elementos del grupo cociente#
+\begin{example}
+\index{Cocientes!de $\Sym_4$}
+	Sabemos que $\{\id\}$, $K$, $\Alt_4$ y $\Sym_4$ son los únicos subgrupos normales de $\Sym_4$. Trivialmente 
+	obtenemos que
+	\[
+	\Sym_4/\{\id\}\simeq\Sym_4,\quad
+	\Sym_4/\Alt_4\simeq\Z/2,\quad
+	\Sym_4/\Sym_4\simeq\{\id\}.
+	\]
+	Veamos qué podemos decir del cociente $Q=\Sym_4/K$. Sabemos que $Q$ tiene orden seis y que $Q$ es no abeliano pues
+	\[
+	(12)K(13)K=(12)(13)K=(132)K\ne (123)K=(13)(12)K=(13)K(12)K.
+	\]
+	Vimos que existe un único grupo no abeliano de orden seis. Luego $Q\simeq\Sym_3$. 
+\end{example}
+
+%Para terminar el capítulo mencionamos dos ejercicios de mucha utilidad. 
+
+\begin{proposition}
+Si $H$ es un subgrupo normal de $G$, entonces $G/H$ es abeliano si y sólo si $[G,G]\subseteq H$. 
+\end{proposition}
+
+\begin{proof}
+Sean $x,y\in G$. Entonces 
+\begin{align*}
+    (xH)(yH)=(yH)(xH) \Longleftrightarrow (xy)H=(yx)H \Longleftrightarrow x^{-1}y^{-1}xy\in H.
+\end{align*}
+Luego $G/H$ es conmutativo si y sólo si $[x,y]=xyx^{-1}y^{-1}\in H$ para todo $x,y\in G$. 
+\end{proof}
+
+Veamos una pequeña aplicación:
+
+\begin{example}
+\index{Conmutador!de $\Alt_4$}
+$[\Alt_4,\Alt_4]=K=\{\id,(12)(34),(13)(24),(14)(23)\}$. 
+Sabemos que $K$ es normal en $\Alt_4$. Como $\Alt_4/K$ tiene tres elementos, es abeliano. El ejercicio anterior, entonces, 
+nos dice que $[\Alt_4,\Alt_4]\subseteq K$. Por otro lado, como 
+\[
+(ab)(cd)=[(abc),(cda)],
+\]   	
+se concluye que $K\subseteq[\Alt_4,\Alt_4]$. 
+\end{example}
+
+Otra propiedad importante:
+
+\begin{proposition}
+Si $G/Z(G)$ es cíclico, entonces $G$ es abeliano.
+\end{proposition}
+
+\begin{proof}
+Supongamos que $G/Z(G)=\langle gZ(G)\rangle$. Sean $x,y\in G$. Escribamos $xZ(G)=g^kZ(G)$ y también $yZ(G)=g^lZ(G)$, es decir
+$x=g^kz_1$, $y=g^lz_2$ para ciertos $k,l\in\Z$ y $z_1,z_2\in Z(G)$. Luego $xy=yx$. 
+\end{proof}
+
+\begin{theorem}
+Sea $p$ un número primo y sea $H$ un subgrupo de $G$. Si $(G:H)=p$, las siguientes afirmaciones son equivalentes:
+\begin{enumerate}
+\item $H$ es normal en $G$.
+\item Si $g\in G\setminus H$, entonces $g^p\in H$.
+\item Si $g\in G\setminus H$, entonces $g^n\in H$ para algún $n\in\N$ sin divisores primos $<p$.
+\item Si $g\in G\setminus H$, entonces $g^k\not\in H$ para todo $k\in\{2,\dots,p-1\}$. 
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	La implicación $(1)\implies(2)$ es consecuencia inmediata del teorema de Lagrange, pues $|G/H|=p$. 
+	
+	La implicación $(2)\implies(3)$ es trivial pues $p$ es un número primo. 
+	
+	Demostremos que $(3)\implies(4)$. Si $g^k\in H$ para algún $k\in\{2,\dots,p-1\}$, como $\gcd(k,n)=1$, existen $r,s\in\Z$ tales que
+	$rk+sn=1$. Luego
+	\[
+	g=g^1=g^{rk+sn}=(g^k)^r(g^n)^s\in H,
+	\]
+	una contradicción. 
+	
+	Para finalizar demostremos que $(4)\implies(1)$. Sea $x\in G\setminus H$ y sea $h\in H$. Queremos demostrar que entonces $xhx^{-1}\in H$. Si $y=xhx^{-1}\not\in H$, entonces
+	$y^k\not\in H$ para todo $k\in\{2,\dots,p-1\}$. Esto implica que las coclases 
+	\[
+	H,yH,y^2H,\dots,y^{p-1}H
+	\]
+	son todas distintas (pues si $y^iH=y^jH$ para $i,j$ tales que $i<j$, entonces $y^{j-i}\in H$ con $j-i\leq p-2$). Como $y=xhx^{-1}$, 
+	entonces
+	\[
+	(yx)H=(xh)H=xH=y^iH
+	\]
+	para algún $i\in\{0,1,\dots,p-1\}$. Si $i=0$, entonces $yx=xh\in H$ y luego $x\in H$, una contradicción. Luego $(yx)H=y^iH$ para algún $i\in\{1,\dots,p-1\}$ y entonces
+	\[
+	y^iH=xH=y^{i-1}H
+	\]
+	para algún $i\in\{0,\dots,p-2\}$, una contradicción.  
+\end{proof}
+
+Veamos algunas consecuencias. La primera se hará en el caso en que el grupo sea finito. 
+
+\begin{corollary}
+\label{cor:p_menor}
+	Sea $p$ el menor número primo que divide al orden de un grupo finito  
+	$G$ y sea $H$ es un subgrupo de $G$ índice $p$. Entonces $H$ es normal en $G$. 
+\end{corollary}
+
+\begin{proof}
+	Si $g\in G\setminus H$, entonces $g^n=1\in H$, donde $n=|G|$. Como $p$ es primo, $n$ no tiene divisores primos $<p$. El teorema anterior impica entonces que $H$ es normal en $G$. 
+\end{proof}
+
+En el teorema no pedimos que $G$ sea un grupo finito. Podemos entonces obtener el siguiente resultado.
+
+\begin{corollary}
+Sea $p$ un número primo y sea $G$ un grupo tal que todo elemento tiene orden una potencia de $p$. Si $H$ es un subgrupo de $G$ de índice $p$, entonces $H$ es normal en $G$.  
+\end{corollary}
+
+\begin{proof}
+Sea $g\in G\setminus H$ y sea $n=|g|$. Como todo elemento de $G$ tiene orden una potencia de $p$, 
+$n$ es en particular una potencia de $p$ y, en consecuencia, $n$ no posee divisores primos $<p$. Como además $g^n=1\in H$, el teorema anterior implica que $H$ es normal en $G$. 
+en particular $g^n\in H$.  	
+\end{proof}
+
+Terminamos el capítulo con una definición importante. 
+
+\begin{definition}
+\index{Grupo!simple}
+Diremos que un grupo $G$ es \textbf{simple} si $G\ne\{1\}$ y sus únicos subgrupos normales
+son $G$ y $\{1\}$.
+\end{definition}
+
+Por ahora, nos quedaremos conformes al observar que si $p$ es un número primo, entonces $\Z/p$ es un grupo simple. Veremos otros ejemplos más adelante.  
+
+

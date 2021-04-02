@@ -1,0 +1,194 @@
+\chapter{Grupos simples}
+
+\index{Grupo!simple}
+Recordemos que un grupo $G$ es \textbf{simple} si $G\ne\{1\}$ y sus únicos subgrupos normales
+son $G$ y $\{1\}$.
+
+\begin{example}
+Si $p$ es un número primo, $\Z/p$ es simple.
+\end{example}
+
+\index{Clase de conjugación}
+No es difícil demostrar que $\Alt_5$ es simple, pero necesitamos repasar algunos conceptos. Si $G$ es un grupo y $g\in G$, la clase de conjugación de $g$ en $G$ es el conjunto
+$\{xgx^{-1}:x\in G\}$. Una observación sencilla pero importante: Si el subgrupo $N$ de $G$ es normal en $G$, entonces $N$ es uníón de clases de conjugación de $G$, y una de esas clases es $\{1\}$, pues 
+\[
+N=\bigcup_{n\in N}\{xnx^{-1}:x\in G\}.
+\]  
+
+%\begin{proposition}
+%El grupo $\SL_3(2)$ es simple. 
+%\end{proposition}
+
+%\begin{proof}
+%El grupo $\SL_3(2)=\{a\in\GL_3(2):\det(a)=1\}$ tiene orden... 
+%\end{proof}
+
+%Veamos otro ejemplo:
+Veamos una aplicación sencilla de la afirmación anterior. 
+
+\begin{proposition}
+El grupo alternado $\Alt_5$ es simple.
+\end{proposition}
+
+\begin{proof}
+Para demostrar el teorema vamos a contar los tamaños de las clases de conjugación de $\Alt_5$. Las clases de conjugación de $\Alt_5$ y sus tamaños son:
+\begin{align*}
+\id && 1\\
+(123) && 20\\
+(12)(34) && 15\\
+(12345) && 12\\
+(21345) && 12
+\end{align*}
+Si $N$ es un subgrupo normal de $\Alt_5$, entonces $N$ es unión de clases de conjugación de $\Alt_5$ y una de esas clases es $\{id\}$. Sin embargo, ninguna unión de clases de conjugación
+de $\Alt_5$ que incluya $\{id\}$ tendrá tamaño un divisor de 60, a menos que $N=\{\id\}$ o bien que  $N=\Alt_5$.  
+\end{proof} 
+
+Nuestro objetivo es demostrar que los grupos alternados $\Alt_n$ son simples siempre que $n\geq5$. Para eso, necesitamos demostrar
+varios lemas auxiliares. 
+
+\index{Estructura cíclica}
+Recordemos toda permutación $\rho\in\Sym_n$ puede descomponerse como producto de ciclos disjuntos, digamos
+\[
+\rho=(a_1\cdots a_r)(b_1\cdots b_s)\cdots (c_1\cdots c_t)
+\]
+donde por convención omitiremos aquellos ciclos de longitud uno. 
+La estrucutra cíclica de $\rho$ será entonces la sucesión ordenada de los números $r,s,\dots t$, 
+donde convenientemente omitiremos los puntos fijos. Por ejemplo, la estructura cíclica de la trasposición $(ab)$ es 2, 
+del 3-ciclo $(abc)(d)$ es 3 y de la permutación $(123)(45)(789a)(bcd)(d)$ es 2,3,3,4. 
+  
+El primer lema que demostraremos afirma que dos permutaciones tienen la misma estructura cíclica si y sólo si son conjugadas. 
+
+\begin{lemma}
+Si $\rho_1$ y $\rho_2$ son permutaciones de $\Sym_n$ con la misma estructura cíclica, entonces
+$\rho_2=\sigma\rho_1\sigma^{-1}$ para alguna permutación $\sigma\in\Sym_n$. 
+\end{lemma}
+
+\begin{proof}
+Supongamos que
+\begin{align*}
+\rho_1=(a_1\cdots a_r)(b_1\cdots b_s)\cdots (c_1\cdots c_t), && 
+\rho_2=(x_1\cdots x_r)(y_1\cdots y_s)\cdots (z_1\cdots z_t).
+\end{align*}
+Sean 
+\begin{align*}
+\Fix(\rho_1) &= \{x\in\{1,\dots,n\}:\rho_1(x)=x\}=\{k_1,\dots,k_m\},&&
+\Fix(\rho_2)=\{l_1,\dots,l_m\}	
+\end{align*}
+los puntos fijos de las permutaciones $\rho_1$ y $\rho_2$, respectivamente. Entonces
+\[
+\sigma(x)=\begin{cases}
+x_j & \text{si $x=a_j$ para algún $j$},\\
+y_j & \text{si $x=b_j$ para algún $j$},\\
+\vdots\\
+z_j & \text{si $x=c_j$ para algún $j$},\\
+l_j & \text{si $x=k_j$ para algún $j$},	
+\end{cases}
+\]
+cumple que $\sigma\rho_1\sigma^{-1}=\rho_2$. 
+\end{proof}
+
+El siguiente lema es la variante del anterior correspondiente al grupo alternado. 
+Nos interesa saber cuándo dos permutaciones conjugadas en $\Sym_n$ son también conjugadas en $\Alt_n$.
+
+\begin{lemma}
+Si $\rho_1,\rho_2\in\Sym_n$ son conjugados en $\Sym_n$ y además $|\Fix(\rho_1)|\geq2$, entonces
+$\mu\rho_1\mu^{-1}=\rho_2$ para algún $\mu\in\Alt_n$.  
+\end{lemma}
+
+\begin{proof}
+Supongamos que $\rho_2=\sigma\rho_1\sigma^{-1}$ para algún $\sigma\in\Sym_n$. 
+Por hipótesis, sabemos que existen $a,b\in\{1,\dots,n\}$ tales que $\rho_1(a)=a$, $\rho_1(b)=b$ y $a\ne b$. Sea
+\[
+\mu=\begin{cases}
+\sigma & \text{si $\sigma\in\Alt_n$,}\\
+\sigma(ab) & \text{en caso contrario.}
+\end{cases}
+\]
+Entonces $\mu\in\Alt_n$ y además $\mu\rho_1\mu^{-1}=\rho_2$ pues $(ab)$ conmuta on $\rho_1$. 
+\end{proof}
+
+Veamos algunos ejemplos.
+
+\begin{example}
+Si $\rho_1=(23)(156)$ y $\rho_2=(45)(123)$, entonces 
+el lema anterior nos dice que $\rho_2=\sigma\rho_1\sigma^{-1}$ si 
+\[
+\sigma=\binom{123456}{145623}.
+\]
+\end{example}
+
+\begin{example}
+Los 3-ciclos $\rho_1=(123)$ y $\rho_2=(132)$ son conjugados en $\Sym_3$ pues 
+$(123)=\sigma(132)\sigma^{-1}$ si $\sigma=(23)$. Sin embargo, $\rho_1$ y $\rho_2$ 
+no son conjugados en $\Alt_3$. 
+\end{example}
+
+Estamos en condiciones de probar el teorema del capítulo.
+
+\begin{theorem}[Jordan]
+\index{Teorema!de Jordan}
+\index{Simplicidad!de $\Alt_n$}
+Si $n\geq5$, $\Alt_n$ es simple. 
+\end{theorem}
+
+\begin{proof}
+Sea $N\ne\{\id\}$ un subgrupo normal de $\Alt_n$. Si $(abc)\in N$, entonces cualquier 3-ciclo también está en $N$ (pues todos los 3-ciclos son conjugados en $\Sym_n$ y por el lema anterior
+sabemos que $(ijk)=\mu(abc)\mu^{-1}\in N$ para algún $\mu\in\Alt_n$. Luego $N=\Alt_n$. 
+
+Vamos a demostrar ahora que nuestro $N$ siempre contiene un 3-ciclo. Como $N$ es no trivial, existe $\sigma\in N\setminus\{\id\}$. Sean $m=|\sigma|$ y $p$ un primo tal que divide a $m$. 
+Entonces $\tau=\sigma^{m/p}$ tiene orden $p$ y luego $\tau=\rho_1\cdots\rho_s$, donde los $\rho_j$ son $p$-ciclos disjuntos. 
+
+Si $p=2$, entonces $1=\sgn(\tau)=(-1)^s$ y luego $s$ es par. Escribimos 
+\[
+\tau=(ab)(cd)\rho_3\cdots\rho_s
+\]
+y entonces, como $\rho_3\cdots\rho_s$ conmuta con $(abc)$ y $(acb)$, 
+\[
+(ac)(bd)\tau=(abc)\tau(abc)^{-1}\in N
+\]
+y luego $(ab)(cd)\in N$. Sea $e\in\{1,\dots,n\}\setminus\{a,b,c,d\}$. Entonces
+\[
+(ae)(bd)=(aec)\underbrace{(ac)(bd)}_{\in N}(aec)^{-1}\in N
+\]
+y luego 
+\[
+(aec)=(ac)(ae)=(ac)(bd)(ae)(bd)\in N.
+\]
+
+Si $p=3$, podemos suponer sin perder generalidad que $s\geq2$ (pues de lo contrario $\tau$ sería un 3-ciclo). Entonces
+$\tau=(abc)(def)\rho_3\cdots\rho_s$. Como $(bcd)$ conmuta con $\rho_3\cdots\rho_s$ y $N$ es normal en $\Alt_n$, entonces
+\begin{align*}
+&(adbce)=(bcd)\tau(bcd)^{-1}\tau^{-1}\in N
+\shortintertext{y luego}
+&(adc)=(adb)(adbce)(adb)^{-1}(adbce)^{-1}\in N.
+\end{align*}
+
+Si $p>3$, entonces $\tau=(abcd\cdots z)\rho_2\cdots\rho_s$. En particular, $(abc)$ conmuta con $\rho_2\cdots\rho_s$ y entonces
+\[
+(abd)=(abc)\tau(abc)^{-1}\tau^{-1}\in N.\qedhere
+\]
+\end{proof}
+
+Como aplicación, vamos a calcular los subgrupos normales de $\Sym_n$ para $n\geq5$. 
+
+\begin{proposition}
+\index{Subgrupos normales!de $\Sym_n$}
+Sea $n\geq5$ y sea $N$ un subgrupo normal de $\Sym_n$. Entonces $N=\{\id\}$, $N=\Alt_n$ o bien $N=\Sym_n$. 
+\end{proposition}
+
+\begin{proof}
+Sea $N$ un subgrupo normal de $\Sym_n$. Como la restricción $\sgn|_N$ de la función signo a $N$ es un morfismo de grupos, 
+\[
+(N:\ker(\sgn|_N))=|\sgn(N)|\in\{1,2\}.
+\] 
+Si $(N:\ker(\sgn|_N)=1$, entonces $N\subseteq\Alt_n$ y entonces $N$ es normal en $\Alt_n$. 
+Luego $N=\{\id\}$ o bien $N=\Alt_n$ pues $\Alt_n$ es un grupo simple si $n\geq5$. 
+
+Si $(N:\ker(\sgn|_N)=2$, entonces $N\cap\Alt_n=\ker(\sgn|_N)$ es normal en $\Alt_n$ y luego, por la simplicidad de $\Alt_n$ para $n\geq5$, $N\cap\Alt_n=\{\id\}$ o bien $N\cap\Alt_n=\Alt_n$. 
+
+En el primer caso, $|N|=2$ y entonces $N$ contiene una permutación impar que además tiene orden dos, digamos
+$\tau=(ij)\tau_2\cdots\tau_s$, escrita como producto de trasposiciones disjuntas. Entonces
+$\pi=(ik)\tau(ik)\in N$ si $k\not\in\{i,j\}$ y $\pi\ne \tau$ pues $\tau(j)=i$ y $\pi(j)=k$. Luego $|N|\geq3$, una contradicción. 
+
+En el segundo caso, si $N\cap\Alt_n=\Alt_n$, entonces $N=\Alt_n$.
+\end{proof}

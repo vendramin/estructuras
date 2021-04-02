@@ -1,0 +1,31 @@
+\chapter{Cocientes}
+
+\begin{definition}
+	\index{Subgrupo!normal}
+	Sea $G$ un grupo. 
+	Un subgrupo $N$ de $G$ se dice \textbf{normal} si $gNg^{-1}=N$ para todo
+	$g\in G$.
+\end{definition}
+
+\begin{example}
+    Si $G$ es un grupo abeliano, todo subgrupo de $G$ es normal en $G$. 
+\end{example}
+
+Observemos que un subgrupo $N$ es normal si y sólo si $gN=Ng$ para todo $g\in
+G$.  Si $N$ es un subgrupo finito de $G$, entonces $N$ es normal en $G$ si y
+sólo si $gNg^{-1}\subseteq N$ para todo $g\in G$. 
+
+\begin{proposition}
+	Sea $N$ un subgrupo de $G$. Las siguientes propiedades son equivalentes:
+	\begin{enumerate}
+		\item $N$ es normal en $G$.
+		\item $(gN)(hN)=(gh)N$ para todo $g,h\in G$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Vamos a demostrar que $(1)\implies(2)$. Sea $g\in G$. Como $gNg^{-1}=N$,
+	entonces $(gN)(hN)=g(Nh)N=g(hN)N=(gh)N$. Veamos ahora que $(2)\implies(1)$. Si $g\in G$, entonces
+	$gNg^{-1}\subseteq (gN)(g^{-1}N)=(gg^{-1})N=N$. 
+\end{proof}
+

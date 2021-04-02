@@ -1,0 +1,131 @@
+\chapter{El teorema de Cauchy}
+
+\index{Puntos fijos!de una acción}
+\index{Ecuación de clases}
+Si $X$ es un $G$-conjunto finito, sabemos que $X$ puede descomponerse como unión disjunta de órbitas. Sea 
+\[
+\Fix(X)=\{x\in X:g\cdot x=x\text{ para todo $g\in G$}\}
+\]
+el \textbf{conjunto de puntos fijos} de $X$. Al tomar cardinal en la descomopsición que tenemos del conjunto $X$, 
+agrupar las órbitas que tienen únicamente un elemento y 
+utilizar el principio fundamental del conteo para las órbitas con $\geq2$ elementos, obtenemos
+\begin{equation}
+\label{eq:clases}	
+|X|=|\Fix(X)|+\sum_{i=1}^k|G\cdot x_i|
+=|\Fix(X)|+\sum_{i=1}^k(G:G_{x_i}),
+\end{equation}
+donde los $x_j$ son los representantes de las órbitas que tienen $\geq2$ elementos. La fórmula~\eqref{eq:clases} es muy útil y se conoce como
+\textbf{ecuación de clases}. 
+
+\begin{example}
+Si un grupo finito $G$ actúa en $G$ por conjugación, un cálculo directo nos muestra que $\Fix(G)=Z(G)$ y luego la ecuación de clases queda
+\[
+|G|=|Z(G)|+\sum_{i=1}^k(G:C_G(x_i)),	
+\]
+para ciertos $x_1,\dots,x_k\in G$ tales que 
+$(G:C_G(x_i))\geq2$ para todo $i\in\{1,\dots,k\}$. 
+\end{example}
+
+
+\begin{definition}
+Sea $p$ un número primo. Diremos que $G$ es un $p$-grupo si $|G|=p^m$ para algún $m\in\N_0$.  	
+\end{definition}
+
+\begin{theorem}
+Sea $p$ un número primo y 
+sea $G$ un $p$-grupo. Si $\{1\}\ne N\unlhd G$, entonces $N\cap Z(G)\ne\{1\}$. 	
+\end{theorem}
+
+\begin{proof}
+Como $N$ es normal en $G$, $G$ actúa en $N$ por conjugación. El teorema fundamental del conteo nos dice que cada órbita de la acción es una potencia del primo $p$. Escribamos
+\[
+N=\underbrace{\mathcal{O}_1\cup\cdots\cup \mathcal{O}_k}_{\text{órbitas de un elemento}}\cup\underbrace{\mathcal{O}_{k+1}\cup\cdots\cup\mathcal{O}_m}_{\text{órbitas de tamaño $>1$}},
+\]	
+Como $N\cap Z(G)=\mathcal{O}_1\cup\cdots\cup\mathcal{O}_k$, los números $k=|N\cap Z(G)|$ y $|N\setminus(N\cap Z(G))|$ son divisibles por el primo $p$. Luego
+$|N|\equiv|N\cap Z(G)|\bmod p$. Como $1\in N\cap Z(G)$, entonces $|N\cap Z(G)|>1$. En particular, $N\cap Z(G)\ne\{1\}$. 
+\end{proof}
+
+\begin{corollary}
+Sea $p$ un número primo. Si  
+$G$ es un $p$-grupo, entonces $Z(G)\ne\{1\}$.  
+\end{corollary}
+
+\begin{proof}
+Tomar $N=G$ en el teorema anterior.
+\end{proof} 
+
+\begin{corollary}
+	Sea $p$ un número primo. Si $|G|=p^2$, entonces $G$ es abeliano.  
+\end{corollary}
+
+% todo: página?
+
+\begin{proof}
+Por el teorema de lagrange, $|Z(G)|\in\{1,p,p^2\}$. Además, como $G$ es un $p$-grupo, $Z(G)\ne\{1\}$. Si $|Z(G)|=p$, entonces $Z(G)$ es cíclico y luego $G$ es abeliano (es un ejercicio que hicimos en la página...), una contradicción. Luego $|Z(G)|=p^2$ y en consecuencia $G=Z(G)$. 	
+\end{proof}
+
+\begin{theorem}[Cauchy]
+\index{Teorema!de Cauchy}
+Si $G$ es finito y $p$ es un primo que divide al orden de $G$, entonces existe $g\in G$ de orden $p$. 	
+\end{theorem}
+
+\begin{proof}
+Sea $C=\Z/p$ y sea
+\[
+X=\{(x_1,\dots,x_p)\in G\times\cdots\times G:x_1\cdots x_p=1\}.
+\]
+Entonces $C$ actúa en $X$ por $k\cdot (x_1,\dots,x_p)=(x_{k+1},\dots,x_{k+p})$, donde los índices se toman módulo $p$. Para ver que esto es realmente una acción alcanza con observar
+que 
+\[
+x_{i_1}\cdots x_{i_p}=1
+\implies (x_{i_1}^{-1}x_{i_1})x_{i_2}\cdots x_{i_p}=x_{i_1}^{-1}
+\implies x_{i_2}\cdots x_{i_p}x_{i_1}=1.
+\]	
+Una vez que $x_1,\dots,x_{p-1}$ están fijos, $x_p=x_{p-1}^{-1}\cdots x_{1}^{-1}$ es la única posibilidad para $x_p$. Luego $|X|=|G|^{p-1}$. Cada $C$-órbita tiene $1$ o $p$ elementos pues $|C|=p$. Escribamos
+\[
+X=\underbrace{\mathcal{O}_1\cup\cdots\cup \mathcal{O}_k}_{\text{órbitas de un elemento}}\cup\underbrace{\mathcal{O}_{k+1}\cup\cdots\cup\mathcal{O}_m}_{\text{órbitas de tamaño $p$}}.
+\] 
+Entonces $0\equiv |G|^{p-1}=|X|\equiv k\bmod p$, es decir $p$ divide a $k$. Como además $(1,1,\dots,1)\in X$, $k\geq 1$. Luego $p\leq k$. En particular, 
+existe $x\in G\setminus\{1\}$ tal que $(x,x,\dots,x)\in X$. Luego $|x|=p$. 
+\end{proof}
+
+\begin{corollary}
+	Sea $p$ un primo y $G$ un grupo finito. Entonces $G$ es un $p$-grupo si y sólo si todo elemento de $G$ tiene orden una potencia de $p$. 
+\end{corollary}
+
+\begin{proof}
+Si $G$ es un $p$-grupo, entonces todo elemento tiene orden una potencia de $p$ por el teorema de Lagrange. Recíprocamente, si $q$ es un primo que divide al orden de $G$, el teorema
+de Cauchy nos dice que existe $g\in G$ de orden $q$. Luego $q=p$. 	
+\end{proof}
+
+\begin{corollary}
+Si $p$ es un primo impar y $G$ es un grupo de orden $2p$, entonces $G\simeq\Z/2p$ o bien $G\simeq\D_p$. 	
+\end{corollary}
+
+\begin{proof}
+Por el teorema de Cauchy sabemos que existen $r,s\in G$ tales que $|r|=p$ y $|s|=2$. Sea $H=\langle r\rangle$. Entonces $(G:H)=2$ y luego $H\unlhd G$. Escribimos $G=H\cup Hs$ (unión disjunta) pues $s\not\in H$.
+En particular,  
+\[
+G=\{1,r,\dots,r^{p-1},s,rs,\dots,r^{p-1}s\}.
+\]
+Como $srs^{-1}\in H$, entonces $srs^{-1}=r^k$ para algún $k\in\{0,1,\dots,p-1\}$. Como $s^2=1$,
+\[
+r=s^2rs^{-2}=s(srs^{-1})s^{-1}=sr^ks^{-1}=r^{k^2}.
+\]	
+Luego $k^2\equiv 1\bmod p$ y entonces $k\equiv 1\bmod p$ o bien $k\equiv -1\bmod p$. Si $k\equiv -1\bmod p$, entonces $srs^{-1}=r^{-1}$ y luego $G\simeq\D_p$. 
+Si $k\equiv 1\bmod p$, entonces $rs=sr$ y luego, como $G$ es abeliano, $G\simeq\Z/{2p}$.
+\end{proof}
+
+\begin{theorem}
+	Un grupo de orden $p^m$ tiene un subgrupo normal de orden $p^n$ para todo $n\leq m$. 
+\end{theorem}
+
+\begin{proof}
+Procederemos por inducción en $m$. El caso $m=1$ es trivial. Supongamos entonces que el resultado vale para los grupos de orden $p^m$ y sea $G$ un grupo de orden $p^{m+1}$. 
+Queremos ver que si $n\leq m$, entonces $G$ contiene un subgrupo normal de orden $p^n$. Como $Z(G)\ne\{1\}$, existe $g\in Z(G)\setminus\{1\}$ de orden $p$. Sea 
+$N=\langle g\rangle\unlhd G$. El grupo $G/N$ tiene orden $p^m$ y entonces, por la hipótesis inductiva, existe un subgrupo normal $Y$ de $G/N$ de orden $p^n$. El teorema de la correspondencia
+nos permite afirmar entonces que $G$ contiene un subgrupo normal $K$ de $G$ que contiene a $N$, es decir $N\leq K\leq G$. En efecto, $Y=\pi(K)$ y además 
+$(G:K)=(\pi(G):\pi(K))=p^{m-n}$. En consecuencia, $|K|=p^n$.   
+\end{proof}
+
+

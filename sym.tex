@@ -1,0 +1,258 @@
+\chapter{El grupo simétrico}
+
+\index{Ciclo}
+Sea $\sigma\in\Sym_n$. Diremos que $\sigma$ es un $r$-ciclo si existen $a_1,\dots,a_r\in\{1,\dots,n\}$ tales que 
+$\sigma(j)=j$ para todo $j\not\in\{a_1,\dots,a_r\}$ y 
+\[
+\sigma(a_i)=\begin{cases}
+a_{i+1} & \text{si $i<r$},\\
+a_1 & \text{si $i=r$}.	
+\end{cases}
+\]
+
+\begin{examples}
+Por ejemplo, $(12)$, $(13)$ y $(23)$ son 2-ciclos de $\Sym_3$. Los 2-ciclos se denominan \textbf{trasposiciones}. 
+Las permutaciones $(123)$ y $(132)$ son 3-ciclos de $\Sym_3$.
+\end{examples}
+
+\index{Permutaciones!disjuntas}
+Dos permutaciones $\sigma,\tau\in\Sym_n$ se dicen \textbf{disjuntas} si para todo $j\in\{1,\dots,n\}$ 
+se tiene que $\sigma(j)=j$ o bien $\tau(j)=j$. 
+
+\begin{examples}
+Las permutaciones $(134)$ y $(25)$ son disjuntas. En cambio, las permutaciones $(134)$ y $(24)$ no lo son. 	
+\end{examples}
+
+Si $\sigma\in\Sym_n$ y $j$ es tal que $\sigma(j)=j$, entonces $j$ es un punto fijo de $\sigma$. En cambio, los $j$ tales que
+$\sigma(j)\ne j$ son los puntos movidos por $\sigma$. 
+
+\begin{remark}
+Las permutaciones disjuntas conmutan.
+\end{remark}
+
+\begin{remark}
+Cada permutación puede escribirse como producto de trasposiciones. Para demostrar esta afirmación procederemos de la siguiente forma. Supongamos que las personas invitadas a un concierto se sientan en la primera fila, pero sin respetar el orden que figura en la lista de invitados. ¿Qué podemos hacer para ordenar a esas personas? Primero identificamos a la persona que debería sentarse en el primer lugar y le pedimos que intercambie asientos con la persona sentada en esa primera butaca. Luego identificamos a la persona que debería sentarse en el segundo lugar y le pedimos que intercambie asientos con la persona que ocupe la segunda butaca. Hacemos lo mismo con el tercer lugar, con el cuarto... y una vez terminado el proceso, gracias a haber utilizado finitas trasposiciones, habremos conseguido acomodar correctamente a cada una de las personas invitadas al concierto.  
+\end{remark}
+
+A continuación demostraremos que toda permutación puede escribirse como producto de ciclos disjuntos, algo que usamos en el primer capítulo en el caso particular del grupo $\Sym_3$. Necesitamos el siguiente lema:
+
+\begin{lemma}
+	Sea $\sigma=\alpha\beta\in\Sym_n$ con $\alpha$ y $\beta$ permutaciones disjuntas. Si $\alpha(i)\ne i$, entonces $\sigma^k(i)=\alpha^k(i)$ para todo $k\geq0$.
+\end{lemma}
+
+\begin{proof}
+	Sin perder generalidad podemos suponer que $k>0$. En ese caso, $\sigma^k(i)=(\alpha\beta)^k(i)=\alpha^k(\beta^k(i))=\alpha^k(i)$. 
+\end{proof}
+
+Ahora sí estamos en condiciones de demostrar el teorema: 
+
+\begin{theorem}
+Toda $\sigma\in\Sym_n\setminus\{\id\}$ puede escribirse como producto de ciclos disjuntos de longitud $\geq2$. Además esta descomposición es única salvo el orden de los factores involucrados.   	
+\end{theorem}
+
+\begin{proof}
+	Procederemos por inducción en el número $k$ de elementos del conjunto $\{1,\dots,n\}$ movidos por $\sigma$. Si $k=2$ el resultado es trivial. Supongamos
+	entonces que el resultado es cierto para todas las permutaciones que mueven $<k$ puntos. Sea $i_1\in\{1,\dots,n\}$ tal que $\sigma(i_1)\ne i_1$. Vamos a considerar el ciclo que contiene al elemento $i_1$. 
+	Sea entonces
+	$i_2=\sigma(i_1)$, $i_3=\sigma(i_2)$... Sabemos que existe $r\in\N$ tal que $\sigma(i_r)=i_1$ (pues, de lo contrario, si $\sigma(i_r)=i_j$ para algún 
+	$j\in\{2,\dots,n\}$, entonces $\sigma(i_{j-1})=i_j=\sigma(i_r)$, una contradicción a la biyectividad de $\sigma$). Sea $\sigma_1=(i_1\cdots i_r)$. La hipótesis
+	inductiva nos dice que, como $\sigma_1^{-1}\sigma$ mueve $<k$ puntos (pues los $i_j$ son puntos fijos de $\sigma_1^{-1}\sigma$), podemos escribir $\sigma_1^{-1}\sigma=\sigma_2\cdots\sigma_s$, donde
+	$\sigma_2,\dots,\sigma_s$ son ciclos disjuntos. Esto implica que $\sigma=\sigma_1\sigma_2\cdots\sigma_s$, tal como queríamos. 
+	
+	Demostremos ahora la unicidad. Supongamos que $\sigma=\sigma_1\cdots\sigma_s=\tau_1\cdots\tau_t$, con $s>0$. Sea $i_1\in\{1,\dots,n\}$ tal que
+	$\sigma(i_1)\ne i_1$. El lema implica que $\sigma^k(i_1)=\sigma_1^k(i_1)$ para todo $k\geq0$. Existe entonces $j\in\{1,\dots,t\}$ tal que 
+	$\tau_j(i_1)\ne i_1$. Como los $t_k$ conmutan, sin perder generalidad podemos suponer que $j=1$. Luego $\sigma^k(i_1)=\tau_1^k(i_1)$ para todo $k\geq0$.  Esto implica que
+	$\sigma_1=\tau_1$ pues $\sigma_1$ y $\tau_1$ son ciclos y entonces $\sigma_2\cdots\sigma_s=\tau_2\cdots\tau_t$. Al repetir el argumento, vemos que $s=t$ y luego $\sigma_j=\tau_j$ para todo $j$.   
+\end{proof}
+
+\begin{corollary}\
+	\begin{enumerate}
+		\item $\Sym_n=\langle (ij):i<j\rangle$. 
+		\item $\Sym_n=\langle (12),(13),\dots,(1n)\rangle$.
+		\item $\Sym_n=\langle (12),(23),\dots,(n-1\,n)\rangle$.
+		\item $\Sym_n=\langle (12),(12\cdots n)\rangle$.
+	\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+	Ya demostramos que toda permutación puede escribirse como producto de trasposiciones. Otra demostración puede obtenerse al usar el teorema anterior ya que 
+	\[
+	(a_1\cdots a_r)=(a_1a_r)(a_1a_{r-1})\cdots(a_1a_2).
+	\]
+	En efecto, si escribimos a $\sigma\in\Sym_n$ como producto de ciclos disjuntos y usamos la fórmula anterior, tenemos que $\Sym_n\subseteq\langle (ij):i<j\rangle$. La otra inclusión es trivial. ` 
+	
+	Para demostrar la segunda afirmación hay que usar la primera afirmación y las fórmulas
+	\[
+	(1i)(1j)(1i)=(ij)
+	\] 
+	válidas siempre que $i\ne j$. 
+	
+	Para la tercera afirmación escribimos a $\sigma$ como producto de trasposiciones y luego observamos que 
+	\[
+	(13)=(12)(23)(12),\quad
+	(1\,k+1)=(k\,k+1)(1k)(k\,k+1)
+	\]
+	para todo $k\geq3$. 
+	
+	Por último, la cuarta afirmación se obtiene al utilizar la tercera propiedad junto con la fórmula
+	\[
+	(12\cdots n)^{k-1}(12)(12\cdots n)^{1-k}=(k\,k+1),
+	\]
+	válida para todo $k\geq1$. 
+\end{proof}
+
+Cada permutación tiene asociada una matriz de permutación. Por ejemplo, para $\sigma=\id\in\Sym_3$ se tiene a $P_\sigma$ como la matriz identidad de $3\times 3$. Para la permutación $\sigma=(123)$ se tiene 
+\[
+P_\sigma=\begin{pmatrix}0&0&1\\1&0&0\\0&1&0\end{pmatrix}.
+\]
+Si $e_1,e_2,e_3$ es la base canónica de $\R^{3\times1}$, entonces $P_{\sigma}(e_1)=e_2$, $P_{\sigma}(e_2)=e_1$ y $P_{\sigma}(e_3)=e_1$. En general, la matriz de permutación $P_\sigma$ correspondiente a $\sigma\in\Sym_n$, permuta los elementos de la base canónica de $\R^{n\times1}$ tal como $\sigma$ permuta los elementos del conjunto $\{1,2,\dots,n\}$.  
+
+%Veamos cómo actúa esta matriz en la base canónica $e_1,e_2,e_3$ de $\R^{3\times1}$. Por ejemplo
+%\[
+%P_{(123)}e_j=\begin{cases}
+%j+1 & \text{si $j\in\{1,2\}$},\\
+%1 & \text{si $j=3$}.
+%\end{cases}
+%\]
+
+En general, si $\sigma\in\Sym_n$, entonces
+\[
+P_\sigma=\sum_{i=1}^n E_{\sigma(i),i},
+\]
+donde $E_{i,j}$ es la matriz con un uno en la posición $(i,j)$ e igual a cero en todas las otras entradas. Recordemos que valen las siguientes fórmulas
+\begin{equation}
+\label{eq:E}	
+E_{i,j}E_{k,l}=\begin{cases}
+E_{i,l} & \text{si $j=k$},\\
+0 & \text{si $j\ne k$}.
+\end{cases}
+\end{equation}
+
+Es claro que toda matriz de permutación tendrá un único uno en cada fila y cada columna y que el resto de las entradas serán todas iguales a cero. Luego
+el determinante de una matriz de permutación será $\pm1$. 
+
+\begin{proposition}
+Si $\sigma,\tau\in\Sym_n$, entonces $P_{\sigma\tau}=P_\sigma P_\tau$. 
+\end{proposition}
+
+\begin{proof}
+Es un cálculo directa que utiliza la fórmula~\eqref{eq:E}. 
+Tenemos
+\begin{align*}
+P_\sigma P_\tau &=\left(\sum_{i=1}^n E_{\sigma(i),i}\right)\left(\sum_{j=1}^nE_{\tau{(j)},j}\right)\\
+&=\sum_{i=1}^n\sum_{j=1}^n E_{\sigma(i),i}E_{\tau(j),j}
+=\sum_{j=1}^n E_{\sigma(\tau(j)),j}=P_{\sigma\tau},
+\end{align*}
+ya que la suma doble será nula a menos que $i=\tau(j)$.  
+\end{proof}
+  
+\begin{definition}
+\index{Signo!de una permutación}
+\index{Permutación!par}
+\index{Permutación!impar}
+	El \textbf{signo} de una permutación $\sigma\in\Sym_n$ se define como el determinante de la matriz $P_\sigma$, es decir $\sgn(\sigma)=\det P_\sigma$. 
+	Una permutación $\sigma$ se dirá \textbf{par} si $\sgn(\sigma)=1$ e \textbf{impar} si $\sgn(\sigma)=-1$. 
+\end{definition}
+
+\begin{examples}
+La identidad es una permutación par y todo 3-ciclo es también una permutación par. Cualquier trasposición es una permutación impar.   
+\end{examples}
+
+
+Toda permutación puede escribirse como producto de trasposiciones, aunque no de forma única. Sin embargo, puede demostrarse el siguiente resultado. Si $\sigma$ se escribe como producto de traposiciones $\sigma=\sigma_1\cdots\sigma_s$, entonces
+\[
+\sgn(\sigma)=(-1)^s.
+\] 
+En particular, $\sigma$ es una permutación par si y sólo si $s$ es par. 
+
+\begin{proposition}
+Si $\sigma,\tau\in\Sym_n$, entonces $\sgn(\sigma\tau)=(\sgn\sigma)(\sgn\tau)$. 	
+\end{proposition}
+
+\begin{proof}
+	Es fácil pues 
+	\[
+	\sgn(\sigma\tau)=\det(P_\sigma P_\tau)=(\det P_\sigma)(\det P_\tau)=\sgn(\sigma)\sgn(\tau).\qedhere
+	\]
+\end{proof}
+
+\begin{example}
+\index{Centro!de $\Sym_n$}
+Vamos a demostrar que si $n\geq3$ entonces $Z(\Sym_n)=\{\id\}$.
+Supongamos que $Z(\Sym_n)\ne\{\id\}$ y 
+sea $\sigma\in Z(\Sym_n)$ tal que $\sigma(i)=j$ para $i\ne j$. Como $n\geq3$, existe $k\in\{1,\dots,n\}\setminus\{i,j\}$ y entonces
+$\tau=(jk)\in\Sym_n$. Como $\sigma$ es central, 
+\[
+j=\sigma(i)=\tau\sigma\tau^{-1}(i)=\tau(\sigma(i))=\tau(j)=k,
+\]
+una contradicción.   	
+\end{example}
+
+\index{Grupo!alternado}
+El \textbf{grupo alternado} 
+\[
+\Alt_n=\{\sigma\in\Sym_n:\sgn(\sigma)=1\}
+\]
+es el subgrupo de $\Sym_n$ formado por las permutaciones de signo positivo. 
+
+\begin{proposition}
+\index{Orden!del grupo alternado}
+$|\Alt_n|=n!/2$. 
+\end{proposition}
+
+\begin{proof}
+Sea $\sigma=(12)\not\in\Alt_n$. Vamos a demostrar que $\Sym_n=\Alt_n\cup\Alt_n\sigma$ (unión disjunta), donde $\Alt_n\sigma=\{\tau\sigma:\tau\in\Alt_n\}$. En efecto, si $\tau\in\Sym_n$ es tal que $\tau\not\in\Alt_n$, entonces $\sgn(\tau\sigma)=(\sgn\tau)(\sgn\sigma)=1$ y luego
+$\tau\sigma\in\Alt_n$. En conclusión, probamos que $\tau\in\Alt_n\sigma$. Como $|\Alt_n\sigma|=|\Alt_n|$ (por ejemplo, pues la función $\Alt_n\to\Alt_n\sigma$, $x\mapsto x\sigma$, es biyectiva), se obtiene $n!=|\Sym_n|=2|\Alt_n|$. 
+\end{proof}
+
+\begin{example}
+Es fácil verificar que 	$\Alt_3=\{\id,(123),(132)\}$ y que  
+\begin{multline*}
+\Alt_4=\{\id,(234),(243),(12)(34),(123),(124),\\(132),(134),(13)(24),(142),(143),(14)(23)\}\end{multline*}
+\end{example}
+
+El grupo $\Alt_3$ es abeliano.   
+Si $n\geq4$, el grupo $\Alt_n$ es no abeliano ya que, por ejemplo, las permutaciones $(123)$ y $(124)$ no conmutan.  
+
+%La proposición que veremos a continuación es muy útil.
+
+\begin{proposition}
+\index{Grupo!alternado}
+\label{pro:A_n3ciclos}
+$\Alt_n=\langle\{\text{3-ciclos}\}\rangle$. 
+\end{proposition}
+
+\begin{proof}
+Todo 3-ciclo es una permutación par pues $(ijk)=(ik)(ij)$. Demostremos entonces la otra inclusión. Sea $\sigma\in\Alt_n$. 
+Escribimos $\sigma=\sigma_1\cdots\sigma_s$ para algún entero $s$ par y $\sigma_1,\dots,\sigma_s$ trasposiciones. Para completar la demostración de la proposición
+basta utilizar las fórmulas 
+\[
+(kl)(ij)=(kl)(ki)(ki)(ij)=(kil)(ijk),\quad
+(ik)(ij)=(ijk).\qedhere
+\]
+ \end{proof}
+
+Veamos algunas aplicaciones sencillas:
+
+\begin{example}
+\index{Conmutador!de $\Alt_4$}
+Veamos que si $n\geq5$ entonces $[\Alt_n,\Alt_n]=\Alt_n$. Vamos a demostrar la inclusión no trivial y para eso basta con observar que $\Alt_n$ está generado por 3-ciclos y que, como $n\geq5$, cada 3-ciclo puede escribirse como producto de conmutadores. En efecto, 
+\[
+(abc)=[(acd),(ade)][(ade),(abd)],
+\] 	
+donde $\#\{a,b,c,d,e\}=5$. 
+\end{example}
+
+\begin{example}
+\index{Conmutador!de $\Sym_n$}
+Si $n\geq3$ entonces $[\Sym_n,\Sym_n]=\Alt_n$. Primero veamos que $[\Sym_n,\Sym_n]\subseteq\Alt_n$. Si $\sigma\in[\Sym_n,\Sym_n]$, 
+digamos $\sigma=[\sigma_1,\tau_1][\sigma_2,\tau_2]\cdots[\sigma_k,\tau_k]$, entonces
+\[
+\sgn(\sigma)=\sgn([\sigma_1,\tau_1])\cdots\sgn([\sigma_k,\tau_k])=1.
+\]
+Recíprocamente, si $\sigma\in\Alt_n$, la proposición anterior nos dice que podemos escribir a $\sigma$ como producto de 3-ciclos. De aquí el resultado se obtiene inmediatamente 
+pues cada 3-ciclo es un conmutador, tal como vemos en la siguiente fórmula   	
+\[
+(abc)=(ab)(ac)(ab)(ac)=[(ab),(ac)]\in[\Sym_n,\Sym_n].\qedhere
+\]
+\end{example}

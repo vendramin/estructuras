@@ -1,0 +1,293 @@
+\chapter{Algunas soluciones}
+
+\section*{Morfismos}
+
+\begin{sol}{xca:size9}
+Si existe $x\in G$ tal que $|x|=9$, entonces $G\simeq\Z/9$. Supongamos entonces que no hay elementos de orden nueve. Por el teorema
+de Lagrange, todo elemento no trivial tiene orden 3. Sea $x\in G$ tal que $|x|=3$ y sea $y\in G\setminus\langle x\rangle$. 
+Entonces 
+\[
+G=\langle x,y\rangle=\{1,x,y,x^2,y^2,x^2y,xy^2,x^2y^2,xy\}.
+\]
+Si $yx=xy$, entonces $G\simeq\Z/3\times\Z/3$. 
+Si $yx=x^2y^2$, entonces $(xy)^2=1$, una contradicción. 
+Si $yx=x^2y$, entonces, como $yx^2$ tiene orden tres, tenemos
+\[
+1=(yx^2)^3=yx^2yx^2yx^2=y(yx)x^2yx^2=x^2,
+\]
+una contradicción. De la misma forma vemos que $yx\ne xy^2$. 
+\end{sol}
+
+\begin{sol}{xca:para_3er}
+	Observemos que la conmutatividad del diagrama es $\pi_V\circ f=g\circ \pi_U$. 
+	Por el ejercicio~\ref{xca:cocientes} sabemos 
+	que existe $g$ si y sólo si 
+	\[
+	U\subseteq \ker(\pi_V\circ f)\Longleftrightarrow f(U)\subseteq\ker(\pi_V)=V.
+	\] 
+	
+	Queremos demostrar (1). Si $h\in H$ y $hV\in H/V$, queremos ver que $g(xU)=hV$ para algún $x\in G$. 
+	Como $f$ es sobreyectiva, $f(x)=h$ para algún $x\in G$. Luego
+	\[
+	g(xU)=g(\pi_U(x))=\pi_V(f(x))=\pi_V(h)=hV.
+	\]
+	
+	Veamos ahora (2). Sea $x\in G$ tal que $g(xU)=V$. Como
+	\[
+	\pi_V(f(x))=g(\pi_U(x))=g(xU)=V,
+	\]
+	se tiene que $f(x)\in\ker(\pi_V)=V$, es decir $x\in f^{-1}(V)=U$. Luego $\ker g$ es trivial y entonces $g$ es inyectiva. 
+\end{sol}
+
+\begin{sol}{xca:3er}
+    Sean $H=G/S$, $U=T$, $V=T/S$ y $f=\pi_S\colon G\to G/S$ el morfismo canónico. 
+    El ejercicio~\ref{xca:para_3er} nos dice que 
+	la existencia de un morfismo  
+	\[
+	g\colon G/T\to\frac{G/S}{T/S}
+	\]
+	tal que $g\circ\pi_T=\pi_{T/S}\circ f$  
+	es equivalente a pedir que $\pi_S(T)\subseteq T/S$, algo trivial. Como $\pi_S$ es sobreyectiva, $g$ es también sobreyectiva. Además $g$ es inyectiva pues
+	$\pi_S^{-1}(T/S)=T$. 
+\end{sol}
+
+\section*{Ideales}
+
+\begin{sol}{xca:PcapQ} 
+	Si $J\not\subseteq P$ y $J\not\subseteq Q$ entonces sean
+	$x\in J\setminus P$, $y\in J\setminus Q$. Como $J\subseteq P\cup Q$
+	entonces $x\in Q$ y además $y\in P$. Como $J$ es un ideal, $x+y\in J$. Como
+	$y\in P$ y $x\not\in P$ entonces $x+y\not\in P$. Similarmente $x+y\not\in
+	Q$.  Luego $x+y\in J\setminus P\cup Q$.
+\end{sol}
+
+\begin{sol}{xca:Zsqrtd}
+Si $f\in\Hom(\Z[\sqrt{d}],R)$, definimos $\varphi(f)=r$ donde $r$ es tal que 
+$r^2=f(d)$. La función $\varphi$ está bien definida pues, como 
+\[
+f(a+b\sqrt{d})=f(a)+f(b)f(\sqrt{d})=a1_R+b1_Rf(\sqrt{d}),
+\]
+$f$ queda unívocamente determinado por $r=f(\sqrt{d})\in R$
+que cumple $r^2=f(d)$. La función $\varphi$ es inyectiva. Además $\varphi$ es sobreyectiva, pues
+si $r\in R$ es tal que $r^2=d1_R$, entonces 
+$f(a+b\sqrt{d})=a1_R+b1_Rr$ es un morfismo de anillos $\Z[\sqrt{d}]\to R$. 
+Luego $\Hom(\Z[\sqrt{d},R)$ está en biyección con 
+el conjunto $\{r\in R:r^2=d1_R\}$. 
+\end{sol}
+
+\begin{sol}{xca:sqrt2sqrt3}
+ Si $f\colon\Q(\sqrt{2})\to\Q(\sqrt{3})$ es un isomorfismo de anillos,
+ \[
+ f(2)=f(1+1)=f(1)+f(1)=1+1=2.
+ \] 
+ Si $\alpha=f(\sqrt{2})$, entonces $2=f(2)=f(\sqrt{2})^2=\alpha^2$. Veamos
+ que $\sqrt{2}\not\in\Q(\sqrt{3})$. En efecto, si $\sqrt{2}=(a/b)+(c/d)\sqrt{2}$, entonces
+ $\sqrt{6}\in\Q$, una contradicción.
+\end{sol}
+
+\begin{sol}{xca:Z6Z15}
+ Si $f\colon\Z/6\to\Z/15$, entonces $f(1)=1$. Por otro lado,
+ \[
+ 0=f(0)=f(6)=f(1+5)=f(1)+f(5)=f(1)+5f(1)=6f(1).
+ \]
+ Luego $f(1)\in\{0,5,10\}$, una contradicción.
+\end{sol}
+
+\section*{El lema de Zorn}
+
+\begin{sol}{xca:Jacobson}
+    Sea $x\in J(R)$ y supongamos que $1-xy$ no
+    es una unidad de $R$. Entonces $1-xy$ pertenece a algún ideal maximal $M$ y
+    luego $1\in M$, una contradicción. Recíprocamente, si existe
+    un ideal maximal $M$ tal que $x\not\in M$ entonces $R=(x,M)$ pues $M$ es
+    maximal. Luego $1=xy+m$ para algún $y\in R$ y algún $m\in M$. Esto implica que
+    $1-xy=m\in M$ y por lo tanto $1-xy\not\in\mathcal{U}(R)$. 
+\end{sol}
+
+\begin{sol}{xca:maxZn}
+Sea $f\colon\Z\to \Z/n$, $k\mapsto k\bmod n$. Por el teorema de la correspondencia, los ideales
+maximales de $\Z/n$ están en biyección con los ideales maximales de $\Z$ que contienen a $\ker f=n\Z$. 
+Los ideales maximales de $\Z$ son de la forma $p\Z$ para algún primo $p$. 
+Como $n\Z\subseteq p\Z$ si y sólo si $p$ divide a $n$, se concluye que 
+$(p)$ es un ideal maximal de $\Z/n$ si y sólo si $p$ es un primo que divide a $n$.  
+\end{sol}
+
+\section*{Módulos}
+
+\begin{sol}{xca:mod_iso_max}
+    Supongamos primero que $f\colon R/M_1\to R/M_2$ es un isomorfismo de
+    módulos. Entonces existe $r\in R\setminus M_2$ tal que $f(1+M_1)=r+M_2$.
+    Probemos que $rM_1\subseteq M_2$. En efecto, si $m_1\in M_1$ entonces
+    \[
+    M_2=f(M_1)=f(m_1+M_1)=m_1\cdot f(1+M_1)=m_1\cdot (r+M_2)=rm_1+M_2. 
+    \]
+    
+    Supongamos ahora que existe $r\in R\setminus M_2$ tal que
+    $rM_1\subseteq M_2$.  Como $M_2$ es maximal, $R/M_2$ es un cuerpo. Sea $\pi\colon R\to R/M_2$ el morfismo canónico. Vamos
+    a demostrar que $M_1=M_2$. Si $x\in M_1$, entonces, como $rx\in rM_1\subseteq M_2$, en el cuerpo $R/M_2$ se tiene  
+    \[
+    0=\pi(rx)=\pi(r)\pi(x)
+    \]
+    Hay entonces dos posibiblidades: $\pi(r)=0$ o bien $\pi(x)=0$. Como $r\not\in M_2=\ker\pi$, 
+    entonces $\pi(x)=0$, es decir $x\in\ker \pi=M_1$. Luego $M_1\subseteq M_2$, que por la maximalidad
+    del ideal $M_1$ implica $M_1=M_2$. 
+\end{sol}
+
+
+\section*{Sucesiones exactas}
+
+\begin{sol}{xca:exactas1}
+			Supongamos que vale (1) y sea $m''\in M''$ tal que $am''=0$. Como $g$ es
+			epimorfismo, existe $m\in M$ tal que $g(m)=m''$. Luego $g(am)=am''=0$ y
+			$am\in\ker(g)=f(M')$. Existe entonces $m'\in M'$ tal que $am=f(m')$. Por
+			hipótesis, existe $m_1'\in M'$ tal que $am=f(am_1')$ y luego
+			$a(m-f(m_1'))=0$. El elemento de $M$ que buscamos es $m-f(m_1')$ pues
+			$g(m-f(m_1'))=g(m)=m''$.
+
+			Recíprocamente, supongamos que vale (2). Sea $m'\in M'$ tal que existe
+			$m\in M$ con $f(m')=am$. Si aplicamos $g$ obtenemos $0=gf(m')=ag(m)$. Si
+			usamos (2) con $g(m)\in M''$ entonces existe $m_1\in M$ tal que $am_1=0$
+			y $g(m)=g(m_1)$. Como $\ker(g)=f(M')$, existe $m_1'\in M'$ tal que
+			$m-m_1=f(m_1')$. Esto implica que $f(m')=am=am-am_1=af(m_1')=f(am_1')$.
+			Como $f$ es monomorfismo, $m'=am_1'$.
+\end{sol}
+
+\begin{sol}{xca:exactas2}	
+	Si $m\in M$, $m-s(g(m))\in\ker g=\im f$ pues
+	$g(m-s(g(m)))=0$. Como $f$ es inyectiva, dado $m\in M$ se tiene que 
+	$m-s(g(m))=f(x)$ para un único $x\in X$. Definimos entonces
+	$r\colon M\to X$, $m\mapsto x$, y entonces
+	$m-s(g(m))=f(r(m))$ para todo $m\in M$.
+
+	Supongamos que existen $r$ y $s$ tales que $f\circ r+s\circ g=\id_M$. Si $y\in Y$, entonces $y=g(m)$ 
+	para algún $m\in M$ pues $g$ es epimorfismo. Como $m=f(r(m))+s(y)$, entonces
+	\[
+	g(s(y))=g(m-f(r(m)))=g(m)-g(f(r(m)))=y
+	\]
+	pues $\ker g=f(X)$. 
+	9 
+\end{sol}
+
+\section*{Módulos finitamente generados}
+
+\begin{sol}{xca:exacta_noetheriano}
+	Probemos la primera afirmación. Si $M_1\subseteq M$ es un submódulo, entonces
+	$M_1$ es finitamente generado porque $M_1\simeq f(M_1)\subseteq M$ y $M$ es
+	noetheriano. Si $T_1\subseteq T$ es un submódulo, entonces $T_1$ es
+	finitamente generado por ser isomorfo a un submódulo de $M$ que
+	contiene a $\ker(g)$ y $M$ es noetheriano.
+
+	Probemos la segunda afirmación. Si $K\subseteq M$ es un submódulo,
+	consideremos la sucesión exacta
+	\[
+		\xymatrix{
+		0\ar[r] 
+		& f^{-1}(K)
+		\ar[r]^-{f}
+		& K
+		\ar[r]^-{g}
+		& g(K)\ar[r]
+		& 0
+		}
+	\]
+	Como $S$ y $T$ son noetherianos, $f^{-1}(K)$ y $g(K)$ son finitamente
+	generados. Luego $K$ también es finitamente
+	generado.
+\end{sol}
+
+\section*{Módulos libres}
+
+\section*{Módulos proyectivos}
+
+\begin{sol}{xca:cociente_libre}
+Como $M/N$ es un módulo libre, el módulo $M/S$ es proyectivo. Existe entonces un morfismo $s\colon M/N\to N$ tal 
+que $\pi\circ s=\id_{M/N}$. En particular, $M\simeq N\oplus M/N$. 	
+\end{sol}
+
+\begin{sol}{xca:ss_idempotente}
+Si $\prescript{}{R}R$ es semisimple e $I$ es un ideal de $R$, sabemos que existe un submódulo $J$ (es decir, $J$ es ideal a izquierda de $R$) tal que $R=I\oplus J$. En particular, 
+existen $e\in I$ y $f\in J$ tales que $1=e+f$. Como $ef\in I\cap J=\{0\}$, entonces
+\[
+e=e1=e^2+ef=e^2.
+\]
+Veamos que $I=Re$. Si $x\in I$, entonces $x=x1=xe+xf=xe\in Re$ pues $xf=x-xe\in I\cap J=\{0\}$. 
+
+Si $I=Re$ para algún idempotente $e\in R$, entonces $J=R(1-e)$ es tal que $R=I\oplus J$. En efecto, $R=I+J$, pues 
+$r=re+r(1-e)$. Además $I\cap J=\{0\}$ pues si $r=xe=y(1-e)$, entonces 
+\[
+r=xe=xe^2=y(1-e)e=0.
+\]
+\end{sol}
+
+\begin{sol}{xca:I^2}
+Si existe un ideal $J$ de $R$ tal que $R=I\oplus J$, entonces $1=u+v$ para ciertos $u\in I$ y $v\in V$. Veamos que $I=(u)$. Si $x\in I$,
+entonces $x=x1=xu+xv$. Como $xv\in I\cap J=\{0\}$, se concluye que $x=xu\in (u)$. Además 
+\[
+1=1\cdot 1=(u+v)^2=u^2+2uv+v^2=u^2+v^2,
+\]
+pues $uv\in I\cap J=\{0\}$. Luego $(u)=(u^2)$, pues $u=u1=u(u^2+v^2)=u^3\in (u^2)$.  
+
+Supongamos ahora que existe $u\in R$ tal que $I=(u)=(u^2)$. Entonces $u=ru^2$ para algún $r\in R$. En particular, 
+$ru=r^2u^2$. Si  
+$e=ru$, entonces $e$ es idempotente, pues
+\[
+e^2=(ru)^2=r^2u^2=ru=e.
+\]
+Veamos que $I=(u)=(e)$. Basta con demostrar que $(u)\subseteq (e)$. 
+Si $\lambda\in R$, entonces 
+\[
+\lambda u=\lambda(ru^2)=(\lambda u)(ru)=(\lambda u)e\in (e).
+\]
+Si $J=(1-e)$, entonces $R=I\oplus J$, pues ya vimos que
+$I\cap J=\{0\}$ y $R=I+J$.  	
+\end{sol}
+
+\begin{sol}{xca:proyectivo1}
+	Como $P$ es proyectivo existe un morfismo $\beta\colon P\to P'$ tal que $g'\circ \beta=g$.
+	Luego $g'\circ \beta\circ F=g\circ f=0$ y entonces existe un morfismo $\alpha\colon K\to K'$
+	tal que $\beta\circ f=f'\circ \alpha$. 
+
+	Sea $\phi\colon K\to K'\oplus P$ el morfismo dado por
+	$\phi(k)=(\alpha(k),f(k))$ y $\psi\colon K'\oplus P\to P'$ el morfismo dado
+	por $\psi(k',p)=(f'(k'),-\beta(p))$. 
+	La sucesión 
+	\[
+	\xymatrix{
+	0\ar[r] 
+	& K
+	\ar[r]^-{\phi}
+	& K'\oplus P
+	\ar[r]^-{\psi}
+	& P'\ar[r]
+	& 0
+	}
+	\]
+	es exacta y se parte porque $P'$ es proyectivo.
+\end{sol}
+
+\section*{El teorema de estructura}
+
+\begin{sol}{xca:rank}
+Como $M$ es libre, al usar el morfismo canónico $\varphi\colon M\to M/S$, tenemos que $M\simeq S\oplus (M/S)$.   
+\end{sol}
+
+\begin{sol}{xca:n_elements}
+Sea $K=K(R)$ el cuerpo de fracciones de $R$. Como $M$ es libre de rango $n$, entonces $M\simeq R^n$. Como 
+$R^n$ es un subgrupo de $K^n$, vemos que $\{v_1,\dots,v_n\}$ es linealmente independiente sobre $K$ si y sólo si $\{v_1,\dots,v_n\}$ 
+es linealmente independiente sobre $R$.   
+\end{sol}
+
+\begin{sol}{xca:base}
+Sea $\{m_1,\dots,m_n\}$ una base de $M$. Como $M$ es libre, existe un morfismo $\varphi\colon M\to M$ tal que $m_j\mapsto s_j$ para todo
+$j\in\{1,\dots,n\}$. Como $M$ es libre, $M$ es proyectivo y entonces $M\simeq \ker\varphi\oplus M$. Como $R$ es principal, el submódulo
+$\ker\varphi$ es libre de rango $\leq n$. Como además $\rank(M)=\rank(\ker\varphi)+\rank(M)$, se concluye que $\rank(\ker\varphi)=0$ y luego
+$\ker\phi=\{0\}$, es decir que $\varphi$ es un isomorfismo. En particular, $\{s_1,\dots,s_n\}$ es una base de $M$.
+\end{sol}
+
+\begin{sol}{xca:free}
+    Como $M/S$ es finitamente generado y sin torsión, es libre y por tanto
+    proyectivo. La sucesión exacta $0\to S\to M\to M/S\to0$ se
+    parte y entonces $M\simeq S\oplus M/S$. Luego $M$ es proyectivo por
+    ser suma de proyectivos. Como $R$ es un dominio de ideales principales, se concluye que
+    $M$ es libre.
+\end{sol}

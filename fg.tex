@@ -1,0 +1,237 @@
+\chapter{Módulos finitamente generados}
+
+\begin{definition}
+\index{Submódulo!generado por un conjunto}
+	Sea $M$ un módulo y $X$ un subconjunto de $M$. El submódulo $(X)$ de $M$ generado por $X$ se define
+	como la intersección de todos los submódulos de $M$ que contienen al conjunto $X$. 
+\end{definition}
+
+El submódulo de $M$ generado por el conjunto $X$ es el menor submódulo de $M$ que 
+contiene a $X$. 
+Puede demostrarse además que 
+\[
+(X)=\left\{ \sum_{i=1}^n r_i\cdot x_i:n\in\N_0,\,r_i\in R,\,x_i\in X\right\}
+\]
+
+\begin{definition}
+\index{Módulo!finitamente generado}
+Diremos que un submódulo $S$ de $M$ es \textbf{finitamente generado} si $S=(X)$ para algún conjunto finito $X$. 
+\end{definition}
+
+\begin{examples}\
+\begin{enumerate}
+	\item $\{1\}$ y $\{2,3\}$ son conjuntos de generadores de $\Z$.
+	\item $\{2\}$ no es un conjunto de generadores de $\Z$.
+\end{enumerate}	
+\end{examples}
+
+\begin{example}
+Sea $R=\{f\colon [0,1]\to\R\}$ el anillo de funciones $[0,1]\to\R$ con las operaciones
+\[
+(f+g)(x)=f(x)+g(x),\quad
+(fg)(x)=f(x)g(x),\quad
+x\in[0,1].
+\]
+Sea $M=\prescript{}{R}R$, es
+decir el anillo $R$ con la estructura de módulo dada por la representación regular a izquierda. Como el conjunto 
+\[
+S=\{f\in R:f(x)\ne 0\text{ para finitos $x$}\}
+\] 	
+es un ideal a izquierda de $R$, es un submódulo de $M$. Como módulo, $M$ está generado por la función constantemente igual a uno. Sin embargo,
+$S$ no es finitamente generado. En efecto, si $S=(f_1,\dots,f_k)$, sea 
+\[
+X=\{x\in[0,1]:f_i(x)\ne 0\text{ para algún $i$}\}.
+\]
+Como $X$ es finito, podemos suponer que $X=\{x_1,\dots,x_l\}$. Sea $x_0\in[0,1]\setminus X$ y sea $\varphi\colon [0,1]\to\R$ tal que 
+$\varphi(x_0)=1$ y $\varphi(x)=0$ para todo $x\ne x_0$. Entonces $\varphi\in S$ pero $\varphi\not\in (f_1,\dots,f_k)$, pues
+\[
+\left(\sum_{i=1}^k r_i\cdot f_i\right)(x_0)
+=\sum_{i=1}^k r_i(x_0)f_i(x_0)=0\ne 1=\varphi(x_0). 
+\]
+\end{example}
+
+\begin{example}
+Sea $K$ un cuerpo y sea 
+$V$ un espacio vectorial. Si $T\colon V\to V$ es una transformación
+lineal, entonces $V$ es un 
+$K[X]$-módulo con
+\[
+\left(\sum_{i=0}^n a_iX^i\right)\cdot v=
+\sum_{i=0}^n a_iT^i(v).
+\]
+Veamos que $V$ es de dimensión finita, entonces $V$ es finitamente generado como $K[X]$-módulo. En efecto,
+si $\{v_1,\dots,v_n\}$ es una base del espacio vectorial $V$, entonces
+$V=(v_1,\dots,v_n)$ como $K[X]$-módulo, pues para cada $v\in V$ existen constantes 
+$\lambda_1,\dots,\lambda_k\in K\subseteq K[X]$ tales que 
+$v=\sum_{i=1}^n\lambda_i v_i$.    
+\end{example}
+
+\begin{example}
+Sea $G=\{g_1,\dots,g_k\}$ un grupo finito de orden $k$ y supongamos que $g_1=1$.  
+Si $M$ es un $\C[G]$-módulo finitamente generado, entonces, 
+en particular, $M$ es un espacio vectorial de dimensión finita. En efecto,
+$M$ es un espacio vectorial con la acción 
+\[
+\lambda m=(\lambda g_1)\cdot m=(\lambda 1)\cdot m
+\]
+para todo $\lambda\in\C$ y $m\in M$. Supongamos ahora que $M=(m_1,\dots,m_l)$. Para cada $m\in M$ 
+existen $\alpha_1,\dots,\alpha_l\in\C[G]$ tales que 
+\[
+m=\alpha_1\cdot m_1+\cdots+\alpha_l\cdot m_l.
+\]
+Además para cada $j\in\{1,\dots,l\}$ existen $\lambda_{ij}\in\C$ tales que
+$\alpha_j=\sum_{i=1}^k\lambda_{ij}g_i$. En consecuencia, cada $m\in M$ puede escribirse 
+como 
+\[
+m=\sum_{i=1}^k\sum_{j=1}^l\lambda_{ij}(g_j\cdot m_i)
+\]
+para ciertos $\lambda_{ij}\in\C$, donde $i\in\{1,\dots,k\}$ y $j\in\{1,\dots,l\}$. En particular, $M$ es de dimensión finita, pues $\dim M\leq kl$.
+\end{example}
+
+\begin{proposition}
+	Si  
+	\[  
+		\xymatrix{
+        0\ar[r]
+        & M
+        \ar[r]^f
+        & N
+        \ar[r]^g
+        & T\ar[r]
+        & 0	
+        }
+     \]
+     es exacta, valen las siguientes afirmaciones.
+     \begin{enumerate}
+     \item Si $N$ es finitamente generado, entonces $T$ es finitamente generado.
+     \item Si $M$ y $T$ son finitamente generados, entonces $N$ es finitamente generado.	
+     \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Comenzaremos con la demostración de la primera afirmación. Veremos que si $N=(n_1,\dots,n_k)$, entonces $T=(g(n_1),\dots,g(n_k))$. En efecto,
+si $t\in T$, existe $n\in N$ tal que $g(n)=t$. Si escribimos
+$n=\sum_{i=1}^k r_i\cdot n_i$, entonces 
+\[
+t=g(n)=\sum_{i=1}^k r_i\cdot g(n_i).
+\] 
+
+Demostremos ahora la segunda afirmación. 
+Supongamos que $M=(m_1,\dots,m_k)$ y que $T=(t_1,\dots,t_l)$. Como $g$ es sobreyectiva,
+para cada $i\in\{1,\dots,l\}$ existe $n_i\in N$ tal que $g(n_i)=t_i$. Vamos a demostrar que 
+$N=(f(m_1),\dots,f(m_k),n_1,\dots,n_l)$. Sea $n\in N$. Como $g(n)\in T$, existen $r_1,\dots,r_l\in R$ tales que
+\[
+g(n)=\sum_{i=1}^l r_i\cdot t_i=g\left(\sum_{i=1}^l r_i\cdot n_i\right),
+\]	
+lo que implica que $n-\sum_{i=1}^l r_i\cdot n_i\in\ker g=f(M)$. En particular, existen $s_1,\dots,s_k\in R$ tales
+que
+\[
+n-\sum_{i=1}^l r_i\cdot n_i=\sum_{j=1}^k s_j\cdot f(m_j),
+\]
+pues $f(M)=(f(m_1),\dots,f(m_k))$. 
+\end{proof}
+
+
+\begin{proposition}
+Sea $M$ un módulo. Entonces $M$ es finitamente generado si y sólo $M$ 
+es isomorfo a un cociente de $R^k$ para algún $k\in\N$. 	
+\end{proposition}
+
+\begin{proof}
+Si $M=(m_1,\dots,m_k)$, entonces $\varphi\colon R^k\to M$, $(r_1,\dots,r_k)\mapsto \sum r_im_i$, es un epimorfismo
+y luego $R^k/\ker\varphi\simeq M$. Recíprocamente, si $\varphi\colon R^k\to M$ es un epimorfismo, como
+$R^k$ está generado por $\{e_i:1\leq i\leq k\}$, donde 
+\[
+(e_i)_j=\begin{cases}
+1 & \text{si $i=j$},\\
+0 & \text{si $i\ne j$}.	
+\end{cases}
+\]
+el conjunto $\{\varphi(e_i):1\leq i\leq k\}$ genera $\varphi(R^k)=M$. 
+\end{proof}
+
+Tal como vimos en la teoría de anillos, tener objetos finitamente generados está relacionado con el concepto de noetherianidad. 
+
+\begin{definition}
+\index{Módulo!noetheriano}
+Un módulo se dice \textbf{noetheriano} si toda sucesión $M_1\subseteq M_2\subseteq\cdots$ de submódulos de $M$ 
+se estabiliza, es decir que existe $n$ tal que $M_k=M_{n+k}$ para todo $k\in\N$. 	
+\end{definition}
+
+\begin{proposition}
+Sea $M$ un módulo. Las siguientes afirmaciones son e	quivalentes:
+\begin{enumerate}
+\item $M$ es noetheriano.
+\item Todo submódulo de $M$ es finitamente generado.
+\item Toda familia no vacía de submódulos de $M$ tiene un elemento maximal (con respecto a la inclusión).	
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Demostremos que $(2)\implies(1)$. Si $S_1\subseteq S_2\subseteq\cdots$ es una sucesión de submódulos de $M$,
+	puede demostrarse que $S=\cup_{i\geq 1}S_i$ es un submódulo de $M$. Como $S$ es finitamente generado,
+	digamos $S=(x_1,\dots,x_n)$ para finitos elementos $x_1,\dots,x_n\in M$, entonces
+	$x_1,\dots,x_n\in S_N$ para algún $N\in\N$. Luego $S\subseteq S_N$ y entonces $S_N=S_{N+k}$ para todo $k\in\N$. 
+	
+	Demostremos ahora que $(1)\implies(3)$. Si $F$ es una familia no vacía de submódulos de $M$ que no tiene
+	elementos maximales, sea $S_1\in F$. Como $S_1$ no es maximal, existe entonces $S_2\in F$ tal que $S_1\subsetneq S_2$. 
+	Si tenemos $S_1\subsetneq\dots\subsetneq S_k$, entonces la no maximalidad de $S_k$ nos dice que
+	existe $S_{k+1}\in F$ tal que $S_k\subsetneq S_{k+1}$, de forma que la sucesión de los $S_j$ no se estabiliza. 
+	
+	Por último, demostramos que $(3)\implies(2)$. Sea $S$ un submódulo de $M$ y sea
+	\[
+	F=\{T\subseteq S:T\subseteq M\text{ submódulo finitamente generado}\}.
+	\]
+	Por hipótesis, $F$ tiene un elemento maximal, digamos $N$. Entonces $N$ es un submódulo de $M$ tal que $N\subseteq S$ y $N$
+	es finitamente generado, digamos $N=(n_1,\dots,n_k)$. Si $N=S$, en particular $S$ es finitamente genreado. Si $N\ne S$, 
+	sea  $x\in S\setminus N$. Entonces 
+	$N\subseteq (n_1,\dots,n_k,x)\subseteq S$, lo que implica, por la maximalidad de $N$, que $N=(n_1,\dots,n_k,x)$, una contradicción
+	pues $x\not\in N$. 
+\end{proof}
+
+\begin{exercise}
+\label{xca:exacta_noetheriano}
+	Si  
+	\[  
+		\xymatrix{
+        0\ar[r]
+        & M
+        \ar[r]^f
+        & N
+        \ar[r]^g
+        & T\ar[r]
+        & 0	
+        }
+     \]
+     es exacta, valen las siguientes afirmaciones:
+     \begin{enumerate}
+     	\item Si $N$ es noetheriano, entonces $M$ y $T$ son noetherianos.
+     	\item Si $M$ y $T$ son noetherianos, entonces $N$ es noetheriano.
+     \end{enumerate}	
+\end{exercise}
+
+
+\begin{exercise}
+\label{xca:regular_noetheriano}
+Un anillo $R$ es noetheriano si y sólo si el módulo $\prescript{}{R}R$ es noetheriano.	
+\end{exercise}
+
+\begin{exercise}
+\label{xca:directa_noetheriano}
+Si $M_1,\dots,M_n$ son noetherianos, entonces $M_1\oplus\cdots\oplus M_n$ es noetheriano. 	
+\end{exercise}
+
+Es interesante mencionar que el resultado del ejercicio anterior no vale para sumas infinitas de módulos. Puede demostrarse
+por ejemplo que $\Z^{\N}$ no es noetheriano, pues no es finitamente generado. 
+%$\Z^{(\N)}$ no es noetheriano, ya que no es finitamente generado.  
+
+\begin{proposition}
+Si $R$ es noetheriano y $M$ es un módulo finitamente generado, entonces $M$ es noetheriano.	
+\end{proposition}
+
+\begin{proof}
+Como $M$ es finitamente generado, digamos $M=(m_1,\dots,m_k)$, existe un epimorfismo 
+$R^k\to N$, $(r_1,\dots,r_k)\mapsto \sum_{i=1}^k r_i\cdot m_i$, donde
+$R^k=\oplus_{i=1}^k R$. Como $R$ es noetheriano, $R^k$ es noetheriano y luego $M$ es también noetheriano.	
+\end{proof}
+

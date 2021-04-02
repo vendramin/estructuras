@@ -1,0 +1,506 @@
+\chapter{Los teoremas de Sylow}
+
+\begin{definition}
+\index{Subgrupo!de Sylow}
+Sea $G$ un grupo de orden $p^\alpha m$, donde $p$ es un primo coprimo con $m$. Un subgrupo $S$ de $G$ es 
+un $p$-subgrupo	de Sylow de $G$ si $|S|=p^\alpha$. 
+\end{definition}
+
+Observemos que un subgrupo $S$ de $G$ será entonces un $p$-subgrupo de Sylow de $G$ si y sólo si $S$ es un $p$-grupo y además $p$ no divide a $(G:S)$. 
+
+\begin{examples}\
+\begin{enumerate}
+\item Si $p$ no divide a $|G|$, entonces $\{1\}$ es un $p$-subgrupo de Sylow de $G$. 
+\item Si $G$ es un $p$-grupo, entonces $G$ es un $p$-subgrupo de Sylow de $G$.
+\end{enumerate}	
+\end{examples}
+
+\begin{example}
+Sea $G=\Sym_3$. Entonces $\langle (12)\rangle$, $\langle (13)\rangle$ y $\langle (23)\rangle$ son los $2$-subgrupos de Sylow de $G$. Además
+$\langle (123)\rangle$ es el único $3$-subgrupo de Sylow de $G$.	
+\end{example}
+
+\begin{example}
+Si $G=\Sym_4$, el subgrupo $\langle (1234),(13)\rangle$ es un $2$-subgrupo de Sylow de $G$ y
+el subgrupo $\langle (123)\rangle$ es un $3$-subgrupo de Sylow de $G$. 	
+\end{example}
+
+\begin{example}
+Si $G=\Z/18$, el subgrupo $\langle 2\rangle =\{0,2,4,6,8,10,12,14,16\}$ es el único $3$-subgrupo
+de Sylow de $G$ y el subgrupo $\langle 9\rangle=\{0,9\}$ es el único $2$-subgrupo de Sylow de $G$. 	
+\end{example}
+
+\begin{example}
+Sea $p$ un número primo y sea 
+$G=\GL_n(p)$. Como 
+\begin{align*}
+|\GL_n(p)|&=(p^n-1)(p^n-p)\cdots (p^n-p^{n-1})\\
+&=p^{1+2+\cdots+n}(p^n-1)(p^{n-1}-1)\cdots (p-1),
+\end{align*}
+podemos escribir $|\GL_n(p)|=p^\alpha m$, donde $\alpha=1+2+\cdots+n$ y $m$ es un entero no divisible por $p$. El subgrupo
+de matrices de la forma 
+\[
+\begin{pmatrix}
+1 & * & \cdots & *\\
+0 & 1 & \cdots & *\\
+\vdots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & 1 	
+\end{pmatrix},
+\]
+es decir el conjunto de matrices $(g_{ij})$ con 
+\[
+g_{ij}=\begin{cases}
+1 & \text{si $i=j$},\\
+0 & \text{si $i>j$},
+\end{cases}
+\]
+tiene orden $p^\alpha$ y luego es un $p$-subgrupo de Sylow de $\GL_n(p)$. 
+\end{example}
+
+El primer objetivo del capítulo es demostrar el primer teorema de Sylow, que garantiza la existencia de $p$-subgrupos de Sylow para todo primo $p$. 
+Antes de ir al teorema, necesitamos un resultado auxiliar.
+
+\begin{lemma}
+	Si $p$ es un primo, $\alpha\geq0$ y $m\geq 1$, entonces 
+	\[
+	\binom{p^\alpha m}{p^\alpha}\equiv m\bmod p.
+	\]
+\end{lemma}
+
+\begin{proof}
+	Por el teorema del binomio, 
+	\[
+	(1+X)^p=\sum_{j=0}^p\binom{p}{j}X^{p-j}\equiv 1+X^p\bmod p,
+	\]
+	ya que $\binom{p}{j}$ es divisible por $p$ para todo $j\in\{1,\dots,p-1\}$. 
+	Por inducción, demostramos ahora que 
+	\begin{gather*}
+	(1+X)^{p^j}\equiv 1+X^{p^j}\bmod p	\\
+	\shortintertext{vale para todo $j$. Luego}
+	(1+X)^{p^\alpha m}\equiv (1+X^{p^\alpha})^m\bmod p.
+	\end{gather*}
+Al comparar el coeficiente de $X^{p^\alpha}$ en ambos miembros de la fórmula anterior, obtenemos el resultado que queríamos demostrar.
+\end{proof}
+
+\begin{theorem}[primer teorema de Sylow]
+\index{Teorema!de Sylow I}	
+Si $G$ es un grupo finito y $p$ es un número primo, existe un $p$-subgrupo de Sylow de $G$. 
+\end{theorem}
+
+\begin{proof}
+Escribimos $|G|=p^\alpha m$, con $\gcd(p,m)=1$ y $\alpha\geq1$. Sea 
+\[
+X=\{S:S\subseteq G\text{ subconjunto de tamaño $p^\alpha$}\}.
+\]
+Hacemos actuar a $G$ en $X$ por multiplicación a izquierda, pues $|g\cdot S|=|gS|=|S|$ para todo $g\in G$ y todo $S\in X$. Descomponemos a $X$
+en $G$-órbitas y observamos que, gracias al lema anterior,  
+\[
+|X|= \binom{p^\alpha m}{p^\alpha}\equiv m\not\equiv 0\bmod p,
+\] 	
+lo que implica que existe una órbita $\mathcal{O}$ de tamaño no divisible por $p$. Si $S\in\mathcal{O}$, sea $G_S$ el estabilizador de $S$ en $G$. Como
+$|\mathcal{O}|=(G:G_S)$ y $|\mathcal{O}|$ no es divisible por $p$, tenemos que $p^\alpha$ divide a $|G_S|$. En particular, $p^\alpha\leq |G_S|$. Si $g\in G_S$, entonces
+$gS=S$. Si $x\in S$, entonces $G_Sx\subseteq S$. Luego
+\[
+|G_S|=|G_Sx|\leq |S|=p^\alpha
+\]
+pues $S\in X$. En conclusión $G_S$ es un $p$-subgrupo de Sylow de $G$. 
+\end{proof}
+
+Nos resultará conveniente introducir la siguiente notación. 
+Si $G$ es un grupo finito y $p$ es un número primo que divide al orden de $G$, escribiremos
+\[
+\Syl_p(G)=\{\text{$p$-subgrupos de Sylow de $G$}\}.
+\]
+
+
+\begin{quote}
+Veamos una demostración alternativa del primer teorema de Sylow 
+que utiliza coclases dobles. 
+Primero demostraremos un resultado auxiliar. Si $P\in\Syl_p(G)$ y $H\leq G$, entonces  
+existe un $g\in G$ tal que $H\cap gPg^{-1}\in\Syl_p(H)$. En efecto, supongamos que
+$|H|=p^\beta t$ con $p$ coprimo con $t$. 
+Si descomponemos a $G$ en $(H,P)$-coclases dobles, 
+\[
+|G|=\sum_{i=1}^k \frac{|H||P|}{|H\cap x_iPx_i^{-1}|}.
+\]
+Al simplificar $|P|=p^\alpha$, tenemos que $m=\sum_{i=1}^k(H:H\cap x_iPx_i^{-1})$, lo que nos dice 
+que existe $i\in\{1,\dots,k\}$ tal que 
+$(H:H\cap x_iPx_i^{-1})$ no es divisible por $p$. Esto significa que que 
+$p^\beta$ divide a $|H\cap x_iPx_i^{-1}|$ y en consecuencia $H\cap x_iPx_i^{-1}\in\Syl_p(H)$. 
+Por el teorema de Cayley podemos suponer que nuestro subgrupo $G$ es un subgrupo
+de $\GL_n(p)$ para algún $n\in\N$ y algún primo $p$. Sea $P$ un subgrupo de Sylow
+del grupo $\GL_n(P)$. La observación que demostramos
+aplicada al grupo $G$ nos dice que existe $g\in \GL_n(p)$ tal que $G\cap gPg^{-1}$ es un subgrupo de Sylow de $G$.  
+\end{quote}
+
+Antes de demostrar el segundo teorema de Sylow, vamos a demostrar un resultado similar, aunque levemente más técnico.
+
+\begin{theorem}
+Si $P$ es un $p$-subgrupo de $G$ y $S\in\Syl_p(G)$, entonces $P\subseteq gSg^{-1}$ para algún $g\in G$.	
+\end{theorem}
+
+\begin{proof}
+	Sea $X=\{xS:x\in G\}$ el conjunto de coclases de $S$ en $G$. Entonces $|X|=(G:S)$ no es divisible por el primo $p$. Si hacemos actuar a $G$ en $X$ por multiplicación a izquierda, en particular, el subgrupo $P$ también actuará en $X$ por multiplicación a izquierda. Si descomponemos entonces a $X$ en $P$-órbitas, existirá una $P$-órbita $\mathcal{O}$ de tamaño 
+	no divisible por $p$, pues $|X|$ no es divisible por $p$. Como $|\mathcal{O}|$ divide al orden de $P$ y $p$ no divide al tamaño de $\mathcal{O}$, necesariamente se tiene $|\mathcal{O}|=1$, 
+	es decir $\mathcal{O}=\{gS\}$ para algún $g\in G$. Como entonces $P(gS)=gS$, en particular, $xg\in gS$ para todo $x\in P$, es decir: si $x\in P$, entonces $x\in gSg^{-1}$. Luego $P\subseteq gSg^{-1}$. 
+\end{proof}
+
+\begin{corollary}
+	Sea $p$ un número primo. 
+	Si $G$ es un grupo finito y $P$ es un $p$-subgrupo de $G$, entonces $P$ está contenido en algún $p$-subgrupo de Sylow de $G$.
+\end{corollary}
+
+\begin{proof}
+Si $S\in\Syl_p(G)$, entonces $gSg^{-1}\in\Syl_p(G)$ pues $|gSg^{-1}|=|S|$. El teorema anterior nos da el corolario pues $P\subseteq gSg^{-1}$ para algún $g\in G$  	
+\end{proof}
+
+Ahora sí, el segundo teorema de Sylow, que afirma que dos $p$-subgrupos de Sylow siempre serán conjugados.
+
+\begin{theorem}[segundo teorema de Sylow]
+\index{Teorema!de Sylow II}
+Sea $G$ un grupo finito y $p$ un número primo. 
+Si $S,T\in\Syl_p(G)$, entonces existe $g\in G$ tal que $gSg^{-1}=T$. 
+\end{theorem}
+
+\begin{proof}
+Utilizamos el teorema anterior con $P=T$ y entonces $T\subseteq gSg^{-1}$ para algún $g\in G$. Como $|S|=|T|$ y además  
+$|T|\leq |gSg^{-1}|=|S|$, se concluye que $T=gSg^{-1}$.  	
+\end{proof}
+
+\begin{corollary}
+Sea $G$ un grupo finito, $p$ un número primo y $S\in\Syl_p(G)$. Si $S$ es normal en $G$, entonces $\Syl_p(G)=\{S\}$. 
+\end{corollary}
+
+\begin{proof}
+Si $T\in\Syl_p(G)$, entonces $T=gSg^{-1}=S$ para algún $g\in G$. 	
+\end{proof}
+
+\begin{quote}
+Veamos una 
+demostración alternativa del segundo teorema de Sylow que usa coclases dobles. 
+Si $P,Q\in\Syl_p(G)$ y 
+descomponemos a $G$ en $(P,Q)$-coclases dobles, tenemos
+\[
+p^\alpha m=\sum_{i=1}^k\frac{|P||Q|}{|P\cap x_iQx_i^{-1}|}
+\implies
+m=\sum_{i=1}^k\frac{|P|}{|P\cap x_iQx_i^{-1}|}
+\]
+para ciertos $x_1,\dots,x_k\in G$. 
+Como $m$ no es divisible por $p$, existe algún $i\in\{1,\dots,k\}$ tal que $|P|=|P\cap x_iQx_i^{-1}|$, lo que
+implica que $P=x_iQx_i^{-1}$ para algún $i\in\{1,\dots,k\}$. 
+\end{quote}
+
+Antes de enunciar y demostrar el tercer teorema de Sylow introduciremos la siguiente notación. Si $p$ es un número primo y $G$ es un grupo finito de orden $p^\alpha m$ con $\gcd(p,m)=1$, entonces
+$n_p(G)=|\Syl_p(G)|$. Observar que entonces 
+\[
+n_p(G)=(G:N_G(P))
+\]
+para cualquier $P\in\Syl_p(G)$. Veremos que además $n_p(G)$ divide a $m$. 
+
+\begin{theorem}[tercer teorem de Sylow]
+Sea $G$ un grupo finito y $p$ un número primo. Entonces $n_p(G)\equiv 1\bmod p$. 	
+\end{theorem}
+
+\begin{proof}
+	Sea $P\in\Syl_p(G)$, que sabemos que existe por el primer teorema de Sylow, y sea $n=n_p(G)$, Consideramos
+	el conjunto
+	\[
+	X=\{gPg^{-1}:g\in G\}=\{P=P_1,P_2,\dots,P_n\}.
+	\] 
+	Si hacemos actuar a $G$ en $X$ por conjugación, $P$ también actúa en $X$ por conjugación. 
+	Entonces todas las $P$-órbitas tiene tamaño una potencia del primo $p$. 
+	
+	Afirmamos que $\{P\}$ es la única $P$-órbita de tamaño 1. En efecto, como $xPx^{-1}=P$ si $x\in P$, tenemos que $\{P\}$ es una $P$-órbita. Sea $P_i$ una $P$-órbita de tamaño 1. Entonces
+	$xP_ix^{-1}=P_i$ para todo $x\in P$ y luego $P\subseteq N_G(P_i)$. El grupo
+	$N_G(P_i)/P_i$ tiene orden no divisible por $p$, pues $P_i\in\Syl_p(G)$. Si $xP_i\in N_G(P_i)/P_i$ con $x\in P$, entonces $xP_i=P_i$, es decir $x\in P_i$. Esto implica
+	que $P\subseteq P_i$ y luego $P=P_i$. Ahora tenemos 
+	\[
+	X=\{P\}\cup \underbrace{\mathcal{O}_1\cup\mathcal{O}_2\cup\cdots\cup\mathcal{O}_k}_{\text{de tamaño $>1$ divisible por $p$}},
+	\]
+	de donde obtenemos $n_p(G)=|X|\equiv 1\bmod p$. 
+\end{proof}
+
+\begin{quote}
+Una demostración alternativa del tercer teorema de Sylow basada en coclases dobles. 
+Sean $P\in\Syl_p(G)$ y $N=N_G(P)$. Recordemos
+que $n_p(G)=(G:N)$. Si descomponemos
+a $G$ en $(P,N)$-coclases dobles, 
+\[
+|G|=\sum_{i=1}^k\frac{|P||N|}{|N\cap x_iPx_i^{-1}|}
+\] 
+para ciertos $x_1,\dots,x_k\in G$. Sin perder generalidad podemos suponer que $x_1=1$, entonces la fórmula anterior queda
+\[
+n_p(G)=1+\sum_{i=2}^k\frac{|P|}{|N\cap x_iPx_i^{-1}|},
+\] 
+pues $(G:N)=n_p(G)$. 
+El teorema quedará demostrado si vemos que la suma del miembro de la derecha es divisible por $p$. Si esto no pasa, 
+es decir si existe $i\in\{2,\dots,k\}$ tal que $|N\cap x_iPx_i^{-1}|=|P|$, entonces
+$x_iPx_i^{-1}=N\cap x_iPx_i^{-1}\subseteq N$. Como entonces $P$ y también $x_iPx_i^{-1}$ son ambos $p$-subgrupos de Sylow de $N$,
+el segundo teorema de Sylow afirma que estos subgrupos tienen que ser conjugados en $N$. Por definición del normalizador, $P$ es normal en $N$. 
+En consecuencia, $x_iPx_i=P$, es decir $x_i\in N$, una contradicción pues como $i>1$ se tiene que 
+$Px_iN$ y $Px_1N=PN$ son coclases dobles disjuntas.  
+\end{quote}
+
+Veamos algunas aplicaciones sencillas de los teoremas de Sylow. 
+
+\begin{example}
+Si $G$ es un grupo de orden 15, entonces $G$ es cíclico. 
+
+Sean $n_3=n_3(G)$ y $n_5=n_5(G)$. Sabemos que $n_3\equiv1\bmod 3$ y que además $n_3$ divide a 5, luego $n_3=1$. Esto nos dice
+que existe un único $H\in\Syl_3(G)$, que resulta ser normal en $G$ e isomorfo a $\Z/3$. Similarmente, $n_5=1$ y existe 
+entonces un único $K\in\Syl_5(G)$ tal que $K\unlhd G$ y $K\simeq\Z/5$. Como $H\cap K=\{1\}$ por el teorema de Lagrange, tenemos
+\[
+|HK|=\frac{|H||K|}{|H\cap K|}=|H||K|=15=|G|.
+\] 	
+Luego $G=HK\simeq H\times K\simeq \Z/3\times\Z/5\simeq\Z/15$. 
+\end{example}
+
+El siguiente ejemplo, es bastante más difícil que el anterior.
+
+\begin{example}
+Si $G$ es un grupo de orden 455, entonces $G$ es cíclico. 
+
+Para cada primo $p$ que divide al orden de $G$, sea $n_p=n_p(G)$. Como $n_5$ divide a $7\times 13$ y $n_5\equiv 1\bmod 5$, entonces $n_5\in\{1.91\}$. En cambio,
+un cálculo sencillo nos da $n_7=n_{13}=1$. Sea $P\in\Syl_7(G)$ y sea $Q\in\Syl_{13}(G)$, ambos son subgrupos normales en $G$. Como $P$ y $Q$ tienen órdenes coprimos, el teorema de Lagrange implica que $P\cap Q=\{1\}$. 
+
+Estudiaremos ahora los subgrupos de Sylow
+de los cocientes $G/P$ y $G/Q$. 
+Sea $m_5=n_5(G/P)$ y $m_{13}=n_{13}(G/P)$. Como $m_5$ divide a 13 y además $m_5\equiv1\bmod 5$, entonces $m_5=1$. Similarmente, $m_{13}=1$ y entonces $G/P\simeq\Z/5\times\Z/13$. De la misma forma vemos que $G/Q\simeq\Z/5\times\Z/7$ y entonces $G/P$ y $G/Q$ son ambos abelianos. Esto significa que 
+$[G,G]\subseteq P\cap Q=\{1\}$ y luego $G$ también es un grupo abeliano. En particular, $n_5=1$ y luego
+\[
+G\simeq\Z/5\times\Z/7\times\Z/13\simeq\Z/455.
+\]  	
+\end{example}
+
+
+
+\begin{example}
+Si $G$ es un grupo de orden 	21, entonces 
+\[
+G\simeq\Z/21\text{ o bien }G\simeq\langle x,y:x^7=y^3=1,\,yx=x^2y\rangle.
+\] 
+
+Sean $n_3=n_3(G)$ y $n_7=n_7(G)$. Como $n_7\equiv1\bmod 7$ y $n_3$ divide a $3$, entonces $n_7=1$. Existe entonces
+un único $H\in\Syl_7(G)$. Ese subgrupo $H$ es tal que $H\unlhd G$ y $H\simeq\Z/7$. Entonces $H=\langle x\rangle$ donde $x^7=1$. 
+Sea $K\in\Syl_3(G)$. Como $n_3$ divide a 7 y $n_3\equiv1\bmod 3$, entonces $n_3\in\{1,7\}$. En cualquier caso, $K\simeq\Z/3$ y 
+entonces $K=\langle y\rangle$ donde $y^3=1$. Por el teorema de Lagrange, $H\cap K=\{1\}$ y luego $G=HK$. En particular,
+\[
+G=\{x^iy^j:0\leq i\leq 6,\,0\leq j\leq 2\}.
+\]
+Como $H$ es normal en $G$, $yxy^{-1}\in H$, es decir $yxy^{-1}=x^i$ para algún $i\in\{1,\dots,6\}$. Tenemos entonces
+que $x^7=y^3=1$ y además $yx=x^iy$ para un cierto $i\in\{1,\dots,6\}$. Para ver qué podemos decir de ese $i$ observamos que
+\[
+x=y^3xy^{-3}=y^2(yxy^{-1})y^{-2}=y^2x^iy^{-2}=y(x^i)^2y^{-1}=(x^i)^3
+\]
+y luego $i^3\equiv 1\bmod 7$, es decir $i\in\{1,2,4\}$.  Tenemos entonces tres casos para analizar.
+\begin{enumerate}
+	\item[(a)] Si $yxy^{-1}=x$, entonces $xy=yx$ y luego $K\unlhd G$. Esto implica que $G\simeq H\times K\simeq\Z/21$. 
+	\item[(b)] Si $yxy^{-1}=x^2$, entonces tenemos todo lo que necesitamos para conocer $G$. De hecho, no solamente tenemos la descripción prometida sino que 
+	podemos escribir la tabla de multiplicación e intentar reconocer este grupo. Para poder tener una idea más concreta del grupo $G$ que encontramos en este caso, mencionamos que puede presentarse como un cierto subgrupo de $\GL_2(\Z/7)$. En efecto,  
+	\[
+	x=\begin{pmatrix}
+	1&1\\
+	0&1\end{pmatrix},
+	\quad	
+	y=\begin{pmatrix}
+	2&0\\
+	0&1\end{pmatrix},
+	\quad
+	G\simeq\langle x,y\rangle\leq \GL_2(\Z/7).
+\]
+\item[(c)] Si $yxy^{-1}=x^4$, entonces $y^2xy^{-2}=x^2$. Como $|y^2|=|y|=3$, si $z=y^2$, entonces $H=\langle y\rangle=\langle z\rangle$, lo que nos dice
+que, en realidad, estamos en el caso anterior. 
+\end{enumerate}
+\end{example}
+
+\begin{example}
+Si $G$ es un grupo de orden $5\cdot 7\cdot 17$, entonces $G$ es cíclico.
+
+Si $p\in\{5,7,17\}$, sea $n_p=n_p(G)$. Como $n_5\equiv 1\bmod 5$ y $n_5$ divide a $7\cdot 17$, entonces $n_5=1$. Sea $H\in\Syl_5(G)$. Al ser el único $5$-subgrupo de Sylow de $G$, $H$ es normal en $G$. Sean además $K\in\Syl_7(G)$ y $L\in\Syl_{17}(G)$. Como $H$ es normal en $G$, $HK$ es un subgrupo de $G$. Por el teorema de Lagrange, $H\cap K=\{1\}$ pues $H$ y $K$ tienen órdenes coprimos. Entonces $|HK|=5\cdot 7$.   
+
+Usaremos ahora la teoría de Sylow pero en el grupo $HK$. Si $m_7=n_7(HK)$, entonces $m_7=1$. En particular, $K\in\Syl_7(HK)$ y además $K$ es normal en $HK$, es decir
+$HK\subseteq N_G(K)$, lo que implica que $|HK|\leq |N_G(K)|$. Como
+\[
+n_7=(G:N_G(K))=\frac{|G|}{|N_G(K)|}\leq \frac{|G|}{|HK|}=\frac{5\cdot 7\cdot 17}{5\cdot 7}=17
+\]
+y además $n_7\in\{1,5\cdot 17\}$, se concluye que $n_7=1$. Dejamos como ejercicio utilizar la misma técnica para demostrar que $n_{17}=1$. En conclusión, $K$ y $L$ son ambos normales en $G$. El teorema de Lagrange implica que $L\cap H=H\cap K=L\cap K=\{1\}$ y entonces 
+\[
+L\cap (HK)=H\cap (LK)=K\cap (LH)=\{1\}.
+\]
+Luego $G=HKL\simeq\Z/5\times\Z/7\times\Z/17\simeq\Z/5\cdot 7\cdot 17$. 
+\end{example}
+
+
+\begin{example}
+Si $G$ es un grupo de orden 12 tal que $n_3(G)\ne1$, entonces $G\simeq\Alt_4$.
+
+Sea $P\in\Syl_3(G)$ y sea $n_3=n_3(G)=4$. Claramente $P$ no es normal en $G$. Hacemos actuar a $G$ en el conjunto de coclases $G/P$ por multiplicación a izquierda y 
+obtenemos un morfismo 
+\[
+\rho\colon G\to\Sym_{G/P}\simeq\Sym_4.
+\]
+Afirmamos que $\rho$ es inyectivo. Primero vemos que $\ker\rho\subseteq P$ pues 
+\[
+x\in\ker\rho\implies
+\rho_x=\id\implies
+xP\subseteq P\implies
+x\in P.
+\]
+Como $P$ no es normal en $G$, $P\ne \ker\rho$. Luego $\ker\rho$ es un subgrupo propio de $P$. En consecuencia, $\ker\rho=\{1\}$ pues $|P|=3$.   
+
+Sean $S,T\in\Syl_3(G)$. Como $S\simeq T\simeq\Z/3$, el teorema de Lagrange implica que $S\cap T=\{1\}$. Esto implica que $G$ contiene exactamente ocho elementos de orden tres. Como los elementos de orden tres de $\Sym_4$ están todos en $\Alt_4$, el subgrupo $\rho(G)\cap\Alt_4$ de $\Sym_4$ contiene al menos ocho elementos. Luego $G\simeq\rho(G)\simeq\Alt_4$.  
+\end{example}
+
+Otra aplicación bastante común de los teoremas de Sylow es a la (no) simplicidad de grupos. 
+
+\begin{example}
+Si $G$ es un grupo de orden 36, entonces $G$ no es simple.
+
+Si $G$ fuera simple, entonces $n_3=n_3(G)=4$. Sea $P\in\Syl_3(G)$. Si hacemos actuar a $G$ en $X=\{gPg^{-1}:g\in G\}$ por conjugación, 
+tenemos un morfismo de grupos 
+\[
+\rho\colon G\to\Sym_X\simeq\Sym_4.
+\]
+Como $G$ es simple, $\ker\rho=\{1\}$ o bien $\ker\rho=G$. Si $\ker\rho=G$, $P$ es normal en $G$, una contradicción. Luego $\ker\rho=\{1\}$ y entonces $\rho$ es inyectivo. En particular, gracias al primer teorema de isomorfismos, 
+\[
+G\simeq G/\ker\rho\simeq\rho(G)\lesssim\Sym_4,
+\]
+que implica que 36 divide a 24, una contradicción.   	
+\end{example}
+
+\begin{example}
+Si $G$ es un grupo de orden 30, entonces $G$ no es simple.
+
+Para cada primo $p$ que divide a 30, sea $n_p=n_p(G)$. Supongamos que $n_2>1$, $n_3>1$ y que $n_5>1$. Entonces $n_3=10$. Tenemos así
+diez $3$-subgrupos de Sylow, todos ellos con intersección trivial. En efecto, para ver que la intersección de dos $3$-subgrupos de Sylow es trivial procedemos de la siguiente forma: Si $P,Q\in\Syl_3(G)$ son tales que $P\ne Q$, entonces $P\cap Q\leq P$ y luego
+$|P\cap Q|\in\{1,3\}$. Si $|P\cap Q|=3$, entonces $P\cap Q=P$ y luego $P=Q$, un contradicción. De la misma forma, tenemos seis $5$-subgrupos de Sylow de $G$, todos con interección trivial. En conclusión, 
+\[
+|G|\geq 1+10\times 2+6\times 4>30,
+\]
+una contradicción. 
+\end{example}
+
+Al terminar la demostración del primer teorema de Sylow, usamos coclases dobles para demostrar que  
+si $H$ es un subgrupo de un grupo finito $G$ y 
+$P\in\Syl_p(G)$, entonces $g\in G$ tal que $gPg^{-1}\cap H\in\Syl_p(H)$. Otra demostración
+puede obtenerse al considerar la acción de $H$ en $G/P$ por multiplicación a izquierda.
+
+%\begin{theorem}
+%	Sea $H$ un subgrupo de un grupo finito $G$ y 
+%	sea $P\in\Syl_p(G)$. Existe entonces $g\in G$ tal que $gPg^{-1}\cap H\in\Syl_p(H)$.
+%\end{theorem}
+%
+%\begin{proof}
+%	El grupo $H$ actúa en $G/P$ por multiplicación a izquierda. Como $p$ no
+%	divide al índice $(G:H)$ de $H$ en $G$, alguna órbita, digamos $H\cdot
+%	(gP)$, tiene tamaño no divisible por $p$, es decir: existe $g\in G$ tal que
+%	$|H\cdot (gP)|$ no es divisible por $p$. El tamaño de esta órbita es
+%	\[
+%		|H\cdot (gP)|=(H:H_{gP}),
+%	\]
+%	donde $H_{gP}=\{h\in H:h\cdot (gP)=gP\}$ es el estabilizador en $H$ de $gP$. Si $|H|=p^{\alpha}m_1$, entonces
+%	$H_{gP}|=p^{\alpha}m_2$. Además
+%	\[
+%		H_{gP}=\{h\in H:(hg)P=gP\}=\{h\in H:g^{-1}hg\in P\}=gPg^{-1}\cap H,
+%	\]
+%	que es un $p$-grupo por ser un subgrupo del $p$-grupo $gPg^{-1}$. 
+%\end{proof}
+%
+%
+%\begin{example}
+%	Si $G=\GL_2(p)$ y $H=\begin{pmatrix} * & 0\\ * & *\end{pmatrix}$, $P=\begin{pmatrix} 1 & *\\ 0 & 1\end{pmatrix}\in\Syl_p(G)$.
+%	Si $g=\begin{pmatrix}0 & 1\\-1&0\end{pmatrix}$, entonces
+%	\[
+%		g\begin{pmatrix}
+%			1 & x\\
+%			0 & 1\end{pmatrix}g^{-1}=\begin{pmatrix}
+%			1 & 0\\
+%			-x & 1
+%		\end{pmatrix}
+%	\]
+%	y luego $gPg^{-1}\in\Syl_p(H)$. 
+%\end{example}
+
+\begin{theorem}
+	Sea $N$ un subgrupo normal de un grupo finito $G$ y sea $P\in\Syl_p(N)$. Entonces 
+	$P\cap N\in\Syl_p(N)$ y todo los $p$-subgrupos de Sylow de $N$ se obtienen
+	de esa forma. 
+\end{theorem}
+
+\begin{proof}
+	Como $N$ es normal, 
+	sabemos por el teorema anterior que existe un $g\in G$ tal que
+	\[
+		g(P\cap N)g^{-1}=gPg^{-1}\cap gNg^{-1}=gPg^{-1}\cap N\in\Syl_p(N).
+	\]
+	Luego $P\cap N$ es un $p$-subgrupo de Sylow de $g^{-1}Ng=N$. 
+	
+	Sea $Q\in\Syl_pN$ y sea $P\in\Syl_p(G)$ tal que $Q\subseteq P$. Entonces
+	$Q$ está contenido en el $p$-subgrupo de Sylow $P\cap N$ de $N$. Luego
+	$Q=P\cap N$.
+\end{proof}
+
+Como corolario obtenemos que si $N$ es un subgrupo normal de un grupo finito $G$, entonces 
+$n_p(N)\leq n_p(G)$. 
+
+\begin{theorem}
+	Sean $N$ un subgrupo normal de un grupo finito $G$, $\pi\colon G\to
+	G/N$ el morfismo canónico y $P\in\Syl_p(G)$. Entonces
+	$\pi(G)\in\Syl_p(G/N)$ y todos los $p$-subgrupos de Sylow de $G/N$ se
+	obtienen de esa forma. 
+\end{theorem}
+
+\begin{proof}
+	Como $\pi(P)=\pi|_{P}(P)\simeq P/N\cap P$ por el segundo teorema de
+	isomorfismo, $\pi(P)$ es un $p$-grupo.  Como además $|PN|=|P||N|/|P\cap
+	N|$, 
+	\[
+		(G/N:\pi(P))=(G:PN)
+	\]
+	no es divisible por $p$. Luego $\pi(P)\in\Syl_p(G/N)$. 
+	
+	Si $Q\in\Syl_p(G/N)$, entonces $Q=\pi(H)$ para algún subgrupo $H$ de $G$
+	tal que $N\subseteq H$. En particular, 
+	\[
+		|Q|=|\pi(H)|=\frac{|H|}{|H\cap N|}=\frac{|H|}{|N|}
+	\]
+	y luego
+	\[
+		(G:H)=\frac{|G|/|N|}{|H|/|N|}=(G/N:Q)
+	\]
+	no es divisible por $p$. Esto nos dice que si $X\in\Syl_p(H)$, entonces
+	$X\in\Syl_p(G)$. Luego $\pi(X)\subseteq\pi(H)=Q$ y entonces $\pi(X)=Q$ ya
+	que $\pi(X)\in\Syl_p(G/N)$.
+\end{proof}
+
+Como corolario, si $N$ es un subgrupo normal de un grupo finito $G$, entonces 
+$n_p(G/N)\leq n_p(G)$. 
+
+\begin{corollary}
+Si un grupo finito $G$ tiene un único $p$-subgrupo de Sylow para algún
+primo $p$, entonces todo subgrupo y todo cociente de $G$ también tienen un
+único $p$-subgrupo de Sylow.
+\end{corollary}
+
+\begin{proof}
+	Si $H$ es un subgrupo de $G$, entonces $n_p(H)\leq n_p(G)=1$. Si $N$ es un subgrupo
+	normal de $G$, entonces $n_p(G/N)\leq n_p(G)=1$. 	
+\end{proof}
+
+%Veamos una aplicación. 
+%
+%\begin{theorem}[Wilson]
+%	Sea $n\in\N$. Entonces $n$ es primo si y sólo si
+%	$(n-1)!\equiv -1\bmod n$.
+%\end{theorem}
+%
+%\begin{proof}
+%	Sea $p$ un número primo. 
+%	El grupo $\Sym_p$ tiene $(p-1)!$ elementos de orden $p$. Cada 
+%	$p$-subgroupo de Sylow de $\Sym_p$ está generado por un $p$-ciclo, y luego
+%	$n_p\equiv (p-2)!$. Por el tercer teorema de Sylow,
+%	$(p-2)!=n_p\equiv 1\bmod p$. Al multiplicar por $p-1$, tenemos
+%	$(p-1)!\equiv -1\bmod p$. 
+%\end{proof}
+%
+%

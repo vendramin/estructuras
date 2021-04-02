@@ -1,0 +1,232 @@
+\chapter{Grupos de automorfismos}
+
+Si $G$ es un grupo y 
+$f\colon G\to G$ es un isomorfismo, diremos que $f$ es un automorfismo de $G$. 
+La composición de automorfismos de un grupo $G$ es también un automorfismo de $G$. 
+Se define entonces el \textbf{grupo de automorfismos} de $G$ como
+\[
+\Aut(G)=\{f\colon G\to G:f\text{ es un automorfismo de $G$}\}.
+\] 
+Obviamente $\Aut(G)$ es un grupo con la composición. 
+
+\begin{example}
+$\Aut(\Z)\simeq\Z/2$ pues $\Aut(\Z)=\{\id,-\id\}$. 
+\end{example}
+
+\begin{example}
+Sea $G$ un grupo y sea $g\in G$. La conjugación 
+$\gamma_g\colon G\to G$, $x\mapsto gxg^{-1}$, 
+por $g$ es un automorfismo de $G$ pues
+\[
+\gamma_g(xy)=g(xy)g^{-1}=(gxg^{-1})(gyg^{-1})=\gamma_g(x)\gamma_g(y).
+\]
+Además $\gamma\colon G\to\Aut(G)$, $g\mapsto\gamma_g$, es un morfismo de grupos pues
+\[
+\gamma_{gh}(x)=(gh)x(gh)^{-1}=g(\gamma_h(x))g^{-1}=\gamma_g(\gamma_h(x))=(\gamma_g\circ\gamma_h)(x).
+\]
+
+\index{Grupo!de automorfismos interiores}
+El grupo de \textbf{automorfismos interiores} de $G$ se define como 
+$\Inn(G)=\gamma(G)$. Observemos que $\ker\gamma=Z(G)$ pues
+si $g\in G$ es tal que $\gamma_g=\id$, entonces 
+\[
+\gamma_g(x)=gxg^{-1}=x
+\]
+para todo $x\in G$. El primer teorema de isomorfismos implica entonces que
+\[
+G/Z(G)\simeq \gamma(G)=\Inn(G).
+\]
+\end{example}
+
+Puede demostrarse que $\Inn(G)$ es un subgrupo normal de $\Aut(G)$. El cociente $\Aut(G)/Inn(G)$ se conoce como el grupo de \textbf{automorfismos exteriores} de $G$. 
+
+\begin{example}
+Veamos que $\Aut(\Sym_3)\simeq\Sym_3$. Sabemos que $Z(\Sym_3)=\{\id\}$. El ejemplo anterior nos permite entonces demostrar que
+$\Inn(\Sym_3)\simeq\Sym_3/Z(\Sym_3)\simeq\Sym_3$. Observemos entonces que 
+\[
+\Inn(\Sym_3)=\{\gamma_g|g\in\Sym_3\}.
+\]
+
+Como $\Inn(\Sym_3)\subseteq\Aut(\Sym_3)$, sabemos que $\Aut(\Sym_3)$ tiene al menos seis elementos.
+Por otro lado, como $\Sym_3=\langle (12),(13),(23)\rangle$, cada $f\in\Aut(\Sym_3)$ induce una permutación del conjunto $\{(12),(13),(23)\}$ y entonces $|\Aut(\Sym_3)|\leq6$. En conclusión,
+\[
+\Aut(\Sym_3)=\Inn(\Sym_3)\simeq\Sym_3.
+\]   
+\end{example}
+
+\begin{example}
+Si $p$ es un número primo, entonces
+\[
+\Aut(\Z/p\times\Z/p)\simeq\GL_2(p).
+\] 
+En efecto, $\Z/p\times\Z/p$ es un espacio vectorial bidimensional sobre el cuerpo $\Z/p$ y
+todo automorfismo del grupo es también una transformación lineal inversible.    
+\end{example}
+
+El ejemplo anterior puede generalizarse. 
+
+\begin{exercise}
+Si $p$ es un primo, $C_p$ es el grupo cíclico de orden $p$ y $G=C_p\times\cdots\times C_p$ ($n$-veces), demuestre que
+$\Aut(G)\simeq\GL_n(p)$.
+%\underbrace{\Z/p\times\cdots\cdots\Z/p}_{\text{$n$-veces}})\simeq\GL_n(p).
+%Si $G=\Z/p\times\cdots\times\Z/p=(\Z/p)^n$ y 
+%$f\in\Aut(G)$, escribimos 
+%\[
+%f(e_j)=\sum_{i=1}^n a_{ij}e_i
+%\]	
+%para $a_{ij}\in\Z/p$ y $j\in\{1,\dots,n\}$. Definimos $\alpha\colon\Aut(G)\to\GL_n(p)$, $f\mapsto (a_{ij})$, 
+%y vemos que $\alpha$ es un isomorfismo.
+\end{exercise}
+
+\begin{example}
+Vamos a demostrar que 
+\[
+\Aut(\Z/n)\simeq\mathcal{U}(\Z/n)=\{m+n\Z:\gcd(n,m)=1\}.
+\]
+Sea $G=\langle g\rangle\simeq\Z/n$. Si $\alpha\in\Aut(G)$, entonces $\alpha(g)$ es algún generador del grupo $G$, es decir $|\alpha(g)|=n$. En particular, $\alpha(g)=g^m$ para algún $m$. Vimos en el capítulo~\ref{orden} que 
+\[
+|g^m|=\frac{n}{\gcd(n,m)}.
+\]
+Como consecuencia, los generadores de $G$ serán los elementos de la forma $g^m$ con $m$ tal que $\gcd(n,m)=1$. La función
+\[
+f\colon \Aut(G)\to\mathcal{U}(\Z/n),\quad
+\alpha\mapsto m,
+\]
+donde $m$ es tal que $\alpha(g)=g^m$, es un morfismo de grupos: si $\alpha,\beta\in\Aut(G)$, digamos $\alpha(g)=g^m$ y $\beta(g)=g^t$, entonces 
+\[
+\alpha(\beta(g))=\alpha(g^t)=(g^t)^m=g^{tm},
+\]
+es decir $f(\alpha\circ\beta)=f(\alpha)f(\beta)$. Además puede demostrarse que $f$ no depende del generador $g$ pues si $G=\langle g_1\rangle$, entonces $g_1=g^i$ para algún $i$ y luego 
+\[
+\alpha(g_1)=\alpha(g^i)=\alpha(g)^i=(g^m)^i=g^{mi}=(g^i)^m=g_1^m.
+\] 
+Dejamos como ejercicio verificar que $f$ es biyectiva. 
+\end{example}
+
+Veamos algunos ejemplos concretos del resultado anterior. 
+
+\begin{example}
+$\Aut(\Z/8)\simeq\mathcal{U}(\Z/8)=\{1,3,5,7\}=\langle 3,5\rangle\simeq\Z/2\times\Z/2$.
+\end{example}
+
+El ejemplo siguiente es bastante más difícil. Vamos a demostrar que si $p$ es un número primo, entonces
+$\Aut(\Z/p)$ es cíclico y tiene orden $p-1$. Vamos a necesitar el siguiente resultado auxiliar, que resulta ser de interés incluso en otros contextos.  
+
+\begin{lemma}
+Sean $G$ un grupo finito y abeliano y $n=\max\{|g|:g\in G\}$. Si $x\in G$, entonces $|x|$ divide a $n$. 
+\end{lemma}
+
+\begin{proof}
+Sean $g\in G$ tal que $n=|g|$, $x\in G$ y $m=|x|$. Queremos ver que $m$ divide a $n$. Supongamos que $m$ no divide a $n$. Existe entonces algún número primo $p$ 
+tal que $n=p^\alpha n_1$ y $m=p^\beta m_1$, donde $\gcd(p,n_1)=\gcd(p,m_1)=1$ y $\beta>\alpha$. Sabemos que
+\[
+|g^	{p^\alpha}|=\frac{n}{p^\alpha}
+\]
+no es divisible por $p$ y además
+\[
+|x^{\frac{m}{p^\beta}}|=p^\beta.
+\]
+Como $n/p^\alpha$ y $p^\beta$ son coprimos y $G$ es abeliano, 
+\[
+|g^{p^\alpha}x^{\frac{m}{p^\beta}}|=np^{\beta-\alpha}>n,
+\]
+una contradicción a la maximalidad de $n$. 
+\end{proof}
+
+Necesitamos otro resultado auxiliar, nuevamente de gran interés no solamente en este contexto. 
+
+\begin{lemma}
+\label{lem:X^n-1}
+Sea $K$ un cuerpo. Si $f\in K[X]$ es un polinomio de grado $n$, entonces $f$ tiene a lo sumo $n$ raíces distintas.
+\end{lemma}
+
+\begin{proof}
+Procederemos por inducción en $n$. Si $n=1$, el resultado es trivial. Supongamos entonces que el lema es válido para polinomios de grado $n-1$ y sea $f\in K[X]$. Si $f$ no tiene raíces en $K$, no hay nada para demostrar. Si, en cambio, $\alpha$ es una raíz de $f$, entonces
+\[
+f=(X-\alpha)q
+\]
+para un cierto $q\in K[X]$ de grado $n-1$. Si $\beta\ne\alpha$ es otra raíz de $f$, entonces $0=f(\beta)=(\beta-\alpha)q(\beta)$ y luego $q(\beta)=0$, es decir $\beta$ es raíz de $q$. Por hipótesis inductiva, el polinomio $q$ tiene a lo sumo $n-1$ raíces distintas. En consecuencia, $f$ tiene a lo sumo $n$ raíces distintas.   
+\end{proof}
+
+Ahora sí estamos en condiciones de demostrar el siguiente resultado. 
+
+\begin{theorem}
+\index{Unidades!de $\Z/p$}
+Si $p$ es un número primo, entonces $\mathcal{U}(\Z/p)$ es cíclico de orden $p-1$. 
+\end{theorem}
+
+\begin{proof}
+Sabemos que $\Aut(\Z/p)$ es un grupo abeliano. Sea 
+\[
+n=\max\{|g|:g\in\mathcal{U}(\Z/p)\}.
+\] 
+
+Veamos que $n=p-1$. Como $|\mathcal{U}(\Z/p)|=\varphi(p)=p-1$, tenemos $n\leq p-1$. Por otro lado, como gracias al lema anterior sabemos que el polinomio $X^n-1$ tiene a lo sumo $n$ soluciones, obtenemos $p-1\leq n$. Luego $n=p-1$. En particular, esto demuestra que $\mathcal{U}(\Z/p)$ es cíclico ya que contiene al menos un elemento de orden $p-1$.  
+\end{proof}
+
+Veamos otra aplicación importante de los resultados auxiliares que utilizamos para demostrar el teorema anterior. Primero, un lema, que bien podría quedar como ejercicio.
+
+\begin{lemma}
+Sea $G$ un grupo abeliano. Si $G$ tiene elementos de órdenes $k$ y $l$, entonces $G$ tiene un elemento de orden $\lcm(k,l)$. 
+\end{lemma}
+
+\begin{proof}
+Sean $g,h\in G$ tales que $|g|=k$ y $|h|=l$. Sea 
+$m=|gh|$. Si $k$ y $l$ son coprimos, 
+el resultado fue demostrado en el corolario~\ref{cor:ordenes_coprimos} en la página~\pageref{cor:ordenes_coprimos} como aplicación del teorema de Lagrange. 
+%entonces $m=kl$. En efecto, como $g$ y $h$ conmutan, 
+%\[
+%(gh)^{kl}=(g^{k})^l(h^l)^k=1,
+%\]
+%y entonces $m$ divide a $kl$. Por otro lado, $1=(gh)^m=g^mh^m$ y luego  
+%\[
+%g^m=h^{-m}\in\langle g\rangle\cap\langle h\rangle.
+%\]
+%Por el teorema de Lagrange $|\langle g\rangle\cap\langle h\rangle|=1$ pues el orden del subgrupo $%\langle g\rangle\cap\langle h\rangle$ divide simultáneamente a $k$ y a $l$, que son coprimos.  
+Supongamos entonces que $d=\gcd(k,l)>1$. Escribimos
+\begin{align*}
+k&=p_1^{\alpha_1}\cdots p_r^{\alpha_r} p_{r+1}^{\alpha_{r+1}}\cdots p_s^{\alpha_s},\\
+l&=p_1^{\beta_1}\cdots p_r^{\beta_r} p_{r+1}^{\beta_{r+1}}\cdots p_s^{\beta_s},
+\end{align*}
+donde los primos $p_1,\dots,p_s$ son todos distintos, $0\leq\alpha_j<\beta_j$ para todo $j\in\{1,\dots,r\}$ y $\alpha_j\geq\beta_j\geq0$ para todo $j\in\{r+1,\dots,s\}$. Sean
+\[
+x=g^{p_1^{\alpha_1}\cdots p_s^{\alpha_s}},
+\quad
+y=h^{p_{r+1}^{\beta_{r+1}}\cdots p_s^{\beta_s}}.
+\]
+Como $|x|$ y $|y|$ son coprimos, se concluye que
+$|xy|=|x||y|=m$.
+\end{proof}
+
+Antes de demostrar el teorema, veamos un ejemplo que ilustra qué pasa en el lema anterior.
+
+\begin{example}
+Vamos a calcular el orden de $(8,8)\in(\Z/10)\times(\Z/80)$. Primero observamos que 
+$8\in\Z/10$ tiene orden $10/\gcd(8,10)=10/2=5$ y que $8\in\Z/80$ tiene orden
+$80/\gcd(8,80)=80/8=10$. Tenemos entonces que $g=(8,0)$ tiene orden 5 y $h=(0,8)$ tiene orden 10. La prueba del lema anterior nos dice que
+el elemento $gh^2$ tendrá orden $\lcm(5,10)=10$.   
+\end{example}
+
+Ahora sí, el teorema. 
+
+\begin{theorem}
+\index{Subgrupos!finitos de $K^\times$} 
+Sea $K$ un cuerpo. Si $G$ es un subgrupo finito de $K^\times=K\setminus\{0\}$, entonces $G$ es cíclico. En particular, si $K$ es un cuerpo finito, entonces $K^\times$ es cíclico.  
+\end{theorem}
+
+\begin{proof}
+Sea $g\in G$ de orden maximal, digamos $n=|g|$. Vamos a demostrar que $G=\langle g\rangle$. Si eso no fuera cierto, 
+sea $h\in G\setminus\langle g\rangle$. Sabemos que $k=|h|\leq n$. Si $k=n$, entonces los $n+1$ elementos
+\[
+1,g,g^2,\dots,g^{n-1},h
+\]
+son raíces distintas del polinomio $X^n-1$, una contradicción al lema~\ref{lem:X^n-1}.  
+Luego $k<n$. Observemos ahora que $k$ divide a $n$ pues, de lo contrario, 
+como $G$ es abeliano, tendríamos en $G$ un elemento de orden 
+$\lcm(k,n)>n$, una contradicción a la maximalidad de $n$. Como $k$ divide $n$, tenemos 
+también los $n+1$ elementos 
+\[
+1,g^{n/k},g^{2n/k},\dots,g^{(k-1)n/k}
+\]
+son raíces distintas de $X^n-1$, una contradicción al lema~\ref{lem:X^n-1}. 
+\end{proof}

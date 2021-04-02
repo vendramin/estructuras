@@ -1,0 +1,552 @@
+\chapter{Módulos proyectivos}
+
+
+\begin{definition}
+\index{Módulo!proyectivo}
+Un módulo $P$ se dice \textbf{proyectivo} si dados $f\in\Hom_R(P,N)$ y un epimorfismo $g\in\Hom_R(M,N)$ 
+existe $h\in\Hom_R(P,M)$ tal que $g\circ h=f$, es decir que existe un morfismo $h$ que
+hace conmutativo al diagrama
+\[
+\xymatrix{ & P\ar[d]^f\ar@{-->}[ld]_h\\ M\ar[r]^g & N\ar[r] & 0	}
+\]
+\end{definition}
+
+\begin{example}
+Todo módulo libre es proyectivo. En efecto, si $S$ es base de módulo libre $P$, dado $s\in S$ existe
+$m\in M$ tal que $g(m)=f(s)$. Definimos entonces
+$h\colon P\to M$, $h(s)=m$ y extendemos por linealidad.  
+\end{example}
+
+En particular, $\Z$ es libre como $\Z$-módulo. 
+
+\begin{theorem}
+\label{thm:proyectivo}
+	Sea $P$ un módulo. Las siguientes afirmaciones son equivalentes:
+	\begin{enumerate}
+		\item $P$ es proyectivo.
+		\item $\Hom_R(P,-)$ es exacto.
+		\item Toda sucesión exacta
+			\[
+			\xymatrix{
+			0\ar[r] 
+			& N
+			\ar[r]^-{f}
+			& M
+			\ar[r]^-{g}
+			& P\ar[r]
+			& 0
+			}
+			\]
+ 			se parte, es decir que existe $h\in\Hom_R(P,M)$ tal que $g\circ h=\id_P$. En particular, 
+ 			$M\simeq N\oplus P$. 
+ 		\item $P$ es sumando directo de un libre.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Probemos primero que $(1)\Leftrightarrow(2)$. Sea 
+	\[
+	\xymatrix{
+	 0\ar[r] 
+	 & A
+	 \ar[r]^-{f}
+	 & B
+	 \ar[r]^-{g}
+	 & C\ar[r]
+	 & 0
+	 }
+	\]
+	una sucesión exacta. Tenemos que probar que si $P$ es proyectivo, entonces la
+	sucesión
+	\[
+	\xymatrix{
+	 0\ar[r] 
+	 & \hom_A(P,A)
+	 \ar[r]^-{f_*}
+	 & \hom_A(P,B)
+	 \ar[r]^-{g_*}
+	 & \hom_A(P,C)\ar[r]
+	 & 0
+	 }
+	\]
+	es exacta. Dado un morfismo $\beta\colon P\to C$, como $P$ es proyectivo y
+	$g$ es epimorfismo, existe $\alpha\in\Hom_R(P,B)$ tal que
+	$g_*(\alpha)=g\circ \alpha=\beta$. Luego $g_*$ es epimorfismo. Recíprocamente, es
+	claro que si $g_*$ es un epimorfismo entonces $P$ es proyectivo. 
+
+Veamos ahora que $(1)\implies(3)$. Si $0\to N\to M\to P\to 0$ es una sucesión exacta, entonces se parte, pues como
+$P$ es proyectivo 
+existe $h\in\Hom_P(P,N)$ tal que el diagrama
+	\[
+	\xymatrix{ & P\ar@{=}[d]^{\id_P}\ar@{-->}[ld]_h\\ M\ar[r]^g & P\ar[r] & 0	}
+	\]
+es conmutativo, lo que significa que $g\circ h=\id_P$. Para ver
+que $M\simeq N\oplus P$ basta usar la proposición~\ref{pro:split}.
+
+Veamos ahora que $(3)\implies(4)$. Sabemos que $P$ es cociente de un módulo libre, es decir
+que existe un conjunto $I$ y un epimorfismo $\varphi\colon R^{(I)}\to P$. Como 
+la sucesión
+	\[
+	\xymatrix{
+	 0\ar[r] 
+	 & \ker\varphi 
+	 \ar[r]
+	 & R^{(I)}
+	 \ar[r]^-{\varphi}
+	 & P\ar[r]
+	 & 0
+	 }
+	\]
+de módulos y morfismos 
+es exacta, se parte es decir que existe $h\in\Hom_R(P,R^{(I)})$ tal que
+$\varphi\circ h=\id_P$. Luego $P$ es sumando directo de un libre, pues
+$R^{(I)}\simeq\ker\varphi\oplus P$. 
+
+	Finalmente probemos $(4)\Rightarrow(1)$. Si $f\colon M\to N$ es un epimorfismo y 
+	$g\colon P\to N$, como $P$ es sumando directo del libre $R^{(I)}$, definimos
+	$\beta\colon P\to M$, $\beta=\alpha\circ i$, donde
+	$i\colon P\to R^{(I)}$ es la inclusión. El diagrama 
+	\[
+	\xymatrix{ & R^{(I)}\ar[d]^p\ar@{-->}[ddl]_{\alpha} \\
+	& P\ar[d]^f\ar@{-->}[dl]^{\beta}\\ M\ar[r]_g & N\ar[r] & 0 }
+	\]
+	donde $p\colon R^{(I)}\to P$ es tal que $p\circ i=\id_P$, es entonces conmutativo, pues 
+	\[
+		g\circ \beta=(g\circ \alpha)\circ i=f\circ (p\circ i)=f\circ \id_P=f.\qedhere
+	\]	
+\end{proof}
+
+No todo proyectivo es libre.
+
+\begin{example}
+Sea $R=\Z\times\Z$. Como $R$ es libre como $R$-módulo, 
+$\Z\times\{0\}$ es proyectivo, pues es sumando directo de un módulo libre. Sin embargo, $\Z\times\{0\}$ no es libre como $R$-módulo. En efecto,
+si lo fuera, sea $\{(x_i,0):i\in I\}$ una base de $\Z\times\{0\}$. Entonces
+$(1,1)\cdot (x_1,0)=(x_1,0)=(1,0)\cdot (x_1,0)$, una contradicción. 
+\end{example}
+
+Cocientes de proyectivos pueden no ser proyectivos. 
+
+\begin{example}
+Veamos que el $\Z$-módulo $\Z/n\Z$ no es proyectivo. 
+Si $\Z/n\Z$ es proyectivo, entonces, gracias al teorema anterior, 
+la sucesión exacta
+\[
+	\xymatrix{
+	 0\ar[r] 
+	 & n\Z 
+	 \ar[r]^i
+	 & \Z
+	 \ar[r]^-{\pi}
+	 & \Z/n\Z\ar[r]
+	 & 0,
+	 }
+\]
+donde $i$ es la inclusión y $\pi$ es el epimorfismo canónico, 
+se parte, es decir existe $h\in\Hom(\Z/n,\Z)$ tal que $\pi\circ h=\id_{\Z/n}$, una contradicción
+pues sabemos que $\Hom(\Z/n,\Z)=\{0\}$.
+% Si $f\in \Hom(\Z/n,\Z)$, entonces 
+%\[
+%0=f(0)=f(n)=nf(1)\in\Z
+%\]
+%y luego $f(1)=0$.  	
+\end{example}
+
+Submódulos de proyectivos pueden no ser proyectivos. 
+
+\begin{example}
+Sea $M=\Z/4$ como $\Z/4$-módulo. Como $M$ es libre, es proyectivo. 
+Veamos que el submódulo $N=\{0,2\}$ no es proyectivo. Si $N$ fuera proyectivo, entonces
+la sucesión exacta
+\[
+	\xymatrix{
+	 0\ar[r] 
+	 & \Z/2
+	 \ar[r]^i
+	 & \Z/4
+	 \ar[r]^-{\pi}
+	 & \Z/2
+	 \ar[r]
+	 & 0,
+	 }
+\]
+debería partirse, lo que implicaría que tendríamos en particular un isomorfismo 
+$\Z/4\simeq\Z/2\oplus\Z/2$ de grupos abelianos, una contradicción.
+\end{example}
+
+\begin{exercise}
+\label{xca:cociente_libre}
+Si $N$ es un submódulo de $M$ tal que $M/N$ es libre, entonces $N$ es sumando directo de $M$. 	
+\end{exercise}
+
+\index{Idempotente}
+Si $R$ es un anillo, $e\in R$ es \textbf{idempotente} si $e^2=e$. Ejemplos triviales de idempotentes son 0 y 1.
+Observemos que si $e$ es un idempotente no trivial, entonces 
+$I_1=Re$ y $I_2=R(1-e)$ son ideales a izquierda tales que $I_1\cap I_2=\{0\}$ y además 
+$R=I_1+I_2$. En efecto, para ver que $R=I_1+I_2$ basta observar que, como 
+$1=e+(1-e)$, entonces $r=r1=r(e+(1-e))=re+r(1-e)$ para todo $r\in R$. Para ver que $I_1\cap I_2=\{0\}$ 
+sea $x\in I_1\cap I_2$. Entonces $x=re=s(1-e)$ para ciertos $r,s\in R$ y luego
+\[
+0=s(1-e)e=xe=(re)e=re^2=re=x.   
+\]
+En particular, por el primer teorema de isomorfismos, 
+\[
+R\simeq R/(I_1\cap I_2)\simeq R/I_1\times R/I_2.
+\]
+
+\begin{example}
+Si $e\in \Z/24$ es idempotente, entonces $e\in\{0,1,9,16\}$.  	
+\end{example}
+
+\begin{example}
+Los idempotentes no triviales de $M_2(\R)$ son las matrices 
+de la forma $\begin{pmatrix}a&b\\c&d\end{pmatrix}$ con $a+d=1$ y $ad=bc$.  	
+\end{example}
+
+Los idempotentes del anillo están en correspondencia biyectiva con los proyectores
+de la representación regular $M=\prescript{}{R}R$. En efecto, si $p$ es un proyector, entonces $e=p(1)$ es un idempotente. Recíprocamente, 
+si $e$ es un idempotente del anillo, entonces el morfismo $p\colon M\to M$, $m\mapsto e\cdot m$, es un proyector, pues
+\[
+p(p(m))=e\cdot (e\cdot m)=e^2\cdot m=e\cdot m=p(m)
+\]
+para todo $m\in M$.
+
+\begin{example}
+Como $0$ y $1$ son los únicos idempotentes del anillo $\Z$, la correspondencia biyectiva entre
+idempotentes del anillo y proyectores del módulo 
+nos da otra demostración de que los únicos sumandos directos de $\Z$ son $\{0\}$ y $\Z$.
+\end{example}
+
+\begin{example}
+Si $e\in R$ es idempotente, el ideal a izquierda $Re$ es proyectivo como $R$-módulo. En efecto, la función
+$\varphi\colon R\to Re$, $r\mapsto re$, es un epimorfismo de módulos. La sucesión
+exacta
+\[
+	\label{eq:exacta}	
+		\xymatrix{
+        0\ar[r]
+        & \ker\varphi
+        \ar[r]
+        & R
+        \ar[r]^\varphi
+        & Re\ar[r]
+        & 0,
+        }
+\]
+se parte, pues la inclusión $i\colon Re\to R$ es una sección: $\varphi(i(re))=\varphi(re)=re^2=re$. Luego
+$R\simeq\ker\varphi\oplus Re$ y entonces $Re$ es proyectivo por ser sumando directo de un módulo libre. 
+\end{example}
+
+\begin{exercise}
+\label{xca:I^2}
+Sea $R$ un anillo conmutativo y sea $I$ un ideal de $R$. Demuestre que $I$ es un sumando directo de $R$ si y sólo si
+existe $u\in R$ tal que $I=(u)=(u^2)$. 	
+\end{exercise}
+
+\begin{exercise}
+\label{xca:ss_idempotente}
+Demuestre que $\prescript{}{R}R$ es semisimple si y sólo si todo ideal a izquierda de $R$ está generado por un idempotente.
+\end{exercise}
+
+\begin{proposition}
+Sea $M$ un módulo finitamente generado. Entonces $M$ es proyectivo si y sólo si existe $n\in\N$ y $p\in\Hom_R(R^n,R^n)$ tal que
+$M\simeq p(R^n)$ y $p^2=p$. 	
+\end{proposition}
+
+\begin{proof}
+	Supongamos primero que $M$ es proyectivo. Como todo módulo $M$ es cociente de un libre, 
+	existen $n\in\N$ y un epimorfismo $\varphi\colon R^n\to M$. Como $M$ es proyectivo, existe una sección 
+	$s\colon M\to R^n$ y luego $R^n=s(M)\oplus N$ para algún submódulo $N$ de $M$. Sea $p=s\circ\varphi\in\Hom_R(R^n,R^n)$. Entonces
+	\[
+	p(R^n)=s(\varphi(R^n))=s(M)\simeq M,
+	\]
+	pues $s$ es inyectiva. Además $p^2=s\circ(\varphi\circ s)\circ\varphi=s\circ\varphi=p$.   
+	
+	Recíprocamente, si existe $p\in\Hom_R(R^n,R^n)$ tal que $p^2=p$ y $p(R^n)\simeq M$, entonces $p\circ (\id-p)=0$. Esto nos
+	permite descomponer al anillo $R^n$ en idempotentes ortogonales, es decir
+	$R^n\simeq p(R^n)\oplus (\id-p)(R^n)$. Luego $M\simeq p(R^n)$ es proyectivo por ser sumando directo de un libre.  
+\end{proof}
+
+\begin{example}
+Sea $R=\Z/6=\{0,1,\dots,5\}$ y sea $M=\prescript{}{R}R$. Sabemos que $M$ es libre con base $\{1\}$. Si $I=\{0,2,4\}$ y $J=\{0,3\}$, entonces
+$I$ y $J$ son ideales de $R$, es decir que son submódulos de $M$. Si $m\in M$, entonces
+$m=-2m+3m\in I+J$. Como además $m\in I\cap J=\{0\}$, se concluye que $M\simeq I\oplus J$. En particular, $I$ y $J$ son proyectivos
+como $R$-módulos por ser sumandos directos del módulo libre $M$. Observemos que $I$ está generado por el idempotente
+$e=4$ y que $J$ está generado por el idempotente $1-e=3$.
+\end{example}
+
+
+\begin{proposition}
+El módulo $S\oplus T$ es proyectivo si y sólo si $S$ y $T$ son proyectivos. 	
+\end{proposition}
+
+\begin{proof}
+Consideremos el diagrama
+	\[
+	\xymatrix{ & S\ar[d]^{i_1}\ar@{-->}[ddl]_{h_1} \\
+	& S\oplus T\ar[d]^f\ar@{-->}[dl]^{h}\\ M\ar[r]_g & N\ar[r] & 0 }
+	\quad
+	\]
+
+Veamos primero que si $S$ y $T$ son proyectivos, entonces $S\oplus T$ es proyectivo. Como $S$ y $T$ 
+son proyectivos, existen $h_1\colon S\to M$ y $h_2\colon T\to M$ tales que
+$g\circ h_1=f\circ i_1$ y $g\circ h_2=f\circ i_2$, donde
+$i_1\colon S\to S\oplus T$, $i_1(s)=(s,0)$, $i_2\colon T\to S\oplus T$, $i_2(t)=(0,t)$.  
+Si definimos el morfismo 
+$h\colon S\oplus T\to M$,
+\[
+h(s,t)=h_1(s)+h_2(t),
+\] 	
+entonces tenemos que 
+\begin{align*}
+g(h(s,t))&=g(h_1(s)+h_2(t))=g(h_1(s))+g(h_2(t))\\
+&=f(i_1(s))+f(i_2(t))=f(s,0)+f(0,t)=f(s,t).
+\end{align*}
+	
+Demostremos ahora que si $S\oplus T$ es proyectivo, entonces $S$ es proyectivo. 
+Consideramos el diagrama
+	\[
+	\xymatrix{ & S\oplus T\ar[d]^{p_1}\ar@{-->}[ddl]_{h} \\
+	& S\ar[d]^f\ar@{-->}[dl]^{h_1}\\ M\ar[r]_g & N\ar[r] & 0 }
+	\quad
+	\]
+
+Sea $i_1\colon S\to S\oplus T$, $i_1(s)=(s,0)$.  
+Como por hipótesis $S\oplus T$ es proyectivo, existe un morfismo 
+$h\colon S\oplus T\to M$ tal que $g\circ h=f\circ p_1$. 
+Definimos entonces $h_1\colon S\to M$, $h_1(s)=h(s,0)$ 
+y vemos que
+\[
+g(h_1(s))=g(h(s,0))=f(s).
+\]
+Similarmente se demuestra que $T$ es también proyectivo.
+\end{proof}
+
+Dejamos como ejercicio demostrar 
+que $\oplus_{i\in I}M_i$ es proyectivo si y sólo si $M_i$ es proyectivo para todo $i\in\I$. 	
+
+\begin{example}
+	Sea $R=\Z/6$. 
+	Veamos que todo $R$-módulo es proyectivo. Si $M$ es un $R$-módulo, afirmamos que $M=2M\oplus 3M$, donde
+	$2M=\{2m:m\in M\}\subseteq M$ y $3M=\{3m:m\in M\}\subseteq M$, ambos submódulos de $M$. En efecto, $M=2M+3M$, pues $m=-2m+3m\in 2M+3M$. Además 
+	$2M\cap 3M=\{0\}$ pues si $m\in 2M\cap 3M$, entonces, como $m=2x=3y$ para ciertos $x,y\in M$, se tiene que
+	\[
+	0=6x=3(2x)=3m=3(3y)=9y=3y=m.
+	\]
+	
+	Veamos que $2M$ es proyectivo como $R$-módulo. 
+	Como $2M$ es un $R$-módulo, tenemos un morfismo de anillos
+	$\rho\colon R\to\End(2M)$ con núcleo $\ker\rho=\{0,3\}$. 
+	Como $(\Z/6)/\ker\rho\simeq\Z/3$, la propiedad universal del cociente 
+	implica  
+	que existe un único morfismo $\varphi$ 
+	tal que el diagrama 
+	\[
+        \xymatrix{
+        \Z/6
+        \ar[d]_g
+        \ar[r]^\rho
+        & \End(2M)
+        \\
+        \Z/3
+        \ar[d]
+        \ar@{-->}[ur]_{\varphi}
+        \\
+        0
+        }
+	\]
+	donde $g$ es un epimorfismo, 
+	conmuta, es decir
+	\[
+	\rho(k)(2m)=\varphi(g(k))(2m).
+	\] 
+	Luego $2M$ es un $R$-módulo si y sólo si $2M$ es un $\Z/3$-módulo. 
+	Como $\Z/3$ es un cuerpo, $2M$ es
+	libre como $\Z/3$-módulo, 
+	por ser un espacio vectorial sobre el cuerpo $\Z/3$. En particular, 
+	$2M$ es proyectivo como $\Z/3$-módulo. En conclusión, $2M$ es proyectivo
+	como $R$-módulo. Análogamente se demuestra que $3M$ es proyectivo. Luego
+	$M$ es proyectivo por ser suma directa de proyectivos.  
+\end{example}
+
+\begin{example}
+Sea $R=\begin{pmatrix}
+\R & \R\\
+0 & \R
+\end{pmatrix}$. Como $R$ es libre como $R$-módulo y además 
+\[
+R=\begin{pmatrix}
+\R & 0\\
+0 & 0
+\end{pmatrix}
+\oplus\begin{pmatrix}
+0 & \R\\
+0 & \R
+\end{pmatrix}
+\]
+los submódulos $\begin{pmatrix}
+\R & 0\\
+0 & 0
+\end{pmatrix}$ y 
+$\begin{pmatrix}
+0 & \R\\
+0 & \R
+\end{pmatrix}$ son proyectivos. 
+%El submódulo $\begin{pmatrix}
+%\R & \R\\
+%0 & 0
+%\end{pmatrix}$ no es proyectivo porque
+%no admite un complemento en $R$. 
+\end{example}
+
+Veamos otro ejemplo de un módulo proyectivo que no es libre. Recordemos
+que si $R$ es un anillo conmutativo e $I$ y $J$ son ideales de $R$, entonces
+	\[
+		I+J=\{x+y\mid x\in I,\;y\in J\}
+	\]
+es el menor ideal que contiene a $I\cup J$. Además $IJ$ es el ideal formado
+por las sumas finitas $\sum_i x_iy_i$, donde $x_i\in I$, $y_i\in J$. 
+
+	\begin{lemma}
+		Sea $R$ un dominio íntegro y sean $I$ y $J$ ideales tales que
+		$I+J=R$. Consideremos el morfismo de $R$-módulos 
+		$g\colon I\times J\to R$, $(x,y)\mapsto x+y$. 
+		Entonces:
+		\begin{enumerate}
+			\item $g$ es sobreyectiva.
+			\item $\ker(g)=\{(x,-x)\mid x\in I\cap J\}$.
+			\item $I\times J\simeq (I\cap J)\oplus R$ como $R$-módulos.
+			\item Si $I\cap J$ es principal entonces $I$ y $J$ son $R$-módulos
+				proyectivos.
+		\end{enumerate}
+	\end{lemma}
+
+	\begin{proof}
+		Las primeras dos afirmaciones son evidentes. 
+		
+		Para demostrar (3) consideremos la sucesión exacta
+		\[
+		\xymatrix{
+		0\ar[r] 
+		& I\cap J
+		\ar[r]^-{f}
+		& I\times J
+		\ar[r]^-{g}
+		& R\ar[r]
+		& 0
+		}
+		\]
+		donde $f(x)=(x,-x)$. Como $R$ es libre como $R$-módulo, $R$ es proyectivo 
+		y entonces la sucesión se parte, es decir $I\oplus J\simeq 
+		I\times J\simeq (I\cap J)\oplus R$
+		como $R$-módulos. 
+		
+		Para demostrar (4), supongamos que $I\cap
+		J=(x)$. Si $x=0$, como $I\cap J=\{0\}$, el 
+		el ítem nos dice que $I\oplus J\simeq I\times J\simeq R$ y 
+		luego $I$ y $J$ son proyectivos por ser sumandos directos de un libre.  
+		Si $x\ne 0$, entonces, como $R$ es un dominio íntegro, $R\to I\cap J$, $r\mapsto rx$, es un isomorfismo de
+		$R$-módulos. Luego 
+		$I\oplus J\simeq I\times J\simeq (I\cap J)\oplus R\simeq R\oplus R$ y entonces 
+		$I$ y $J$ son proyectivos por ser sumandos directos de
+		un libre.
+	\end{proof}
+
+Veamos una aplicación concreta del lema anterior.  
+
+\begin{example}
+	Sea $R=\Z[\sqrt{-5}]$ y consideremos los ideales 
+	\[
+		I=(3,1+\sqrt{-5}),\quad 
+		J=(3,1-\sqrt{-5}).
+	\]
+	Vamos a demostrar lo siguiente:
+	\begin{enumerate}
+		\item $I$ no es principal.
+		\item $I$ no es libre como $R$-módulo.
+		\item $I$ es proyectivo.
+		\item $R/I\simeq\Z_3$ y luego $I$ es maximal.
+	\end{enumerate}
+	Valen además las afirmaciones análogas para $J$.
+
+	Demostremos la primera afirmación. Si $I$ es principal, digamos $I=(a+b\sqrt{-5})$ entonces,
+	como $3\in I$, existen $c,d\in\Z$ tales que
+	$3=(a+b\sqrt{-5})(c+\sqrt{-5}d)$.  Si aplicamos la función multiplicativa 
+	$N(a+b\sqrt{-5})=a^2+5b^2$,
+	\[
+	9=(a^2+5b^2)(c^2+5d^2)
+	\]
+	y entonces $a^2+5b^2\in\{1,3,9\}$. Como $I\ne R$,  
+	$a^2+5b^2\geq5$ y luego $a^2+5b^2=9$. En particular,
+	\[
+	(a,b)\in\{(-3,0),(3,0),(2,1),(2,-1),(-2,-1),(-2,1)\}
+	\]
+	Vimos que los casos $(a,b)\in\{(-3,0),(3,0)\}$ no son posibles. Para el resto de los posibles valores de $(a,b)$ 
+	se tiene que 
+	$9=9(c^2+5d^2)$ y luego $c^2+5d^2=1$, lo que implica que $c\in\{-1,1\}$ y entonces 
+	$3=a+b\sqrt{-5}$ o bien $3=-a-b\sqrt{-5}$, una contradicción. 
+
+	Demostremos la segunda afirmación. Supongamos que $I$ es libre como $R$-módulo. Como 
+	$R$ es numberable, sea $\{x_i\mid i\in\N\}$ es una base de $I$. Tenemos entonces
+	que $|I|=1$, pues de lo contrario, si $|I|\geq2$, como $x_1(-x_2)+x_2x_1=0$, se
+	tendría que el conjunto $\{x_i\mid i\in I\}$ es linealmente
+	dependiente. Tenemos entonces que $|I|=1$, es decir $I$ es principal, una contradicción. 
+	
+	Demostremos ahora la tercera afirmación. Primero observemos que $I+J=R$ pues $I+J$ es un ideal
+	y además $1 = (3-(1+\sqrt{-5})) - (1-\sqrt{-5})\in I+J$. Probemos ahora $I\cap J$ es
+	principal, más precisamente $I\cap J=(3)$. Para esto primero observemos que,
+	en general, vale la fórmula
+	\[
+		(I+J)(I\cap J)\subseteq IJ
+	\]
+	y entonces, como $I+J=R$, se tiene que $I\cap J=IJ$. Todo elemento del ideal $IJ$ 
+	es una suma finita $\sum_i x_iy_i$, donde $x_i\in I$, $y_i\in J$. Como
+	\begin{align*}
+		\sum (3u+(1&+\sqrt{-5})v(3u'+(1-\sqrt{-5})v'\\
+		&=3\sum (3uu'+uv'(1-\sqrt{-5})+u'v(1+\sqrt{-5}+2vv'),
+	\end{align*}
+	es claro que $IJ\subseteq (3)$. La otra inclusión es evidente. El lema
+	anterior implica que entonces $I$ y $J$ son ambos proyectivos.
+
+	Probemos ahora la última afirmación. Consideremos la inclusión $i\colon
+	\Z\to\Z[\sqrt{-5}]$ y el epimorfismo canónico $p\colon
+	\Z[\sqrt{-5}]\to\Z[\sqrt{-5}]/I$. Entonces $f=p\circ i$ es un morfismo sobreyectivo 
+	tal que $\ker(p\circ i)=(3)$ pues si $m\in\ker(p\circ i)$ entonces 
+	\begin{align*}
+		m&=3(a+b\sqrt{-5})+(1+\sqrt{-5})(c+d\sqrt{-5})\\
+		&=(3a+c-5d)+(3b+d+c)\sqrt{-5}.
+	\end{align*}
+	Luego $m=3a-3b-6d\in3\Z$. La inclusión $3\Z\subseteq\ker(p\circ i)$ es trivial.
+	Para ver que $f$ es sobreyectivo basta observar que $f(a-b)=a+b\sqrt{-5}$, pues
+    \[
+    f(a-b)=p(a-b)=(a-b)+I=(a+b\sqrt{-5})+I
+    \]
+    ya que $(a-b)-(a+b\sqrt{-5})=-b(1+\sqrt{-5})\in I$. 
+	Por el teorema de isomorfismos, $\Z/3\Z\simeq p(i(\Z))$ y
+	luego $I$ es un ideal maximal. 
+	\end{example}
+
+\begin{exercise}
+\label{xca:proyectivo1}
+	Sean $P$ y $P_1$ dos módulos proyectivos. Consideremos el diagrama
+	\begin{align*}
+		&\xymatrix{
+		0\ar[r] 
+		& K
+		\ar[r]^-{f}
+		& P
+		\ar[r]^-{g}
+		& M\ar[r]\ar@{=}[d]
+		& 0\\
+		0\ar[r] 
+		& K_1
+		\ar[r]^-{f_1}
+		& P_1
+		\ar[r]^-{g_1}
+		& M\ar[r]
+		& 0
+		}
+	\end{align*}
+	con filas exactas. Demuestre que $P\oplus K_1\simeq P_1\oplus K$.
+\end{exercise}
+

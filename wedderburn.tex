@@ -1,0 +1,189 @@
+\chapter{El teorema de Wedderburn}
+
+Daremos una demostración sencilla de los teoremas de Wedderburn y Artin--Wedderburn 
+en el caso de álgebras de dimensión finita. 
+Seguiremos la demostración del teorema de Wedderburn de~\cite{MR184969} y 
+la demostración del teorema de Artin--Wedderburn de~\cite{MR1244013}.  
+
+\begin{definition}
+\index{Álgebra!semiprima}
+Diremos que un álgebra $A$ es \textbf{semiprima} si $I^2\ne\{0\}$ para todo ideal no nulo $I$ de $A$.	
+\end{definition}
+
+\index{Ideal!minimal}
+\index{Ideal a izquierda!minimal}
+Un ideal (a izquierda) $I$ de $A$ se dirá \textbf{minimal} si no contiene ideales (a izquierda) 
+propios no nulos de $A$, es decir si $J\subseteq I$ es un ideal (a izquierda) no nulo de $A$, entonces
+$J=I$. 
+
+\begin{lemma}[Brauer]
+\label{lem:Brauer1}
+	Sea $A$ un álgebra de dimensión finita. Si $K$ es un ideal a izquierda no nulo minimal tal que
+	$K^2\ne\{0\}$, entonces $K=Ae$ para algún idempotente $e\in A$ y $eAe$ es un álgebra de división.
+\end{lemma}
+
+\begin{proof}
+Como $K^2\ne\{0\}$, existe $u\in K$ tal que $Ku\ne\{0\}$. La minimalidad de $K$ implica que $Ku=K$ y luego
+$eu=u$ para algún $e\in K$. 
+Sea 
+\[
+L=\{x\in K:xu=0\}\subsetneq K.
+\] 
+Si $x\in K$, entonces $xe-x\in L$, pues $(xe-x)u=x(eu)-xu=0$. 
+Como $L$ es un ideal a izquierda de $A$, la minimalidad de $K$ implica que
+$L=\{0\}$. Luego $e^2-e=0$. 
+Nuevamente la minimalidad de $K$ implica que $K=Ae$. 
+
+Dejamos como ejercicio
+verificar que $eAe$ es un álgebra con identidad $e$. 
+
+Si $x\in eAe\setminus\{0\}$, entonces $\{0\}\ne Ax\subseteq Ae=K$ y luego
+$Ax=Ae$ por la minimalidad de $K$. Sea $y\in A$ tal que $e=yx$. 
+Como $x\in eAe$, digamos $e=eae$, entonces $ex=x$. Similarmente $xe=e$.
+Luego
+\[
+(eye)x=(ey)(ex)=eyx=e^2=e.
+\]
+Como $0\ne eye\in eAe$, existe $z\in A$ tal que $(eze)(eye)=e$. Luego $eze=x$. 
+\end{proof}
+
+\begin{lemma}
+\label{lem:Brauer2}
+Sea $A$ un álgebra semiprima de dimensión finita. 
+Todo ideal a izquierda no nulo de $A$ contiene 
+un idempotente no nulo.	
+\end{lemma}
+
+\begin{proof}
+Como $A$ es de dimensión finita, existe un ideal a izquierda 
+no nulo $I$ de $A$ de la menor dimensión posible. 
+Como $A$ es semiprima, $(IA)^2\ne\{0\}$ 
+y luego $I^2\ne\{0\}$, pues  
+$(IA)^2=IAIA\subseteq I^2A$. 	
+Por el lema de Brauer, existe un idempotente $e\in I$ tal que $I=Ae$.
+\end{proof}
+
+Observemos que si $e$ y $g$ son idempotentes, entonces 
+\[
+eAe\subseteq gAg\Longleftrightarrow eg=g=ge.
+\]
+Si $eg=e=ge$, entonces $eAe=(ge)A(ge)\subseteq gAg$. Recíprocamente, si $eAe\subseteq gAg$, entonces
+$e=e^2\subseteq gAg$, digamos $e=gag$ para algún $a\in A$. Esto implica que 
+\[
+eg=(gag)g=gag^2=gag=e,\quad
+ge=g(gag)=g^2ag=gag=e.
+\]  
+
+\begin{theorem}[Wedderburn]
+\index{Teorema!de Wedderburn}
+	Si $A$ es un álgebra simple 
+	de dimensión finita, 
+	entonces $A\simeq M_n(D)$ para algún $n\in\N$ y alguna álgebra de división $D$.  
+\end{theorem}
+
+\begin{proof}
+	Sea $K$ un ideal a izquierda minimal. Como $KA$ es un ideal de $A$, la simplicidad de $A$ implica que
+	$KA=A$. Además 
+	\[
+	A=A^2=(KA)^2=KAKA\subseteq K^2A
+	\]
+	y luego $K^2\ne\{0\}$. El lema de Brauer implica entonces que existe un idempotente $e\in K$ tal que
+	$K=Ae$ y además $D=eAe$ es un álgebra de división. Vemos que $K$ es un $D$-módulo a derecha 
+	con la multiplicación a derecha y que 
+	para cada $a\in A$ 
+	la función $\varphi_a\colon K\to K$, $x\mapsto ax$, es un morfismo de $D$-módulos a derecha, pues
+	\[
+	\varphi_a(xd)=a(xd)=(ax)d=\varphi_a(x)d.
+	\]  
+	La función $\varphi\colon A\to\End_D(K)$, $a\mapsto\varphi_a$, es un morfismo de álgebras. 
+	
+	Veamos que
+	$\varphi$ es inyectiva. Si $a\in A$ es tal que $\varphi_a=0$, entonces 
+	\[
+	0=\varphi_a(K)=aK=aAe
+	\]
+	Como $A$ es simple, $AeA=A$. Se concluye así que $a=0$, pues 
+	$0=aAe=aAeAe=aA$.   
+	
+	Veamos ahora que $\varphi$ es sobreyectiva. Como $A=AeA$, escribamos
+	\[
+	1=a_1eb_1+\cdots+a_neb_n
+	\]
+	para $a_1,\dots,a_n,b_1,\dots,b_n\in A$. 
+	Si $\alpha\in\End_D(K)$, veamos que existe $a\in D$ tal que $\alpha=\varphi_a$. 
+	Si $a=\sum_{i=1}^n\alpha(a_ie)eb_i$ y $x\in A$, entonces,
+	como $\alpha$ es un morfismo de $D$-módulos y cada $e(b_ix)e\in D$, 
+	\[
+	\alpha(xe)=\alpha\left(\sum_{i=1}^na_ie^2b_ixe\right)=\sum_{i=1}^n\alpha(a_ie)eb_i(xe)=\varphi_a(xe).
+	\] 
+	Luego $A\simeq\End_D(K)$. Veamos ahora que $K$ es de dimensión finita sobre $D$. Si $\dim_D K=\infty$, entonces
+	el conjunto
+	\[
+	\{\alpha\in\End_D(K):\dim\alpha(K)<\infty\}
+	\]
+	es un ideal no nulo propio de $\End_D(K)\simeq A$, 
+	una contradicción pues $A$ es simple. En conclusión, 
+	$A\simeq\End_D(K)\simeq M_n(D)$ para algún $n\in\N$.  
+\end{proof}
+
+\begin{theorem}[Artin--Wedderburn]
+\index{Teorema!de Artin--Wedderburn}
+	Sea $A$ un álgebra de dimensión finita. Si $A$ es semiprima, entonces
+	$A$ es isomorfa a una 
+	suma directa de finitas álgebras de matrices sobre álgebras de división.
+\end{theorem}
+
+\begin{proof}
+	Sea $K$ un ideal a izquierda minimal de $A$. 
+	
+	Afirmamos que $S=KA$ es un ideal de $A$ minimal. Es claro que $S$ es ideal a izquierda de $A$. Por otro lado, 
+	si $a\in S$, entonces $aS=a(KA)\subseteq KA=S$ pues $K$ es ideal a izquierda de $A$.  
+	Si $I$ es un ideal no nulo de $A$ tal que 
+	$I\subseteq S$. entonces $I\cap K\ne\{0\}$, pues si $I\cap K=\{0\}$,  
+	\[
+	I^2\subseteq I(KA)\subseteq (I\cap K)A=\{0\},
+	\]
+	una contradicción a la semiprimalidad de $A$. Como entonces $I\cap K\subseteq K$, la minimalidad de $K$ implica que
+	$I\cap K=K\subseteq I$. Luego
+	$S=KA\subseteq IA\subseteq I$.     	
+	
+	Por el lema~\ref{lem:Brauer2}, existe un idempotente no nulo $e\in S$ tal que $S=Ae$. 
+	Como $A$ es de dimensión finita, podemos elegir 
+	$e\in S$ de forma tal que la dimensión de $eAe$ sea lo más grande posible. 
+
+	Afirmamos que $M=\{a\in A:Sa=\{0\}\}$ es un ideal de $A$. Es claro que es un ideal a izquierda de $A$. Si $a\in A$, 
+	y $m\in M$, entonces $S(ma)=(Sm)=a\{0\}$. 
+	
+	Veamos que $A=S+M$. Sabemos que existe un idempotente $e\in K$ tal que $K=Ae$. Veamos que $1-e\in M$. Si $1-e\not\in M$, entonces
+	$S(1-e)\ne 0$. Como $S(1-e)$ es ideal a izquierda y $A$ es un álgebra semiprima, 
+	existe $f\in S(1-e)$ idempotente no nulo, digamos $f=s(1-e)$ para algún $s\in S$. Luego 
+	\[
+	fe=s(1-e)e=s(e^2-e)=0.
+	\]
+	y entonces $g=e+f-ef\in S$ es un idempotente de $S$. Como
+	\begin{align*}
+	&eg=e(e+f-ef)=e^2+ef-e^2f=e+ef-ef=e,\\
+	&ge=(e+f-ef)e=e^2+fe-efe=e,
+	\end{align*}
+	se tiene que $eAe\subseteq gAg$. La maximalidad de la dimensión de $eAe$ implica entonces
+	que $eAe=gAg$, es decir $e=g$. Esto implica que $f=ef$ y luego  
+	\[
+	f=f^2=(ef)^2=e(fe)f=0,
+	\]
+	una contradicción. 
+	Luego $1-e\in M$ y entonces $A=S+M$. 
+	
+	Para ver que $A=S\oplus M$ falta ver que $S\cap M=\{0\}$. Como 
+	\[
+	(S\cap M)^2=(S\cap M)(S\cap M)\subseteq SM=\{0\},
+	\]
+	la semiprimalidad
+	de $A$ implica que $S\cap M=\{0\}$.
+	
+	Ahora procedemos por inducción en la dimensión de $A$. 
+	Si $M=\{0\}$, el resultado se obtiene del teorema de Wedderburn. Si $M\ne\{0\}$, entonces
+	$S$ y $M$ son álgebras. Como $S$ es simple, el teorema de Wedderburn implica que $S$ es isomorfa a un álgebra
+	de matrices sobre un álgebra de división. Como además $\dim M<\dim A$, la hipótesis inductiva
+	implica que $M$ es isomorfa a una suma directa de álgebras de matrices sobre álgebras de división.  
+\end{proof}
+

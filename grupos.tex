@@ -1,0 +1,598 @@
+\chapter{Grupos y subgrupos}
+\label{grupos}
+
+Antes de dar la definición de grupo recordemos que una operación binaria en un
+cierto conjunto $X$ es una función $X\times X\to X$, $(x,y)\mapsto xy$. Observemos que la notación que utilizamos para esta operación binaria genérica es la misma que usualmente se usa para la multiplicación de números, aunque nuestra operación sea algo mucho más general. Por ejemplo, $(x,y)\mapsto x-y$ es una operación binaria en $\Z$ pero no lo es en $\N$. 
+
+\begin{definition}
+	\index{Grupo}
+	Un \textbf{grupo} es un conjunto no vacío $G$ junto con una operación binaria 
+	en $G$ que satisface las siguientes propiedades:
+	\begin{enumerate}
+		\item Asociatividad: $x(yz)=(xy)z$ para todo $x,y,z\in G$.
+		\item Existencia de elemento neutro: existe un elemento $e\in G$ tal que $ex=xe=x$ para todo $x\in G$.
+		\item Existencia del inverso: para cada $x\in G$ existe $y\in G$ tal que $xy=yx=e$. 
+	\end{enumerate}
+\end{definition}
+
+El axioma sobre asociatividad que aparece en nuestra definición de grupo es
+suficiente para demostrar que todos los productos ordenados que podamos formar
+con los elementos $x_1,x_2,\dots,x_n$ son iguales. Por ejemplo
+\[
+	(x_1x_2)((x_3x_4)x_5)=x_1(x_2(x_3(x_4x_5)))
+\]
+y podemos escribir sin ambigüedad $x_1x_2\cdots
+x_5$, sin preocuparnos por poner paréntesis. Esta observación suele demostrarse por inducción, así se hace por ejemplo en el libro de Lang. Daremos una demostración mucho más sencilla en el capítulo~\ref{cocientes}, como aplicación del teorema de Cayley. 
+
+\begin{proposition}
+	En un grupo $G$, cada $x\in G$ admite un único inverso $x^{-1}\in G$. 
+\end{proposition}
+
+\begin{proof}
+	Si $y,z\in G$ son ambos inversos del elemento $x\in G$, entonces, gracias a
+	los axiomas que definen un grupo, tenemos que $z=z(xy)=(zx)y=1y=y$. 
+\end{proof}
+
+\begin{exercise}
+	Demuestre que el elemento neutro de un grupo es único. 
+\end{exercise}
+
+El elemento neutro de un grupo $G$ será denotado por $1_G$ o simplemente como
+$1$ cuando no haya peligro de confusión. El inverso de un elemento $x\in G$ será denotado por $x^{-1}$. 
+
+% Si $e_1$ y $e_2$ son neutros para el grupo $G$, entonces
+% $e_1=e_1e_2=e_2$. 
+De la definición podemos obtener fácilmente otras propiedades de los inversos de elementos de un grupo:
+\begin{enumerate}
+	\item $(x^{-1})^{-1}=x$ para todo $x\in G$.
+	\item $(xy)^{-1}=y^{-1}x^{-1}$ para todo $x,y\in G$. 
+\end{enumerate}
+	
+\begin{exercise}
+	Demuestre que en un grupo $G$ la ecuación $ax=b$ tiene a $x=a^{-1}b$ como
+	única solución. Similarmente, $x=ba^{-1}$ es la única solución de la
+	ecuación $xa=b$. 
+\end{exercise}
+
+\begin{definition}
+	\index{Grupo!abeliano}
+	Un grupo $G$ se dirá \textbf{abeliano} si $xy=yx$ para todo $x,y\in G$.
+\end{definition}
+
+A veces, cuando tratemos con grupos abelianos, utilizaremos la notación
+aditiva. Eso significa que la operación binaria será $(x,y)\mapsto x+y$, el neutro será denotado por $0$ 
+y el inverso de un cierto elemento $x$ será $-x$. 
+
+\begin{definition}
+\index{Grupo!orden de un}
+\index{Grupo!finito}
+\index{Grupo!infinito}
+El \textbf{orden} $|G|$ de un grupo $G$ es el cardinal de $G$. Un grupo $G$ se dirá finito
+si $|G|$ es finito e infinito en caso contrario. 
+\end{definition}
+
+\begin{notation}
+	Sea $G$ un grupo y sea $g\in G$. Si $k\in\Z\setminus\{0\}$, escribimos 
+	\begin{align*}
+		& g^k=g\cdots g\quad (k-\text{veces}) && \text{si $k>0$},\\
+		& g^k=g^{-1}\cdots g^{-1}\quad (|k|-\text{veces}) && \text{si $k<0$}.
+	\end{align*}
+	Por convención, además, $g^0=1$. 
+\end{notation}
+
+\begin{exercise}
+	Si $G$ es un grupo, entonces
+	\begin{enumerate}
+		\item $(g^k)^l=g^{kl}$ para todo $g\in G$ y todo $k,l\in\Z$. 
+		\item Si $G$ es abeliano, entonces $(gh)^k=g^kh^k$ para todo $g,h\in G$
+			y todo $k\in\Z$. 
+	\end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+	Sean $G$ un grupo y $g\in G$. Demuestre que las funciones $L_g\colon G\to
+	G$, $x\mapsto gx$, y $R_g\colon G\to G$, $x\mapsto xg$, son biyectivas.
+\end{exercise}
+
+\begin{examples}
+	Ejemplos de grupos abelianos:
+	\begin{enumerate}
+		\item $\Z$, $\Q$, $\R$ y $\C$ con la suma usual.
+		\item Los enteros $\Z/n$ módulo $n$ con la suma usual.
+		\item $\Q\setminus\{0\}$, $\R\setminus\{0\}$ y $\C\setminus\{0\}$ con
+			la multiplicación usual. 
+		\item El conjunto $\left(\Z/p\right)^\times=\Z/p\setminus\{0\}$ de enteros módulo $p$ inversibles con la multiplicación usual, donde
+			$p$ es un número primo. 
+	\end{enumerate}
+\end{examples}
+
+\index{Grupo!tabla (de multiplicación)}
+Si $G=\{g_1,g_2,\dots,g_n\}$ es un grupo finito, la \textbf{tabla}  
+del grupo $G$ es la matriz de $n\times n$ que en el lugar 
+$i,j$ tiene al elemento $g_ig_j$. Esta tabla se conoce en la literatura como la \emph{tabla de multiplicación} del grupo. 
+Como esta terminología puede resultar confusa en caso de trabajar con grupos aditivos, preferimos hablar simplemente
+de tablas de un grupo y no hacer referencia al tipo de operación involucrada. Como ejemplo, 
+vemos que la tabla del grupo
+$\Z/4$ es
+\begin{center}
+  \begin{tabular}{l|cccc}
+     &0&1&2&3 \\
+    \hline
+    0 & 0 & 1 & 2 & 3\\
+    1 & 1 & 2 & 3 & 0\\
+    2 & 2 & 3 & 0 & 1\\
+    3 & 3 & 0 & 1 & 2
+  \end{tabular}
+\end{center}
+
+\begin{example}
+Sea $H=\{1,-1,i,-i,j,-j,k,-k\}$ con la multiplicación dada por las siguientes reglas:
+\[
+i^2=j^2=k^2=ijk=-1.
+\]
+Dejamos como ejercicio calcular la tabla de $H$ y verificar que $H$ es un grupo. 
+\end{example}
+
+\begin{example}
+	Sea $n\in\N$. El conjunto $G_n=\{z\in\C:z^n=1\}$ es un grupo abeliano con
+	el producto usual de números complejos.	También 
+	$\cup_{n\geq1}G_n$ es un grupo abeliano.
+\end{example}
+
+\begin{example}
+	Sea $n\geq2$.  El conjunto $\GL_n(\R)$ de matrices inversibles de $n\times
+	n$ con la multiplicación usual de matrices es un grupo no abeliano. 
+\end{example}
+
+\begin{example}
+	Sea $X$ un conjunto. El conjunto $\Sym_X$ de funciones $X\to X$ biyectivas
+	con la composición de funciones es un grupo.  Si $|X|\geq3$, el grupo
+	$\mathbb{S}_{X}$ no es abeliano: sean tres elementos distintos $a,b,c\in
+	X$ y sean $f\colon X\to X$ biyectiva tal que $f(a)=b$, $f(b)=c$ y $f(c)=a$ y $g\colon X\to
+	X$ biyectiva tal que $g(a)=b$, $g(b)=a$ y $g(x)=x$ para todo $x\in
+	X\setminus\{a,b\}$.  Entonces $fg\ne gf$. 
+\end{example}
+
+\index{Permutación}
+\index{Grupo!simétrico}
+Si $X=\{1,2,\dots,n\}$, $\Sym_X$ será denotado por $\Sym_n$ y se denominará el
+\textbf{grupo simétrico} de grado $n$. Los elementos de $\Sym_n$ serán 
+denominados \textbf{permutaciones} de grado $n$. 
+Notemos que $|\Sym_n|=n!$ y que $\Sym_n$
+es abeliano si y sólo si $n\in\{1,2\}$. Cada elemento de $\Sym_n$ es una función
+$f\colon\{1,\dots,n\}\to \{1,\dots,n\}$ y por lo tanto puede escribirse como nos resulte conveniente. 
+Una notación bastante utilizada es la siguiente: escribiremos
+\[
+\binom{12345}{32145}
+\]
+para denotar a la
+función $f\colon\{1,2,3,4,5\}\to\{1,2,3,4,5\}$ tal que
+$f(1)=3$, $f(2)=2$, $f(3)=1$, $f(4)=4$ y $f(5)=5$. 
+
+\begin{example}[el grupo de Klein]
+\index{Grupo!de Klein}
+El grupo 
+\[
+K=\left\{ \mathrm{id},\binom{1234}{2143},\binom{1234}{3412},\binom{1234}{4321}\right\} 
+\]
+es un grupo abeliano. Observar que $K$ está contenido en $\mathbb{S}_{4}$. 
+Dejamos como ejercicio calcular la tabla del grupo de Klein. 
+\end{example}
+
+\begin{example}
+\index{Grupo!simétrico $\Sym_3$}
+	Sabemos que el conjunto $\Sym_3$ de funciones $\{1,2,3\}\to\{1,2,3\}$
+	biyectivas es un grupo con la composición. El grupo $\Sym_3$ tiene orden
+	seis y sus elementos son las permutaciones
+	\[
+	\id,\binom{123}{213},\binom{123}{321},\binom{123}{132},\binom{123}{231},\binom{123}{312}.
+	\]
+	Otra notación muy utilizada involucra la \emph{descomposición de una permutación en ciclos disjuntos}. 
+	En este caso, los elementos de $\Sym_3$ serán escritos como 
+	\[
+		\id,(12),(13),(23),(123),(132),
+	\]
+	donde, por ejemplo, el símbolo $(12)$ representa la
+	función $\{1,2,3\}\to\{1,2,3\}$ tal que
+	$1\mapsto 2$, $2\mapsto 1$ y $3\mapsto 3$. Queda como ejercicio calcular la tabla del grupo $\Sym_3$. 
+\end{example}
+
+Más adelante veremos que la notación de una permutación como producto de ciclos disjuntos es de gran utilidad. 
+
+\begin{example}
+Sea $n\in\N$. Las unidades de $\Z/n$ forman un grupo con la multiplicación usual módulo $n$. La notación que utilizaremos es
+\[	
+\mathcal{U}(\Z/n)=\{x\in\Z/n:\gcd(x,n)=1\}.
+\]
+En general, el orden de $\mathcal{U}(\Z/n)$ es $\varphi(n)$, donde $\varphi$ denota a la función de Euler, es decir
+\[
+\varphi(n)=|\{x\in\Z:1\leq x\leq n,\,\gcd(x,n)=1\}|.
+\]
+
+Veamos un ejemplo concreto: la tabla del grupo 
+$\mathcal{U}(\Z/8)=\{1,3,5,7\}$
+es
+\begin{center}
+  \begin{tabular}{l|cccc}
+     &1&3&5&7 \\
+    \hline
+    1 & 1 & 3 & 5 & 7\\
+    3 & 3 & 1 & 7 & 5\\
+    5 & 5 & 7 & 1 & 3\\
+    7 & 7 & 5 & 3 & 1
+  \end{tabular}
+\end{center}
+\end{example}
+
+\begin{exercise}
+	\index{Producto!directo de grupos}
+	Sean $G$ y $H$ grupos.  
+	El conjunto $G\times H$ 
+	es un grupo con la operación
+	\[
+		(g_1,g_2)(h_1,h_2)=(g_1h_1,g_2h_2).
+	\]
+	Esta estructura de grupo sobre el producto cartesiano $G\times H$ se conoce como
+	el \textbf{producto directo} de $G$ y $H$. 
+\end{exercise}
+
+Si se utiliza la inducción, el ejemplo anterior puede generalizarse productos finitos de tres o más grupos. 
+
+\begin{definition}
+	Un subconjunto $S$ de $G$ es un \textbf{subgrupo} de $G$ si se satisfacen
+	las siguientes propiedades:
+	\begin{enumerate}
+		\item $1\in S$, 
+		\item $x\in S\implies x^{-1}\in S$, y además 
+		\item $x,y\in S\implies xy\in S$.
+	\end{enumerate}
+	Notación: $S$ es un subgrupo de $G$ si y sólo si $S\leq G$. 
+\end{definition}
+
+Podríamos reemplazar la primera condición de la definición de subgrupo y pedir
+simplemente que el conjunto sea no vacío. 
+
+\begin{example}
+	Si $G$ es un grupo, entonces $\{1\}$ y $G$ son subgrupos de $G$. 
+\end{example}
+
+\begin{example}
+$2\Z\leq\Z\leq\Q\leq\R\leq\C$. 	
+\end{example}
+
+\begin{example}
+$S^1=\{z\in\C:|z|=1\}\leq\C^\times=\C\setminus\{0\}$.
+\end{example}
+
+\begin{example}
+Para cada $n\in\N$, definimos el grupo de raíces $n$-ésimas de la unidad como $G_n=\{z\in\C:z^n=1\}$, es decir 
+\[
+G_n=\{1,\exp(2\pi i/n),\exp(4i\pi/n),\dots,\exp(2(n-1)i\pi/n)\}.
+\]
+Entonces
+\[
+G_n\leq\bigcup_{n\in\N}G_n\leq S^1\leq\C^\times.
+\]
+\end{example}
+
+\begin{exercise}
+	\index{Centro!de un grupo}
+	Si $G$ un grupo, el \textbf{centro} 
+	\[
+		Z(G)=\{g\in G:gh=hg\text{ para todo	$h\in G$}\}
+	\]
+	de $G$ es un subgrupo de $G$.
+\end{exercise}
+
+\begin{exercise}
+	\index{Centralizador!de un elemento}
+	Si $G$ es un grupo y $g\in G$, entonces el \textbf{centralizador} 
+	\[
+		C_G(g)=\{h\in G:gh=hg\} 
+	\]
+	de $g$ en $G$ es un subgrupo de $G$.
+\end{exercise}
+
+\begin{exercise}
+\index{Centro!de $\Sym_3$}
+Demuestre que $Z(\Sym_3)=\{\id\}$ y calcule $C_{\Sym_3}((12))$. 
+\end{exercise}
+
+Una forma útil de chequear que un cierto subconjunto de un grupo 
+es un subgrupo es la siguiente:
+
+\begin{exercise}
+	Sea $G$ un grupo y sea $S$ un subconjunto de $G$. Demuestre que $S$ es un subgrupo
+	de $G$ si y sólo si $S$ es no vacío y para todo $x,y\in S$ vale que $xy^{-1}\in S$. 
+\end{exercise}
+
+\begin{example}
+$\SL_n(\R)=\{a\in\GL_n(\R):\det(a)=1\}\leq\GL_n(\R)$. En efecto, la matriz identidad pertenece a $\SL_2(\R)$ y luego $\SL_2(\R)$ es no vacío. Además si $a,b\in\SL_n(\R)$, 
+entonces $ab^{-1}\in\SL_2(\R)$ pues $\det(ab^{-1})=\det(a)\det(b)^{-1}=1	$. 
+\end{example}
+
+\begin{exercise}
+	La intersección de subgrupos es también un subgrupo.
+\end{exercise}
+
+La unión de subgrupos no es, en general, un subgrupo. Para convencerse, basta por ejemplo ver qué pasa 
+en el subgrupo de Klein. 
+
+%El resultado que sigue es de fundamental importancia:
+
+\begin{theorem}
+\label{thm:Z}
+	Si $S$ es un subgrupo de $\Z$, entonces 
+	$S=m\Z=\{mx:x\in \Z\}$
+	para algún $m\in\N_0$.  
+\end{theorem}
+	
+\begin{proof}
+	Si $S=\{0\}$, no hay nada para demostrar pues podemos
+	tomar $m=0$. Supongamos entonces que $S\ne\{0\}$ y sea $m=\min\{s\in S:s>0\}$. Este mínimo existe porque, como $S$ es no nulo, $S$ contiene un elemento $n\in S\setminus\{0\}$. Existen entonces dos situaciones posibles: $n>0$ o bien $-n>0$. Y como $S$ es un subgrupo de $\Z$, $-n\in S$.
+	 
+	Vamos a demostrar ahora que $S=n\Z$. 
+	Si $x\in S$, entonces $x=my+r$ para $y,r\in\Z$ con $r$ tal que
+	$0\leq r<m$. Supongamos que $r\ne 0$. Como $x,m\in S$, entonces $r\in S$,
+	una contradicción a la minimalidad de $S$.  Luego $r=0$ y entonces $x=my\in
+	m\Z$. Recíprocamente, como $n\in S$, entonces $nk\in S$ para todo $k\in\Z$. En efecto, si $k=0$, $nk=0\in S$. Si $k>0$, entonces 
+	\[
+	\underbrace{n+\cdots+n}_{k-\text{veces}}\in S.
+	\]
+	Por último, si $k<0$, entonces 
+	\[
+	nk=\underbrace{-n+(-n)+\cdots+(-n)}_{|k|-\text{veces}}\in S.\qedhere
+	\]		
+\end{proof}
+
+Como la intersección de subgrupos es un subgrupo, 
+el resultado anterior tiene además aplicaciones muy interesantes. Recordemos que si $a,b\in\Z$ 
+se dice que $a$ divide a $b$ (o que $b$ es divisible por $a$) 
+si $b=ac$ para algún $c\in\Z$. La notación: 
+\[
+a\mid b\Longleftrightarrow b=ac\text{ para algún $c\in\Z$.}
+\]
+Si $a,b\in\Z$ son tales que $ab\ne0$, entonces 
+\[
+S=a\Z+b\Z=\{m\in\Z:m=ar+bs\text{ para $r,s\in\Z$}\}
+\]
+es un subgrupo de $\Z$ (ejercicio). El teorema anterior nos permite escribir a $S$ como $S=d\Z$ para algún entero positivo $d$. Este entero $d$ 
+es el \textbf{máximo común divisor} de $a$ y $b$, es decir $d=\gcd(a,b)$. La terminología queda justificada por la siguiente proposición:
+
+\begin{proposition}
+Sean $a,b\in\Z$ tales que $ab\ne0$ y sea $d=\gcd(a,b)$. Valen entonces las siguientes afirmaciones:
+\begin{enumerate}
+\item $d$ divide simultáneamente a los enteros $a$ y $b$. 
+\item Si $e\in\Z$ divide a los enteros $a$ y $b$, entonces $e$ también divide a $d$.
+\item Existen $r,s\in\Z$ tales que $d=ar+bs$. 
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    Como $d\in S$, existen $r,s\in\Z$ tales que $d=ar+bs$, esto demuestra la tercera afirmación. Si $e\in\Z$ es tal que $e\mid a$ y $e\mid b$, 
+    entonces $e\mid ar+bs=d$, lo que demuestra la segunda afirmación. Finalmente, la primera afirmación queda demostrada al observar que
+    $a,b\in S$. 
+\end{proof}
+
+Dos enteros $a$ y $b$ se dirán \textbf{coprimos} si y sólo si 
+el único entero positivo que divide simultáneamente a ambos es 1, es decir 
+\begin{align*}
+a\text{ y }b\text{ son coprimos}&\Longleftrightarrow \gcd(a,b)=1\Longleftrightarrow \Z=a\Z+b\Z\\
+&\Longleftrightarrow \text{existen $r,s\in\Z$ tales que $ar+bs=1$.}
+\end{align*}
+
+% \begin{corollary}
+% Dos enteros $a$ y $b$ son coprimos si y sólo si .
+% \end{corollary}
+
+% \begin{proof}
+% Es consecuencia inmediata de la proposición anterior. 
+% \end{proof}
+
+\begin{proposition}
+Sea $p$ un primo y sean $a,b\in\Z$. Si $p\mid ab$, entonces $p\mid a$ o bien $p\mid b$.
+\end{proposition}
+
+\begin{proof}
+Si $p\nmid a$, entonces $\gcd(a,p)=1$, lo que implica que $1=ra+sp$ para ciertos $r,s\in\Z$. Al multiplicar por $b$ en ambos miembros, vemos que
+$b=r(ab)+spb$ es divisible por $p$, pues $p\mid ab$ por hipótesis.
+\end{proof}
+
+Si $S$ y $T$ son subgrupos de $\Z$, entonces $S\cap T$ es también un subgrupo de $\Z$. 
+Sean $a,b\in\Z$ tales que $ab\ne 0$. Como $a\Z\cap b\Z$ es un subgrupo 
+no nulo de $\Z$ (pues contiene al entero $ab\ne 0$), podemos escribir $a\Z\cap b\Z=m\Z$ 
+para algún $m\in\N$. Ese entero positivo $m$ 
+es el \textbf{mínimo común múltiplo} de $a$ y $b$ y se denota por $m=\lcm(a,b)$. 
+La terminología queda justificada por la siguinte proposición.
+
+\begin{proposition}
+Sean $a,b\in\Z\setminus\{0\}$ y sea $m=\lcm(a,b)$. Valen entonces las siguientes propiedades:
+\begin{enumerate}
+	\item $m$ es simultáneamente divisible por $a$ y $b$.
+	\item Si $n$ es simultáneamente divisible por $a$ y $b$, entonces $n$ es divisible por $m$. 
+\end{enumerate}	
+\end{proposition}
+
+\begin{proof}
+    Como $m\in a\Z\cap b\Z$, entonces $a\mid m$ y además $b\mid m$. Si $a\mid n$ y además $b\mid n$, digamos $n=ax=by$ para ciertos $x,y\in\Z$, 
+    entonces $n\in a\Z\cap b\Z=m\Z$, lo que implica que $m\mid n$. 
+\end{proof}
+
+\begin{proposition}
+Sean $a,b\in\N$. Si $d=\gcd(a,b)$ es el máximo común divisor de $a$ y $b$ y $m=\lcm(a,b)$
+es el mínimo común múltiplo de $a$ y $b$, entonces $ab=dm$.  	
+\end{proposition}
+
+\begin{proof}
+Como $b/d\in\Z$, entonces $a\mid a(b/d)$. Similarmente, $b\mid a(b/d)$. Como entonces $m\mid a(b/d)$, se concluye que $dm\mid ab$. 
+Sean $r,s\in\Z$ tales que $d=ra+sb$. Al multiplicar por $m$ en ambos miembros, vemos que $dm=ram+sbm$ es divisible por $ab$. 
+\end{proof}
+
+\begin{exercise}
+	\index{Subgrupo!conjugado}
+	Sea $S$ un subgrupo de $G$ y sea $g\in G$. Demuestre que el \textbf{conjugado} $gSg^{-1}$ 
+	de $S$ por $g$ es
+	también un subgrupo de $G$. Notación: $\prescript{g}{}S=gSg^{-1}$. 
+\end{exercise}
+
+\begin{definition}
+	\index{Subgrupo!generado por un conjunto}
+	Sean $G$ un grupo y $X$ un subconjunto de $G$. El \textbf{subgrupo
+	generado} por $X$ se define como la intersección de todos los subgrupos de $G$ que contienen a $X$, es decir  
+	\[
+		\langle X\rangle=\bigcap\{S:S\leq G,X\subseteq S\}.
+	\]
+\end{definition}
+
+Cuando el conjunto de generadores sea finito, se utilizará la siguiente notación. Si $X=\{g_1,\dots,g_k\}$, entonces $\langle
+X\rangle=\langle\{g_1,\dots,g_k\}\rangle=\langle g_1,\dots,g_k\rangle$. 	
+
+\begin{exercise}
+Demuestre que $\langle
+X\rangle$ es el menor subgrupo de $G$ que contiene a $X$, es decir que si $H$ es un subgrupo de $G$ tal que $X\subseteq H$, entonces $\langle X\rangle\subseteq H$.  
+\end{exercise}
+
+\begin{exercise}
+Demuestre que 
+\[
+	\langle X\rangle=\{x_1^{n_1}\cdots x_k^{n_k}:k\in\N,\,x_1,\dots,x_k\in X,\,-1\leq n_1,\dots,n_k\leq 1\}.
+\]
+\end{exercise}
+
+%Un ejemplo importante de un grupo generado por dos elementos es el grupo diedral. 
+
+\begin{example}
+El conjunto
+\[
+D_4=\{\id,(1234),(1432),(13)(24),(14)(23),(12)(34),(24),(13)\}
+\]
+es un subgrupo no abeliano de $\Sym_4$.	Observar que $D_4$ está generado por las permutaciones 
+$(12)(34)$ y $(1234)$. 	
+\end{example}
+
+\begin{example}
+	\index{Grupo!diedral}
+	Para $n\geq2$ y $\theta=2\pi/n$ sean  
+	\[
+		r=\left(\begin{array}{cc}
+			\cos\theta & -\sin\theta\\
+			\sin\theta & \cos\theta
+		\end{array}\right),\quad s=\left(\begin{array}{cc}
+			1 & 0\\
+			0 & -1
+		\end{array}\right).
+	\]
+	Se define entonces al \textbf{grupo diedral} $\mathbb{D}_{n}$ como el subgrupo
+	de $\mathbf{GL}_2(\mathbb{R})$ generado por $r$ y $s$, es decir
+	$\mathbb{D}_{n}=\langle r,s\rangle$. Observar que 
+	\[
+	s^2=r^n=\begin{pmatrix}
+	1 & 0\\
+	0 & 1	
+	\end{pmatrix},\quad
+	srs=r^{-1}.
+	\]
+	Además $|\D_n|=2n$. 
+%	\[
+%		r^{i}=\left(\begin{array}{cc}
+%			\cos i\theta & \sin i\theta\\
+%			-\sin i\theta & \cos i\theta
+%		\end{array}\right),\quad s^{2}=\left(\begin{array}{cc}
+%			1 & 0\\
+%			0 & 1
+%		\end{array}\right).
+%	\]
+%	Además 
+%	\[
+%		sr^{i}=r^{-i}s=\left(\begin{array}{cc}
+%			-\sin i\theta & \cos i\theta\\
+%			\cos i\theta & \sin i\theta
+%		\end{array}\right).
+%	\]
+%	Además, los elementos $r^{j}s$ tienen orden dos y los elementos $r^{j}$ tienen
+%	orden $n/\gcd(n,j)$. Al usar que $\det(r^j)=1$ y $\det(r^js)=-1$ para todo $j$, se demuestra entonces que $\D_n$ tiene $2n$ elementos. 
+\end{example}
+
+Es conveniente mencionar que la notación que suele usarse para el grupo diedral no es estándar. Para nosotros $\D_n$ será el grupo diedral de orden $2n$. 
+
+\begin{definition}
+\index{Subgrupo!conmutador}
+\index{Subgrupo!derivado}
+El \textbf{conmutador}
+$[G,G]$ de $G$ es el subgrupo generado por los conmutadores, es
+decir 
+\[
+[G,G]=\langle[x,y]\mid x,y\in G\rangle,
+\]	
+donde $[x,y]=xyx^{-1}y^{-1}$ es el conmutador de $x$ e $y$. 
+\end{definition}
+
+El subgrupo generado por los conmutadores de un grupo $G$ a veces se conoce como el \textbf{subgrupo derivado} de $G$. 
+%Más adelante se justificará esta terminología.  
+
+\begin{example}
+	$[\Z,\Z]=\{0\}$ pues $\Z$ es un grupo abeliano. Obviamente, en este ejemplo
+	utilizamos la notación aditiva. 
+\end{example}
+
+\begin{exercise}
+	Demuestre que $[\Sym_3,\Sym_3]=\{\id,(123),(132)\}$. 
+\end{exercise}
+
+
+Es natural preguntarse por qué el conmutador se define como el subgrupo
+generado por los conmutadores y no directamente como el subconjunto formado por los conmutadores. En realidad, esto se hace porque no es cierto que el subconjunto formado por los conmutadores sea un subgrupo, aunque no es muy fácil conseguir ejemplos. Con ayuda de algún software de matemática que permita trabajar con grupos, se pueden verificar
+los ejemplos que mencionamos a continuación. Tomamos el siguiente ejemplo del libro de Carmichael~\cite{MR0075938}.
+	
+\begin{example}
+	Sea $G$ el subgrupo de $\Sym_{16}$ generado por 
+	las permutaciones
+	\begin{align*}
+&a = (13)(24),&&
+b = (57)(68),\\
+&c = (9\,11)(10\,12),&&
+d = (13\,15)(14\,16),\\
+&e = (13)(57)(9\,11),&&
+f = (12)(34)(13\,15),\\
+&g = (56)(78)(13\,14)(15\,16),&&
+h = (9\,10)(11\,12).
+\end{align*}	
+	Puede demostrarse que $[G,G]$ tiene orden 16 y que el conjunto de conmutadores tiene tamaño 15. 
+%	El código \textsf{GAP} que
+%	demuestra esta afirmación es el siguiente:
+%\begin{lstlisting}
+%gap> a := (1,3)(2,4);;
+%gap> b := (5,7)(6,8);;
+%gap> c := (9,11)(10,12);;
+%gap> d := (13,15)(14,16);;
+%gap> e := (1,3)(5,7)(9,11);;
+%gap> f := (1,2)(3,4)(13,15);;
+%gap> g := (5,6)(7,8)(13,14)(15,16);;
+%gap> h := (9,10)(11,12);;
+%gap> G := Group([a,b,c,d,e,f,g,h]);;
+%gap> D := DerivedSubgroup(G);;
+%gap> Size(D);
+%16
+%\end{lstlisting}
+%Para ver que el conjunto de conmutadores tiene 15 elementos y que 
+%$cd\in[G,G]$ y no es un conmutador: 
+%\begin{lstlisting}
+%gap> Size(Set(List(Cartesian(G,G), Comm)));
+%15
+%gap> c*d in Difference(D,Set(List(Cartesian(G,G),Comm)));
+%true
+%\end{lstlisting}
+\end{example}
+
+Mencionamos otro ejemplo, encontrado por Guralnick~\cite{MR673806} antes de que el uso de computadoras en teoría de grupos fuera masivo.
+
+\begin{example}
+El grupo 
+\[
+G=\langle (135)(246)(7\,11\,9)(8\,12\,10),(394\,10)(58)(67)(11\,12)\rangle.
+\]
+tiene orden 96 y su subgrupo de conmutadores de $G$ 
+no es igual al conjunto de conmutadores. Puede demostrarse además que es el menor grupo finito con esta propiedad. 
+\end{example}
+
+

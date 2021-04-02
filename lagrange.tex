@@ -1,0 +1,220 @@
+\chapter{El teorema de Lagrange}
+
+Sean $G$ un grupo y $H$ un subgrupo de $G$. Diremos que dos elementos $x,y\in
+G$ son equivalentes a izquierda módulo $H$ si $x^{-1}y\in H$.  Usaremos la siguiente notación:
+\[
+x\equiv y\bmod
+H\Longleftrightarrow x^{-1}y\in H.
+\]  
+
+\begin{exercise}
+	Demuestre que hemos definido una relación de equivalencia. Esto significa que se tienen las siguientes propiedades:
+	\begin{enumerate}
+	\item $x\equiv x\bmod H$ para todo $x$.
+	\item Si $x\equiv y\bmod H$, entonces $y\equiv x\bmod H$.
+	\item Si $x\equiv y\bmod H$ y además $y\equiv z\bmod H$, entonces $x\equiv z\bmod H$.  	
+	\end{enumerate}
+\end{exercise}
+
+Las clases de equivalencia de esta relación módulo $H$ 
+son los conjuntos de la forma $xH=\{xh:h\in H\}$
+pues la clase de un cierto elemento $x\in G$ es el conjunto
+\[
+	\{y\in G:x\equiv y\bmod H\}=\{y\in G:x^{-1}y\in H\}=\{y\in G:y\in xH\}=xH.
+\]
+El conjunto $xH$ se llama \textbf{coclase a izquierda} de $H$ en $G$. 
+
+Podríamos haber definido coclases a derecha mediante la relación $x\equiv
+y\bmod H$ si y sólo si $xy^{-1}\in H$. En este caso, las clases de equivalencia
+serían los conjuntos $Hx$ con $x\in X$. $Hx$ se llama \textbf{coclase a derecha}
+de $H$ en $G$. 
+
+\begin{proposition}
+	Si $H$ es un subgrupo de $G$, entonces $|Hx|=|H|=|xH|$ para todo $x\in G$. 
+\end{proposition}
+
+\begin{proof}
+	Sea $x\in G$. La función $H\to Hx$, $h\mapsto hx$, es una biyección con
+	inversa $hx\mapsto h$. Análogamente se demuestra que la función $H\to xH$,
+	$h\mapsto xh$, es una biyección. 
+\end{proof}
+
+La función
+\[
+	\{\text{coclases a derecha de $H$ en $G$}\}\to\{\text{coclases a izquierda de $H$ en $G$}\}
+\]
+dada por $Hx\mapsto x^{-1}H$ es una biyección pues 
+\[
+	Hx=Hy
+	\Longleftrightarrow xy^{-1}\in H
+	\Longleftrightarrow (x^{-1})^{-1}y^{-1}\in H
+	\Longleftrightarrow x^{-1}H=y^{-1}H.
+\]
+En particular, la cantidad de coclases a derecha de $H$ en $G$ coincide con la
+cantidad de coclases a izquierda de $H$ en $G$.
+
+\begin{example}
+Si $G=\Z$ y $S=n\Z$, entonces
+\[
+a+S=\{a+nq:q\in\Z\}=\{k\in\Z:k\equiv a\bmod n\}.
+\]	
+\end{example}
+
+\begin{example}
+Los subgrupos de $\Sym_3$ son $\{\id\}$, $\Sym_3$, los subgrupos $\langle(12)\rangle$, $\langle(13)\rangle$ y $\langle(23)\rangle$ de orden dos 
+y el subgrupo $\langle(123)\rangle=\{\id,(123),(132)\}$ de orden tres.  	Si $H=\langle(12)\rangle=\{id,(12)\}$, entonces
+\begin{align*}
+&H=(12)H=\{id,(12)\},\\
+&(123)H=(13)H=\{(13),(123)\},\\
+&(132)H=(23)H=\{(23),(132)\}.
+\end{align*}
+Observemos que en este caso se tiene la descomposición
+\[
+\Sym_3=H\cup (123)H\cup (132)H\quad\text{(unión disjunta)}.
+\]
+\end{example}
+
+\begin{example}
+Sea $G=\R^2$ con la suma usual y sea $v\in\R^2$. La recta $L=\{\lambda v:\lambda\in\R\}$ es un subgrupo de $G$ y 
+para cada $p\in R^2$, la coclase $p+L$ es la recta paralela a $L$ que pasa por el punto $p$.  	
+\end{example}
+
+
+\begin{definition}
+	Si $H$ es un subgrupo de $G$, se define el \textbf{índice} de $H$ en $G$
+	como la cantidad $(G:H)$ de coclases a izquierda (o a derecha) de $H$ en $G$. 
+\end{definition}
+
+Tener una relación de equivalencia módulo $H$ nos permite escribir a $G$ como
+unión disjunta de coclases a izquierda (o a derecha) de $H$ en $G$. Además dos
+coclases cualesquiera son iguales o disjuntas. 
+
+\begin{theorem}[Lagrange]
+\index{Teorema!de Lagrange}
+	Si $G$ es un grupo finito y $H$ es un subgrupo de $G$, entonces
+	$|G|=|H|(G:H)$. En particular, $|H|$ divide a $|G|$. 
+\end{theorem}
+
+\begin{proof}
+	Tenemos una relación de equivalencia módulo $H$ que nos permite descomponer
+	en $G$ en clases de equivalencia, digamos
+	\[
+	G=\bigcup_{i=1}^n x_iH\quad\text{(unión disjunta)}
+	\]
+	para ciertos $x_1,\dots,x_n\in G$, donde $n=(G:H)$. Como cada una de esas clases tiene exáctamente
+	$|H|$ elementos,  
+	\[
+		|G|=\sum_{i=1}^n|x_iH|=\sum_{i=1}^n|H|=|H|(G:H).\qedhere
+	\]
+\end{proof}
+
+Veamos algunos corolarios. 
+
+\begin{corollary}
+	Si $G$ es un grupo finito y $g\in G$, entonces $g^{|G|}=1$. 	
+\end{corollary}
+
+\begin{proof}
+	Por definición $|g|=|\langle g\rangle|$. El teorema de Lagrange aplicado al
+	subgrupo $H=\langle g\rangle$ nos dice que 
+	\[
+		g^{|G|}=g^{|H|(G:H)}=(g^{|H|})^{(G:H)}=1.\qedhere
+	\]
+\end{proof}
+
+\begin{corollary}
+	Si $G$ es un grupo de orden primo, entonces $G$ es cíclico.
+\end{corollary}
+
+\begin{proof}
+	Sea $g\in G\setminus\{1\}$ y sea $H=\langle g\rangle$. Por el teorema de
+	Lagrange, $|H|$ divide a $|G|$ y luego $|H|=|G|$ pues $|G|$ es un número
+	primo. En consecuencia, $G=H=\langle g\rangle$. 
+\end{proof}
+
+\begin{corollary}
+\label{cor:ordenes_coprimos}
+	Si $G$ es un grupo abeliano y $g,h\in G$ son elementos de órdenes finitos y coprimos, entonces
+	$|gh|=|g||h|$.
+\end{corollary}
+
+\begin{proof}
+Sean $n=|g|$, $m=|h|$ y $l=|gh|$. Como $G$ es abeliano, 
+\[
+(gh)^{nm}=(g^n)^m(h^m)^n=1
+\]
+y luego $l$ divide a $nm$. Por otro lado, como $(gh)^l=1$, 
+$g^l=h^{-l}\in \langle g\rangle\cap\langle h\rangle=\{1\}$ (pues como $|\langle g\rangle|=n$ y $|\langle h\rangle|=m$ son coprimos, 
+entonces $nm$ divide a $l$ gracias al teorema de Lagrange). 
+\end{proof}
+
+%\begin{example}
+%Gracias al teorema de Lagrange podemos demostrar fácilmente que $(n+m)!$ divide a $n!m!$, 
+%basta con observar que $\Sym_n\times\Sym_m\leq\Sym_{n+m}$
+%\end{example}
+
+El pequeño teorema de Fermat es un caso particular del teorema de Lagrange.
+
+\begin{exercise}[pequeño teorema de Fermat]
+	\index{Teorema!de Fermat}
+	Sea $p$ un número primo. Demuestre que 
+	$a^{p-1}\equiv1\bmod p$  
+	para todo $a\in\{1,2,\dots,p-1\}$. 
+\end{exercise}
+
+El siguiente corolario utiliza la función $\varphi$ de Euler. Recordemos que
+$\varphi(n)$ es la cantidad de enteros positivos coprimos con $n$. El grupo de
+unidades de $\Z/n$ tiene $\varphi(n)$ elementos (pues $x\in\Z/n$ es inversible
+si y sólo si $x$ es coprimo con $n$). 
+
+\begin{exercise}[teorema de Euler]
+	\index{Teorema!de Euler}
+	Sean $a$ y $n$ enteros coprimos. Demuestre que 
+	$a^{\phi(n)}\equiv1\bmod n$.
+\end{exercise}
+
+No vale la recíproca del teorema de Lagrange.
+
+\begin{example}
+Consideremos el grupo alternado 
+\begin{multline*}
+\Alt_4=\{\id,(234),(243),(12)(34),(123),(124),\\(132),(134),(13)(24),(142),(143),(14)(23)\}\leq\Sym_4.	
+\end{multline*}
+Vamos a demostrar que $\Alt_4$ no tiene subgrupos de orden seis. Si $H\leq\Alt_4$ es tal que 
+$|H|=6$, entonces, como $(\Alt_4:H)=6$, para todo $x\not\in H$ podríamos descomponer a $\Alt_4$ como $\Alt_4=H\cup xH$ (unión disjunta). 
+
+Afirmamos que
+para todo $g\in\Alt_4$ vale que $g^2\in H$ (pues si $g\not\in H$, entonces, como $g^2\in\Alt_4=H\cup gH$, se concluye que $g^2\in H$). En particular, como
+$(ijk)=(ikj)^2$, 
+todos los elementos de orden tres de $\Alt_4$ están en el subgrupo $H$, una contradicción pues hay ocho elementos de orden tres.   
+\end{example}
+
+Todos deberíamos tener un grupo favorito. El mío es $\SL_2(3)$,
+el grupo formado por las matrices de $2\times2$ con coeficientes en $\Z/3$ 
+con determinante uno.
+
+\begin{exercise}
+Demuestre que 
+\[
+\SL_2(3)=\left\{\begin{pmatrix}a&b\\c&d\end{pmatrix}:ad-bc=1,\,a,b,c,d\in\Z/3\right\}
+\]
+es un grupo de orden 24 que no posee subgrupos de orden 12.	
+\end{exercise}
+
+
+%\begin{proof}
+%	Si $a$ y $n$ son coprimos, entonces $a$ es una unidad de $\Z/n$. Como el
+%	grupo de unidades de $\Z/n$ tiene orden $\varphi(n)$, entonces
+%	$a^{\varphi(n)}\equiv1\bmod n$. 
+%\end{proof}
+%
+
+
+%
+%\section{Notas}
+%
+%Un teorema de Hall de 1935: Si $G$ es un grupo finito y $S$ es un subgrupo de $G$ de índice $n$, entonces
+%existen $t_1,\dots,t_n\in G$ tales que los $t_1S,\dots,t_nG$ forman un conjunto de representantes de las las coclases a izquierda y los 
+%$St_1,\dots,St_n$ forman un conjunto de representantes de coclases a derecha. 
+
+

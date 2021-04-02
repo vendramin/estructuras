@@ -1,0 +1,1104 @@
+\chapter{El teorema de estructura}
+
+En este capítulo $R$ será un dominio de ideales principales. Esta hipótesis hace
+que los módulos tengan buenas propiedades, casi como pasa en el caso de espacios vectoriales.
+
+\begin{theorem}
+\label{thm:rango}
+Sea $R$ un dominio de ideales principales. Si $F$ es un módulo libre finitamente generado 
+y $N$ es un submódulo de $F$, entonces $N$ es también libre y además 
+$\rank(N)\leq\rank(F)$. 
+\end{theorem}
+
+\begin{proof}
+	Procederemos por inducción en $n=\rank(F)$. Si $n=1$, entonces
+	$F\simeq\prescript{}{R}R$ 
+	y los submódulos de $F$ son exactamente los ideales a izquierda de $R$. En particular,
+	$N=(r)$ para algún $r\in R$. Si $r=0$, entonces $N=\{0\}$ y el resultado es verdadero. Si $r\ne 0$, entonces $\{r\}$ es base de $N$ y también el resultado es cierto. 
+	
+	Supongamos ahora que el resultado es válido para todo módulo libre de rango $<n$. 
+	Sea $\{f_1,\dots,f_n\}$ una
+	base de $F$ y sea $F_n=(f_1,\dots,f_{n-1})$. Por hipótesis inductiva, 
+	el submódulo $U=N\cap F_n$ es libre de rango $\leq n-1$. Sea
+	$\{n_1,\dots,n_k\}$ una base de $U$ (por convención, si $U=\{0\}$, entonces $k=0$). Si $f\in F$, existen únicos $r_1,\dots,r_n\in R$ tales que 
+	\[
+	f=\sum_{i=1}^n r_i\cdot f_i.
+	\]
+	Queda definido 
+	entonces un morfismo 
+	\[
+	\varphi\colon F\to R,
+	\quad
+	\sum_{i=1}^nr_i\cdot f_i\mapsto r_n.
+	\] 
+	Si $\varphi(N)=\{0\}$, entonces $N\subseteq (f_1,\dots,f_{n-1})$ y luego $N=U$. 
+	Si $\varphi(N)\ne\{0\}$, entonces $\varphi(N)$ es un ideal
+	de $R$, digamos $\varphi(N)=(x)$ para algún $x\in R\setminus\{0\}$. Sea $n_{k+1}\in N$ 
+	tal que $\varphi(n_{k+1})=x$. 
+	Veamos que $\{n_1,\dots,n_k,n_{k+1}\}$ es base de $N$. 
+	Si $n\in N$, entonces $\varphi(n)=rx$ 
+	para algún $r\in R$. Entonces $n-r\cdot n_{k+1}\in N\cap\ker\varphi=N\cap F_n=U$ pues 
+	$\varphi(n-r\cdot n_{k+1})=0$. En particular, 
+	\[
+	n-r\cdot n_{k+1}\in (n_1,\dots,n_k)\implies  
+	n\in (n_1,\dots,n_k,n_{k+1}).
+	\]
+	Veamos ahora que
+	$\{n_1,\dots,n_k,n_{k+1}\}$ es linealmente independiente. Si 
+	\[
+	0=\sum_{i=1}^{k+1}r_i\cdot n_i,
+	\]
+	para $r_1,\dots,r_{k+1}\in R$, entonces, como $\varphi(n_i)=0$ para todo $i\in\{1,\dots,k\}$, se tiene que 
+	\[
+	0=\varphi(r_{k+1}\cdot n_{k+1})=r_{k+1}x,
+	\]
+	que implica $r_{k+1}=0$. Queda entonces que $\sum_{i=1}^kr_i\cdot n_i=0$. Como $\{n_1,\dots,n_k\}$ es base de $U$, se concluye que
+	$r_1=\dots=r_k=0$. 
+\end{proof}
+
+El teorema anterior también vale en el caso de bases infinitas. La demostración, sin embargo, depende del lema de Zorn.
+% todo: referencia al libro de lang
+	
+\begin{corollary}
+Sea $R$ un dominio de ideales principales. Si $M$ es proyectivo y finitamente generado, 
+entonces $M$ es libre.
+\end{corollary}
+
+\begin{proof}
+Supongamos que $M=(m_1,\dots,m_k)$. Sabemos que $M$ es sumando directo de un libre $F$. Fijemos una base de $F$ y sea 
+$X=\{f_1,f_2,\dots\}$ un subconjunto finito de esa base de $F$ tal que
+\[
+m_j=\sum_{i=1}^{n_j}r_{ij}\cdot f_i
+\]
+para ciertos $r_{ij}\in R$ y ciertos $n_1\dots,n_k\in\N$. 
+Por construcción, $X$ es linealmente indepdendiente y $M=(X)$. 
+\end{proof}
+
+El corolario anterior vale también para módulos arbitrarios. La demostración puede
+consultarse por ejemplo en~\cite[I, Theorem 5.1]{MR1438546}.
+
+\begin{corollary}
+Sea $R$ un dominio de ideales principales. Si $M$ es finitamente generado y $N$ 
+es un submódulo de $M$, entonces $N$ es también finitamente generado.  
+\end{corollary}
+
+\begin{proof}
+Sabemos que existe un módulo libre $F$ de rango finito y un epimorfismo 
+$\varphi\colon F\to M$. Como $N_1=\varphi^{-1}(N)$ es un submódulo de $F$, el teorema anterior
+implica que 
+$\rank(N_1)\leq\rank F$. Si $\{x_1,\dots,x_k\}$ es base de $N_1$, entonces, como $\varphi$ es un epimorfismo, $\{\varphi(x_1),\dots,\varphi(x_k)\}$ es un conjunto de generadores de 
+$\varphi(N_1)=\varphi(\varphi^{-1}(N))=N$. En particular, $\rank(N)\leq k=\rank(N_1)\leq\rank(F)$. 
+\end{proof}
+
+Algunos ejercicios útiles:
+
+\begin{exercise}
+\label{xca:rank}
+    Sea $R$ un dominio de ideales principales  
+	y sea $M$ un módulo libre. Si 
+	$S$ es un submódulo de $M$ tal que $M/S$ es libre, entonces $M\simeq S\oplus (M/S)$. Si además 
+	$S$ es libre, entonces 
+	\[
+	\rank(M)=\rank(S)+\rank(M/S).
+	\] 
+\end{exercise}
+
+\begin{exercise}
+\label{xca:n_elements}
+Sea $R$ un dominio de ideales principales. 
+Si $M$ es un módulo libre de rango $n$, entonces todo conjunto linealmente independiente de $M$ tiene
+a lo sumo $n$ elementos. 
+\end{exercise}
+
+\begin{exercise}
+Sea $R$ un dominio de ideales principales 
+y sean $M$ y $N$ dos módulos libres. Demuestre que $M\simeq N$ si y sólo si $\rank(M)=\rank(N)$. 	
+\end{exercise}
+
+\begin{exercise}
+\label{xca:base}
+Sea $R$ un dominio de ideales principales. 
+Si $M$ es un módulo libre tal que $n=\rank(M)$ y $\{s_1,\dots,s_n\}$ es un conjunto de generadores, entonces $\{s_1,\dots,s_n\}$ es una base de $M$.
+\end{exercise}
+
+\index{Anulador!de un módulo}
+\index{Anulador!de un elemento del anillo}
+Si $M$ es un módulo, el \textbf{anulador} de $M$ se define como
+\[
+\Ann(M)=\{r\in R:r\cdot m=0\text{ para todo $m\in M$}\}.
+\] 
+Si $m\in M$ se define 
+\[
+\Ann(m)=\{r\in R:r\cdot m=0\}.
+\]  
+Observar que $\Ann(M)=\cap_{m\in M}\Ann(m)$. 
+Dejamos como ejercicio demostrar que $\Ann(M)$ y $\Ann(m)$ son ideales de $R$. 
+Si $r\in R$, el anulador de $r$ en $M$ se define como
+\[
+\Ann_M(r)=\{m\in M:r\cdot m=0\}.
+\] 
+Dejamos como ejercicio demostrar que $\Ann_M(r)$ es un submódulo de $M$. 
+
+\begin{exercise}
+Sean $M$ un módulo, $m\in M$ y $r\in R$ tal que $\Ann(m)=(r)$. Sea 
+$p\in R$ irreducible. 
+\begin{enumerate}
+\item Si $p$ divide a $r$, entonces $(m)/p\cdot (m)\simeq R/(p)$.
+\item Si $p$ no divide a $r$, entonces $p\cdot (m)=(m)$.
+\end{enumerate}
+\end{exercise}
+
+% Demostremos la primera afirmación. Sea $\varphi\colon R\to (m)$, $s\mapsto s\cdot m$, y 
+% sea $f=\pi\circ \varphi\colon R\to (m)/p\cdot (m)$, donde $\pi\colon (m)\to (m)/p\cdot (m)$ es 
+% el epimorfismo canónico. Veamos que $\ker f=(p)$. Trivialmente vale 
+% que $\ker f\supseteq (p)$. Por otro lado, si $s\in R$ es tal que
+% s\cdot m\in p\cdot (m)$, entonces, como $r=pt$ para algún $t\in R$, $s\cdot m=t\cdot (p\cdot m)$.
+% Como $f$ es epimorfismo por ser composición
+% de epimorfismos, se tiene que $R/(p)\simeq (m)/p\cdot (m)$.  
+
+% Demostremos ahora la segunda afirmación. Como $p$ y $r$ son coprimos, existen 
+% $a,b\in R$ tales que $ap+br=1$. Como $r\cdot \m=0$ pues $\Ann(m)=(r)$, 
+% $m=1\cdot m=(ap+br)\cdot m=p\cdot (a\cdot m)\in p\cdot (m)$.  
+
+\index{Torsión!de un módulo}
+\index{Módulo!sin torsión}
+\index{Módulo!de torsión}
+La \textbf{torsión} de un módulo $M$ se define como
+el subconjunto 
+\[
+T(M)=\{m\in M:r\cdot m=0\text{ para algún $r\in R$}\}.
+\]
+Queda como ejercicio demostrar que $T(M)$ es un submódulo de $M$. 
+Se dice que un módulo $M$ 
+\textbf{no tiene torsión} si $T(M)=\{0\}$ y que es \textbf{de torsión} si $T(M)=M$.   
+
+\begin{exercise}
+Si $M\simeq N$, entonces $T(M)\simeq T(N)$.
+\end{exercise}
+
+\begin{exercise}
+Demuestre que $T(\oplus_{i\in I}M_i)\simeq \oplus_{i\in I}T(M_i)$.
+\end{exercise}
+
+\begin{exercise}
+\label{xca:free}
+    Sean $R$ un dominio principal y $M$ un $R$-módulo. Pruebe que si $M$ es
+    finitamente generado y $S\subseteq M$ es un submódulo libre tal que $M/S$ no
+    tiene torsión, entonces $M$ es libre
+\end{exercise}
+
+\begin{examples}\
+\begin{enumerate}
+\item $T(\prescript{}{R}R)=\{r\in R:rs=0\text{ para algún $s\in R$}\}$.
+\item $T(\Z/n)=\Z/n$.
+\item $T(\Q)=\{0\}$.
+\item $T(\Z^{\N})=\{0\}$. 
+\end{enumerate}
+\end{examples}
+
+\begin{example}
+Si $V$ es un espacio vectorial de dimensión finita y $T\colon V\to V$ es una
+transformación lineal, sabemos que $V$ es un $K[X]$-módulo con la acción
+\[
+\left(\sum_{i=0}^n a_iX^i\right)\cdot v=\sum_{i=0}^n a_iT^i(v).
+\]
+
+Veamos que
+$V$ es de torsión, es decir $V=T(V)$. Sea $n=\dim V$. Si $v\in V$, entonces 
+$\{v,T(v),\dots,T^n(v)\}$ es linealmente dependiente, pues
+tiene $n+1$ elementos. En particular, existen $a_0,\dots,a_n\in K$ no todos cero tales
+que 
+\[
+0=\sum_{i=0}^n a_iT^i(v)=\left(\sum_{i=0}^n a_iX^i\right)\cdot v.
+\]
+Luego $v\in T(V)$. 
+\end{example}
+
+\begin{theorem}
+Sea $R$ un dominio de ideales principales  
+y sea $M$ finitamente generado. Si $T(M)=\{0\}$, entonces $M$ es libre. 
+\end{theorem}
+
+\begin{proof}
+Sin perder generalidad podemos suponer que $M$ es no nulo. Supongamos además que $M=(X)$, donde $X$ es un conjunto 
+finito de generadores. Si $x\in X$, entonces $r\cdot x=0\Longleftrightarrow r=0$, pues $T(M)=\{0\}$. Sea $S=\{x_1,\dots,x_k\}\subseteq X$ 
+maximal con respecto a la siguiente propiedad:
+\[
+r_1\cdot x_1+\cdots+r_k\cdot x_k=0\text{ para $r_1,\dots,r_k\in R$}\implies r_1=\cdots=r_k=0.
+\]	
+Sea $F=(S)$ el módulo libre con base en el conjunto $S$. Si $X=S$, no hay nada para demostrar. 
+Si $y\in X\setminus S$, entonces
+existen $r_y,r_1,\dots,r_k\in R$ no todos cero tales que
+\[
+r_y\cdot y+\sum_{i=1}^k r_i\cdot x_i=0.
+\]
+Como entonces $r_y\cdot y=-\sum_{i=1}^k r_i\cdot x_i\in F$, se concluye que $r_y\ne 0$, pues si 
+$r_y=0$ entonces $r_1=\cdots=r_k=0$. Como $X$ es finito, 
+\[
+r=\prod_{y\in X\setminus S}r_y
+\]
+está bien definido pues $R$ es conmutativo y es tal que $r\cdot X\subseteq F$. Si $f\colon M\to M$, $x\mapsto r\cdot x$, entonces
+$f$ es un morfismo tal que $f(M)=r\cdot M$. Como $T(M)=\{0\}$, entonces $\ker f=\{0\}$. Luego
+\[
+r\cdot M=f(M)\simeq M
+\]
+y en consecuencia $M$ es libre. 
+\end{proof}
+
+%\begin{theorem}
+%Si $M$ es libre y finitamente generado y $N$ es un submódulo de $M$, entonces $N$ es también libre.
+%\end{theorem}
+
+%\begin{proof}
+%Sea $\{m_1,\dots,m_k\}$ una base de $M$. Procederemos por inducción en $k$. Para cada $j\in\{1,\dots,k\}$ 
+%sea $M_j=M\cap (m_1,\dots,m_j)$. El caso $k=1$ es fácil: 
+%como $M_1=M\cap (m_1)\subseteq (m_1)$, existe $r_1\in R$ tal que $M_1=(r_1\cdot m_1)$. Luego $M_1=\{0\}$ o bien
+%$M_1$ es libre de rango uno. 
+%%Supongamos ahora que $M_j$ es libre de rango $\leq j$. Sea 
+%%\[
+%%I=\{r\in R:\text{ existe $m\in M$ tal que $m=\sum_{i=1}^j s_j\cdot m_j+r\cdot m_{j+1}$ para $s_1,\dots,s_j\in R$}\}.
+%%\]   
+%%Como $I$ es un ideal de $R$, podemos escribir $I=(r_{j+1})$, pues $R$ es un dominio de ideales principales. Si $r_{j+1}=0$, entonces
+%%$M_{j+1}=M_j$ y el teorema queda demostrado. Si $r_{j+1}\ne 0$, sea $n\in M_{j+1}$ un elemento de la forma
+%%\[
+%%n=r_{j+1}\cdot m_{j+1}+\cdots, 
+%%\]
+%%donde usamos la definición del ideal $I$. Si $m\in M_{j+1}$, entonces $m=r\cdot x_{j+1}+\cdots$, donde
+%%$r_{j+1}$ divide a $r$, pues como $m\in M$, entonces $r\in I=(a_{j+1})$ y luego $r=sr_{j+1}$ para algún $s\in S$. Como entonces
+%%$m-s\cdot n\in M_j=M\cap (m_1,\dots,m_j)$, se concluye que
+%%$M_{j+1}=M_j+(n)$. Además $M_j\cap (n)=\{0\}$, pues si $x=r\cdot y=\sum_{i=1}^j r_i\cdot m_i$, entonces
+%%\[
+%%(rr_{j+1})\cdot m_{j+1}+\sum_{i=1} s_i\cdot m_i=0
+%%\]
+%%implica que $rr_{j+1}=s_1=\cdots s_j=0$ y luego $r=0$ pues $a_{j+1}\ne 0$. 
+%%\end{proof}
+%%
+%%El teorema anterior también vale en el caso de bases infinitas. La demostración, sin embargo, depende del lema de Zorn.
+% todo: referencia al libro de lang
+
+\begin{theorem}
+Sea $R$ un dominio de ideales principales. 
+Si $M$ es un módulo finitamente generado, entonces $M=T(M)\oplus F$ con $F\simeq M/T(M)$ libre y finitamente generado. La
+parte de torsión es única y la parte libre es única salvo isomorfismos.
+\end{theorem}
+
+\begin{proof}
+	Veamos que $T(M/T(M))\simeq\{0\}$. Si $x+T(M)\in T(M/T(M))$, sea $r\in R\setminus\{0\}$ tal que
+	$r\cdot (x+T(M))=T(M)$. Entonces $r\cdot x\in T(M)$, es decir que existe $s\in R\setminus\{0\}$ tal que $s\cdot (r\cdot x)=(sr)\cdot x=0$. 
+	Como $sr\ne 0$, se concluye que $x\in T(M)$. 
+	
+	Como $M$ es finitamente generado, el cociente $M/T(M)$ es también finitamente generado. Como además $M/T(M)$ no tiene torsión, 
+	se concluye que $M/T(M)$ es libre. 
+	Como entonces $M/T(M)$ es proyectivo, la sucesión exacta 
+	\[
+	\xymatrix{
+	 0\ar[r] 
+	 & T(M)
+	 \ar[r]^i
+	 & M
+	 \ar[r]^{\pi}
+	 & M/T(M)
+	 \ar[r]
+	 & 0
+	 }
+	 \]
+	 donde $i$ es la inclusión y $\pi$ es el morfismo canónico, 	el teorema~\ref{thm:proyectivo} 
+	 implica que $M\simeq T(M)\oplus M/T(M)$. 	
+	 
+	 Para demostrar la unicidad, supongamos que $M=T\oplus L$, donde $T$ es de torsión y $L$ es libre. Primero
+	 demostraremos que $T=T(M)$. Claramente 
+	 $T\subseteq T(M)$. Por otro lado, si $m\in T(M)$, entonces $m=t+l$ para ciertos $t\in T$ y $l\in L$. En particular, 
+	 $r\cdot m=0$ y $s\cdot t=0$ para ciertos $r,s\in R$. Como $R$ es conmutativo, 
+	 \[
+	 0=(rs)\cdot m=(rs)\cdot (t+l)=(rs)\cdot t+(rs)\cdot l=(rs)\cdot l.
+	 \]
+	 y entonces $l\in T(L)$. Pero 
+	 como $L$ es libre, $T(L)=\{0\}$ (pues $T(L)$ es también libre y entonces cualquier elemento $x$  
+	 de una base de $T(L)$ sería tal que $\{x\}$ es linealmente independiente, una contradicción). Luego 
+	 $l=0$ y en consecuencia $m=t\in T$. La unicidad salvo isomorfismo de la parte libre
+	 se obtiene inmediatamente al observar que $M/T(M)$. 
+\end{proof}
+
+
+\index{compontente $p$-primaria!de un módulo}
+Si $p\in R$ es un elemento irreducible, se define la componente $p$-primaria de $M$ como
+el subconjunto 
+\[
+M_p=\{x\in M:p^l\cdot x=0\text{ para algún $l\in\N$}\}.
+\]
+Dejamos como ejercicio demostrar que $M_p$ es un submódulo de $M$. 
+
+\begin{lemma}
+	\label{lem:Mp}
+	Sean $p,t\in R$ tales que $p$ y $t$ son coprimos. Si $p\in R$ es irreducible y además   
+	$\Ann(M)=(p^kt)$, entonces $\Ann_M(p^k)=M_p$. 
+\end{lemma}
+
+\begin{proof}
+Demostremos que $\Ann_M(p^k)\supseteq M_p$, ya que la otra inclusión es trivial. 
+Si $x\in M_p$, entonces $p^k\cdot x=0$ para algún $l\in\N$. Observemos que 
+$(p^kt)\cdot x=0$, pues $x\in M$. Como $p^l$ y $t$ son coprimos, existen 
+$r,s\in R$ tales que $1=rp^l+st$ y luego
+\[
+p^k\cdot x=1\cdot (p^k\cdot x)=(rp^l+st)\cdot (p^k\cdot x)=rp^{l+k}\cdot x+(st)\cdot (p^k\cdot x)=0.\qedhere	
+\]
+\end{proof}
+
+\begin{lemma} 
+\label{lem:Ann(ab)}
+Si $\Ann(M)=(ab)$ y $a$ y $b$ son coprimos, entonces 
+\[
+M=\Ann_M(a)\oplus\Ann_M(b).
+\] 	
+\end{lemma}
+
+\begin{proof}
+	Como $a$ y $b$ son coprimos, existen $r,s\in R$ tales que $1=ra+sb$. Si $m\in M$, entonces
+	\[
+	m=1\cdot m=(ra+sb)\cdot m=(ra)\cdot m+(sb)\cdot m\in\Ann_M(b)+\Ann_M(a),
+	\]
+	pues $(ab)\cdot M=0$. Además, si $m\in\Ann_M(a)\cap\Ann_M(b)$, entonces 
+	\[
+	m=1\cdot m=(ra+sb)\cdot m=0.\qedhere
+	\]
+\end{proof}
+
+Los dos lemas que vimos nos permiten demostrar el siguiente resultado:
+
+\begin{theorem}[de la descomposición primaria]
+\index{Teorema!de la descomposición primaria}
+Sea $R$ un dominio de ideales principales y 
+sean $p_1,\dots,p_k\in R$ irreducibles distintos y no asociados tales que $\Ann(M)=(p_1^{\alpha_1}\cdots p_k^{\alpha_k})$. 
+Si $M$ es finitamente generado y $T(M)=M$, entonces 
+\[
+M=\bigoplus_{i=1}^kM_{p_i}.
+\]   
+\end{theorem}
+
+\begin{proof}
+	Como $T(M)=M$, $\Ann(M)\ne\{0\}$. En efecto, si $M=(m_1,\dots,m_l)$, entonces cada $m_i\in T(M)$ y 
+	entonces existe $r_i\in R\setminus\{0\}$ tal que $r_i\cdot m_i=0$ para todo $i$. Como $R$ es un dominio, $r_1\cdots r_l\ne 0$ 
+	y cumple $(r_1\cdots r_l)\cdot m_i=0$ para todo $i\in\{1,\dots,l\}$, es decir $r_1\cdots r_l\in\Ann M$. Los dos lemas
+	que vimos anteriormente nos permiten escribir entonces
+	\[
+	M=\bigoplus_{i=1}^k\Ann_M(p_i^{\alpha_i})=\bigoplus_{i=1}^k M_{p_i}.\qedhere
+	\] 
+\end{proof}
+ 
+Puede demostrarse que la descomposición mencionada en el teorema anterior es única salvo en el orden de los sumandos. 
+Más precisamente, si \[
+M=N_{q_1}\oplus\cdots\oplus N_{q_l},
+\]
+donde los $N_{q_i}$ son primarios tales que 
+$\Ann(N_{q_i})=(q_i^{\beta_i})$ 
+y los $q_1,\dots,q_l$ son irreducibles distintos no asociados, entonces $k=l$ y existe $\sigma\in\Sym_k$ tal que
+$M_{p_i}=N_{q_{\sigma(i)}}$ para todo $i$, los $q_{\sigma(i)}$ y los $p_i$ son asociados para todo $i$ y además 
+\[
+q_1^{\beta_1}\cdots q_k^{\beta_k}=p_1^{\alpha_1}\cdots p_k^{\alpha_k}.
+\]
+Para la demostración ver por ejemplo~\cite[Theorem 6.9]{MR2344656}.
+
+% \medskip
+% \index{Orden!de un submódulo}
+% Para el teorema siguiente necesitamos algunas nociones básicas sobre órdenes de submódulos. Un módulo 
+% $M$ se dirá de \textbf{orden} $r\in R$ si $\Ann(M)=(r)$. 
+
+% \begin{lemma}
+% Sean $R$ un dominio de ideales principales y $M$ un módulo.
+% \begin{enumerate}
+%     \item Si $m\in M$ es tal que $\Ann(m)=(r)$, entonces $(m)\simeq R/(r)$.
+%     \item Los submódulos de módulos cíclicos son cíclicos.
+%     \item Si $m\in M$ es tal que $\Ann(m)=(r)$, entonces $\Ann(s\cdot m)=r/\gcd(r,s)$. 
+%     En particular, si $r$ y $s$ son coprimos, entonces $\Ann(s\cdot m)=(s)$. 
+%     \item Si $m_1,\dots,m_k\in M\setminus\{0\}$ son tales que $\Ann(m_i)=(r_i)$ y los $r_i$ son coprimos dos a dos, 
+%     entonces $\Ann(m_1+\cdots+m_k)=(r_1\cdots r_k)$. 
+% \end{enumerate}
+% \end{lemma}
+
+% \begin{proof}
+%     Para el primer ítem hay que usar el primer teorema de isomorfismos con el epimorfismo $R\to (m)$, $r\mapsto r\cdot m$, 
+%     que tiene núcleo $\Ann(M)=(r)$. 
+    
+%     El segundo ítem es consecuencia del teorema \ref{thm:rango} que afirma que un submódulo de un cíclico estará generado 
+%     por un elemento. 
+    
+%     Demostremos el tercer ítem. 
+% \end{proof}
+
+
+% El lema anterior implica que si $M=S_1+\cdots + S_k$ y cada $\Ann(S_i)=(s_i)$ donde los $s_i$ son coprimos dos a dos, entonces
+% $M=S_1\oplus\cdots\oplus S_k$. 
+
+%\begin{exercise}
+%	Si en el teorema anterior, $M$ admite además una descomposición de la forma $M=N_{q_1}\oplus\cdots\oplus N_{q_l}$,
+%	donde $\Ann(N_{q_i})=(q_i^{\beta_i})$ para todo $i\in\{1,\dots,l\}$ y los $q_i$ son irreducibles distintos no asociados, entonces
+%	$k=l$; más aún, después de reordenar,
+%	tenemos que para todo $i\in\{1,\dots,k\}$ vale que 
+%$N_{q_i}=M_{q_i}$, $\alpha_i=\beta_i$ y que $p_i$ y $q_i$ son asociados.
+%\end{exercise} 
+%
+
+\begin{theorem}[de la descomposición cíclica]
+\index{Teorema!de la descomposición cíclica}
+Sea $R$ un dominio de ideales principales. 
+Sea $M$ un módulo finitamente generado tal que $T(M)=M$. Si $\Ann(M)=(p^{\alpha})$ para algún $p\in R$ irreducible, entonces
+\[
+M=(m_1)\oplus\cdots\oplus (m_k),
+%\bigoplus_{i=1}^k R/(p^{\alpha_i}),
+\]
+donde cada $m_j\in M$ es tal que $\Ann(m_j)=(p^{\alpha_j})$ y 
+$\alpha=\alpha_1\geq\alpha_2\geq\cdots\geq\alpha_k$.
+\end{theorem}
+
+\begin{proof}
+  Sea $m\in M$ tal que $p^{\alpha}\cdot m=0$ y $p^{\alpha-1}\cdot m\ne 0$. Si $M=(m)$, no hay nada para demostrar. En caso contrario,
+   vamos a demostrar que existe un submódulo $S$ de $M$ tal que 
+	$M=(m)\oplus S$. En este caso, como $S$ también cumple las hipótesis del teorema,
+	podemos repetir el procedimiento y obtener
+	\[
+	M=(m)\oplus (m_1)\oplus\cdots\oplus (m_k)\oplus S_k,
+	\]
+	donde $\Ann(m_i)=(p^{\alpha_i})$. Como $M$ es noetheriano, la sucesión 
+	\[
+	(m)\subseteq (m,m_1)\subseteq (m,m_1,m_2)\subseteq\cdots
+	\]
+	debe estabilizarse, lo que se traduce en la existencia de algún $k\in\N$ tal que $S_k=\{0\}$. 
+	
+	Sea $M_1=(m)$. Si
+	$M_1\ne M$, sea $x\in M\setminus M_1$. Necesitamos encontrar $r\in R$ tal que $S_2=(x-r\cdot m)$ esté en suma directa con $(m)$, es decir 
+	$(m)\cap S_2=\{0\}$. Si $y\in (m)\cap S_2$, 
+	\begin{gather*}
+	y=a\cdot m=b\cdot (x-r\cdot m)\implies 
+	b\cdot x=(a+br)\cdot m\in (m)
+	\end{gather*}
+	para ciertos $a,b\in R$. 
+	Un cálculo sencillo nos muestra que el conjunto  
+	\[
+	I=\{\lambda\in R:\lambda\cdot x\in (m)\}.
+	\] 
+	es un ideal de $R$ tal que $p^{\alpha}\in I$ y $b\in I$. 
+	Como $R$ es principal y $p$ es irreducible,
+	entonces $I=(p^\beta)$ para algún $\beta\leq \alpha$. Si $\beta=0$, entonces $I=R$ y luego $x=1\cdot x\in (m)$, una contradicción. Luego $\beta\ne0$. Como
+	$p^\beta\in I$, entonces $p^\beta\cdot x=c\cdot m$ para algún $c\in R$. En particular,
+	\[
+	0=p^{\alpha}\cdot x=p^{\alpha-\beta}\cdot (p^\beta\cdot x)
+	=(p^{\alpha-\beta}c)\cdot m,
+	\]
+	lo que implica que $p^{\alpha-\beta} c\in\Ann(m)=(p^{\alpha})$ y entonces  
+	$c=dp^{\beta}$ para algún $d\in R$. En particular, 
+	\[
+	p^\beta\cdot x=c\cdot m=(dp^{\beta})\cdot m.
+	\] 
+	Por definición $b\in I$ y entonces $b=ep^{\beta}$ para algún $e\in R$. Luego 
+	\[
+	b\cdot x=(ep^\beta)\cdot x=(edp^{\beta})\cdot m,
+	\]
+	lo que implica que si $r=d\in R$, entonces 
+	\[
+	y=b\cdot (x-d\cdot m)=b\cdot x-b\cdot (d\cdot m)=0.
+	\] 
+	
+	La contrucción general es similar. Si $M_k=(m)\oplus S_k$ es tal que $M_k\ne M$, afirmamos que existe un submódulo $S_{k+1}$ de $M$ tal que
+	$S_k\subsetneq S_{k+1}$ y además $(m)\cap S_{k+1}=\{0\}$. En efecto, como $M\ne M_k$, existe $x\in M\setminus M_k$. 
+	Queremos encontrar $r\in R$ tal que  $(m)\cap (S_k,x-r\cdot m)=\{0\}$. Sea 
+	$S_{k+1}=(S_k,x-r\cdot m)$. Si $y\in (m)\cap S_{k+1}$, entonces existen $s\in S_k$ y $a,b\in R$ tales que   
+	$y=a\cdot m=s+b\cdot (x-r\cdot m)$, es decir 
+	\[
+	b\cdot x=(a+br)\cdot m-s\in (m)\oplus S_k.
+	\]
+	El conjunto 
+	\[
+	I=\{\lambda\in R:\lambda\cdot x\in (m)\oplus S_k\}
+	\]
+	es un ideal de $R$ tal que $p^{\alpha}\in I$. Como
+	$I$ es principal, $I=(p^\beta)$ para algún $\beta\leq\alpha$. Además $\beta\ne0$ pues $x=1\cdot x\not\in (m)\oplus S_k$. Como $p^\beta\in I$, entonces
+	$p^\beta\cdot x=c\cdot m+t$ para algún $c\in R$ y $t\in S_k$. En particular, 
+	\[
+	0=p^{\alpha}\cdot x=p^{\alpha-\beta}\cdot (p^\beta \cdot x)=(p^{\alpha-\beta}c)\cdot m+p^{\alpha-\beta}\cdot t.
+	\]
+	Luego $(p^{\alpha-\beta} c)\cdot m=0$, pues 
+	$(m)\cap S_k=\{0\}$, y entonces podemos escribir 
+	$c=dp^\beta$ para algún $d\in R$, ya que  
+	$p^{\alpha-\beta}c\in\Ann(m)=(p^{\alpha})$. Tenemos entonces que
+	\[
+	p^\beta\cdot x=(dp^\beta)\cdot m+t.
+	\]
+	Por otro lado, como $b\in I$, existe $e\in R$ tal que $b=ep^\beta$ y entonces
+	\[
+	b\cdot x=e\cdot (p^\beta\cdot x)=e\cdot((dp^\beta)\cdot m+t)=(edp^\beta)\cdot m+e\cdot t.
+	\]
+	$y=b\cdot (x-r\cdot m)=(edp^\beta-ep^\beta r)\cdot m$, se concluye que $y=0$ si elegimos 
+	$r=d$. En efecto, si $y\in (m)\cap S_{k+1}$, entonces $y=s+e\cdot t\in S_k$. Luego 
+	$y\in (m)\cap S_k=\{0\}$.
+\end{proof}
+
+Puede demostrarse que la descomposición del teorema anterior es única. Más precisamente, 
+si $M=(n_1)\oplus\cdots\oplus (n_l)$, donde $\Ann(n_i)=(q^{\beta_i})$ para todo $i$ y algún irreducible $q$ de $R$ 
+y $\beta_1\geq\beta_2\geq\cdots\geq\beta_l$, entonces $\Ann(n_i)=\Ann(m_i)$ para todo $i$. En particular, $k=l$, 
+$p$ y $q$ son asociados y $\alpha_i=\beta_i$ para todo $i\in\{1,\dots,k\}$. 
+Para la demostración ver 
+por ejemplo~\cite[Theorem 6.11]{MR2344656}.
+
+%\index{Módulo!cíclico}
+%Un submódulo $S$ de $M$ se dice \textbf{cíclico} si $S=(m)$ para algún $m\in M$. 
+%
+\begin{corollary}
+\index{Divisores elementales!de un módulo}
+Sea $R$ un dominio de ideales principales. Si $M$ es un módulo finitamente generado, entonces
+$M=F\oplus T$, donde $F$ es libre y $T$ es un submódulo de torsión. Si $\Ann(T)=(p_1^{\alpha_1}\cdots p_k^{\alpha_k})$, donde
+los $p_i$ son irreducibles distintos y no asociados, entonces 
+$M$ puede descomponerse como
+\[
+M=F\oplus \underbrace{\left( (m_{1,1})\oplus\cdots\oplus (m_{1,l_1})\right)}_{M_{p_1}}\oplus\cdots\oplus 
+\underbrace{\left( (m_{k,1})\oplus\cdots\oplus (m_{k,l_k})\right)}_{M_{p_k}}
+\]
+donde $\Ann(m_{i,j})=(p_i^{\alpha_{i,j}})$ y $\alpha_i=\alpha_{i,1}\geq\alpha_{i,2}\geq\cdots\geq \alpha_{i,l_i}$. Los $p_i^{\alpha_{i,j}}$ son 
+los \textbf{divisores elementales} de $M$. 
+\end{corollary}
+
+\begin{proof}
+	Sabemos que $M$ puede descomponerse como $M=F\oplus T(M)$, donde $F$ es un submódulo libre y $T(M)$ es el submódulo de torsión de $M$. 
+	Por el teorema de la descomposición primaria, podemos descomponer al submódulo $T(M)$ 
+	como $T(M)=M_{p_1}\oplus\cdots\oplus M_{p_k}$ para ciertos irreducibles distintos y no asociados
+	$p_1,\dots,p_k\in R$. A su vez, por el teorema de la descomposición cíclica, cada 
+	$M_{p_j}$ puede descomponerse como suma directa de cíclicos, digamos
+	\[
+	M_{p_j}=(m_{j,1})\oplus\cdots\oplus (m_{j,l_j}),
+	\] 
+	donde $\Ann(m_{i,j})=(p_i^{\alpha_{i,j}})$ y $\alpha_i=\alpha_{i,1}\geq\alpha_{i,2}\geq\cdots\geq \alpha_{i,l_i}$. 
+\end{proof}
+
+También puede demostrarse la unicidad de la descomposición del corolario anterior. Más precisamente, 
+el rango de la parte libre, los submódulos primarios y los anuladores quedarán unívocamente determinados
+por $M$. Una demostración puede consultarse en~\cite[Theorem 6.12]{MR2344656}.
+
+\begin{corollary}[descomposicion en factores invariantes]
+	\index{Teorema!de la descomposición en factores invariantes}
+	\index{Factores invariantes}
+	Sea $R$ un dominio de ideales principales. Si $M$ es un módulo finitamente generado, entonces
+	\[
+	M=F\oplus D_1\oplus\cdots\oplus D_k,
+	\]
+	donde $F$ es un submódulo libre de $M$ y los $D_i$ son submódulos
+	cíclicos de $M$ tales que $\Ann(D_i)=(d_i)$, donde 
+	$d_i\mid d_{i-1}$ para todo $i\in\{2,\dots,k\}$. Los $d_i$ son los \textbf{factores invariantes} de la descomposicion.
+\end{corollary}
+
+\begin{proof}
+	El corolario anterior nos permite descomponer a $M$ como 
+	\[
+M=F\oplus \underbrace{\left( (m_{1,1})\oplus\cdots\oplus (m_{1,l_1})\right)}_{M_{p_1}}\oplus\cdots\oplus 
+\underbrace{\left( (m_{k,1})\oplus\cdots\oplus (m_{k,l_k})\right)}_{M_{p_k}},
+\]
+donde $\alpha_i=\alpha_{i,1}\geq\alpha_{i,2}\geq\cdots\geq\alpha_{i,l_i}$. Si agrupamos ordenadamente 
+los sumandos cíclicos
+de orden coprimo, digamos
+\begin{align*}
+D_1 &= (m_{1,1})\oplus (m_{2,1})\oplus\cdots\\
+D_2 &= (m_{1,2})\oplus (m_{2,2})\oplus\cdots\\
+D_3 &= (m_{1,3})\oplus (m_{2,3})\oplus\cdots\\
+&\vdots
+\end{align*}
+obtenemos la descomposición que buscamos. 
+\end{proof}
+
+Puede demostrarse que los factores invariantes quedan únivocamente determinados, salvo multiplicación por unidades, por el módulo $M$. 
+Ver por ejemplo~\cite[Theorem 6.13]{MR2344656}.
+  
+\begin{example}
+Para entender mejor la descomposición del teorema anterior
+hagamos un ejemplo. Si un módulo $M$ admite una descomposición cíclica de la forma 
+\[
+M=\left((m_{1,1}\oplus (m_{1,2})\right)\oplus (m_{2,1})\oplus \left((m_{3,1})\oplus (m_{3,2})\oplus (m_{3,3})\right),
+\]
+donde $\Ann(m_{1,1})=p_1^3$, $\Ann(m_{1,2})=p_1^2$, $\Ann(m_{2,1})=(p_2)$, $\Ann(m_{3,1})=(p_3^3)$, $\Ann(m_{3,2})=(p_3^3)$ y $\Ann(m_{3,3})=(p_3)$ 
+para irreducibles distintos no asociados $p_1$, $p_2$ y $p_3$, entonces 
+entonces $M=D_1\oplus D_2\oplus D_3$, donde 
+\[
+D_1=(m_{1,1})\oplus (m_{2,1})\oplus (m_{3,1}),
+\quad
+D_2=(m_{1,2})\oplus (m_{3,2}),\quad
+D_3=(m_{3,3}).
+\]
+En este caso, $d_1=p_1^3p_2p_3^3$, $d_2=p_1^2p_3^3$ y $d_3=p_3$. 
+\end{example}
+
+
+%\begin{proof}
+%Observemos
+%que la función $R\to (m)$, $r\mapsto r\cdot m$, es un epimorfismo de módulos con núcleo
+%$\Ann(m)$. Luego $R/\Ann(m)\simeq (m)$ por el primer teorema de isomorfismos. En particular,
+%si $\Ann(m)=(p^\alpha)$ para algún irreducible $p\in R$, entonces 
+%$(m)\simeq R/(p^\alpha)$.  
+%El teorema anterior nos permite descomponer un módulo $p$-primario 
+%como suma directa de módulos cíclicos. Observemos que...
+%\end{proof}
+
+\index{Submódulo!de relaciones de un módulo}
+Para terminar el capítulo veremos un algoritmo que nos permite calcular
+efectivamente los factores invariantes de un módulo finitamente generado. Aunque lo que haremos puede hacerse sobre dominios
+de ideales principalers, nos concentraremos únicamente en el caso
+en que $R$ sea un dominio euclidiano, ya que solamente en este contexto el algoritmo es constructivo.
+ 
+Si $M$ es un módulo finitamente generado y $\{m_1,\dots,m_k\}$ es
+un conjunto de generadores,  
+existe un epimorfismo $\varphi\colon R^k\to M$, $(r_1,\dots,r_k)\mapsto \sum_{i=1}^k r_i\cdot m_i$. Por el primer teorema de isomorfismos, 
+$M\simeq R^k/\ker\varphi$. 
+El submódulo $\ker\varphi$ es el \textbf{submódulo de relaciones} de $M$. 
+Como $R$ es en particular un dominio de ideales
+principales y $M$ es finitamente generado, $\ker\varphi$ es también finitamente generado. Sea 
+$\{e_1,\dots,e_l\}$ un conjunto de generadores de $\ker\varphi$, digamos 
+\begin{align*}
+e_1&=(a_{11},a_{12},\dots,a_{1k}),\\
+e_2&=(a_{21},a_{22},\dots,a_{2k}),\\
+&\vdots\\
+e_l&=(a_{l1},a_{l2},\dots,a_{lk}).	
+\end{align*}
+
+La matriz $A=(a_{ij})_{1\leq i\leq l,1\leq j\leq k}$ es la 
+\textbf{matriz de relaciones} de $M$ con respecto a los conjuntos $\{m_1,\dots,m_k\}$ y $\{e_1,\dots,e_l\}$. 
+Veamos algunas propiedades de la matriz de relaciones.
+\begin{enumerate}
+\item Si $P\in R^{l\times l}$ es inversible, entonces las filas $\{f_1,\dots,f_l\}$ de la matriz $PA$ generan $\ker\varphi$. Además $PA$ es la matriz de relaciones
+con respecto a $\{m_1,\dots,m_k\}$ y $\{f_1,\dots,f_l\}$. 
+\item Si $Q\in R^{k\times k}$ es inversible con 
+$Q^{-1}=(q_{ij})$ y para cada
+$j\in\{1,\dots,k\}$ se define  
+$n_j=\sum_{i=1}^k q_{ij}\cdot m_i$, el conjunto $\{n_1,\dots,n_k\}$ genera a $M$ y las 
+filas de la matriz $AQ$ generan $\ker\varphi$. Además $AQ$ es la matriz de relaciones respecto de $\{n_1\dots,n_k\}$.  
+\end{enumerate}
+
+Para demostrar la primera afirmación supongamos que $P=(p_{ij})$. Las filas de la matriz $PA$ son entonces
+$f_1,\dots,f_l$, donde 
+\begin{align*}
+f_1 &= p_{11}e_1+\cdots+p_{1l}e_l,\\
+f_2 &= p_{21}e_1+\cdots+p_{2l}e_l,\\
+&\phantom{=}\vdots\\
+f_l &= p_{l1}e_1+\cdots+p_{ll}e_l.	
+\end{align*}
+Además $f_j\in\ker\varphi$ para todo $j\in\{1,\dots,l\}$. 
+Como $P$ es inversible, $\{f_1,\dots,f_l\}$ es un conjunto de generadores de $\ker\varphi$, pues
+cada $e_j$ es combinación lineal de los $f_i$,  
+\[
+\begin{pmatrix}
+e_1\\
+e_2\\
+\vdots\\
+e_l	
+\end{pmatrix}
+=P^{-1}\begin{pmatrix}
+f_1\\
+f_2\\
+\vdots\\
+f_l
+\end{pmatrix}.
+\]
+En particular, $PA$ es la matriz de relaciones respecto de $\{m_1,\dots,m_k\}$ y $\{f_1,\dots,f_l\}$.  
+
+Demostremos ahora la segunda afirmación. Como
+\[
+\begin{pmatrix}
+n_1\\
+n_2\\
+\vdots\\
+n_k	
+\end{pmatrix}
+=Q^{-1}\begin{pmatrix}
+m_1\\
+m_2\\
+\vdots\\
+m_k
+\end{pmatrix},
+\]
+entonces
+\begin{align*}
+\begin{pmatrix}
+0\\
+0\\
+\vdots\\
+0	
+\end{pmatrix}
+=A\begin{pmatrix}
+m_1\\
+m_2\\
+\vdots\\
+m_k	
+\end{pmatrix}
+&=
+(AQ)\begin{pmatrix}
+	n_1\\
+	n_2\\
+	\vdots\\
+	n_k
+\end{pmatrix},
+%=(AQ)Q^{-1}\begin{pmatrix}
+%	m_1\\
+%	m_2\\
+%	\vdots\\
+%	m_k
+%\end{pmatrix}
+%=\begin{pmatrix}
+%0\\
+%0\\
+%\vdots\\
+%0	
+%\end{pmatrix}.
+\end{align*}
+lo que nos dice que las filas de la matriz $AQ$ son relaciones respecto del conjunto de generadores $\{n_1,\dots,n_k\}$. 
+Sea $\psi\colon R^k\to M$, $(r_1,\dots,r_k)\mapsto \sum_{i=1}^k r_i\cdot n_i$.  
+Veamos que las filas de $AQ$ generan el módulo de relaciones $\ker\psi$ respecto de $\{n_1,\dots,n_k\}$. 
+Si $(r_1,\dots,r_k)\in \ker\psi$, entonces
+$\sum_{i=1}^k r_i\cdot n_i=0$. Si escribimos esta fórmula matricialmente,  
+\[
+\begin{pmatrix}
+0\\
+0\\
+\vdots\\
+0	
+\end{pmatrix}
+=(r_1\cdots r_k)Q^{-1}\begin{pmatrix}
+m_1\\
+m_2\\
+\vdots\\
+m_k	
+\end{pmatrix},
+\]
+donde conviene recordar que cada $e_j$ es un elemento de $R^k$, entonces 
+\[
+(r_1\cdots r_k)Q^{-1} = \left(\sum_{i=1}^k r_i\cdot q_{i1},\sum_{i=1}^k r_i\cdot q_{2i},\dots,\sum_{i=1}^k r_i\cdot q_{ki}\right)\in \ker\varphi.
+\]
+Como $\ker\varphi$ está generado por el conjunto $\{e_1,\dots,e_l\}$, existen  
+$s_1,\dots,s_l\in R$ tales que $(r_1\cdots r_k)Q^{-1}=\sum_{i=1}^l s_i\cdot e_i$, es decir  
+\[
+(r_1\dots r_k)Q^{-1}=(s_1\cdots s_l)\begin{pmatrix}e_1\\\vdots\\ e_l\end{pmatrix}
+=(s_1\cdots s_l)\begin{pmatrix}
+a_{11} & a_{12} & \cdots & a_{1k}\\
+\vdots & \vdots & & \vdots\\
+a_{l1} & a_{l2} & \cdots & a_{lk}	
+\end{pmatrix}
+.
+\]
+Si reescribimos esta fórmula como
+\[
+(r_1\cdots r_k)=(s_1\cdots s_l)AQ,
+\]
+obtenemos entonces que $(r_1,\dots,r_k)$ es combinación lineal de las filas de $AQ$, pues
+\begin{align*}
+(r_1,\dots,r_k)&=\left(\sum_{i=1}^l s_i\cdot x_{i1},\dots,\sum_{i=1}^l s_i\cdot x_{ik}\right)
+=\sum_{i=1}^l s_i\cdot (x_{11},\dots,x_{1k}).
+\end{align*}
+En conclusión, $\{n_1,\dots,n_k\}$ es un conjunto de generadores de $M$ y las filas de $AQ$ generan el correspondiente
+submódulo de relaciones y $AQ$ es la matriz de relaciones respecto de $\{n_1,\dots,n_k\}$ y $\{e_1,\dots,e_l\}$. 
+
+\begin{proposition}
+Sea $A$ la matriz de relaciones de un módulo $M$. 
+Si existen matrices inversibles $P\in R^{l\times l}$ y $Q\in R^{k\times k}$ tales que
+\[
+PAQ=
+\begin{pmatrix}
+a_1 & 0 & \cdots & \cdot & \cdot & \cdots & 0\\
+0 & a_2 & \cdots & \cdot & \cdot & \cdots & 0\\
+\vdots && \ddots &  & & & \vdots\\	
+0 & \cdot & \cdots & a_r & \cdot & \cdots & 0\\	
+0 & \cdot & \cdots & \cdot & 0 & \cdots & 0\\	
+\vdots &&&&&\ddots &\vdots\\
+0 & \cdot & \cdots & \cdot & \cdot & \cdots & 0
+\end{pmatrix}
+\]
+donde $a_i\ne0$ para todo $i\in\{1,\dots,r\}$ y $a_i\mid a_{i+1}$ para todo $i\in\{1,\dots,r-1\}$,  
+entonces 
+\[
+M\simeq R/(a_1)\oplus\cdots\oplus R/(a_r)\oplus R^{n-r}.
+\]
+\end{proposition}
+
+\begin{proof}
+	Sabemos que $PAQ$ es la matriz de relaciones con respecto a un cierto conjunto de generadores $\{m_1,\dots,m_k\}$ de $M$
+	y respecto al submódulo de relaciones generado por las filas de $PAQ$. 
+	Si $\varphi\colon R^k\to M$, $(r_1,\dots,r_k)\mapsto \sum_{i=1}^k r_i\cdot m_i$, 
+	entonces $R^k/\ker\varphi\simeq M$, pues $\varphi$ es un epimorfismo. Para $j\in\{r+1,\dots,k\}$ sea $a_j=0$.
+	Sea $\psi\colon R^k\to R/(a_1)\oplus\cdots\oplus R/(a_k), (s_1,\dots,s_k)\mapsto (s_1+(a_1),\dots,s_k+(a_k))$. 
+	 
+	Un cálculo sencillo muestra que 
+	\[
+	\ker\psi=(a_1)\oplus\cdots\oplus (a_k)
+	\]
+	y luego 
+	$R^k/\ker\psi\simeq \oplus_{i=1}^k R/(a_i)$. 
+	
+	Dejamos como ejercicio demostrar que $\ker\varphi=\ker\psi$. 
+	
+% 	Veamos que $\ker\psi\subseteq\ker\varphi$. 
+% 	Si $(s_1\cdot a_1,\dots,s_k\cdot a_k)\in (a_1)\oplus\cdots\oplus (a_k)$, entonces
+% 	\[
+% 	\varphi(s_1\cdot a_1,\dots,s_k\cdot a_k)=\sum_{i=1}^k s_i\cdot (a_i\cdot m_i)=0,
+% 	\]
+% 	pues $PAQ$ es la matriz de relaciones de $M$ con respecto a $\{m_1,\dots,m_k\}$. 
+% 	Recíprocamente, si $(s_1,\dots,s_k)\in\ker\varphi, entonces
+% 	\[
+% 	\psi(s_1,\dots,s_k)=(r_1+(a_1),\dots,r_k+(a_k))=(0,\dots,0)
+% 	\]
+% 	pues $PAQ$ es la matriz de relaciones de $M$ con respecto a $\{m_1,\dots,m_k\}$. 
+
+    En conclusión, 
+ 	tenemos que $M\simeq R/(a_1)\oplus\cdots\oplus R/(a_k)$. Para completar la demostración hay que 
+ 	observar que $R/(a_i)\simeq R$ para todo $i\in\{r+1,\dots,k\}$. 
+\end{proof}
+
+Veamos cómo encontrar las matrices $P$ y $Q$. La descomposición se conoce
+como la \textbf{forma normal de Smith}. 
+Para simplificar la presentación supondremos que $R$ es un domino euclidiano con norma $\varphi$. 
+Transformaremos nuestra matriz mediante las siguientes operaciones:
+\begin{enumerate}
+	\item Intercambiar las filas $i$-ésima y la $j$-ésima, es decir $F_i\leftrightarrow F_j$.
+	\item Reemplazar la fila $F_i$ por $F_i+\lambda F_j$ para algún $\lambda\in R$ y $j\ne i$.
+	\item Intercambiar las columnas $i$-ésima y la $j$-ésima, es decir $C_i\leftrightarrow C_j$.
+	\item Reemplazar la columna $C_i$ por $C_i+\lambda C_j$ para algún $\lambda\in R$ y $j\ne i$. 
+\end{enumerate}
+Todas estas operaciones son inversibles. Por ejemplo, la operación (1) corresponde a multiplicar
+a izquierda a la matriz $A$ por una matriz de permutación. La operación (2) corresponde 
+a multiplicar a izquierda a la matriz $A$ por $I+\lambda E_{ij}$, donde 
+\[
+(E_{ij})_{kl}=\begin{cases}
+1 & \text{si $i=k$ y $j=l$},\\
+0 & \text{en otro caso}.	
+\end{cases}
+\]
+Similarmente, las operaciones de columnas se corresponden con multiplicar a derecha por matriz de 
+permutación o matrices de la forma $I+\lambda E_{ij}$. 
+  
+\begin{theorem}[forma normal de Smith]
+\index{Forma normal!de Smith}
+Sea $(R,\varphi)$ un dominio euclidiano. Si $A\in R^{l\times k}$,  
+existen matrices inversibles $P\in R^{l\times l}$ y $Q\in R^{k\times k}$ tales que
+\[
+PAQ=\begin{pmatrix}
+a_1 & 0 & \cdots & \cdot & \cdot & \cdots & 0\\
+0 & a_2 & \cdots & \cdot & \cdot & \cdots & 0\\
+\vdots && \ddots &  & & & \vdots\\	
+0 & \cdot & \cdots & a_r & \cdot & \cdots & 0\\	
+0 & \cdot & \cdots & \cdot & 0 & \cdots & 0\\	
+\vdots &&&&&\ddots &\vdots\\
+0 & \cdot & \cdots & \cdot & \cdot & \cdots & 0
+\end{pmatrix}
+\]
+con $a_1\cdots a_k\ne 0$ y $a_i\mid a_{i+1}$ para todo $i\in\{1,\dots,r-1\}$. 
+\end{theorem}
+
+\begin{proof}[Bosquejo de la demostración]
+Vamos a demostrar que podemos transformar a la matriz $A$ en una matriz de la forma
+\begin{equation*}
+B=\begin{pmatrix}
+	b_{11} & 0 & \cdots & 0\\
+	0 & b_{22} & \cdots & b_{2m}\\
+	\vdots & \vdots &&  \vdots\\
+	0 & b_{n2} & \cdots & b_{nm}
+\end{pmatrix}
+\end{equation*}
+tal que cada $b_{ij}$ es divisible por $b_{11}$. Repetimos el mismo procedimiento en la submatriz 
+\[
+\begin{pmatrix}
+	\frac{b_{22}}{b_{11}} & \cdots & \frac{b_{2m}}{b_{11}}\\
+	\vdots & &\vdots \\
+	\frac{b_{n2}}{b_{11}} & \cdots & \frac{b_{nm}}{b_{11}}
+\end{pmatrix}
+\]
+e iteramos el algoritmo hasta que no podamos continuar. 
+
+Veamos cómo conseguir la matriz $B$. 
+Al aplicar operaciones de fila y columna podemos suponer que el elemento de la matriz $A$ 
+de menor norma está en la posición
+$(1,1)$.  
+Si algún $a_{i1}$ no es divisible por $a_{11}$, escribimos  
+$a_{i1}=a_{11}u+r$ para $u\in R$ y $r\in R$ tal que $\varphi(r)<\varphi(a_{11})$. Aplicamos entonces la transformación
+$F_i\leftarrow F_i-uF_1$ y nos queda una matriz
+que en el lugar $(1,i)$ tendrá al elemento $r$. Similarmente, si algún $a_{1j}$
+no es divisible por $a_{11}$, entonces $a_{1j}=va_{11}+s$ con $\varphi(s)<\varphi(a_{11})$ y 
+aplicamos la transformación $C_j\leftarrow C_j-vC_1$ para quedarnos con una matriz que en el lugar 
+$(j,1)$ tiene al elemento $s$.  
+Si todos los $a_{i1}$ son divisibles por $a_{11}$, digamos $a_{i1}=a_{11}\lambda_i$, entonces
+aplicamos la transformación $F_i\leftarrow \lambda_i F_1-F_i$. Similarmente, si todos los
+$a_{1j}$ son divisibles por $a_{11}$, digamos $a_{1j}=a_{11}\mu_j$, entonces aplicamos
+la transformación $C_j\leftarrow \mu_j C_1-C_j$. Esto nos permite quedarnos con una matriz
+de la forma
+\[
+\begin{pmatrix}
+	a_{11} & 0\\
+	0 & A_1
+\end{pmatrix}
+=\begin{pmatrix}
+	a_{11} & 0 & \cdots & 0\\
+	0 & * & \cdots & *\\
+	\vdots & \vdots & \ddots & \vdots \\
+	0 & * & \cdots & *
+\end{pmatrix}.
+\]
+Si alguna de las entradas de la submatriz $A_1$ no fuera divisible por $a_{11}$, hacemos la operación
+$F_1\leftarrow F_1+F_i$ o bien la operación $C_1\leftarrow C_1+C_j$ y repetimos
+el procedimiento.
+\end{proof}
+
+Veamos algunos ejemplos. 
+
+\begin{example}
+Sea 
+\[
+A=\begin{pmatrix}
+	2 & 5 & 3\\
+	8 & 6 & 4\\
+	3 & 1 & 0
+\end{pmatrix}\in\Z^{3\times3}.
+\]	
+Vamos a encontrar la forma normal de Smith de la matriz $A$. Como el elemento de menor norma se encuentra en la posición $(3,2)$,
+hacemos las operaciones $F_1\leftrightarrow F_3$ y $C_1\leftrightarrow C_2$ y nos queda la matriz
+\[
+\begin{pmatrix}
+	1 & 3 & 0\\
+	6 & 8 & 4\\
+	5 & 2 & 3
+\end{pmatrix}.
+\]
+Para obtener ceros en las posiciones $(1,2)$, $(1,3)$, $(2,1)$ y $(2,3)$ hacemos las operaciones
+$F_2\leftrightarrow 6F_1-F_2$, $F_3\leftrightarrow 5F_1-F_3$ y luego 
+$C_1\leftrightarrow 3C_1-C_2$. Nos queda entonces la matriz  
+\[
+\begin{pmatrix}
+	1 & 3 & 0\\
+	0 & -10 & -4\\
+	0 & -13 & -3
+\end{pmatrix}.
+\]
+Para sacarnos de encima los números negativos multiplicamos la segunda y la tercera fila por $-1$, que es una unidad de $\Z$:
+\[
+\begin{pmatrix}
+	1 & 3 & 0\\
+	0 & 10 & 4\\
+	0 & 13 & 3
+\end{pmatrix}.
+\]
+Ahora hacemos lo mismo en la submatriz $\begin{pmatrix}10&4\\13&3\end{pmatrix}$. Para que en el lugar $(2,2)$ nos
+quede el elemento de la submatriz que tiene menor norma, aplicamos las transformaciones $F_2\leftrightarrow F_3$ y
+$C_3\leftrightarrow C_2$. Nos queda entonces
+\[ 
+\begin{pmatrix}
+3 & 13\\
+4 & 10
+\end{pmatrix}.
+\]
+Escribimos $13=3\cdot 4+1$ y aplicamos
+la transformación $C_2\leftarrow C_2-4C_1$ para obtener $\begin{pmatrix}3&1\\4&-6\end{pmatrix}$. Intercambiamos 
+la primera y la segunda columna y nos queda la matriz
+$\begin{pmatrix}1&3\\-6&4\end{pmatrix}$. Aplicamos ahora la transformación
+$F_2\leftarrow 6F_1+F_2$ y al resultado le aplicamos la transformación $C_2\leftarrow 3C_1-C_2$:
+\[
+\begin{pmatrix}
+    1 & 0\\
+    0 & 22
+\end{pmatrix}.
+\]
+Luego
+\[
+\begin{pmatrix}
+	1 & 0 & 0\\
+	0 & 1 & 0\\
+	0 & 0 & -22	
+\end{pmatrix}
+\]
+es la forma normal de Smith de la matriz $A$.
+\end{example}
+
+Veamos ahora algunas aplicaciones.
+
+\begin{example}
+Sea $M$ el grupo abeliano con generadores $m_1,m_2,m_3$ y relaciones
+$8m_1+4m_2+8m_3=0$, $4m_1+8m_2+4m_3=0$. La matriz de relaciones es entonces
+\[
+A=\begin{pmatrix}
+8 & 4 & 8\\
+4 & 8 & 4
+\end{pmatrix}.
+\]	
+Veamos que $M\simeq\Z/4\times\Z/{12}$. Si hacemos la operación $F_1\leftarrow 2F_2-F_1$, nos queda la matriz
+\[
+\begin{pmatrix}
+0 & 12 & 0\\
+4 & 8 & 4	
+\end{pmatrix},
+\]
+que corresponde a los generadores $\{m_1,m_2,m_3\}$ con las relaciones $12m_2=0$ y $4m_1+8m_2+4m_3=0$. Si 
+hacemos simultáneamente las operaciones $C_2\leftarrow C_2-2C_1$ y $C_3\leftarrow C_3-C_1$, nos queda 
+la matrix
+\[
+\begin{pmatrix}
+0 & 12 & 0\\
+4 & 0 & 0	
+\end{pmatrix},
+\]
+que corresponde al conjunto de generadores $\{m_1+2m_2+m_3,m_2\}$ con las relaciones $12m_2=0$ y $4(m_1+2m_2+m_3)=0$. 
+Por último, al intercambiar
+la primera y la segunda columna, nos queda la matriz 
+\[
+\begin{pmatrix}
+4 & 0 & 0\\
+0 & 12 & 0	
+\end{pmatrix},
+\]
+que corresponde al conjunto de generadores $\{m_2,m_1+2m_2+m_3\}$ con las relaciones $4(m_1+2m_2+m_3)=0$ y $12m_2=0$. 
+En conclusión, $M\simeq\Z/4\times\Z/{12}$. 
+\end{example}
+
+
+\begin{example}
+Sea $M$ el grupo abeliano generdo por $\{m_1,\dots,m_4\}$ y sea $K$ el subgrupo
+generado por $\{e_1,e_2,e_3\}$, donde
+\[
+e_1=22m_3,\quad
+e_2=-2m_1+2m_2-6m_3-4m_4,\quad
+e_3=2m_1+2m_2+6m_3+8m_4.
+\]
+Queremos calcular $M/K$. 
+La matriz de relaciones es 
+\[
+A=\begin{pmatrix}
+	0 & 0 & 22 & 0\\
+	-2 & 2 & -6 & -4\\
+	2 & 2 & 6 & 8
+\end{pmatrix}.
+\]
+Si aplicamos la operación $F_1\leftrightarrow F_3$ y después la operación $F_2\leftarrow F_1+F_2$ nos da la matriz
+\[
+\begin{pmatrix}
+	2 & 2 & 6 & 8\\
+	0 & 4 & 0 & 4\\
+	0 & 0 & 22 & 0
+\end{pmatrix}.
+\]
+Ahora aplicamos las operaciones $C_2\leftarrow C_2-C_1$, $C_3\leftarrow C_3-3C_1$ y $C_4\leftarrow C_4-4C_1$ y obtenemos
+\[
+\begin{pmatrix}
+	2 & 0 & 0 & 0\\
+	0 & 4 & 0 & 4\\
+	0 & 0 & 22 & 0
+\end{pmatrix}.
+\]
+Hacemos ahora $C_4\leftarrow C_4-C_2$ y nos queda la matriz
+\[
+\begin{pmatrix}
+	2 & 0 & 0 & 0\\
+	0 & 4 & 0 & 0\\
+	0 & 0 & 22 & 0
+\end{pmatrix}
+\]
+pero ahora nos encontramos con que $4\nmid 22$. Utilizamos las operaciones $F_2\leftarrow F_2+F_3$, $C_3\leftarrow C_3-5C_2$, $C_3\leftarrow C_2$, $F_3\leftarrow F_3-11F_2$ y 
+$C_3\leftarrow C_3-C_2$ y nos queda
+\[
+\begin{pmatrix}
+	2 & 0 & 0 & 0\\
+	0 & 2 & 0 & 0\\
+	0 & 0 & -44 & 0
+\end{pmatrix}.
+\]
+Luego el grupo abeliano $M/K$ puede presentarse con la base $\{n_1,n_2,n_3,n_4\}$ y las relaciones
+$2n_1=0$, $2n_2=0$ y $44n_3=0$. En conclusión, $M/K\simeq\Z\times (\Z/2)^2\times (\Z/44)$. 
+\end{example}
+

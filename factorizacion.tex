@@ -1,0 +1,565 @@
+\chapter{Factorización}
+
+Nuestro objetivo es utilizar ciertos aspectos de la teoría de anillos conmutativos para demostrar algunos resultados de la teoría de números. La idea básica será intentar reconocer similitudes entre
+ciertos anillos conmutativos y $\Z$. Comenzaremos entonces 
+estudiando divisibilidad en anillos conmutativos. 
+
+\begin{definition}
+\index{Dominio!íntegro}
+Un anillo conmutativo $R$ será un \textbf{dominio íntegro} si $xy=0\implies x=0$ o bien $y=0$.
+\end{definition}
+
+\begin{example}
+$\Z$ es un dominio íntegro y $\Z/4$ no lo es.
+\end{example}
+
+\begin{example}
+\index{Enteros de Gauss}
+$\Z[i]$ es un dominio íntegro. Este anillo se conoce como el anillo de \textbf{enteros de Gauss}.
+\end{example}
+
+\index{Divisibilidad!en anillos}
+\index{Divisor}
+\index{Divisor!propio}
+Sea $R$ un dominio íntegro.
+Vamos a extender algunas nociones de la divisibilidad en $\Z$ 
+en el contexto del dominio íntegro $R$. Diremos que
+$x$ \textbf{divide} al elemento $y$ si y sólo si $y=xz$ para algún $z\in R$, lo que resulta ser equivalente a pedir $(y)\subseteq (x)$. 
+Diremos además que $x$ es un \textbf{divisor propio} de $y$ si y sólo si $(y)\subsetneq (x)\subsetneq R$. Tal como se hace en el caso
+de los enteros, a veces utilizaremos la notación $x\mid y$ para referirnos a que el elemento $y$ es divisible por $x$. Escribiremos
+$x\nmid y$ cuando $y$ no es divisible por $x$.
+
+\begin{example}
+\label{exa:Z[i]div}
+Sea $R=\Z[i]$ y sean $d\in\Z$ y $a+bi\in R$. Entonces $d\mid a+bi$ si y sólo si $d\mid a$ y $d\mid b$ en $\Z$. 
+En efecto, si existen $e,f\in\Z$ tales que 
+\[
+a+bi=d(e+fi)=de+dfi,
+\] 	
+entonces $a=de$ y $b=df$, es decir $d\mid a$ y $d\mid b$. 
+\end{example}
+
+Las siguientes definiciones extienden propiedades que conocemos de $\Z$.
+
+\begin{definition}
+\index{Elementos!asociados}
+Sea $R$ un dominio íntegro y sean $x,y\in R$. Diremos que 	
+$x$ e $y$ son \textbf{asociados} si y sólo si $(x)=(y)$.
+\end{definition}
+
+Observar que $x$ e $y$ son asociados si y sólo si $x=yu$ para alguna unidad $u$. 
+
+\begin{examples}
+En $\Z$ los enteros $2$ y $-2$ son asociados. En $\R[X]$ los polinomios 
+$f\ne 0$ y $\lambda f$, donde $\lambda\in\R^\times$, son asociados. 
+\end{examples}
+
+\begin{example}
+En $\Z[i]$ los elementos $2+5i$ y $-5+2i=(2+5i)i$ son asociados. 
+\end{example}
+
+\begin{definition}
+\index{Elemento!irreducible}
+Sea $R$ un dominio íntegro y sea $x\in R\setminus\{0\}$. Diremos que  
+$x$ es \textbf{irreducible} si y sólo si $(x)\ne R$ y $(x)$ es maximal en el conjunto de ideales principales de $R$, es decir que 
+no existe ningún ideal principal $(y)$ tal que $(x)\subsetneq (y)\subsetneq R$.
+\end{definition}
+
+Para entender mejor la definición de elementos irreducibles observemos que en un dominio íntegro $R$, los divisores de un irreducible 
+son sus asociados y las unidades de $R$. En efecto, si $z$ es irreducible y $x\mid z$, entonces $(z)\subseteq (x)$. Esto nos 
+da dos posibilidades, $(z)=(x)$ o bien $(x)=R$, es decir $x$ y $z$ son asociados o bien $x\in\mathcal{U}(R)$.   
+
+\begin{example}
+Si $K$ es un cuerpo y $f\in K[X]$ de grado $n>0$.
+Entonces $f$ es irreducible en $K[X]$ si y solo si los únicos divisores de $f$ son de la forma $g=\lambda$ o bien 
+$g=\lambda f$ para $\lambda\in K^\times=K\setminus\{0\}$, es decir cuando los divisores de $f$ 
+son unidades de $K[X]$ o los asociados a $f$. 
+\end{example}
+
+Del ejemplo anterior se desprende que un polinomio $f$ será reducible (es decir, no irreducible) si $\deg(f)>0$ y además 
+$f$ tiene algún divisor $g\in K[X]$ no nulo 
+tal que $0<\deg(g)<\deg(f)$.  
+
+\begin{definition}
+\index{Elemento!primo}
+Sea $R$ un dominio íntegro y sea $p\in R\setminus\{0\}$. Diremos que  
+$p$ es \textbf{primo} si y sólo si $(p)\ne R$ y además $xy\in (p)\implies x\in(p)$ o bien $y\in(p)$.   		
+\end{definition}
+
+En $\Z$ primos e irreducibles coinciden, algo que no pasará en otros anillos. Más adelante 
+caracterizaremos todos los primos en $\Z[i]$. 
+
+\begin{proposition}
+En un dominio íntegro, todo elemento primo es irreducible.  
+\end{proposition}
+
+\begin{proof}
+Como $p$ es primo, $p\ne 0$ y $p\not\in\mathcal{U}(R)$. Sea $x$ un divisor de $p$, digamos $p=xy$ para $y\in R$. Como $xy\in(p)$ y $p$ es primo,
+entonces $x\in(p)$ o $y\in(p)$. Si $x\in(p)$, entonces $x=pz$ y luego 
+\[
+p=xy=(pz)y=p(yz)\implies p(1-yz)=0.
+\]
+Como $p\ne 0$ y $R$ es un dominio, $y,z\in\mathcal{U}(R)$ y luego $x=pz$ es asociado a $p$. Si $y\in(p)$, una cuenta similar a la anterior nos muestra
+que $x\in\mathcal{U}(R)$.
+%Sea $x\in R$ un elemento primo. Observemos que $x$ es irreducible si y sólo si $x$ no es una unidad y además no posee divisores propios. Por otro lado, $x$ es primo si y sólo si $x$ no es una unidad y $x\mid yz\implies x\mid y$ o bien $x\mid z$.  
+%Si $x$ es primo y además $x=yz$, entonces $x\mid yz$. Esto implica que $x\mid y$ o bien $x\mid z$. Si $x\mid y$, entonces
+%$y=xa$ para algún $a$. Luego $x=yz=(xa)z=x(az)$ y entonces $x(1-az)=0$. Como estamos en un dominio íntegro y $x\ne 0$, se concluye
+%que $az=1$, es decir $z$ es una unidad.  
+\end{proof}
+
+Veremos que la afirmación recíproca no vale con total generalidad, aunque sí en el caso de dominios principales. Para poder hacer algunas
+cuentas con mayor facilidad, utilizaremos la siguiente herramienta sobre el anillo $R=\Z[\sqrt{d}]$, donde $d$ es un entero 
+libre de cuadrados. Utilizaremos la siguiente notación: si $n\in\N$, entonces $\sqrt{-n}=\sqrt{n}i$. 
+
+\begin{lemma}
+Sea $d\in\Z$ libre de cuadrados y sea $N(a+b\sqrt{d})=|a^2-db^2|$. 
+\begin{enumerate}
+\item $N(\alpha)=0\Longleftrightarrow \alpha=0$.
+\item $N(\alpha\beta)=N(\alpha)N(\beta)$ para todo $\alpha,\beta\in\Z[\sqrt{d}]$. 
+\item $\alpha\in\Z[\sqrt{d}]$ es una unidad $\Longleftrightarrow N(\alpha)=1$.
+\item Si $N(\alpha)$ es primo, entonces $\alpha$ es irreducible en $\Z[\sqrt{d}]$.  	
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Dejamos las primeras dos afirmaciones como ejercicio. Demostremos (3). Si $\alpha\in\mathcal{U}(\Z[\sqrt{d}])$, 
+entonces $\alpha\beta=1$ para algún $\beta\in\Z[\sqrt{d}]$. Como
+\[
+1=N(1)=N(\alpha\beta)=N(\alpha)N(\beta),
+\]
+entonces $N(\alpha)=1$. Recíprocamente, si $\alpha\ne0$, entonces $\alpha$ es una unidad con inversa
+$\alpha^{-1}=\overline{\alpha}/N(\alpha)$, 
+donde $\overline{a+b\sqrt{d}}=a-b\sqrt{d}$.
+
+Demostremos ahora (4). Si $\alpha=\beta\gamma$, entonces $N(\alpha)=N(\beta\gamma)=N(\beta)N(\gamma)$ y luego
+$N(\beta)=1$ o bien $N(\gamma)=1$ (pues $N(\alpha)$ es primo). Luego
+$\beta\in\mathcal{U}(\Z[\sqrt{d}])$ o bien $\gamma\in\mathcal{U}(\Z[\sqrt{d}])$ por el ítem anterior.
+\end{proof}
+
+\begin{example}
+$\mathcal{U}(\Z[i])=\{-1,1,i,-i\}$ pues si $a+bi\in\Z[i]$ es una unidad, entonces $N(a+bi)=a^2+b^2=1$. 	
+\end{example}
+
+\begin{example}
+Veamos que $1+\sqrt{-5}$ es irreducible en $\Z[\sqrt{-5}]$. Si $1+\sqrt{-5}=\alpha\beta$, entonces 
+$6=N(1+\sqrt{-5})=N(\alpha)N(\beta)$. Esto implica que $N(\alpha)\in\{1,2,3,6\}$. Si $N(\alpha)\in\{1,6\}$, entonces
+$\alpha$ es una unidad o $\beta$ es una unidad. Supongamos entonces 
+$\alpha=x+y\sqrt{-5}$. Entonces 
+$x^2+5y^2=N(\alpha)\in\{2,3\}$, una contradicción. De la misma forma puede demostrarse que $1-\sqrt{-5}$ 
+es irreducible. 
+
+Veamos que los números 
+$2$, $3$, $1+\sqrt{-5}$ y $1-\sqrt{-5}$ no son asociados. En efecto, $2$, $3$ y $1+\sqrt{-5}$ no son asociados
+pues tienen todos distinta norma. Tampoco son asociados $1+\sqrt{-5}$ y $1-\sqrt{-5}$, pues si 
+$1+\sqrt{-5}=u(1-\sqrt{-5})$ para algún $u\in\mathcal{U}(\Z[\sqrt{-5}])=\{-1,1\}$. 
+\end{example}
+
+\begin{example}
+Sea $R=\Z[i]$. 
+Veamos que $3$ es irreducible en $R$. En efecto, si $3=\alpha\beta$, entonces
+$9=N(\alpha\beta)=N(\alpha)N(\beta)$. Luego $N(\alpha)\in\{1,3,9\}$. Supongamos que $\alpha=a+bi$. Si $N(\alpha)=3$, entonces $|a^2+b^2|=3$, una contradicción pues $a,b\in\Z$. Luego $N(\alpha)\in\{1,9\}$. Si $N(\alpha)=1$, entonces $\alpha$ es una unidad. Si no, $N(\beta)=1$ y $\beta$ es una unidad. 	
+
+Veamos ahora que $2\in\Z[i]$ no es irreducible. En efecto, alcanza con observar que $2=(1+i)(1-i)$, que 
+$1\pm i$ no son unidades pues $N(1\pm i)=2\ne 1$. 
+\end{example}
+
+\begin{example}
+Sea $R=\Z[\sqrt{-3}]$ y sea $x=1+\sqrt{-3}$. Entonces $x$ es irreducible. En efecto,
+si $1+\sqrt{-3}=\alpha\beta$, entonces $4=N(\alpha)N(\beta)$. Si $x=a+b\sqrt{-3}$, entonces
+$a^2+3b^2=2$. Obviamente, los enteros $a$ y $b$ tienen que tener la misma paridad. 
+Si $a\equiv b\equiv 0\bmod 2$, digamos $a=2k$ y $b=2l$, entonces
+\[
+2=a^2+3b^2=(2k)^2+3(2l)^2=4k^2+12l^2
+\]
+es divisible por $4$, una contradicción. Si $a\equiv 1\bmod 2$ y además $b\equiv 1\bmod 2$, digamos
+$a=2k+1$ y $b=2l+1$, entonces
+\[
+2=a^2+3b^2=(2k+1)^2+3(2l+1)^2=4k^2+4k+12l^2+12l+4
+\]
+es un múltilo de $4$, una contradicción. 
+
+Sin embargo, $x$ no es primo. Como
+\[
+(1+\sqrt{-3})(1-\sqrt{-3})=4,
+\]
+$x$ divide a $4=2\times 2$, pero $1+\sqrt{-3}$ no divide a $2$ pues 
+\[
+(1+\sqrt{-3})(a+b\sqrt{-3})=2\implies
+(a-3b)+(a+b)\sqrt{-3}=2
+\]
+que implica que $a-3b=2$ y además $a+b=0$. En conclusión, $a=1/2\not\in\Z$, una contradicción. 
+\end{example}
+
+\begin{exercise}
+Demuestre que $1+\sqrt{5}\in\Z[\sqrt{5}]$ es un irreducible que no es primo.	
+\end{exercise}
+
+\begin{definition}
+\index{Dominio!principal}
+\index{Dominio!de ideales principales}
+Un dominio íntegro $R$ se dirá un \textbf{dominio de ideales principales} (o simplemente dominio principal) si 
+todo ideal de $R$ es principal. 	
+\end{definition}
+
+Vimos que $\Z$ es un dominio de ideales principales. Si $K$ es un cuerpo, entonces
+$K[X]$ es también un dominio de ideales principales.
+
+\begin{example}
+Veamos que $\Z[X]$ no es principal. Sea $I=(X,2)$.
+Primero observemos que $I\ne\Z[X]$. En efecto, si $I=\Z[X]$, entonces
+\[
+1=2f+Xg
+\]
+para ciertos $f,g\in\Z[X]$. En particular, al utilizar el grado, $0=\deg f+1+\deg g$, una contradicción. 
+Si existe $h\in\Z[X]$ tal que $I=(h)$, entonces, en particular, $2=hg$ y además $X=hf$ para ciertos $f,h\in\Z[X]$. 
+En particular, $\deg h=0$ y luego, como $2=h(1)g(1)$, vemos que $h(1)\in\{-2,2\}$ pues $h(1)\not\in\{-1,1\}$ ya que $\pm1\not\in I$. 
+Esto implica que $X=\pm 2f$. Si escribimos 
+$f=a_0+a_1X+\cdots+a_nX^n$, donde $a_0,a_1,\dots,a_n\in\Z$, entonces, al comparar el coeficiente de $X$ vemos que 
+$1=\pm 2a_1$, una contradicción pues $a_1\in\Z$. 
+\end{example}
+
+\begin{example}
+Veamos que $\Z[\sqrt{-5}]$ no es principal. Sea $I=(2,1+\sqrt{-5})$. Primero
+observamos que $I\ne\Z[\sqrt{-5}]$. En efecto, si $I=\Z[\sqrt{-5}]$, entonces
+\[
+1=2(x+\sqrt{-5}y)+(1+\sqrt{-5})(u+\sqrt{-5}v)=(2x+u-5v)+\sqrt{-5}(2y+u+v)
+\]
+para ciertos $x,y,u,v\in\Z$. Luego
+\[
+1=2x+u-5v,\quad
+0=2y+u+v,
+\]
+que implica que $1=2(x+y+u-2v)$, una contradicción pues $x+y+u-2v\in\Z$. 
+Si $I=(x)$, entonces $x\mid 2$ y además $x\mid 1+\sqrt{-5}$. Luego
+$N(x)\mid N(2)=4$ y además $N(x)\mid N(1+\sqrt{-5})=6$. Si $x=a+b\sqrt{-5}$, entonces $N(x)=a^2+5b^2$. 
+Luego $x$ es una unidad, pues $N(x)=1$, y entonces $I=\Z[\sqrt{-5}]$.  
+\end{example}
+
+\begin{proposition}
+Sea $R$ un dominio principal y sea $x\in R$. Entonces $x$ es irreducible si y sólo si $x$ es primo.
+\end{proposition}
+
+\begin{proof}
+	Vimos en la proposición anterior que todo primo es irreducible. Supongamos entonces que $x$ es irreducible y
+	que $x\mid yz$. Sea $I=(x,y)$ el ideal generado por $x$ e $y$. Como $R$ es principal, existe $a\in R$ tal que
+	$I=(a)$. En particular, $x=ab$ para algún $b\in R$. La irreducibilida de $x$ implica que $a\in\mathcal{U}(R)$ o bien
+	$b\in\mathcal{U}(R)$. Si $a\in\mathcal{U}(R)$, entonces $I=R$ y luego $1=xr+ys$ para ciertos $r,s\in R$, lo que 
+	implica que
+	\[
+	z=z1=z(xr+ys)=xzr+yzs
+	\]
+	y entoces $x\mid z$. Si $b\in\mathcal{U}(R)$, entonces $I=(x)=(a)$ y luego, como $y\in I$, existe
+	$t\in R$ tal que $xt=y$, es decir $x\mid y$. 	
+\end{proof}
+	
+\begin{example}
+$\Z[\sqrt{-3}]$ 
+no es principal ya que existen irreducibles que no son primos.
+\end{example}
+
+\begin{example}
+Como $\Z$ es principal, en $x\in \Z$ es primo si y sólo si $x\in\Z$ es irreducible.  
+\end{example}
+
+\begin{definition}
+\index{Dominio!euclidiano}
+Sea $R$ un dominio íntegro. Diremos que $R$ es un \textbf{dominio euclidiano} 
+si existe una función $\varphi\colon R\setminus\{0\}\to\N_0$ 
+tal que para cada $x,y\in R$ con $y\ne0$ existen $q,r\in R$ tales que $x=yq+r$, donde $r=0$ o bien $\varphi(r)<\varphi(y)$.  
+\end{definition}
+
+Es importante remarcar que en la definición de dominio euclidiano no pedimos la unicidad que
+tenemos en $\Z$. En muchos libros de texto, en la definición de dominio euclidiano, a la función $\varphi$ se le pide además 
+que cumpla $\varphi(x)\leq\varphi(xy)$ para todo $x,y\in R\setminus\{0\}$. Esta condición no se usa para demostrar los resultados básicos, 
+por eso no se incluye. Además,
+si $R$ es euclidiano (con nuestra definición y nuestro $\varphi$), siempre puede reemplazarse $\varphi$ por una función $\psi(x)=\min_{y\ne0}\varphi(xy)$ y esta $\psi$ satisface 
+$\psi(x)\leq\psi(xy)$ para todo $x,y\in R\setminus\{0\}$. 
+
+
+\begin{examples}\
+\begin{enumerate}
+\item $\Z$ es un dominio euclidiano con $\varphi(x)=|x|$. Cuidado que acá tampoco tenemos unicidad. 
+\item Si $K$ es un cuerpo, $K[X]$ es euclidiano con $\varphi(f)=\deg f$. Este ejemplo es el que motiva que la función $\varphi$ de la definición de dominio euclidiano 
+esté definida para elementos no nulos del anillo. 
+\end{enumerate}
+\end{examples}
+
+Veamos otro ejemplo de dominio euclidiano.	
+	
+\begin{example}
+Sea $\Z[i]=\{a+bi:a,b\in\Z\}$. Dejamos como ejercicio demostrar que $\Z[i]$ es un dominio íntegro. 
+
+Sea $N(x+iy)=x^2+y^2$. Veamos que $N$ es un función multiplicativa: Si $\alpha=x+iy$ y $\beta=u+iv$, entonces 
+\begin{gather*}
+\alpha\beta=(xu-yv)+i(xv+yu)
+\shortintertext{y luego}
+N(\alpha\beta)=(xu-yv)^2-(xv+yu)^2=(x^2+y^2)(u^2+v^2)=N(\alpha)N(\beta).
+\end{gather*}
+	
+Vamos a demostrar ahora que $\Z[i]$ es un dominio euclidiano con $\varphi(\alpha)=N(\alpha)$. 
+Sean $\alpha=a+ib$ y $\beta=c+id\ne 0$. Entonces
+\[
+\frac{\alpha}{\beta}=\frac{a+bi}{c+di}=r+is,
+\]
+donde $r=(ac+bd)/(c^2+d^2)$ y $s=(bc-ad)/(c^2+d^2)$. 
+Sean $m,n\in\Z$ tales que $|r-m|\leq 1/2$ y $|s-n|\leq 1/2$. Si $\delta=m+in$ y $\gamma=\alpha-\beta\delta$, entonces
+$\delta,\gamma\in\Z[i]$ y además $\alpha=\beta\delta+\gamma$. Si $\gamma\ne0$, entonces
+\begin{align*}
+\varphi(\gamma)&=\varphi\left(\beta\left(\frac{\alpha}{\beta}-\delta\right)\right)
+=\varphi(\beta)\varphi\left(\frac{\alpha}{\beta}-\delta\right)\\
+&=\varphi(\beta)\varphi( (r-m)+i(s-n))
+=\varphi(\beta)\left( (r-m)^2+(s-n)^2\right)\\
+&\leq\varphi(\beta)\left(\frac14+\frac14\right)=\frac12\varphi(\beta)<\varphi(\beta).
+\end{align*}
+\end{example}
+
+En $\Z[i]$ hay algoritmo de división pero no tenemos unicidad. De hecho, 
+por ejemplo, podemos escribir 
+\[
+1+8i=(2-4i)(-1+i)+(-1+2i)
+=(2-4i)(-2+i)+(1-2i)
+\] 
+y entonces
+$N(1-2i)=N(-1+2i)=5<20=N(2-4i)$.
+
+\begin{example}
+Si $\omega=\frac{-1+\sqrt{3}i}{2}$, entonces $\Z[\omega]$ es un dominio euclidiano.	Primero observamos que
+\[
+\Z[\omega]=\left\{\frac{a}{2}+\frac{b}{2}\sqrt{-3}:a,b\in\Z,\,a\equiv b\bmod 2\right\}
+\]
+pues $a+b\omega=\frac{2a+b}{2}+\frac{b}{2}\sqrt{-3}$. 
+
+Veamos que $\Z[\omega]$ es euclidiano con la norma  
+$N(a+b\sqrt{-3})=a^2+3b^2$, donde $a,b\in\frac{1}{2}\Z$. Sean $\alpha=a_1+a_2\omega$ y $\beta=b_1+b_2\omega\ne 0$, donde
+$a_1,a_2,b_1,b_2\in\frac{1}{2}\Z$. Queremos ver que existen $\gamma,\delta\in\Z[\omega]$ tales que $\alpha=\beta\gamma+\delta$, donde $N(\delta)<N(\beta)$. 
+En $\Q[\sqrt{-3}]$ podemos dividir, entonces 
+\[
+\frac{\alpha}{\beta}=c_1+c_2\sqrt{-3},
+\]
+para ciertos $c_1,c_2\in\Q$. Sea $q_2\in\Z$ tal que $|2c_2-q_2|\leq 1/2$ y sea $t\in\Z$ el entero más cercano al número $c_1-\frac{q_2}{2}$. 
+Si $q_1=2t+q_2$, entonces $|c_1-\frac{q_1}{2}|\leq 1/2$. Si 
+\[
+\gamma=\frac{q_1}{2}+\frac{q_2}{2}\sqrt{-3},
+\]
+entonces $\gamma\in\Z[\omega]$ pues $q_1-q_2=2t$ es par. Si 
+\[
+\delta=\beta\left( (c_1-\frac{q_1}{2})+(c_2-\frac{q_2}{2})\sqrt{-3}\right),
+\]
+entonces $\alpha=\gamma\beta+\delta$. 
+Como  
+\begin{multline*}
+N\left( (c_1-\frac{q_1}{2})+(c_2-\frac{q_2}{2})\sqrt{-3}\right)
+\leq ( c_1-\frac{q_1}{2})^2+3(c_2-\frac{q_2}{2})^2\leq \frac{1}{4}+3\frac{1}{16}<1, 
+\end{multline*}
+se concluye que $N(\delta)<N(\beta)$ pues $N$ es multiplicativa. 
+\end{example}
+
+\begin{exercise}
+Demuestre que $\Z[\sqrt{d}]$ es euclidiano si $|d|\leq 2$.
+\end{exercise}
+
+El siguiente ejemplo no es sencillo. Simplemente lo mencionamos para mayor completitud en la presentación.  Para más información ver \cite{MR967349,MR3665445,MR314831}.
+
+\begin{example}
+Si $\theta=\frac{1+\sqrt{-19}}{2}$, entonces $\Z[\theta]$ no es euclidiano.	Sin embargo, $\Z[\theta]$ es 
+un dominio de ideales principales. 
+\end{example}
+
+Tal como pasa en $\Z$ y $K[X]$, el tener algoritmo de división nos permite demostrar que todo ideal es principal.
+
+\begin{theorem}
+	Si $R$ es euclidiano, entonces $R$ es principal. 
+\end{theorem}
+
+\begin{proof}
+	Sea $I$ un ideal no nulo de $R$ y sea $y\in I$ donde la función $\varphi(x)$ con $x\in I\setminus\{0\}$ alcanza su mínimo. 
+	Si $z\in I$, entonces $z=yq+r$ donde $r=0$ o bien $\varphi(r)<\varphi(y)$. La minimalidad de $y$ implica que $r=0$ y 
+	luego $z=yq$. Tenemos entonces $I\subseteq Ry\subseteq (y)\subseteq I$ y luego $I=(y)$.     
+\end{proof}
+
+Nos interesa poder reconocer anillos de la forma $\Z[\sqrt{d}]$, con $d$ libre de cuadrados, que se parezcan al anillo $\Z$. Ya vimos
+que hay muchas similitudes, pero en $\Z[\sqrt{d}]$ no siempre valdrá el teorema de la factorización única.
+
+\begin{definition}
+\index{Dominio!de factorización única}
+Diremos que un dominio íntegro $R$ es un \textbf{dominio factorización única} si valen las siguientes propiedades:
+\begin{enumerate}
+\item Cada $x\ne0$ que no es una unidad puede escribirse 
+como $x=c_1\dots c_n$ para ciertos irreducibles $c_1,\dots,c_n$.  
+\item Si $x=c_1\cdots c_n=d_1\cdots d_m$ con los $c_i$ y los $d_j$ irreducibles, entonces $n=m$ y además existe 
+una permutación $\sigma\in\Sym_n$ tal que $c_i$ y $d_{\sigma(i)}$ son asociados para todo $i\in\{1,\dots,n\}$. 	
+\end{enumerate}
+\end{definition}
+
+El ejemplo típico de domino de factorización única es $\Z$. 
+
+Intentaremos explicar mejor la diferencia entre tener factorización y tener factorización única. Supongamos que $R$ es un dominio íntegro noetheriano. Podemos demostrar entonces que $R$ tendrá factorización, aunque no necesariamente única. En efecto, si $x\in R$ no admite una factorización, entonces $x$ no será 
+producto de irreducibles. Podremos escribir entonces $x=yz$, donde $y$ o bien $z$ no es factorizable. Al repetir este procedimiento 
+nos encontramos con una sucesión de la forma
+\[
+(x)\subsetneq (x_1)\subsetneq (x_2)\subsetneq\cdots
+\]
+que no se estabiliza, una contradicción a la noetherianidad. 
+
+\begin{example}
+Gracias al teorema de Hilbert sabemos que $\Z[i]$ y $\Z[\sqrt{-6}]$ son ambos noetherianos, lo que nos dice que 
+en en esos anillos existirá factorización. Sin embargo, veremos que en $\Z[i]$ hay factorización única y que en $\Z[\sqrt{-6}]$ no. 
+\end{example}
+
+\begin{theorem}
+Sea $R$ un dominio de ideales principales. 
+Entonces $R$ es un dominio de factorización única.
+\end{theorem}
+
+\begin{proof}
+Primero demostraremos que $R$ es noetheriano. Como todos los ideales de $R$ son principales, toda sucesión de ideales es
+de la forma $(a_1)\subsetneq (a_2)\subsetneq\cdots$. Fijada esa sucesión, la unión 
+$J=\cup_{i\geq 1}(a_i)$ es un ideal de $R$. Como $R$ es principal, $J=(x)$ para algún $x\in R$. En particular, como $x\in (a_i)$ para algún $i\geq1$, 
+podemos concluir que $(x)\subseteq (a_i)$. Por otro lado, $(a_i)\subseteq (a_{i+1})\subset (x)$. Luego
+$(x)=(a_i)=(a_{i+1})$ y entonces la sucesión de ideales principales se estabiliza. 
+
+Sabemos que en $R$ todo irreducible es primo. Sea $x\in R$. Gracias a la noetherianidad de $R$ sabemos que $x$ puede factorizarse. Supongamos que 
+\[
+x=c_1\cdots c_n=d_1\cdots d_m
+\]
+son factorizaciones de $x$ en irreducibles, donde $n\leq m$. 
+Si $m=1$, entonces $n=1$ y luego $c_1=d_1$. Si $m>1$, como $c_1$ es primo (pues sabemos 
+que en $R$ los irreducibles son primos) y además $c_1\mid d_1\cdots d_m$, 
+entonces $c_1$ divide a alguno de los $d_j$, digamos $c_1\mid d_1$, sin perder generalidad. 
+Como $d_1$ es irreducible y $c_1\not\in\mathcal{U}(R)$, 
+$c_1$ y $d_1$ son asociados, es decir $c_1=ud_1$ para algún $u\in\mathcal{U}(R)$. Como entonces 
+\[
+c_1c_2\cdots c_n=(ud_1)c_2\cdots c_m=d_1d_2d_3\cdots d_m,
+\]
+se sigue que 
+\[
+d_1(c_2\cdots c_n-u^{-1}d_2\cdots d_m)=0.
+\]
+Como $R$ es un dominio y además $d_1\ne 0$, 
+después de reemplazar, sin perder generalidad, $u^{-1}d_2$ por $d_2$, nos quedamos con $c_2\cdots c_n=d_2\cdots d_m$. Por inducción, queda entonces
+demostrada la implicación que queríamos probar.
+% Supongamos ahora que $R$ es un dominio de factorización única. Si $p$ es irreducible y no es primo, existen $x,y\in R$ tales que
+% $p\mid xy$, $p\nmid x$ y $p\nmid y$. Como $xy=pz$ para algún $z\in R$, al factorizar $x$, $y$ y $z$ en irreducibles, obtenemos dos factorizaciones
+% distintas para $xy$, una contradicción a la unicidad de la factorización. 	
+\end{proof}
+
+% \begin{corollary}
+% 	Un dominio de ideales principales es un dominio de factorización única.
+% \end{corollary}
+
+% \begin{proof}
+% Sea $R$ un dominio de ideales principales. Vimos que en $R$ primos e irreducibles son equivalentes. Por el teorema anterior 
+% basta con demostrar que $R$ es noetheriano. Como todos los ideales de $R$ son principales, toda sucesión de ideales es
+% de la forma $(a_1)\subsetneq (a_2)\subsetneq\cdots$. Fijada esa sucesión, la unión 
+% $J=\cup_{i\geq 1}(a_i)$ es un ideal de $R$. Como $R$ es principal, $J=(x)$ para algún $x\in R$. En particular, como $x\in (a_i)$ para algún $i\geq1$, 
+% podemos concluir que $(x)\subseteq (a_i)$. Por otro lado, $(a_i)\subseteq (a_{i+1})\subset (x)$. Luego
+% $(x)=(a_i)=(a_{i+1})$ y entonces la sucesión de ideales principales se estabiliza. 
+% \end{proof}
+
+\begin{example}
+$\Z[\sqrt{-6}]$ no es un dominio de factorización única. En efecto, primero observamos que 
+\[
+10=2\cdot 5=(2+\sqrt{-6})(2-\sqrt{-6}).
+\]
+Recordemos que $N(a+b\sqrt{-6})=a^2+6b^2$.	
+Primero veamos que $2$ es irreducible. Si $2=\alpha\beta$ con $\alpha,\beta\not\in\mathcal{U}(R)$, entonces 
+\[
+4=N(2)=N(\alpha)N(\beta)
+\]
+y luego $N(\alpha)=N(\beta)=2$, una contradicción pues $a^2+6b^2\ne 2$ para todo $a,b\in\Z$. 
+De la misma forma se demuestra que $5$ 
+es también irreducible en $\Z[\sqrt{-6}]$. 
+
+Queda como ejercicio demostrar que $2+\sqrt{-6}$ y $2-\sqrt{-6}$ son irreducibles,.
+\end{example}
+
+\begin{exercise}
+Demuestre que $\Z[\sqrt{-5}]$ no es un dominio de factorización única.
+\end{exercise}
+
+% 6=2\cdot 3=(1+\sqrt{-5})(1-\sqrt{-5})
+
+Terminamos el capítulo con una aplicación a la teoría de números.
+
+\begin{theorem}[Fermat]
+\index{Teorema!de Fermat}
+Para $p$ un número primo, son equivalentes:
+\begin{enumerate}
+	\item $p=2$ o bien $p\equiv1\bmod 4$.
+	\item Existe $a\in\Z$ tal que $a^2\equiv-1\bmod p$.
+	\item $p$ no es irreducible en $\Z[i]$.
+	\item $p$ es suma de dos cuadrados.
+\end{enumerate}	
+\end{theorem}
+
+\begin{proof}
+Veamos primero que $(1)\implies (2)$. Si $p=2$, entonces $a=1$. Si $p=4k+1$, el pequeño teorema de Fermat nos dice que 
+las raíces del polinomio $X^{p-1}-1$ 
+con coeficientes en $\Z/p$ son $1,2,\dots,p-1$. Escribimos
+\[
+X^{p-1}-1=X^{4k}-1=(X^{2k}-1)(X^{2k}+1)=(X-1)(X-2)\cdots (X-(p-1))
+\]
+en $(\Z/p)[X]$. Como $p$ es primo, $\Z/p$ es un cuerpo y luego $(\Z/p)[X]$ es un dominio de factorización única, pues
+$(\Z/p)[X]$ es un dominio de ideales principales por ser un dominio euclidiano. Existe entonces $\alpha\in\Z/p$
+tal que $\alpha^{2k}+1=0$ y para terminar la demostración alcanza con tomar $a=\alpha^{2k}$. 
+
+Demostremos ahora que $(2)\implies(3)$. Si $a^2\equiv -1\bmod p$, entonces $a^2+1=kp$ para algún $k\in\Z$. Como
+$(a-i)(a+i)=a^2+1=kp$, entonces $p\mid (a-i)(a+i)$. Afirmamos que $p\nmid a+i$ en $\Z[i]$. Si $p\mid a+i$, entonces
+$a+i=p(e+fi)$ para ciertos $e,f\in\Z$. Luego $1=pf$, una contradicción. De la misma forma se demuestra que $p\nmid a-i$. 
+Sabemos entonces que $p\mid (a-i)(a+i)$ pero $p\nmid a-i$ y $p\nmid a+i$, es decir $p$ no es un primo de $\Z[i]$, por lo que 
+tampoco será un irreducible de $\Z[i]$. 
+
+Veamos ahora que $(3)\implies(4)$. Si $p=(a+bi)(c+di)$ con $a+bi\not\in\mathcal{U}(\Z[i])$ y $c+di\not\in\mathcal{U}(\Z[i])$, 
+es decir $N(a+bi)\ne 1$ y $N(c+di)\ne 1$, entonces
+\[
+p^2=N(p)=N(a+bi)N(c+di)=(a^2+b^2)(c^2+d^2).
+\]
+Como $\Z$ es un dominio de factorización única y $p$ es irreducible en $\Z$, $p=a^2+b^2$. 
+
+Para finalizar, demostremos que $(4)\implies(1)$. Como $p$ es un número primo, entonces $p=2$, $p\equiv 1\bmod 4$ o bien $p\equiv 3\bmod 4$. Si $p\equiv 3\bmod 4$ y $p=a^2+b^2$, entonces
+$a^2+b^2\equiv 3\bmod 4$, una contradicción pues los únicos casos posibles son $a^2+b^2\equiv 0\bmod 4$, $a^2+b^2\equiv 1\bmod 4$ o bien $a^2+b^2\equiv 2\bmod 4$.     
+\end{proof}
+
+%Veamos otra aplicación del anillo $\Z[i]$. Primero, un resultado auxiliar.
+%
+%\begin{lemma}
+%	Si $a,b\in\Z\setminus\{0\}$ son coprimos y $m\in\Z$, entonces $a+bi$ divide a $m$ en $\Z[i]$ si y sólo si $N(a+bi)$ divide a $m$ en $\Z$.
+%\end{lemma}
+%
+%\begin{proof}
+%	Supongamos que $N(a+bi)\mid m$ en $\Z$, es decir $m=N(a+bi)k$ para algún $k$. Entonces $a+bi\mid m$ en $\Z[i]$, pues 
+%	$m=(a^2+b^2)k=(a+bi)(a-bi)k$.
+%	
+%	Supongamos ahora que $a+bi$ divide a $m$, es decir 
+%	\[
+%	m=(a+bi)(c+di)=(ac-bd)+i(bc+ad)
+%	\]
+%	para ciertos $c,d\in\Z$. Como entonces $bc+ad=0$, tenemos $ad=-bc$, de donde se obtiene que $a\mid bc$ y $b\mid ad$. Como $a$ y $b$ son coprimos,
+%	$a\mid c$ y $b\mid d$, es decir $c=ax$ y $d=by$ para ciertos $x,y\in\Z$. Como entonces
+%	$a(by)=ad=-bc=-b(ax)$, entonces $ab(y+x)=0$ y luego $x=-y$. En conclusión, 
+%	\[
+%	m=(a+bi)(c+di)=a^2x-b^2y+i(abx+aby)=x(a^2+b^2)=xN(a+bi).\qedhere
+%	\]
+%\end{proof}
+	
+Veamos ahora como aplicación que $\Z[i]$ puede utilizarse para resolver ecuaciones en $\Z$. 	
+	
+\begin{proposition}
+La ecuación $y^3-1=x^2$ tiene únicamente una solución en $\Z$.
+\end{proposition}
+
+\begin{proof} 
+Si $x$ es impar, entonces $x^2\equiv 1\bmod 4$. Luego $2\mid x^2+1$, pero además $4\nmid x^2+1$. Como además $y$ es par, tenemos
+que $y^3=x^2+1$ es divisible por $8$, una contradicción. Luego $x$ es par e $y$ es impar. Escribimos
+\[
+y^3=x^2+1=(x-i)(x+i)
+\]
+Observemos que $x-i$ y $x+i$ no tienen factores en común pues si $d\in\Z[i]$ es tal que
+$d\mid x+i$ y $d\mid x-i$, entonces $d=1$ por lo que vimos en el ejemplo~\ref{exa:Z[i]div} de la página~\pageref{exa:Z[i]div}. La factorización
+única del anillo $\Z[i]$ implica que $x+i=((a+bi)u)^3$ para ciertos $a,b\in\Z$ y $u\in\mathcal{U}(\Z[i])=\{1,-1,i,-i\}$. 
+Como entonces $u^3\in\{-1,1,i,-i\}$, sin perder generalidad podemos suponer que 
+\[
+x+i=(a+bi)^3=(a^3-3ab^2)+i(3a^2b-b^3).
+\]
+En particular, $1=3a^2b-b^3=b(3a^2-b^2)$, lo que implica que $b=1$ y $a=0$, es decir $(x,y)=(0,1)$. 
+\end{proof}

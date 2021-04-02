@@ -1,0 +1,973 @@
+\chapter{Morfismos}
+
+\begin{definition}
+	\index{Morfismo!de grupos}
+	Sean $G$ y $H$ dos grupos. 
+	Una función $f\colon G\to H$ es un \textbf{morfismo de grupos} si 
+	$f(xy)=f(x)f(y)$ para todo $x,y\in G$. 
+\end{definition}
+
+\index{Morfismo!de grupos inyectivo}
+\index{Morfismo!de grupos sobreyectivo}
+\index{Morfismo!de grupos biyectivo}
+\index{Monomorfismo!de grupos}
+\index{Epimorfismo!de grupos}
+\index{Isomorfismo!de grupos}
+Si un morfismo de grupos es una función inyectiva, se denominará
+\textbf{monomorfismo}. Si es una función sobreyectiva, se denominará
+\textbf{epimorfismo}.  Si fuera una función biyectiva, \textbf{isomorfismo}.
+Dos grupos $G$ y $H$ se dirán \textbf{isomorfos} (la notación será $G\simeq H$)
+cuando exista un isomorfismo $G\to H$. 
+
+\begin{examples}\
+\begin{enumerate}
+\item Si $G$ es un grupo, la función $\id\colon G\to G$ es un morfismo de grupos.
+\item Si $G$ y $H$ son grupos, la función $e\colon G\to H$, $e(g)=1_H$, es un morfismo de grupos. 
+\item Para cada $n\in\Z$, la función $\Z\to\Z$, $x\mapsto nx$, es un morfismo de grupos.
+\item Si $G$ es un grupo abeliano y $n\in\Z$, la función $G\to G$, $g\mapsto g^n$, es un morfismo de grupos.  	
+\end{enumerate}
+\end{examples}
+
+El siguiente ejemplo es particularmente importante. 
+
+\begin{example}
+\index{Morfismo!de conjugación}
+\index{Conjugación}
+Sea $G$ un grupo y sea $g\in G$. La función $\gamma_g\colon G\to G$, $\gamma_g(x)=gxg^{-1}$, se denomina \textbf{conjugación} por el elemento $g$ y 
+es un morfismo de grupos. 	
+\end{example}
+
+\begin{example}
+La función $\exp\colon\R\to\R^\times$, $\exp(x)=e^x$, es un morfismo de grupos. 
+\end{example}
+
+\begin{example}
+\index{Inclusión}
+La inclusión $\Z\hookrightarrow\Q$ es un morfismo inyectivo de grupos. 
+\end{example}
+
+En general, si $S$ es un subgrupo de un grupo $G$, entonces
+la \textbf{inclusión} $S\hookrightarrow G$ es un morfismo de grupos. 
+
+\begin{example}
+$\det\colon\GL_2(\R)\to\R^\times$ es un morfismo de grupos.
+\end{example}
+
+\begin{example}
+\index{Restricción de un morfismo}
+	Sea $f\colon G\to H$ un morfismo de grupos y sea $S$ un subgrupo de $G$. 
+	La \textbf{restricción} $f|_S\colon S\to H$ es también un morfismo de grupos.
+\end{example}
+
+\begin{example}
+La función $f\colon\R\to\C^\times$, $f(x)=\cos x+i\sin x$, es un morfismo de grupos pues
+$f(x+y)=f(x)f(y)$ para todo $x,y\in\R$. 
+\end{example}
+
+\begin{exercise}
+Sea $f\colon G\to H$ un morfismo de grupos. Demuestre que $f(1)=1$, que $f(g^{-1})=f(g)^{-1}$ y que  $f(g^n)=f(g)^n$ para todo $g\in G$ y $n\in\N$.  
+\end{exercise}
+
+\begin{example}
+Sea $f\colon\R_{>0}\to\R$, $f(x)=\log(x)$. La fórmula 
+\[\log(xy)=\log(x)+
+\log(y)
+\]
+nos dice que $f$ es un morfismo de grupos. Los resultados del ejercicio anterior
+se traducen en las siguientes propiedades de la función logaritmo: 
+\[
+\log(1)=0,
+\quad
+\log\left(\frac{1}{x}\right)=-\log(x),
+\quad
+\log(x^n)=n\log(x).
+\] 
+\end{example}
+
+\begin{definition}
+	\index{Núcleo!de un morfismo de grupos}
+	Sea $f\colon G\to H$ un morfismo de grupos. El \textbf{núcleo} de $f$ 
+	es el conjunto
+	$\ker f=\{x\in G:f(x)=1\}$. 
+\end{definition}
+
+La propiedad fundamental que tiene el núcleo de un morfismo $f$ es la siguiente: $f(x)=f(y)$ si y sólo si $x=yk$ para algún $k\in\ker f$. 
+
+\begin{example}
+Sea $f\colon\mathcal{U}(\Z/21)\to\mathcal{U}(\Z/21)$ el morfismo de grupos definido por $f(x)=x^3$. Entonces 
+$\ker f=\{1,4,16\}$ y $f(\mathcal{U}(\Z/21))=\{1,8,13,20\}$. 
+\end{example}
+
+%\begin{example}
+%Sea $f\colon\Aff(\R)\to\R$ el morfismo $\begin{pmatrix}a&b\\0&1\end{pmatrix}\mapsto a$ que
+%vimos en el ejemplo~\ref{exa:afin} de la página~\pageref{exa:afin}. Entonces
+%\[
+%\ker f=\left\{\begin{pmatrix}
+%1&b\\
+%0&1
+%\end{pmatrix}
+%\right\}
+%\]
+%\end{example}
+
+
+\begin{example}
+\label{exa:afin}
+Sea 
+\[
+\Aff(\R)=\left\{\begin{pmatrix}a&b\\0&1\end{pmatrix}:a\in\R^\times,\,b\in\R\right\}\leq\GL_2(\R).
+\]
+La función 
+\[
+f\colon \Aff(\R)\to\R^\times,\quad
+\begin{pmatrix}
+a&b\\
+0&1
+\end{pmatrix}
+\mapsto a
+\]
+es un morfismo de grupos (de hecho, $f(x)=\det(x)$ para todo $x\in\Aff(\R)$) tal que
+\[
+\ker f=\left\{\begin{pmatrix}
+1&b\\
+0&1
+\end{pmatrix}
+\right\}.
+\]
+Dejamos como ejercicio verificar que la función $g\colon\Aff(\R)\to\R$, $\begin{pmatrix}a&b\\0&1\end{pmatrix}\mapsto b$, 
+no es un morfismo de grupos. 
+\end{example}
+
+\begin{example}
+Sea $f\colon\R\to\C^\times$, $f(x)=\cos x+i\sin x$. Entonces
+\[
+\ker f=\{2\pi k:k\in\Z\}=2\pi\Z.
+\] 
+\end{example}
+
+\begin{definition}
+\index{Imagen!de un morfismo de grupos}
+La \textbf{imagen} de $f$ es 
+el conjunto $f(G)=\{f(x):x\in G\}$. 
+\end{definition}
+
+\begin{proposition}
+	Si  $f\colon G\to H$ un morfismo de grupos. Valen las siguientes propiedades:
+	\begin{enumerate}
+		\item $\ker f$ es un subgrupo normal de $G$.
+		\item $f(G)$ es un subgrupo de $H$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Demostraremos solamente la primera afirmación, la segunda quedará como ejercicio. Primero debemos 
+	demostrar que $\ker f$ es un subgrupo de $G$. Para eso, observamos que $1\in \ker f$ y además que si $x,y\in\ker f$ entonces $xy^{-1}\in\ker f$ (pues como $f$ es morfismo de grupos se tiene 
+	que $f(xy^{-1})=f(x)f(y)^{-1}=1$). Para verificar que $\ker f$ es normal en $G$, sean $x\in\ker f$ y $g\in G$. Entonces $gxg^{-1}\in\ker f$ pues
+	$f(gxg^{-1})=f(g)f(x)f(g)^{-1}=f(g)f(g)^{-1}=1$.   
+\end{proof}
+
+La imagen en general no es un subgrupo normal. 
+
+\begin{example}
+La inclusión $\langle (12)\rangle\hookrightarrow\Sym_3$ es un morfismo de grupos cuya imagen  
+no es un subgrupo normal de $\Sym_3$.
+\end{example}
+
+\begin{example}
+Sabemos que $\mathcal{U}(\Z/21)=\{1,2,4,5,8,10,11,13,16,17,19,20\}$ es un grupo abeliano. La función $f\colon\mathcal{U}(\Z/21)\to\mathcal{U}(\Z/21)$, $f(x)=x^3$, es un morfismo de grupos. La imagen de $f$ es igual a $\{1,8,13,20\}$, que es un subgrupo de $\mathcal{U}(\Z/21)$. 
+\end{example}
+
+\begin{example}
+La función $\sgn\colon\Sym_n\to\{-1,1\}$ es un morfismo sobreyectivo de grupos tal que 
+$\ker(\sgn)=\Alt_n$. En particular, $\Alt_n$ es un subgrupo normal de $\Sym_n$.   
+\end{example}
+
+\begin{example}
+\index{Morfismo!canónico}
+Si $N$ es un subgrupo normal de $G$, la función $\pi\colon G\to G/N$, $x\mapsto xN$, es un morfismo sobreyectivo tal que $\ker\pi=N$. La función $\pi$ se conoce como 
+el \textbf{morfismo canónico} $G\to G/N$.
+\end{example}
+
+El ejemplo anterior nos dice, en particular, que cada subgrupo normal de un grupo $G$ es el núcleo de un morfismo con dominio en $G$. 
+
+\begin{exercise}
+Sea $f\colon G\to H$ un morfismo de grupos. Demuestre las siguientes afirmaciones:
+\begin{enumerate}
+\item Si $S\leq G$, entonces $f(S)\leq H$ y además $f^{-1}(f(S))=S\ker f$. 
+\item Si $T\leq H$, entonces $\ker f\leq f^{-1}(T)\leq G$ y además $f(f^{-1}(T))=T\cap f(G)$. 
+\item $f$ es inyectiva si y sólo si $\ker f=\{1\}$.
+\item Si $g\in G$ tiene orden finito, entonces $|f(g)|$ divide a $|g|$. 
+\end{enumerate}	
+\end{exercise}
+
+%\begin{exercise}
+%	Sea $f\colon G\to H$ un morfismo de grupos y sea $Y$ un subconjunto de $H$.
+%	Demuestre que $f^{-1}(Y)=\{x\in G:f(x)\in Y\}$ es un subgrupo de $G$. 
+%\end{exercise}
+%
+%Sean $G$ y $H$ grupos. 
+%Si existe un isomorfismo de grupos $G\to H$, diremos que $G$ y $H$ son grupos \textbf{isomorfos}. En ese caso, escribiremos
+%$G\simeq H$. 
+Si $f\colon G\to H$ es un isomorfismo de grupos, entonces $f^{-1}\colon H\to G$ es también un isomorfismo. Observemos además 
+que un morfismo de grupos $f\colon G\to H$ será un isomorfismo si y sólo si existe
+un morfismo de grupos $g\colon H\to G$ tal que $g\circ f=\id_G$ y $f\circ g=\id_H$. 
+
+\begin{example}
+$\Sym_2\simeq\Z/2\simeq G_2$. 	
+\end{example}
+
+\begin{example}
+$\D_3\simeq\Sym_3$ y el isomorfismo está dado por la función $\D_3\to\Sym_3$, 
+\[
+1\mapsto \id,\quad 
+r\mapsto (123),\quad r^2\mapsto(132),\quad s\mapsto(12),\quad rs\mapsto(13),\quad r^2s\mapsto(23).
+\]	
+\end{example}
+
+\begin{example}
+$\Z/2\times\Z/3\simeq\Z/6$ y el isomorfismo está dado por 
+\[
+(0,0)\mapsto 0,\quad (1,0)\mapsto 3,\quad
+(0,1)\mapsto 4,\quad (1,1)\mapsto 1,\quad (0,2)\mapsto 2,\quad (1,2)\mapsto 5.
+\]	
+\end{example}
+
+\begin{example}
+La función $\log\colon\R_{>0}\to\R$ es un morfismo de grupos. Como $\log$ es biyectiva, 
+$\R_{>0}\simeq\R$.
+\end{example}
+
+Es fácil demostrar que si $f\colon G\to H$ es un isomorfismo entonces $|g|=|f(g)|$ para todo $g\in G$. 
+
+\begin{example}
+$\Z/2\times\Z/2\not\simeq\Z/4$ pues en $\Z/2\times\Z/2$ no hay elementos de orden cuatro. 
+\end{example}
+
+\begin{example}
+$\Q/\Z\not\simeq\Q$. Ambos son grupos abelianos, pero no son isomorfos. 
+Para verlo, primero observamos que en $\Q$ todo elemento no trivial tiene orden 
+infinito (pues si $kx=0$ con $k\in\Z$ y $x\in\Q\setminus\{0\}$ entonces $k=0$). 
+En cambio, en $\Q/\Z$ todo elemento tiene orden finito. En efecto, si $x=r/s\in\Q$, entonces, como
+\[
+s(x+\Z)=sx+\Z=r+\Z=\Z
+\]
+se concluye que $|x+\Z|\leq s$. 
+\end{example}
+
+\begin{example}
+Veamos que $\mathcal{U}(\Z/5)\simeq\mathcal{U}(\Z/10)$. 
+En efecto, ambos grupos son cíclicos de orden cuatro pues 
+$\mathcal{U}(\Z/5)=\langle 2\rangle$ y $\mathcal{U}(\Z/10)=\langle 3\rangle$. 
+En cambio, $\mathcal{U}(\Z/10)\not\simeq\mathcal{U}(\Z/12)$ pues
+en $\mathcal{U}(\Z/12)$ no hay elementos de orden cuatro.  
+\end{example}
+
+\begin{exercise}	
+Demuestre que $F=\{\sigma\in\Sym_n:\sigma(n)=n\}\leq\Sym_n$ y que $F\simeq\Sym_{n-1}$. 
+\end{exercise}
+
+Si $G$ y $H$ son grupos, utilizaremos la siguiente notación:
+\[
+\Hom(G,H)=\{f\colon G\to H:f\text{ es morfismo}\}.
+\]
+
+Veamos algunos ejemplos.
+
+\begin{example}
+Veamos que 
+$\Hom(\Q,\Z)=\{0\}$. Sea $f\in\Hom(\Q,\Z)$ y sea $p$ un número primo. Si fijamos $x\in\Q$ tenemos entonces, como 
+\[
+f(x)=f\left(p(x/p)\right)=pf(x/p),
+\]	
+$p$ divide a $f(x)$, de donde se concluye que $f(x)=0$ para todo $x\in\Q$ pues el primo $p$ es arbitrario.  
+\end{example}
+
+\begin{example}
+Si $G$ es un grupo, entonces $\Hom(\Z,G)=\{k\mapsto g^k:g\in G\}$. 
+Primero observemos que para cada $g\in G$ la función $\Z\to G$, $k\mapsto g^k$, es un morfismo de grupos, pues $k+l\mapsto g^{k+l}=g^kg^l$. Sea $f\in\Hom(\Z,G)$ y sea $g=f(1)$. Si $k>0$, 
+\[
+f(k)=f(\underbrace{1+\cdots+1}_{k-\text{veces}})=f(1)^k=g^k.
+\]
+Si, en cambio $k<0$, entonces 
+\[
+f(k)=f(\underbrace{(-1)+\cdots+(-1)}_{|k|-\text{veces}})=f(-1)^{-k}=(g^{-1})^{-k}=g^k.
+\]	
+\end{example}
+
+\begin{example}
+Vamos a demostrar que $\Hom(\Z/8,\Z/10)$ tiene dos elementos. 
+Sea $f\colon\Z/8\to\Z/10$ un morfismo no nulo. Si $n=|f(1)|$, entonces
+$n$ divide a $8$, es decir $n\in\{1,2,4,8\}$. Como además $f(1)\in\Z/10$ y $f$ es no nulo, 
+$n=2$. Luego $f(1)=5$ y eso define únivocamente al morfismo $f$. En nuestro caso, vemos que  
+$f(k)=5k$ para $k\in\{0,1,\dots,7\}$. 	
+\end{example}
+
+\begin{exercise}
+Calcule $\Hom(\Z/n,G)$ para cualquier grupo $G$. 
+%Demuestre que $\Hom(\Z/n,G)=\{k\mapsto g^k:g\in G,\,|g|\text{ divide a }n\}$. 
+\end{exercise}
+
+\begin{exercise}
+Sean $A$, $B$ y $C$ grupos. Si $f\in\Hom(A,B)$ y $g\in\Hom(B,C)$, 
+entonces $g\circ f\in\Hom(A,C)$. 	
+\end{exercise}
+
+\begin{exercise}
+Demuestre que $\Z/2\times\Z/2$ y $\Z/4$ son los únicos subgrupos de orden cuatro (salvo isomorfismo).
+\end{exercise}
+
+Veamos un ejemplo de isomorfismo un poco más difícil que los anteriores.
+
+\begin{example}
+Si $G$ es un grupo de orden seis, entonces $G\simeq\Sym_3$ o bien $G$ es cíclico de orden seis. 
+Para demostrar nuestra afirmación primero observamos que, como $|G|$ es par, existe en $G$ 
+un elemento de orden dos, esto lo vimos en el ejercicio~\ref{xca:orden2}. Si todo elemento 
+de $G\setminus\{1\}$ tuviera orden dos, entonces $xy=yx$ para todo $x,y\in G$ y luego
+\[
+\langle x,y\rangle=\{1,x,y,xy\}\leq G,
+\]
+una contradicción al teorema de Lagrange. Existe entonces $x\in G$ tal que $x$ tiene orden dos y existe $y\in G\setminus\{1\}$ tal que $y$ no tiene orden dos. Nuevamente el teorema
+de Lagrange nos dice que $|y|\in\{3,6\}$ (pues el orden de $y$ es un divisor del orden del grupo $G$). Si $|y|=6$, entonces 
+$G\simeq\Z/6$. En cualquier caso, existe $z\in G$ tal que 
+$|z|=3$. Tenemos 
+\[
+\langle x,z\rangle=\{1,x,z,z^2,xz,xz^2\}=G.
+\]
+Para saber qué grupo es $\langle x,z\rangle$ necesitamos entender el producto $zx$. Sabemos que $zx\in\{xz,xz^2\}$. Si $xz=zx$, entonces $|xz|=6$ (pues $(xz)^k\ne1$ para todo $k\in\{1,\dots,5\}$ y 
+además $(xz)^6=1$) y luego 
+$G=\langle xz\rangle\simeq\Z/6$. Si, en cambio, estamos en el caso $zx=xz^2$, entonces
+$G=\langle x,z:x^2=z^3=1,\,xzx^{-1}=z^2\rangle\simeq\D_3$.      
+\end{example}
+
+% \begin{example}
+% Si $G$ es un grupo de orden ocho, entonces tenemos cinco posibilidades: $G\simeq(Z/2)^3$, $G\simeq\Z/4\times\Z/2$, $G\simeq \Z/8$, $G\simeq\D_4$ o bien $G\simeq Q_8$. 
+% \end{example}
+
+Lo que hicimos hasta ahora nos permite clasificar las clases de isomorfismo de grupos de orden $\leq8$.
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{|c|c|c|}
+    \hline
+    Orden & Cantidad & Grupos\\
+    \hline
+        1 & 1 & $\{1\}$ \\
+        2 & 1 & $\Z/2$ \\
+        3 & 1 & $\Z/3$ \\
+        4 & 2 & $\Z/4$, $\Z/2\times\Z/2$ \\
+        5 & 1 & $\Z/5$ \\
+        6 & 2 & $\Z/6$, $\Sym_3$ \\
+        7 & 1 & $\Z/7$ \\
+%        8 & 5 & $(\Z/2)^3$, $\Z/4\times\Z/2$, $\Z/8$, $\D_4$, $Q_8$ \\
+    \hline
+    \end{tabular}
+    \caption{Grupos de orden $\leq7$.}
+    \label{tab:grupos<8}
+\end{table}
+
+\begin{exercise}
+\label{xca:size9}
+Demuestre que salvo isomorphismo los únicos grupos de orden nueve son $\Z/9$ y $\Z/3\times\Z/3$. 
+\end{exercise}
+
+Estamos en condiciones de enunciar y demostrar los teoremas de isomorfismos. 
+% Primero comenzaremos con un teorema técnico pero fundamental. 
+
+% \begin{theorem}
+% \label{thm:cocientes}
+% Sea $f\colon G\to H$ un morfismo de grupos y $K$ un subgrupo normal de $G$ tal que $K\subseteq\ker f$. Existe entonces
+% un único morfismo $\varphi\colon G/K\to H$ tal que el diagrama
+% \[
+%         \xymatrix{
+%         G
+%         \ar[d]_\pi
+%         \ar[r]^f
+%         & H
+%         \\
+%         G/K\ar@{-->}[ur]_{\varphi}
+%         }
+% \]
+% es conmutativo, lo que significa que $\varphi\circ\pi=f$, donde $\pi\colon G\to G/K$ es el morfismo canónico. 
+% Más aún, $\ker\varphi=\pi(\ker f)$ 
+% y $\varphi(G/K)=f(G)$. En particular, $\varphi$ es inyectiva si y sólo si $\ker f=K$ y $\varphi$ es sobreyectiva si y sólo si $f$ es sobreyectiva. 
+% \end{theorem}
+
+% \begin{proof}
+% 	Sea $\varphi\colon G/K\to H$, $xK\mapsto f(x)$. Primero debemos demostrar que $\varphi$ está bien definida, lo que significa 
+% 	demostrar que si $xK=yK$ entonces $f(x)=f(y)$. En efecto, si $xK=yK$, entonces, como $y^{-1}x\in K$, se tiene que
+% 	\[
+% 	f(y)^{-1}f(x)=f(y^{-1}x)\subseteq f(K)=\{1\}.
+% 	\]
+% 	Luego $f(x)=f(y)$. 
+		
+% 	Veamos que $\varphi$ es morfismo de grupos:
+% 	\[
+% 	\varphi(xKyK)=\varphi(xyK)=f(xy)=f(x)f(y)=\varphi(xK)\varphi(yK).
+% 	\]
+% 	Para calcular $\ker\varphi$ procedemos así: 
+% 	\[
+% 	\pi(x)=xK\in\ker\varphi\Longleftrightarrow \varphi(xK)=1
+% 	\Longleftrightarrow f(x)=1
+% 	\Longleftrightarrow x\in\ker f.
+% 	\]
+% 	En consecuencia,  $\ker\varphi=\pi(\ker f)$. 
+% 	La igualdad $\varphi(G/K)=f(G)$ es trivial.
+	
+% 	De la definición de $\varphi$ se obtiene inmediatamente que $\varphi\circ \pi=f$. 
+% 	Esta igualdad además garantiza la unicidad del morfismo $\varphi$ pues si $\psi$ 
+% 	es tal que $\psi\circ\pi=f$, 
+% 	\[
+% 	\varphi(xK)=\varphi(\pi(x))=(\varphi\circ\pi)(x)=f(x)
+% 	=(\psi\circ\pi)(x)=\psi(\pi(x))=\psi(xK).\qedhere
+% 	\]
+% \end{proof}
+
+%Como corolario obtenemos:
+
+\begin{theorem}[primer teorema de isomorfismos]
+\index{Teorema!de isomorfismos I}
+\index{Primer teorema de isomorfismos}	
+Si $f\colon G\to H$ es un morfismo de grupos, entonces $G/\ker f\simeq f(G)$. 
+\end{theorem}
+
+\begin{proof}	
+	Sean $K=\ker f$ y $\varphi\colon G/K\to H$ la función dada por $xK\mapsto f(x)$. Primero debemos demostrar que $\varphi$ está bien definida, lo que significa 
+	demostrar que si $xK=yK$ entonces $f(x)=f(y)$. En efecto, si $xK=yK$, entonces, como $y^{-1}x\in K$, se tiene que
+	\[
+	f(y)^{-1}f(x)=f(y^{-1}x)\in f(K)=\{1\}.
+	\]
+	Luego $f(x)=f(y)$. 
+		
+	Veamos que $\varphi$ es morfismo de grupos:
+	\[
+	\varphi(xKyK)=\varphi(xyK)=f(xy)=f(x)f(y)=\varphi(xK)\varphi(yK).
+	\]
+	Para calcular $\ker\varphi$ procedemos así: 
+	\[
+	\pi(x)=xK\in\ker\varphi\Longleftrightarrow \varphi(xK)=1
+	\Longleftrightarrow f(x)=1
+	\Longleftrightarrow x\in K.
+	\]
+	En consecuencia,  $\ker\varphi$ es trivial y entonces $\varphi$ es inyectiva. Como es trivial verificar que $\varphi$ es sobreyectica, 
+	se concluye que $G/K\simeq f(G)$. 
+% 	De la definición de $\varphi$ se obtiene inmediatamente que $\varphi\circ \pi=f$. 
+% 	Esta igualdad además garantiza la unicidad del morfismo $\varphi$ pues si $\psi$ 
+% 	es tal que $\psi\circ\pi=f$, 
+% 	\[
+% 	\varphi(xK)=\varphi(\pi(x))=(\varphi\circ\pi)(x)=f(x)
+% 	=(\psi\circ\pi)(x)=\psi(\pi(x))=\psi(xK).\qedhere
+% 	\]
+\end{proof}
+
+\begin{examples}
+Si $G$ es un grupo, entonces $G/\{1\}\simeq G$ y $G/G\simeq\{1\}$. 
+\end{examples}
+
+\begin{example}
+Como $f\colon\Z\to\Z/n$, $x\mapsto x\bmod n$, es un morfismo sobreyectivo con $\ker f=n\Z$, del primer teorema de isomorfismos se concluye que 
+$\Z/n\Z\simeq\Z/n$. 	
+\end{example}
+
+\begin{example}
+Sea $G$ un grupo cíclico infinito, digamos $G=\langle g\rangle$. Es fácil verificar que la función $f\colon\Z\to G$, $k\mapsto g^k$, 
+es un isomorfismo de grupos, es decir $G\simeq\Z$. En particular, $G=\langle g^k\rangle$ si y sólo si $k\in\{-1,1\}$. 
+\end{example}
+
+\begin{example}
+Vamos a demostrar que 
+$\Z/n\Z\simeq G_n$. Sea 
+\[
+f\colon\Z\to G_n,\quad
+f(k)=\exp(2i\pi k/n).
+\]
+Es claro que $f$ es sobreyectiva y que $\ker f=n\Z$. El resultado que queremos demostrar se obtiene entonces inmediatemente del primer teorema de isomorfismos.	
+\end{example}
+
+\begin{example}
+Observemos con $2\Z\simeq 3\Z$ (observar que ambos son cíclicos de orden infinito o considerar la función $2k\mapsto 3k$) y que 
+\[
+\Z/2\simeq\Z/2\Z\not\simeq\Z/3\Z\simeq\Z/3.
+\]
+\end{example}
+
+\begin{example}
+Como 
+\[
+f\colon\C^\times\to\C^\times, 
+\quad
+f(z)=\frac{z}{|z|},
+\]
+es un morfismo tal que $\ker f=\R_{>0}$ y $f(\C^\times)=S^1$, se concluye del primer teorema
+de isomorfismos que $\C^\times/\R_{>0}\simeq S^1$.  
+\end{example}
+
+\begin{example}
+El primer teorema de isomorfismos aplicado a $f\colon S^1\to S^1$, $f(z)=z^2$, permite demostrar que $S^1/\{\pm1\}\simeq S^1$ pues
+$\ker f=\{-1,1\}$ y $f(S^1)=S^1$. 	
+\end{example}
+
+\begin{example}
+Sea $f\colon\C^\times\to\C^\times$, $f(z)=|z|$. Como $\ker f=S^1$ y $f(\C^\times)=\R_{>0}$, se conluye del primer teorema
+de isomorfismos que $\C^\times/S^1\simeq\R_{>0}$. 
+\end{example}
+
+\begin{example}
+Veamos que $(\Z\times\Z)/\langle (1,3)\rangle\simeq\Z$. Para eso, consideramos el morfismo sobreyectivo
+$f\colon\Z\times\Z\to\Z$, $f(x,y)=3x-y$. Como 
+\[
+\ker f=\{(x,3x):x\in\Z\}=\langle (1,3)\rangle,
+\]
+el primer
+teorema de isomorfismos implica que $(\Z\times\Z)/\langle (1,3)\rangle\simeq\Z$. 
+\end{example}
+
+\begin{exercise}
+Demuestre que $\R/\Z\simeq S^1$.	
+\end{exercise}
+
+% $t\mapsto \exp(2\pi it)$
+% $z\mapsto z^2$
+
+
+\begin{exercise}
+Demuestre que $\Q/\Z\simeq\cup_{n\geq1}G_n$.
+\end{exercise}
+% x\mapsto cos (2\pi x)+i\sin (2\pi x)
+
+\begin{exercise}
+Demuestre que $(\Z\times\Z)/\langle (6,3)\rangle\simeq\Z\times(\Z/3)$.
+\end{exercise}
+% (x,y)\mapsto (2y-x,y\mod 3)
+
+\begin{example}
+\index{Teorema!fundamental del álgebra lineal}
+Si $V$ es un espacio vectorial y $W$ es un subespacio de $V$, entonces, en particular, 
+$V$ es un grupo abeliano y $W$ es un subgrupo normal de $V$. El grupo abeliano 
+$V/W$ es entonces un espacio vectorial con 
+\[
+\lambda(v+W)=(\lambda v)+W,\quad \lambda\in\R,\,v\in V,
+\]
+y el morfismo canónico $\pi\colon V\to V/W$ resulta ser una transformación lineal. 
+Dejamos como ejercicio 
+demostrar que 
+$\dim (V/W)=\dim V-\dim W$
+si $\dim V<\infty$. 
+
+Si $f\colon V\to U$ es una transformación lineal, entonces, por el primer teorema de isomorfismos, en particular, 
+$V/\ker f\simeq f(V)$ como grupos abelianos. Como el morfismo del primer teorema de isomorfismos es además una transformación lineal, 
+se concluye que $V/\ker f\simeq f(V)$ como espacios vectoriales. En particular, si $\dim V<\infty$, entonces 
+\[
+\dim V-\dim\ker f=\dim f(V).
+\]
+\end{example}
+
+\begin{exercise}
+\label{xca:cocientes}
+Sea $f\colon G\to H$ un morfismo de grupos y $K$ un subgrupo normal de $G$ tal que $K\subseteq\ker f$. Demuestre que existe 
+un único morfismo $\varphi\colon G/K\to H$ tal que el diagrama
+\[\begin{tikzcd}
+	G & H \\
+	{G/K}
+	\arrow["f", from=1-1, to=1-2]
+	\arrow["\pi"', from=1-1, to=2-1]
+	\arrow["\varphi"', dashed, from=2-1, to=1-2]
+\end{tikzcd}
+\]
+es conmutativo, lo que significa que $\varphi\circ\pi=f$, donde $\pi\colon G\to G/K$ es el morfismo canónico. 
+Más aún, $\ker\varphi=\pi(\ker f)$ y $\varphi(G/K)=f(G)$. 
+En particular, $\varphi$ es inyectiva si y sólo si $\ker f=K$ y $\varphi$ es sobreyectiva si y sólo si $f$ es sobreyectiva. 
+\end{exercise}
+
+El segundo teorema de isomorfismos resultará de gran utilidad al estudiar series de composición y resolubilidad. 
+El diagrama que vemos a continuación nos ayudará a recordar cómo funciona el segundo teorema de isomorfismos:
+\[\begin{tikzcd}
+	& NT \\
+	N && T \\
+	& {N\cap T}
+	\arrow[no head, from=1-2, to=2-3]
+	\arrow[no head, from=1-2, to=2-1]
+	\arrow[no head, from=2-1, to=3-2]
+	\arrow[no head, from=2-3, to=3-2]
+\end{tikzcd}\]
+
+\begin{theorem}[segundo teorema de isomorfismos]
+\index{Teorema!de isomorfismos II}
+\index{Segundo teorema de isomorfismos}	
+Si $N$ es un subgrupo normal de $G$ y $T$ es un subgrupo de $G$, entonces $N\cap T$ es normal en $T$ y además 
+\[
+T/N\cap T\simeq NT/N.
+\]	
+\end{theorem}
+
+\begin{proof}
+Sea $\pi\colon G\to G/N$ el morfismo canónico. Ya vimos que la restricción $\pi|_T\colon T\to G/N$ es un morfismo de grupos con núcleo
+$\ker(\pi|_T)=T\cap N$. En particular, $T\cap N$ es normal en $T$. Al aplicar el primer
+teorema de isomorfismos, $T/(T\cap N)\simeq \pi(T)$. Como $N$ es normal en $G$, 
+$NT$ es un subgrupo de $G$ que contiene a $N$. 
+La restricción $\pi|_{NT}$ es entonces un morfismo de grupos con núcleo $NT\cap N=N$.  
+Al aplicar el primer teorema de isomorfismos a $\pi|_{NT}$ obtenemos
+$NT/N\simeq \pi(NT)=\pi(T)$.  
+%%\[
+%%T/T\cap N\simeq\pi(T).
+%%\]
+%%Observemos que $\pi(T)=NT/N$ pues es el subgrupo de $G/N$ formado por las coclases de $N$ en $G$ con representantes en $T$.  
+\end{proof}
+
+\begin{exercise}
+Sea $N$ normal en $G$ y sea $\pi\colon G\to G/N$ el morfismo canónico. Demuestre que
+si $L$ es un subgrupo de $G$, entonces $\pi^{-1}(\pi(L))=NL$. 
+%%% 
+%%%Por otro lado, si $L$ es un subgrupo de $G$, entonces $\pi^{-1}(\pi(L))=NL$. En efecto,
+%%%si $x\in \pi^{-1}(\pi(L))$, entonces $\pi(x)\in \pi(L)$ y luego 
+%%%$\pi(x)=\pi(l)$ para algún $l\in L$. Como entonces $xl^{-1}\in \ker\pi=N$, 
+%%%se tiene que $x=(xl^{-1})l\in KL$. Recíprocamente, si $x=kl$ con $k\in K$ y $l\in L$, entonces
+%%%$\pi(x)=\pi(kl)=\pi(l)\in \pi(L)$ y luego $x\in\pi^{-1}(\pi(L))$. Observemos que
+%%%si $L$ es un subgrupo de $G$, entonces $NL$ es un subgrupo de $G$ que contiene a $N$. 
+\end{exercise}
+
+En el siguiente ejemplo utilizaremos la notación aditiva. 
+
+\begin{example}
+Sea $G=\Z/24$ y sean $H=\langle 4\rangle$ y $N=\langle 6\rangle$. Como $G$ es abeliano, $H$ y $K$ son ambos normales en $G$. Un cálculo directo nos muestra que 
+$H+N=\langle 2\rangle$ y que $H\cap N=\{0,12\}$. Notemos que este ejemplo está completamente hecho en la notación aditiva. Calculemos las coclases de $N$ en $H+N$:
+\[
+0+N=\{0,6,12,18\},
+\quad
+2+N=\{2,8,14,20\},
+\quad
+4+N=\{4,10,16,22\}.
+\]
+Las coclases de $H\cap N$ en $H$ son:
+\[
+0+(H\cap N)=\{0,12\},
+\quad
+4+(H\cap N)=\{4,16\},
+\quad
+8+(H\cap N)=\{8,20\}.
+\]
+El segundo teorema de isomorfismos nos dice que $(H+N)/N\simeq H/H\cap N$. El isomorfismo 
+está dado por $f\colon H/(H\cap N)\to (H+N)/N$, $h+(H\cap N)\mapsto h+N$. 
+En nuestro caso, 
+\begin{align*}
+&f(0+(H\cap N))=0+N,\\
+&f(4+(H\cap N))=4+N,\\
+&f(8+(H\cap N))=8+N=2+N.
+\end{align*}
+\end{example}
+
+En los ejemplos que siguen veremos que el segundo teorema de isomorfismos no es algo raro sino que nos permite obtener fórmulas ya conocidas.
+
+\begin{example}
+\index{Máximo común divisor}
+\index{Mínimo común múltiplo}
+Sean $a,b\in\Z$ no nulos. Sabemos que $a\Z+b\Z=\gcd(a,b)\Z$ y que $a\Z\cap b\Z=\lcm(a,b)\Z$. Al aplicar el segundo teorema de isomorfismos, 
+\[
+\frac{\gcd(a,b)\Z}{b\Z}=\frac{a\Z+b\Z}{b\Z}\simeq
+\frac{a\Z}{a\Z\cap b\Z}=\frac{a\Z}{\lcm(a,b)\Z}.
+\]
+Al aplicar orden, obtenemos la fórmula 
+\[
+ab=\gcd(a,b)\lcm(a,b).
+\] 
+\end{example}
+
+\index{Grupo!meta-abeliano}
+Veamos otra aplicación. Un grupo $G$ que contiene un subgrupo normal abeliano $N$ y es tal que $G/N$ es abeliano se conoce como grupo \textbf{meta-abeliano}. Claramente, los grupos meta-abelianos no son necesariamente abelianos (el grupo simétrico $\Sym_3$ es meta-abeliano y no abeliano). El segundo teorema de isomorfismos nos permite demostrar que subgrupos de meta-abelianos son meta-abelianos. 
+
+\begin{proposition}
+Si $G$ es un grupo meta-abeliano y $H$ es un subgrupo de $G$, entonces $H$ es también meta-abeliano. 
+\end{proposition}
+
+\begin{proof}
+Como $G$ es meta-abeliano, existe 
+un subgrupo normal $N$ de $G$ tal que $N$ y $G/N$ son ambos abelianos. 
+El subgrupo abeliano $H\cap N$ es normal en $H$. Gracias al segundo teorema de isomorfismos,
+\[
+H/(H\cap N)\simeq HN/N
+\]
+es un grupo abeliano pues $HN/N$ es un subgrupo del grupo abeliano $G/N$.   
+\end{proof}
+
+Dejamos la demostración del tercer teorema de isomorfismos como ejercicio. Primero, 
+un resultado auxiliar que facilitará los cálculos. 
+%Antes de demostrar otro de los teoremas de isomorfismos, necesitamos el siguiente lema técnico. 
+
+\begin{exercise}
+	\label{xca:para_3er}
+	Sea $f\colon G\to H$ un morfismo de grupos y sean $U\unlhd G$ y $V\unlhd H$. Demuestre que existe 
+	un morfismo de grupos $g\colon G/U\to H/V$ tal que el diagrama
+\[
+\begin{tikzcd}
+	G & H \\
+	{G/K} & {H/V}
+	\arrow["f", from=1-1, to=1-2]
+	\arrow["{\pi_U}"', from=1-1, to=2-1]
+	\arrow["g"', dashed, from=2-1, to=2-2]
+	\arrow["{\pi_V}", from=1-2, to=2-2]
+\end{tikzcd}
+\]
+	es conmutativo si y sólo si $f(U)\subseteq V$, donde $\pi_U\colon G\to G/U$ y $\pi_V\colon H\to H/V$ son los morfismos canónicos. Además, en este caso, 
+	\begin{enumerate}
+	\item Si $f$ es sobreyectiva, entonces $g$ es sobreyectiva.
+	\item Si $U=f^{-1}(V)$, entonces $g$ es inyectiva. 	
+	\end{enumerate}
+\end{exercise}
+
+% todo: escribir bien la demo del tercero, ese lema es horrible
+%Un caso particular del lema nos permite demostrar elegantemente el tercer teorema de isomorfismos.
+
+\begin{exercise}[tercer teorema de isomorfismos]
+\label{xca:3er}
+\index{Teorema!de isomorfismos III}
+\index{Segundo teorema de isomorfismos}	
+Sean $S$ y $T$ subgrupos normales de un grupo $G$ tales que $S\subseteq T$. Demuestre que 
+entonces $S$ es normal en $T$ 
+y $T/S$ es normal en $G/S$. Además
+\[
+\frac{G/S}{T/S}\simeq G/T,
+\]
+donde $T/S=\{tS:t\in T\}$.
+\end{exercise}
+
+\begin{example}
+Si $m$ divide a $n$, entonces $n\Z\leq m\Z\leq\Z$. Luego
+\[
+\frac{\Z/n\Z}{m\Z/n\Z}\simeq\Z/m\Z.
+\]	
+\end{example}
+
+El teorema que sigue es también muy importante. Para recordar cómo funciona, podemos hacer uso del siguiente diagrama:
+\[
+\begin{tikzcd}
+	&& G \\
+	& L && {f(G)} \\
+	N && Y \\
+	& {\{1\}}
+	\arrow[no head, from=1-3, to=2-4]
+	\arrow[no head, from=1-3, to=2-2]
+	\arrow[no head, from=2-2, to=3-1]
+	\arrow[no head, from=3-1, to=4-2]
+	\arrow[no head, from=2-2, to=3-3]
+	\arrow[no head, from=3-3, to=4-2]
+	\arrow[no head, from=2-4, to=3-3]
+\end{tikzcd}
+\]
+
+\begin{theorem}[de la correspondencia]
+\index{Teorema!de la correspondencia}
+Sea $f\colon G\to H$ un morfismo de grupos y sea $K=\ker f$. Existe una correspondencia biyectiva entre
+\[\begin{tikzcd}
+	{\mathcal{A}=\{L:K\leq L\leq G\}} & {\{Y:Y\leq f(G)\}=\mathcal{B}} 
+	\arrow["\sigma", shift left=1, from=1-1, to=1-2]
+	\arrow["\tau", shift left=1, from=1-2, to=1-1]
+\end{tikzcd}
+\]
+La correspondencia está dada por $\sigma(L)=f(L)$ y $\tau(Y)=f^{-1}(Y)$. Valen además las siguientes afirmaciones:
+\begin{enumerate}
+\item $L_1\leq L_2$ si y sólo si $\sigma(L_1)\leq \sigma(L_2)$. 
+\item $L\unlhd G$ si y sólo si $\sigma(L)\unlhd f(G)$.
+\end{enumerate} 
+\end{theorem}
+
+\begin{proof}
+	Primero observamos que $\sigma$ y $\tau$ están ambas bien definidas pues vimos en un ejercicio
+	que $f(L)\leq f(G)$ y $K\leq f^{-1}(Y)\leq G$. 
+	
+	Veamos que $\tau\circ\sigma=\id_\mathcal{A}$. Queremos ver que $\tau(\sigma(L))=L$ para todo $L\in\mathcal{A}$. Si $x\in f^{-1}(f(L))$ entonces
+	$f(x)\in f(L)$ y luego $f(x)=f(l)$ para algún $l\in L$. Esto implica que $xl^{-1}\in K$ y entonces $x\in Kl\subseteq L$ pues $K\subseteq L$. 
+	Recíprocamente, si $l\in L$ entonces $f(l)\in f(L)$ y luego $l\in f^{-1}(f(L))$. 
+	
+	Veamos que $\sigma\circ\tau=\id_\mathcal{B}$. Si $Y\in\mathcal{B}$, entonces $\sigma(\tau(Y))=Y$. Si $y\in Y\subseteq f(G)$, entonces
+	$y=f(x)$ para algún $x\in G$, es decir $x\in f^{-1}(y)$, lo que trivialmente implica que $y=f(x)\in f(f^{-1}(Y))$. Recíprocamente, si $y\in f(f^{-1}(Y))$, entonces
+	$y=f(x)$ para $x\in f^{-1}(Y)$. Pero esto significa que $y=f(x)\in Y$.   
+	
+	Dejamos como ejercicio demostrar que $X\leq Y$ si y sólo si $f(X)\leq f(Y)$. 
+	
+	Vamos a demostrar que $L\unlhd G$ si y sólo si $f(L)\unlhd f(G)$. Si $L\unlhd G$ y $x\in G$, entonces
+	$xLx^{-1}=L$. Esto implica que $f(L)=f(xLx^{-1})=f(x)f(L)f(x)^{-1}$, es decir que $f(L)$ es normal en $f(G)$. Recíprocamente, si 
+	$f(L)\unlhd f(G)$ y $x\in G$, entoces 
+	\[
+	f(xLx^{-1})=f(x)f(L)f(x)^{-1}=f(L).
+	\]
+	Esto implca que $xLx^{-1}\subseteq LK\subseteq L$ y luego
+	$xLx^{-1}\subseteq L$, que implica la normalidad de $L$ en $G$ gracias a la proposición~\ref{pro:normalidad}.
+\end{proof}
+
+Veamos una aplicación del teorema anterior. 
+
+\begin{proposition}
+	Si $f\colon G\to f(G)$ es un morfismo sobreyectivo de grupos y $H\leq G$ es tal que $K=\ker f\subseteq H$, entonces
+	$(G:H)=(f(G):f(H))$. 
+\end{proposition}
+
+\begin{proof}
+Por el teorema anterior 
+sabemos que existe una correspondencia biyectiva
+\[
+\begin{tikzcd}
+	{\{L:K\leq L\leq G\}} & {\{Y:Y\leq f(G)\}}
+	\arrow[shift left=1, from=1-1, to=1-2]
+	\arrow[shift left=1, from=1-2, to=1-1]
+\end{tikzcd}
+\]
+dada por $H\mapsto f(H)$ e 
+inversa dada por $f^{-1}(T)\mapsfrom T$. Sea $H\leq G$ tal que $\ker f\subseteq H$ y sea 
+$\alpha\colon G/H\to f(G)/f(H)$ la función dada por $\alpha(gH)=f(g)f(H)$. 
+Dejamos como ejercicio verificar que $\alpha$ está bien definida. 
+Veamos que $\alpha$ es una función biyectiva pues, en ese caso, 
+\[
+(G:H)=|G/H|=|f(G)/f(H)|=(f(G):f(H)).
+\]
+
+Veamos que $\alpha$ es sobreyectiva: si $yf(H)\in f(G)/f(H)$ entonces
+$y=f(g)$ para algún $g\in G$ (pues $f$ es sobreyectiva). Luego 
+\[
+yf(H)=f(g)f(H)=f(gH)=\alpha(gH).
+\]
+
+Veamos ahora que $\alpha$ es inyectiva: si $\alpha(gH)=\alpha(g_1H)$, entonces, por la definición de la función $\alpha$, 
+\[
+f(g)^{-1}f(g_1)=f(h)\in f(H)
+\]
+para algún $h\in H$, es decir 
+$f(g_1)=f(g)f(h)=f(gh)$ para algún $h\in H$. Esto implica que $g_1=ghk$ para algún $k\in\ker f\subseteq H$ y luego
+$g_1=gh_1$ para algún $h_1\in H$, es decir $g_1H=gH$.  
+\end{proof}
+
+Es conviente enfatizar qué forma toma el teorema anterior en el caso del morfismo canónico $\pi\colon G\to G/N$.
+Si $N$ es un subgrupo normal de $G$, entonces la función $K\mapsto K/N$ es una biyección entre el conjunto de subgrupos (normales) 
+de $G$ que contienen a $N$ y el conjunto de subgrupos (normales) de $G/N$. 
+Observemos que si $H$ es un subgrupo de $G$, entonces
+\[
+\pi(H)=HN/N.
+\]
+
+\begin{example}
+\index{Grupo!de cuaterniones de Hamilton}
+Como aplicación del teorema de la correspondencia, vamos a demostrar que todo subgrupo del grupo no abeliano 
+\[
+Q_8=\{1,-1,i,-i,j,-j,k,-k\}
+\]
+es normal en $Q_8$. Sea $N=\{-1,1\}$. Entonces $N$ es normal en $Q_8$ (pues $N\subseteq Z(Q_8)$) y además, como $Q_8/N$ tiene cuatro elementos, $Q_8/N$ es un grupo abeliano.
+
+Afirmamos que $N$ está contenido en cualquier subgrupo no trivial de $Q_8$. En efecto, si 
+$K$ es un subgrupo no trivial de $Q_8$, entonces $-1\in K$ (pues, por ejemplo, si $-i\in K$, entonces $-1=(-i)^2\in K$). 
+Esto implica que cualquier subgrupo de $Q_8$ se corresponde con un subgrupo de $Q_8/N$ y allí todo subgrupo es normal pues $Q_8/N$ es abeliano. Más precisamente, si 
+$S\leq Q_8$, entonces $\pi(S)\leq Q_8/N$. Como $Q_8/N$ es abeliano, $\pi(S)$ es normal en $Q_8/N$. 
+Como $N\subseteq S$, se tiene que $S=\pi^{-1}(\pi(S))$. Luego $S$ es normal en $Q_8$.
+\end{example}
+
+En el ejemplo anterior, podríamos haber demostrado que 
+$G/N\simeq\Z/2\times\Z/2$, ya que como sabemos que $|G/N|=4$, hubiera alcanzado con calcular el orden de cada uno de los elementos de $G/N$. 
+
+\begin{example}
+Sea $f\colon\Z/12\to\Z/6$ el morfismo dado por $1\mapsto 1$. Un cálculo sencillo nos muestra que $K=\ker f=\{0,6\}$. 
+Los subgrupos de $\Z/12$ que contienen a $K$ son 
+\[
+\langle 1\rangle=\{0,1,\dots,11\},
+\quad
+\langle 2\rangle=\{0,2,4,6,8,10\},
+\quad
+\langle 3\rangle=\{0,3,6,9\},
+\quad
+\langle 6\rangle=\{0,6\},
+\] 
+que vía $f$ se corresponden con los subgrupos 
+\[
+\langle 1\rangle=\{0,1,\dots,5\},
+\quad
+\langle 2\rangle=\{0,2,4\},
+\quad
+\langle 3\rangle=\{0,3\},
+\quad
+\{0\}
+\]
+de $\Z/6$, respectivamente. Por ejemplo, 
+\[
+\begin{tikzcd}
+	&& \Z/12 \\
+	& \langle 2\rangle && {\Z/6} \\
+	\{0,6\} && \langle 2\rangle \\
+	& {\{0\}}
+	\arrow[no head, from=1-3, to=2-4]
+	\arrow[no head, from=1-3, to=2-2]
+	\arrow[no head, from=2-2, to=3-1]
+	\arrow[no head, from=3-1, to=4-2]
+	\arrow[no head, from=2-2, to=3-3]
+	\arrow[no head, from=3-3, to=4-2]
+	\arrow[no head, from=2-4, to=3-3]
+\end{tikzcd}
+\]
+\end{example}
+
+Si se tiene un morfismo entre dos grupos,  
+en cierto sentido, el teorema de la correspondencia nos permite trasladar propiedades de la
+imagen del morfismo al dominio. Veamos una aplicación concreta.
+
+\begin{example}
+Sea $G$ un grupo finito que contiene un subgrupo normal $N$ tal que $N\simeq\Z/5$ y $G/N\simeq\Sym_4$. Vamos a demostrar las siguientes afirmaciones sobre $G$.
+\begin{enumerate}
+\item $|G|=120$
+\item $G$ contiene un subgrupo normal de tamaño 20.
+\item $G$ contiene tres subgrupos de orden 15, ninguno de ellos normal en $G$.
+\end{enumerate}
+
+Para demostrar la primera afirmación usamos el teorema de Lagrange pues
+\[
+24=|G/N|=\frac{|G|}{|N|}=|G|/5.
+\]
+
+Para la segunda afirmación, sea $K$ el subgrupo de $G/N$ isomorfo al grupo de Klein. Entonces
+$K$ es normal en $G/N$ y $|K|=4$. Como
+$(G/N:K)=6$,  
+el subgrupo $K$ de $G/N$ se corresponde con un subgrupo normal $H$ de $G$ de índice 6. El teorema de Lagrange y el teorema de la correspondencia implican entonces que $|H|=20$ pues
+\[
+6=(G/N:K)=(G:H)=\frac{|G|}{|H|}.
+\] 
+
+Para demostrar la tercera afirmación observamos que $G/N\simeq\Sym_4$ tiene cuatro subgrupos de orden 3 (son los subgrupos generados por un 3-ciclo), 
+ninguno de ellos normal en $G/N$. Nuevamente, el teorema de la correspondencia, nos dice que estos grupos se corresponderán con 4 subgrupos de $G$, todos de orden 15 y ninguno de ellos normal en $G$.
+\end{example}
+
+Recordemos que si $G$ es un grupo, $\Sym_G=\{f\colon G\to G:f\text{ es biyectiva}\}$. 
+Terminaremos el capítulo con el siguiente teorema.
+
+\begin{theorem}[Cayley]
+Todo grupo $G$ es isomorfo a un subgrupo de $\Sym_G$. 
+\end{theorem}
+
+\begin{proof}
+Sea $f\colon G\to\Sym_G$, $g\mapsto L_g$, donde $L_g\colon G\to G$, $L_g(x)=gx$. La función $f$ es un morfismo de grupos pues
+\[
+L_{gh}(x)=(gh)x=g(hx)=L_g(hx)=L_gL_h(x)
+\]
+para todo $g,h,x\in G$. Además es fácil verificar que $f$ es inyectivo (si $f(g)=f(h)$ entonces $L_g=L_h$, es decir que 
+$gx=L_g(x)=L_h(x)=hx$ para todo $x\in G$, que implica que $g=h$). 
+\end{proof}
+
+Como aplicación, observamos que todo grupo finito es isomorfo a un subgrupo $\Sym_n$ para algún $n\ n\N$. En particular, las matrices de permutación nos permiten observar que
+todo grupo finito es un \textbf{grupo lineal}, es decir, isomorfo a un subgrupo de $\GL_n(\Z)$ para algún $n\in\N$. Veamos una aplicación un poquito más sofisticada.
+  
+\begin{proposition}
+Todo grupo simple finito $G$ está contenido en algún $\Alt_n$.
+\end{proposition}
+
+\begin{proof}
+Si $|G|=2$, el resultado es trivial pues $G\simeq\Alt_2$. Supongamos entonces que $|G|>2$.  
+Sea $f\colon G\to\Sym_n$ el morfismo inyectivo obtenido del teorema de Cayley. Si $H=f(G)$, entonces $G\simeq H$ por el primer teorema de isomorfismos. Afirmamos que $H\subseteq\Alt_n$. Si   
+$H$ no es un subgrupo de $\Alt_n$, existe $h\in H$ tal que $h\not\in\Alt_n$. Escribimos $h=f(g)$ para algún $g\in G$. Como $h\not\in\Alt_n$, 
+\[
+\sgn(f(g))=\sgn(h)=-1,
+\]
+entonces $g\not\in\ker(\sgn\circ f)$. 
+Sea $K=\ker(\sgn\circ f)$. Entonces $K=\{1\}$ pues $G$ es simple. Además, $\sgn\circ f$ es una función biyectiva pues $\sgn(f(1))=1$ y $\sgn(f(g))=-1$. En consecuencia,
+$G\simeq G/K\simeq\Z/2$, por el primer teorema de isomorfismos.  En particular, $|G|=2$, una contradicción. Luego $H\subseteq\Alt_n$.        
+\end{proof}	
+
+Como aplicación simpática del teorema de Cayley puede obtenerse que el axioma de asociatividad en un grupo permite demostrar
+que ningún producto necesita llevar paréntesis.  En efecto, el teorema de Cayley afirma que $G$ es un subgrupo de $\Sym_G$. 
+La composición de funciones es asociativa y es trivial observar que ninguna composición arbitraria y finita de funciones necesita llevar paréntesis, por eso escribimos 
+\[
+(f_1\circ\cdots\circ f_n)(g)=f_1(f_2(\cdots f_n(g))\cdots).
+\]
+

@@ -1,0 +1,451 @@
+\chapter{Acciones}
+
+\begin{definition}
+\index{Acción!de un grupo en un conjunto}
+	Sean $G$ un grupo y $X$ un conjunto. Una acción (a izquierda) de $G$ en $X$ es una función
+	$G\times X\to X$, $(g,x)\mapsto g\cdot x$, tal que
+	\begin{enumerate}
+		\item $1\cdot x=x$ para todo $x\in X$, y 
+		\item $g\cdot (h\cdot x)=(gh)\cdot x$ para todo $g,h\ n G$ y $x\in X$.
+	\end{enumerate}
+\end{definition}
+
+Cuando un grupo $G$ actúa en un conjunto $X$, se dice también que $X$ es un $G$-conjunto. 
+
+\begin{example}
+\index{Acción!trivial}
+Todo grupo $G$ actúa en $G$ trivialmente: $g\cdot h=h$ para todo $g,h\in G$.	
+\end{example}
+
+\begin{example}
+\index{Acción!por multiplicación a izquierda}
+Todo grupo $G$ actúa en $G$ por multplicación a izquierda, es decir $g\cdot h=gh$ para todo $g,h\in G$.	
+\end{example}
+
+\begin{example}
+Todo grupo $G$ actúa en $G$ por $g\cdot h=hg^{-1}$ para todo $g,h\in G$.	
+\end{example}
+
+\begin{example}
+\index{Acción!por conjugación}
+Si $N$ es un subgrupo normal de $G$, entonces $G$ actúa en $N$ por conjugación, es decir $g\cdot x=gxg^{-1}$ para todo $g\in G$ y $x\in N$. En particular, 
+todo grupo $G$ actúa en $G$ por conjugación.		
+\end{example}
+
+\begin{example}
+\index{Acción!en el conjunto de coclases}
+Sea $G$ un grupo y sea $H$ un subgrupo de $G$. Entonces $G$ actúa en el 
+conjunto de coclases $G/H$ por multiplicación a izquierda, es decir
+$g\cdot (xH)=(gx)H$ para todo $g,x\in G$. 
+\end{example}
+
+Toda acción a izquierda de $G$ en $X$ se corresponde biyectivamente con un morfismo 
+$\rho\colon G\to\Sym_X$. La correspondencia está dada por la fórmula
+\[
+\rho(g)(x)=g\cdot x,\quad g\in G,x\in X.
+\]
+Para simplificar, utilizaremos la notación $\rho_g=\rho(g)$. 
+
+Como ejemplo veamos que si $G\times X\to X$, $(g,x)\mapsto x$, es una acción de $G$ en $X$, entonces
+cada $\rho_g\colon X\to X$ es una función biyectiva con inversa $(\rho_g)^{-1}=\rho_{g^{-1}}$. Además $\rho$ es un morfismo de grupos pues
+\[
+\rho(gh)(x)=(gh)\cdot x=g\cdot (h\cdot x)=\rho_g(h\cdot x)=\rho_g(\rho_h(x))
+\]
+para todo $g,h\in G$ y todo $x\in X$. 
+
+\begin{example}
+Sea $G=\Sym_3$ y sea $H=\langle (123)\rangle=\{\id,(123),(132)\}$. Si hacemos actuar al grupo $G$ en el conjunto $X=G/H=\{H,(12)H\}$ 
+por multiplicación a izquierda, y escribimos  
+$x_1=H$ y $x_2=(12)H$, tenemos entonces
+\begin{align*}
+&(12)\cdot x_1=x_2,
+&&(12)\cdot x_2=x_1,
+&&(123)\cdot x_1=x_1,
+&&(123)\cdot x_2=x_2.
+\end{align*}
+Como $G=\langle (12),(123)\rangle$, queda definido el morfismo 
+$\rho\colon G\to\Sym_{X}\simeq\Sym_2$ de la siguiente forma: $(12)\mapsto (12)$, $(123)\mapsto\id$. 
+\end{example}
+
+\begin{example}
+Sea $G=\Sym_3$ y sea $H=\langle (12)\rangle=\{\id,(12)\}$. Si hacemos actuar a $G$ en $X=G/H=\{H,(123)H,(132)H\}$ por multiplicación a izquierda y 
+escribimos $x_1=H$, $x_2=(123)H$ y $x_3=(132)H$, entonces
+\begin{align*}
+(12)\cdot x_1=x_1,&& (12)\cdot x_2=x_3, && (12)\cdot x_3=x_2,\\
+(123)\cdot x_1=x_2, && (123)\cdot x_2=x_3, &&(123)\cdot x_3=x_1.
+\end{align*}
+Como $G=\langle (12),(123)\rangle$, queda definido el morfismo 
+$\rho\colon G\to\Sym_{X}\simeq\Sym_3$ de la siguiente forma: $(12)\mapsto (23)$, $(123)\mapsto (123)$. 
+\end{example}
+
+\begin{example}
+Sea $G=Q_8=\{1,-1,i,-i,j,-j,k,-k\}$ y sea $N=\{1,-1,i,-i\}$. Como $N$ es normal en $G$, el grupo $G$ actúa por conjugación en $X=N$. 
+Si $x_1=1$, $x_2=-1$, $x_3=i$ y $x_4=-i$, entonces $i\cdot x=x$ para todo $x\in N$ y además 
+\begin{align*}
+j\cdot x_1=x_1, && j\cdot x_2=x_2, && j\cdot x_3=x_4, && j\cdot x_4=x_3. 
+\end{align*}
+Como $G=\langle i,j\rangle$, el morfismo $\rho\colon G\to\Sym_X\simeq\Sym_4$ queda determinado por
+$\rho_i=\id$ y $\rho_j=(34)$. 
+\end{example}
+
+El ejemplo siguiente es particularmente importante, ya que suele generar confusión.
+
+\begin{example}
+    El grupo $\Sym_n$ actúa en $\R^n$ por 
+    \[
+    \sigma\cdot (x_1,\dots,x_n)=(x_{\sigma^{-1}(1)},\dots,x_{\sigma^{-1}(n)}).
+    \]
+    Es muy importante remarcar que debe usarse $\sigma^{-1}$ en la definición y no $\sigma$, ya que lo que queremos
+    es permutar los elementos de la base canónica de $\R^3$. 
+    
+    Como ejemplo, veamos que la operación 
+    $\sigma\cdot (x_1,x_2,x_3)=(x_{\sigma(1)},x_{\sigma(2)},x_{\sigma(3)})$ 
+    no define una acción de $\Sym_3$ en $\R^3$. 
+    Si $\sigma=(12)$ y $\tau=(23)$, entonces $\sigma\tau=(123)$. Como 
+    \begin{align*}
+    &(123)\cdot (5,6,7)=(6,7,5),\\
+    &(12)\cdot ((23)\cdot (5,6,7))=(1,2)\cdot (5,7,6)=(7,5,6),
+    \end{align*}
+    no tenemos una acción. En general, no se tiene una acción porque 
+    si calculamos
+    \begin{align*}
+        \sigma\cdot (\tau\cdot (x_1,\dots,x_n))
+        =\sigma\cdot (x_{\tau(1)},\dots,x_{\tau(n)})
+    \end{align*}
+    y para cada $i\in\{1,\dots,n\}$ hacemos $y_i=x_{\tau(i)}$, entonces
+    \[
+    \sigma\cdot (\tau\cdot (x_1,\dots,x_n))=\sigma\cdot (y_1,\dots,y_n)=(y_{\sigma(1)},\dots,y_{\sigma(n)})
+    =(x_{\tau\sigma(1)},\dots,x_{\tau\sigma(n)}),
+    \]
+    aunque $\sigma$ y $\tau$ no conmuten. 
+    %Tenemos que hacer el cambio de variables porque los elementos vienen ordenados.
+    
+    Veamos que se tiene una acción si usamos el inverso. 
+    Para cada $j\in\{1,\dots,n\}$ sea $y_j=x_{\tau(j)}$, 
+    es decir 
+    \[
+    (y_1,y_2,\dots,y_n)=\tau\cdot (x_1,x_2,\cdots,x_n)=(x_{\tau^{-1}(1)},x_{\tau^{-1}(2)},\dots,x_{\tau^{-1}(n)}).
+    \]
+    Calculamos entonces 
+    \begin{align*}
+        \sigma\cdot (\tau\cdot (x_1,x_2,\dots,x_n))&=\sigma\cdot (y_1,y_2,\dots,y_n)\\
+        &=\left(y_{\sigma^{-1}(1)},y_{\sigma^{-1}(2)},\dots,y_{\sigma^{-1}(n)}\right)\\
+        &=\left(x_{\tau^{-1}(\sigma^{-1}(1))},x_{\tau^{-1}(\sigma^{-1}(2))},\dots,x_{\tau^{-1}(\sigma^{-1}(n))}\right)\\
+        &=\left(x_{(\sigma\tau)^{-1}(1))},x_{(\sigma\tau)^{-1}(2))},\dots,x_{(\sigma\tau)^{-1}(n))}\right).
+    \end{align*}
+\end{example}
+
+El ejemplo anterior y el siguiente están relacionados.
+
+\begin{example}
+    El grupo simétrico $\Sym_n$ actúa en el conjunto de polinomios de $n$ variables $X_1,\dots,X_n$
+    permutando las variables. Por ejemplo, en el caso de tres variables, si 
+    $\sigma=(123)$ y $f=X_2X_3-X_1+5X_2X_3^2X_1$, entonces
+    $\sigma\cdot f=X_2^2X_3-X_1+5X_2X_3^2X_1$. 
+    
+    Al restringir la acción, vemos que 
+    $\Sym_n$ actúa en el conjunto 
+    \[
+    \{\lambda_1X_1+\cdots\lambda_nX_n:\lambda_1,\dots,\lambda_n\in\R\}.
+    \]
+    Podemos escribir entonces
+    \begin{align*}
+    \sigma \cdot (\lambda_1X_1+\cdots+\lambda_nX_n) &= (\lambda_1X_{\sigma(1)}+\cdots+\lambda_nX_{\sigma(n)})
+    =(\lambda_{\sigma(1)}X_1+\cdots+\lambda_{\sigma(n)}X_n)
+    \end{align*}
+    y vemos cuál es la relación que tiene esta acción con la que vimos en el ejemplo anterior.
+\end{example}
+
+Es importante poder calcular el núcleo de la acción. 
+
+\begin{example}
+Sea $G$ un grupo y sea $H$ un subgrupo de $G$. Entonces $G$ actúa en el conjunto de coclases $G/H$ por multiplicación a izquierda, es decir
+$g\cdot (xH)=(gx)H$ para todo $g,x\in G$. Sea $\rho\colon G\to\Sym_{G/H}$ el morfismo inducido por la acción.
+
+ Veamos que $\ker\rho=\cap_{x\in G}xHx^{-1}$. Demostremos primero $\supseteq$. Si $g\in xHx^{-1}$ para todo $x\in G$, entonces
+ fijado $x\in G$, 
+ \[
+ \rho(g)(xH)=g\cdot (xH)=(gx)H=(xhx^{-1})xH=(xh)H=xH
+ \]
+ pues $g=xhx^{-1}$ para algún $h\in H$. Luego $\rho(g)=\id$ y entonces $g\in\ker\rho$. Veamos ahora que vale $\subseteq$. Si $g\in\ker\rho$, entonces
+ $\rho(g)=\id$, es decir que, para todo $x\in G$,  
+ \begin{align*}
+\rho(g)(xH)=xH
+\Longleftrightarrow (gx)H=xH
+\Longleftrightarrow x^{-1}gx\in H
+\Longleftrightarrow g\in xHx^{-1}.
+ \end{align*}
+Dejamos como 
+ejercicio demostrar que $\ker\rho$ es el mayor subgrupo normal de $G$ contenido en $H$. 
+\end{example}
+
+Podemos utilizar el ejemplo anterior para dar una aplicación. Daremos una tercera demostración 
+del corolario~\ref{cor:p_menor} en la página~\pageref{cor:p_menor}.
+
+\begin{quote}
+	Sea $p$ el menor número primo que divide al orden de un grupo finito  
+	$G$ y sea $H$ un subgrupo de $G$ índice $p$. Entonces $H$ es normal en $G$. 
+\end{quote}
+
+Hacemos actuar a $G$ en $G/H$ por multiplicación a 
+izquierda y tenemos un morfismo $\rho\colon G\to\Sym_p$ que tiene núcleo
+\[
+K=\ker\rho=\bigcap_{x\in G}xHx^{-1}\subseteq H.
+\]
+Por el primer teorema de isomorfismos, $G/K\simeq\rho(G)\lesssim\Sym_p$ (aquí la notación nos dice que $\rho(G)$ es isomorfo a un subgrupo de $\Sym_p$). Luego $|G/K|$ divide a $p!$. 
+Sea $m=(H:K)$. Por el teorema de Lagrange, 
+\[
+(G:K)=(G:H)(H:K)=pm
+\]
+y luego $pm$ divide a $p!$, lo que implica que $m$ divide a $(p-1)!$. Si $q$ es un primo que divide a $m$, entnoces $q\geq p$, por la minimalidad de $p$. Además los factores primos de $(p-1)!$ son todos $<p$. En consecuencia, $m=1$ y luego $H=K$.
+ 
+
+Una acción de un grupo en un conjunto permite definir una relación de equivalencia. Si $G$ actúa en $X$, sobre el conjunto $X$ 
+definimos $x\sim y$ si y sólo si existe $g\in G$ tal que $g\cdot x=y$. 
+
+\begin{definition}
+\index{Órbita}
+Sea $G$ un grupo que actúa en un conjunto $X$. Si $x\in X$, la órbita
+de $x$ es el conjunto
+\[
+G\cdot x=\{g\cdot x:g\in G\}.
+\]	
+\end{definition}
+
+Las órbitas de la acción de $G$ en $X$ son entonces las clases de equivalencia de la relación inducida por la acción. En particular, dos órbitas cualesquiera serán disjuntas o iguales. Además $X$ podrá descomponerse como unión disjunta de órbitas.  
+
+\begin{definition}
+	\index{Estabilizador}
+	Sea $G$ un grupo que actúa en un conjunto $X$. Si $x\in X$, el estabilizador de $x$ en $G$ 
+	es el subgrupo 
+	\[
+	G_x=\{g\in G:g\cdot x=x\}.
+	\]	
+\end{definition}
+
+Queda como ejercicio demostrar que el estabilizador es un subgrupo. 
+
+\index{Acción!transitiva}
+El ejemplo anterior es un ejemplo típico de \textbf{acción transitiva}, 
+esto significa que dados
+$xH,yH\in G/H$, existe $g\in G$ tal que $(gx)H=yH$ (basta tomar $g=yx^{-1}$). Veamos la definición 
+general. 
+
+\begin{definition}
+\index{Acción!transitiva}
+Diremos que una acción de un grupo $G$ en un conjunto $X$ 
+es \textbf{transitiva} si dados $x,y\in X$ existe $g\in G$ tal que $g\cdot x=y$. 
+\end{definition}
+
+\begin{example}
+Por evaluación, 
+el grupo simétrico $\Sym_n$ actúa transitivamente en el conjunto $\{1,\dots,n\}$.  	
+\end{example}
+
+En la definición de acción transitiva, no hay condiciones sobre la cantidad de $g$ tales que $g\cdot x=y$. 
+
+\begin{definition}
+\index{Acción!fiel}
+Diremos que una acción de un grupo $G$ en un conjunto $X$ es \textbf{fiel} si 
+$\{g\in G:g\cdot x=x\text{ para todo $x\in X$}\}=\{1\}$. 
+\end{definition}
+
+La definición anterior equivale a pedir que el morfismo inducido por la acción sea inyectivo. 
+
+% \begin{definition}
+% 	Si $G$ es un grupo y $X$ e $Y$ son $G$-conjuntos, diremos que una función $\varphi\colon X\to Y$ es un morfismo de $G$-conjuntos
+% 	si $\varphi(g\cdot x)=g\cdot \varphi(x)$ para todo $g\in G$ y $x\in X$. 
+% \end{definition}
+
+\begin{theorem}[principio fundamental del conteo]
+\index{Principio fundamental del conteo}
+Sea $G$ un grupo finito que actúa en un conjunto finito $X$. Si $x\in X$, entonces $|G\cdot x|=(G:G_x)$. 
+\end{theorem}
+
+\begin{proof}
+	Sea $\varphi\colon G/G_x\to G\cdot x$, $gG_x\mapsto g\cdot x$. La función $\varphi$ está bien definida pues
+	\[
+	gG_x=hG_x\implies h^{-1}g\in G_x
+	\implies h^{-1}g\cdot x=x\implies g\cdot x=h\cdot x.
+	\]
+	La función $\varphi$ es inyectiva pues 
+	\[
+	\varphi(gG_x)=\varphi(hG_x)\implies
+	g\cdot x=h\cdot x\implies
+	h^{-1}g\in G_x\implies gG_x=hG_x.
+	\]
+	La función $\varphi$ es trivialmente sobreyectiva. En consecuencia, $|G/G_x|=|G\cdot x|$. 
+\end{proof}
+
+Si $G$ es un grupo y $X$ e $Y$ son $G$-conjuntos, diremos que una función $\varphi\colon X\to Y$ es 
+un \textbf{morfismo} de $G$-conjuntos
+si $\varphi(g\cdot x)=g\cdot \varphi(x)$ para todo $g\in G$ y $x\in X$. La 
+biyección $\varphi$ que construimos en la demostración del teorema anterior 
+es en realidad un morfismo de $G$-conjuntos, 
+donde la acción de $G$ en $G/G_x$ es por multiplicación a izquierda, 
+pues 
+\[
+\varphi(g\cdot hG_x)=\varphi((gh)G_x)=(gh)\cdot x=g\cdot (h\cdot x)=g\cdot\varphi(hG_x).
+\]
+Luego $G\cdot x\simeq G/G_x$ como $G$-conjuntos.
+% El corolario que daremos a continuación bien puede denominarse el principio fundamental del conteo. 
+
+% \begin{corollary}[principio fundamental del conteo]
+% \index{Principio fundamental del conteo}
+% 	Si $G$ es un grupo finito que actúa en un conjunto $X$, entonces
+% 	$|G\cdot x|=(G:G_x)$ para todo $x\in X$. 
+% \end{corollary}
+
+% \begin{proof}
+% 	El resultado es consecuencia inmediata del teorema anterior ya que $G$ actúa transitivamente en cada órbita. 
+% \end{proof}
+%Vamos a dar dos ejemplos que utilizaremos frecuentemente. 
+
+\begin{example}
+	Si $G$ actúa en $G$ por conjugación, es decir $g\cdot x=gxg^{-1}$, las órbitas de esta acción son las \textbf{clases de conjugación} del grupo, es decir los conjuntos de la forma
+	\[
+	G\cdot x=\{gxg^{-1}:g\in G\}.
+	\]
+	Los estabilizadores son los centralizadores pues
+	\[
+	G_x=\{g\in G:g\cdot x=x\}=\{g\in G:gxg^{-1}=x\}=C_G(x).
+	\]
+	Luego $|G\cdot x|=(G:C_G(x))$. 
+\end{example}
+
+\begin{example}
+	Sea $H$ un subgrupo de $G$ y sea $X$ el conjunto de subconjuntos de $G$. Hacemos actuar a $G$ en $X$ por conjugación, es decir si $S\in X$, entonces 
+	$g\cdot S=gSg^{-1}$. La órbita de $H$ es entonces
+	\[
+	G\cdot H=\{g\cdot H:g\in G\}=\{gHg^{-1}:g\in G\},
+	\]
+	el conjunto de conjugados de $H$. El estabilizador de $H$ en $G$ es 
+	\[
+	G_H=\{g\in G:g\cdot H=H\}=\{g\in G:gHg^{-1}=H\}=N_G(H),
+	\]
+	el normalizador de $H$ en $G$. Luego $H$ tiene exactamente $(G:N_G(H))$ conjugados en $G$. Observemos que, en particular, la cantidad de conjugados de $H$ en un grupo finito $G$ es un divisor del orden de $G$. 
+\end{example}
+
+Como aplicación daremos una demostración de la fórmula que vimos en el teorema~\ref{thm:|HK|}, 
+que permite calcular el tamaño del conjunto $HK$ si $H$ y $K$ 
+son subgrupos de un grupo $G$. 
+
+\begin{example}
+Si $G$ es un grupo y $H$ y $K$ son subgrupos de $G$, entonces 
+el grupo $L=H\times K$ actúa en $X=HK$ por
+\[
+(h,k)\cdot x=hxk^{-1},\quad x\in X,\,h\in H,\,k\in K.
+\] 
+Observemos que $1\in HK$ y que la acción de $K$ en $X$ 
+tiene una única órbita, pues
+$(h,k^{-1})\cdot 1 = hk$. Como además    
+\[
+L_1=\{(h,k)\in H\times K: (h,k)\cdot 1=1\}=\{(h,k)\in H\times K:h=k\},
+\]
+entonces $|L_1|=|H\cap K|$, pues $L_1$ y $H\cap K$ están en biyección. Luego 
+el principio teorema fundamental del conteo 
+nos dice que  
+\[
+|HK|=(L:L_1)=\frac{|H\times K|}{|H\cap K|}=\frac{|H||K|}{|H\cap K|}.
+\]
+\end{example}
+
+El ejemplo anterior puede generalizarse, lo que nos da una descomposición 
+de un grupo como unión disjunta de \textbf{coclases dobles}. Veremos más adelante
+demostraciones alternativas de los teoremas de Sylow basadas en 
+coclases dobles.
+
+\begin{example}
+\index{Coclase!doble}
+Sea $G$ un grupo y sean $H$ y $K$ subgrupos de $G$. Hacemos
+que el grupo $L=H\times K$ actúe en $G$ por
+\[
+(h,k)\cdot g=hgk^{-1}.
+\]
+Las órbitas son los conjuntos de la forma
+\[
+HgK=\{hgk:h\in H,\,k\in K\},
+\]
+estos conjuntos se llaman $(H,K)$-coclases dobles. 
+En particular, dos $(H,K)$-coclases dobles son disjuntas o iguales. Más aún, 
+$G$ se descompone como unión disjunta 
+\[
+G=\bigcup_{i\in I}Hg_iK,
+\]
+para algún conjunto $I$, es decir $G$ 
+es unión disjunta de $(H,K)$-coclases dobles. 
+Calculamos ahora 
+\[
+L_g=\{(h,k)\in H\times K:hgk^{-1}=g\}=\{(h,g^{-1}hg)\in H\times K\}
+\]
+y vemos que $|L_g|=|H\cap gKg^{-1}|$, pues los conjuntos $L_g$ y $H\cap gKg^{-1}$ están en biyección. 
+Luego, 
+gracias al principio fundamental del conteo, 
+\[
+|HgK|=(L:L_g)=\frac{|H\times K|}{|H\cap gKg^{-1}|}=\frac{|H||K|}{|H\cap gKg^{-1}|}.
+\]
+\end{example}
+
+Veamos otra aplicación. 
+Calculemos ahora el orden del grupo $\GL_n(p)$ para $n\in\N$ y $p$ un número primo. El mismo argumento
+nos permite calcular $\GL_n(q)$ para $q$ una potencia del primo $p$. 
+
+\begin{example}
+Sea $K=\Z/p$. 
+Vamos a demostrar que 
+\[
+|\GL_n(p)|=(p^n-1)p^{n-1}|\GL_{n-1}(p)|,
+\]
+lo que implica que
+\[
+|\GL_n(p)|=(p^n-1)(p^n-p)\cdots (p^n-p^{n-1}).
+\]
+La fórmula es cierta en el caso $n=1$ y por lo tanto también cuando $n=2$. Supongamos
+entonces que vale para $n-1\geq1$. 
+El grupo $G=\GL_{n}(p)$ actúa en $K^{n}$ por multiplicación a izquierda y hay dos órbitas, es decir
+\[
+X=\{0\}\cup (K^{n}\setminus\{0\}),
+\]
+pues si $v,w\in K^{n}\setminus\{0\}$, entonces existe $g\in G$ tal que $gv=w$. 
+El principio 
+fundamental del conteo nos dice que
+\[
+p^{n+1}-1=|K^{n+1}\setminus\{0\}|=(G:G_{e_1}),
+\]
+donde $e_1=(1,0,\dots,0)^T$. Si $g=(g_{ij})\in G$ es tal que $ge_1=e_1$, entonces 
+\[
+g=
+\begin{pmatrix}
+1 & g_{12} & \cdots & g_{1n}\\
+0 & g_{22} & \cdots & g_{2n}\\
+\vdots & \vdots & \ddots &\vdots\\
+0 & g_{n1} & \cdots & g_{nn}	
+\end{pmatrix}.
+\]
+Luego $|G_{e_1}|=p^{n-1}|\GL_{n-1}(p)|$, ya que la submatriz
+$(g_{ij})_{2\leq i,j\leq n}$ es inversible y los 
+$g_{1j}$ pueden elegirse arbitrariamente para todo $j\in\{2,\dots,n\}$. 
+Luego
+\[
+p^{n}-1=\frac{|G|}{|G_{e_1}|}=\frac{|\GL_n(p)|}{p^{n-1}|\GL_{n-1}(p)|},
+\]
+que es esencialmente la fórmula que queríamos demostrar.
+\end{example}
+
+
+%Como aplicación de las acciones de grupos, 
+%daremos una tercera demostración del corolario~\ref{cor:p_menor} que vimos en la página~\pageref{cor:p_menor}.
+%
+%\begin{quote}
+%	Sea $p$ el menor número primo que divide al orden de un grupo finito  
+%	$G$ y sea $H$ es un subgrupo de $G$ índice $p$. Entonces $H$ es normal en $G$. 
+%\end{quote}
+%
+%Hacemos actuar a $G$ en $G/H$ por multiplicación a izquierda y tenemos entonces un morfismo de grupos $\rho\colon G\to\Sym_p$ con núcleo
+%\[
+%K=\cap_{x\in G}xHx^{-1}\subseteq H,
+%\]
+%pues $|G/H|=p$. 
+%
+%Observemos que $|G/K|$ divide a $p!$ pues $G/K\simeq\rho(G)\leq\Sym_p$ por el primer teorema de isomorfismos. 
+%Si $m=(H:K)$, entonces $(G:K)=(G:H)(H:K)=pm$. Luego $pm$ divide a $p!$ y entonces $m$ divide a $(p-1)!$. Si $q$ es un primo que divide a $m$, entonces $q\geq p$ (por la minimalidad de $p$ que tenemos en el enunciado). Como los factores primos de $(p-1)!$ son todos $<p$, $m=1$ y entonces $H=K$.  

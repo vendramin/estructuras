@@ -1,0 +1,657 @@
+\chapter{Sucesiones exactas}
+
+\begin{definition}
+\index{Sucesión exacta}	
+Sea $M_1,M_2,\dots$ una sucesión de $R$-módulos y para cada $n\in\N$ sea
+$f_n\colon M_n\to M_{n-1}$ un morfismo. Diremos que la sucesión
+\[
+\cdots\xrightarrow{f_{n+2}}M_{n+1}\xrightarrow{f_{n+1}}M_n\xrightarrow{f_n}M_{n-1}\xrightarrow{f_{n-1}}\cdots
+\]
+de módulos y morfismos 
+es \textbf{exacta} si $\ker f_n=f_{n+1}(M_{n+1})$ para todo $n\in\N$. 
+\end{definition}
+
+\index{Sucesión exacta corta}
+En general nos encontraremos con \textbf{sucesiones exactas cortas}, es decir 
+decir, sucesiones de la forma
+	\begin{equation}
+	\label{eq:exacta1}	
+		\xymatrix{
+        0\ar[r]
+        & M
+        \ar[r]^f
+        & N
+        \ar[r]^g
+        & T\ar[r]
+        & 0,
+        }
+  	\end{equation}
+donde la exactitud significa que $f$ es monomorfismo, $g$ es epimorfismo y que $f(M)=\ker g$. 
+
+\begin{exercise}
+Demuestre que si la sucesión~\eqref{eq:exacta1} es exacta, entonces $M\simeq\ker f$ y $T\simeq M/\ker f$.
+\end{exercise}
+
+\begin{examples}
+La sucesión 
+\[
+		\xymatrix{
+        0\ar[r]
+        & M
+        \ar[r]^f
+        & N
+        }
+\]
+es exacta si y sólo si $f$ es un monomorfismo. Similarmente, la sucesión
+\[
+		\xymatrix{
+        M
+        \ar[r]^g
+        & N
+        \ar[r]
+        & 0
+        }
+\]
+es exacta si y sólo si $g$ es un epimorfismo.
+\end{examples}
+
+\begin{example}
+La sucesión
+\begin{equation}
+\label{eq:split}
+			\xymatrix{
+        0\ar[r]
+        & M
+        \ar[r]^f
+        & M\oplus N
+        \ar[r]^g
+        & N\ar[r]
+        & 0,
+        }
+\end{equation}
+donde $f(m)=(m,0)$ y $g(m,n)=n$, es exacta.
+\end{example}
+
+Nos interesa saber cuándo una sucesión exacta~\ref{eq:exacta1} es de la forma~\eqref{eq:split}. Para eso
+necesitamos algunas definiciones.
+
+\begin{definition}
+\index{Sección}	
+Sea $f\in\Hom_R(M,N)$. Diremos que el morfismo $f$ es una \textbf{sección} si existe $g\in\Hom_R(N,M)$ tal que $g\circ f=\id_M$.  
+\end{definition}
+
+\begin{definition}
+\index{Retracción}	
+Sea $f\in\Hom_R(M,N)$. Diremos que el morfismo $f$ es una \textbf{retracción} si existe $g\in\Hom_R(N,M)$ tal que $f\circ g=\id_N$. 
+\end{definition}
+
+Dejamos como ejercicio demostrar que una sección es siempre inyectiva. La afirmación recíproca no es cierta, ya que 
+la inclusión $2\Z\hookrightarrow\Z$ de $Z$-módulos es un monomorfismo que no es una sección.  
+Similarmente, una retracción es siempre sobreyectiva y la recíproca no es cierta 
+ya que por ejemplo $\Z\to\Z/2$ es un epimorfismo de $\Z$-módulos que no es una retracción. 
+ 
+\begin{definition}
+	\index{Sucesiones exactas!euivalentes}
+	La sucesión exacta 
+	\[  
+		\xymatrix{
+        0\ar[r]
+        & A
+        \ar[r]
+        & B
+        \ar[r]
+        & C\ar[r]
+        & 0,
+        }
+      \]
+      y la sucesión exacta 
+      \[
+        \xymatrix{
+        0\ar[r]
+        & A_1
+        \ar[r]
+        & B_1
+        \ar[r]
+        & C_1\ar[r]
+        & 0	
+        }
+     \]
+	se dirán \textbf{equivalentes} (o isomorfas) si 
+	existen isomorfismos $\alpha$, $\beta$ y $\gamma$ tales que
+	el diagrama 
+	    \begin{equation}
+        \xymatrix{
+        0\ar[r] 
+        & A
+        \ar@{->}[d]^{\alpha}
+        \ar[r]
+        & B
+        \ar[r]
+        \ar[d]^\beta
+        & C\ar[r]
+        \ar@{->}[d]^\gamma 
+        & 0
+        \\
+        0\ar[r] 
+        & A_1
+        \ar[r]
+        & B_1
+        \ar[r]
+        & C_1\ar[r]
+        & 0
+        }
+        \end{equation} 
+     es conmutativo. 
+\end{definition}
+
+El siguiente lema es de gran utilidad, aunque bastante técnico.
+
+\begin{lemma}[de los cinco]
+\index{Lema!de los cinco}
+Si el diagrama
+	    \begin{equation}
+        \xymatrix{
+        A\ar[r]^r
+        \ar@{->}[d]^{\alpha}
+        & B
+        \ar@{->}[d]^{\beta}
+        \ar[r]^s
+        & C
+        \ar[r]^t
+        \ar[d]^\gamma
+        & D\ar[r]^u
+        \ar@{->}[d]^\delta 
+        & E
+		\ar@{->}[d]^\epsilon 
+        \\
+        A_1\ar[r]^{r_1} 
+        & B_1
+        \ar[r]^{s_1}
+        & C_1
+        \ar[r]^{t_1}
+        & D_1\ar[r]^{u_1}
+        & E_1
+        }
+        \end{equation} 	
+       es conmutativo y con filas exactas, valen las siguientes afirmaciones:
+       \begin{enumerate}
+       	\item Si $\alpha$ es epimorfismo y $\beta$ y $\delta$ son monomorfismos, entonces $\gamma$ es monomorfismo.
+       	\item Si $\epsilon$ es monomorfismo y $\beta$ y $\delta$ son epimorfismos, entonces $\gamma$ es epimorfismo.
+       	\item Si $\alpha$, $\beta$, $\delta$ y $\epsilon$ son isomorfismos, entonces $\gamma$ es isomorfismo.
+       \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Demostremos la primera afirmación. Sea $c\in C$ tal que $\gamma(c)=0$. Queremos ver que $c=0$. Como $\gamma(c)=0$, 
+	entonces $\delta(t(c))=t_1(\gamma(c))=0$. Como $\delta$ es inyectiva, $t(c)=0$, es decir $c\in \ker t=s(B)$. En particular, 
+	$c=s(b)$ para algún $b\in B$. Si $b_1=\beta(b)$, entonces
+	\[
+	s_1(b_1)=s_1(\beta(b))=\gamma(s(b))=\gamma(c)=0
+	\]
+	y entonces $b_1\in\ker s_1=r_1(A_1)$. En particular, $b_1=r_1(a_1)$ para algún $a_1\in A_1$. Como $\alpha$ es epimorfismo, 
+	$a_1=\alpha(a)$ para algún $a\in A$. Entonces
+	\[
+	\beta(b)=b_1=r_1(a_1)=r_1(\alpha(a))=\beta(r(a))
+	\]
+	y luego $b-r(a)\in\ker\beta=\{0\}$, es decir $b=r(a)$. En conclusión,  
+	\[
+	c=s(b)=s(r(a))=0.
+	\] 
+	
+	Demostremos la segunda afirmación. Sea $c_1\in C_1$. Queremos ver que $c_1=\gamma(c)$ para algún $c\in C$. Sea
+	$d_1=t_1(c_1)$. Como $\delta$ es epimorfismo, $d_1=\delta(d)$ para algún $d\in D$. Entonces
+	\[
+	u_1(\delta(d))=u_1(t_1(c_1))=0
+	\]
+	y luego $\delta(d)\in\ker u_1$. Como $0=u_1(\delta(d))=\epsilon(u(d))$ y $\epsilon$ es un monomorfismo, 
+	entonces $u(d)=0$, es decir $d\in\ker u=t(C)$. En consecuencia, $d=t(c)$ para algún $c\in C$. Como
+	\[
+	t_1(c_1)=d_1=\delta(d)=\delta(t(c))=t_1(\gamma(c)),
+	\]
+	entonces $c_1-\gamma(c)\in\ker t_1=s_1(B_1)$, lo que significa que $c_1-\gamma(c)=s_1(b_1)$ para algún $b_1\in B_1$. Como
+	$\beta$ es un epimorfismo, $b_1=\beta(b)$ para algún $b\in B$. Luego
+	$c_1-\gamma(c)=s_1(\beta(b))=\gamma(s(b))$ y entonces
+	$c_1=\gamma(c)+\gamma(s(b))=\gamma(c+s(b))$. 
+\end{proof}
+
+\begin{exercise}
+	Consideremos el diagrama conmutativo
+	\[
+		\xymatrix{
+		X
+		\ar[d]^{\alpha}
+		\ar[r]^-{f}
+		& Y
+		\ar[r]^-{g}
+		\ar[d]^{\beta}
+		& Z
+		\ar[d]^{\gamma}
+		\\
+		X_1
+		\ar[r]^-{f_1}
+		& Y_1
+		\ar[r]^-{g_1}
+		& Z_1
+		}
+	\]
+	y supongamos que tiene filas exactas. Demuestre las siguientes afirmaciones:
+	\begin{enumerate}
+		\item Si $\alpha$, $\gamma$ y $f_1$ son monomorfismos entonces $\beta$ es monomorfismo.
+		\item Si $\alpha$, $\gamma$ y $g$ son epimorfismos entonces $\beta$ es epimorfismo.
+		\item Si $\beta$ es monomorfismo y $\alpha$ y $g$ son epimorfismos entonces $\gamma$ es monomorfismo.
+		\item Si $\beta$ es epimorfismo y $f_1$ y $\gamma$ son monomorfismos entonces $\alpha$ es epimorfismo.
+	\end{enumerate}
+%
+%	Probemos primero (1). Si $b\in B$ entonces $\beta(b)=0$ y
+%	\[
+%		0=g'(\beta(b))=\gamma(g(b)).
+%	\]
+%	Como $\gamma$ es monomorfismo, $g(b)=0$ y
+%	entonces $b\in\ker g=f(A)$. Luego existe $a\in A$ tal que $b=f(a)$. Tenemos entonces
+%	\[
+%		0=\beta(b)=\beta(f(a))=f'(\alpha(a))
+%	\]
+%	y luego, como $f'$ es monomorfismo, $\alpha(a)=0$. Como $\alpha$ es
+%	monomorfismo, $a=0$ y en conclusión $b=0$.
+\end{exercise}
+
+\begin{proposition}
+\label{pro:split}
+	Si 
+	\[  
+		\xymatrix{
+        0\ar[r]
+        & M
+        \ar[r]^f
+        & N
+        \ar[r]^g
+        & T\ar[r]
+        & 0	
+        }
+     \]
+     es exacta, las siguientes afirmaciones son equivalentes:
+     \begin{enumerate}
+     \item $f$ es una sección.
+     \item $g$ es una retracción.
+     \item Existen un isomorfismo $\varphi$ de forma que el diagrama
+   		\begin{equation}
+   		\label{eq:diagrama}
+        \xymatrix{
+        0\ar[r] 
+        & M
+        \ar@{=}[d]
+        \ar[r]
+        & N
+        \ar[r]
+        %\ar@{->}[d]^\psi  
+        & T\ar[r]
+        \ar@{=}[d]
+        & 0
+        \\
+        0\ar[r] 
+        & M
+        \ar[r]
+        & M\oplus T        
+        \ar[r]
+        \ar@{->}[u]^\varphi
+        & T\ar[r]
+        & 0
+        }
+        \end{equation} 
+		es conmutativo. 
+     \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Veamos que $(2)\implies(3)$. Como $g$ es una retracción, existe un morfismo $h\colon T\to N$ tal que
+$g\circ h=\id_T$. Sea $\varphi\colon M\oplus T\to N$, $\varphi(m,t)=f(m)+h(t)$. 
+Entonces $\varphi$ es morfismo y 
+el diagrama~\eqref{eq:diagrama} es conmutativo pues
+\[
+(g\circ\varphi)(m,t)=g(f(m))+h(t))=t,\quad
+\varphi(m,0)=f(m).
+\]
+Para ver que $\varphi$ es un isomorfismo, se utiliza el lema de los cinco. 
+
+La demostración de la implicación $(1)\implies(3)$ es similar. Como
+$f$ es una sección, existe un morfismo $h\colon N\to M$ tal que $h\circ f=\id_M$. 
+Hay que usar entonces la función $\psi\colon N\to M\oplus T$, $n\mapsto (h(n),g(n))$, pues
+\begin{align*}
+	&\psi(f(m))=(h(f(m)),g(f(m)))=(m,0)=i_1(m),\\
+	&p_2(\psi(n))=p_2(h(n),g(n))=g(n).
+\end{align*}
+Como $\psi$ es un isomorfismo gracias al lema de los cinco, $\varphi=\psi^{-1}$. 
+
+Para ver que $(3)\implies (2)$, consideramos el diagrama conmutativo
+\[
+        \xymatrix{
+        0\ar[r] 
+        & M
+        \ar@{=}[d]
+        \ar[r]
+        & N
+        \ar[r]
+        \ar@{->}[d]^\varphi
+        & T\ar[r]
+        \ar@{=}[d]
+        & 0
+        \\
+        0\ar[r] 
+        & M
+        \ar[r]^{i_1}
+        & M\oplus T        
+        \ar[r]^{p_2}
+        \ar@<1ex>[l]^{p_1}
+        & T\ar[r]
+        \ar@<1ex>[l]^{i_2}
+        & 0
+        }
+\]
+      donde $i_1(m)=(m,0)$, $p_1(m,t)=m$, $i_2(t)=(0,t)$ y $p_2(m,t)=t$. 
+      Definimos entonces el morfismo $h\colon T\to N$, $t\mapsto \varphi(i_2(t))$. Tenemos
+      \[
+      g(h(t))=g(\varphi(0,t))=p_2(0,t)=t.
+      \] 
+      
+      Para ver que $(3)\implies (1)$ 
+      consideramos el mismo diagrama que en la implicación anterior 
+      y definimos el morfismo $h\colon N\to M$, $n\mapsto p_1(\varphi(n))$. Entonces
+      \[
+      h(f(m))=p_1(\varphi(f(m)))=p_1(i_1(m))=p_1(m,0)=m.\qedhere
+      \]
+ \end{proof}
+
+\index{Sucesión exacta!escindida}
+\index{Sucesión exacta!que se parte}
+Diremos que la sucesión exacta
+	\[  
+		\xymatrix{
+        0\ar[r]
+        & M
+        \ar[r]^f
+        & N
+        \ar[r]^g
+        & T\ar[r]
+        & 0	
+        }
+     \]
+es \textbf{escindida} (o que se parte) si cumple 
+alguna de las condiciones de la proposición anterior.    
+
+
+\begin{exercise}
+\label{xca:exactas1}
+	Sean 
+	\[
+	\xymatrix{
+	0\ar[r] 
+	& X
+	\ar[r]^-{f}
+	& M
+	\ar[r]^-{g}
+	& Y\ar[r]
+	& 0
+	}
+	\]
+	una sucesión exacta de módulos y $r\in R$. Pruebe que son equivalentes:
+	\begin{enumerate}
+		\item Para todo $x\in X$ tal que existe $m\in M$ con
+			$f(x)=r\cdot m$, existe $x_1\in X$ con $x_1=r\cdot x$. 
+		\item Para todo $y\in Y$ tal que $r\cdot y=0$ existe $m\in M$
+			tal que $r\cdot m=0$ e $y=g(m)$. 
+		\end{enumerate}
+\end{exercise}
+
+%		\begin{solution}
+%			Supongamos que vale (1) y sea $m''\in M''$ tal que $am''=0$. Como $g$ es
+%			epimorfismo, existe $m\in M$ tal que $g(m)=m''$. Luego $g(am)=am''=0$ y
+%			$am\in\ker(g)=f(M')$. Existe entonces $m'\in M'$ tal que $am=f(m')$. Por
+%			hipótesis, existe $m_1'\in M'$ tal que $am=f(am_1')$ y luego
+%			$a(m-f(m_1'))=0$. El elemento de $M$ que buscamos es $m-f(m_1')$ pues
+%			$g(m-f(m_1'))=g(m)=m''$.
+%
+%			Recíprocamente, supongamos que vale (2). Sea $m'\in M'$ tal que existe
+%			$m\in M$ con $f(m')=am$. Si aplicamos $g$ obtenemos $0=gf(m')=ag(m)$. Si
+%			usamos (2) con $g(m)\in M''$ entonces existe $m_1\in M$ tal que $am_1=0$
+%			y $g(m)=g(m_1)$. Como $\ker(g)=f(M')$, existe $m_1'\in M'$ tal que
+%			$m-m_1=f(m_1')$. Esto implica que $f(m')=am=am-am_1=af(m_1')=f(am_1')$.
+%			Como $f$ es monomorfismo, $m'=am_1'$.
+%		\end{solution}
+
+\begin{exercise}
+\label{xca:exactas2}
+	Sea
+	\[
+	\xymatrix{
+	 0\ar[r] 
+	 & X
+	 \ar[r]^-{f}
+	 %\ar@<.7ex>[r]^-{f}
+	 & M
+	 %\ar@<.7ex>[r]^-{g}
+	 %\ar@<.7ex>[l]^-{r}
+	 \ar[r]^-{g}
+	 & Y\ar[r]
+	 %\ar@<.7ex>[l]^-{s}
+	 & 0
+	 }
+	\]
+	Demuestre que $g$ es una retracción si y sólo si 
+	existen morfismos $s\colon Y\to M$ y $r\colon M\to X$  
+	tales que $f\circ r+s\circ g=\id_M$.
+%	
+%	Probemos primero que $(1)\Rightarrow(3)$. Como $g$ es una retracción, sabemos
+%	que existe un morfismo $s\colon M''\to M$ tal que $gs=\id_{M''}$.  Como $f$
+%	es monomorfismo, 
+%	\[
+%		M'\simeq M'/\ker(f)\simeq f(M)=\ker(f).
+%	\]
+%	Además $g(\id_M-sg)=g-gsg=0$. Existe entonces un único morfismo $r\colon M\to
+%	M'$ tal que $fr=\id_M-sg$. 
+%
+%	Probemos que $(3)\Rightarrow(1)$. Como la sucesión es exacta, 
+%	$gsg=g(fr+sg)=g$. Como $g$ es epimorfismo, $gs=\id_{M''}$. 
+\end{exercise}
+
+Describiremos ahora el funtor $\Hom_R(M,-)$. 
+
+Informalmente, un funtor $\Hom_R(M,-)$ 
+es una regla que para cada módulo $N$ nos devolverá el grupo abeliano $\Hom_R(M,N)$ y para cada
+morfismo $f\in\Hom_R(A,B)$ nos devoverá el morfismo $f_*\colon\Hom_R(M,A)\to\Hom_R(M,B)$, 
+$f_*(\alpha)=f\circ \alpha$, de grupos abelianos.
+
+\begin{proposition}
+Si la sucesión
+\begin{gather*}
+	\label{eq:exacta}	
+		\xymatrix{
+        0\ar[r]
+        & A
+        \ar[r]^f
+        & B
+        \ar[r]^g
+        & C\ar[r]
+        & 0
+        }
+\shortintertext{es exacta, entonces}
+	\label{eq:exacta}	
+		\xymatrix{
+        0\ar[r]
+        & \Hom_R(M,A)
+        \ar[r]^{f_*}
+        & \Hom_R(M,B)
+        \ar[r]^{g_*}
+        & \Hom_R(M,C)
+        }
+\end{gather*}
+es exacta. 
+\end{proposition}
+
+\begin{proof}
+	Primero veamos que $f_*$ es monomorfismo. Si $f\circ\alpha=0$, entonces $\alpha=0$ pues $f$ es monomorfismo. 
+	
+	Veamos ahora que $\im(f_*)\subseteq \ker g_*$. Si $\beta=f_*\alpha=f\circ\alpha$, entonces 
+	\[
+	g\circ\beta=(g\circ f)\circ\alpha=0,
+	\]
+	pues
+	$\im f\subseteq\ker g$, es decir $\beta\ker g_*$. 
+	
+	Veamos que vale también la inclusión $\im(f_*)\supseteq\ker g_*$. Si $g_*\beta=g\circ\beta=0$, entonces
+	$\beta(m)\in\ker g=\im f$ para todo $m\in M$. Si $m\in M$, existe un único $a\in A$ tal que $\beta(m)=f(a)$. Si
+	$\alpha\colon M\to A$, $m\mapsto a$, entonces $\alpha\in\Hom_R(M,A)$ es tal que $\beta=f\circ\alpha$. 
+\end{proof}
+
+\begin{example}
+Obervemos que $g_*$ podría no ser un epimorfismo. Si $g\colon\Z\to\Z/n\Z$ es el morfismo canónico de $\Z$-módulos, 
+entonces $\Hom_{\Z}(\Z/n\Z,\Z)=\{0\}$ aunque $\Hom_{\Z}(\Z/n\Z,\Z/n\Z)\ne\{0\}$. 	
+\end{example}
+
+Diremos que el funtor $\Hom_R(M,-)$ es \textbf{exacto} si para toda sucesión 
+	\[
+	\xymatrix{
+	 0\ar[r] 
+	 & A
+	 \ar[r]^-{f}
+	 & B
+	 \ar[r]^-{g}
+	 & C\ar[r]
+	 & 0
+	 }
+	\]
+exacta se tiene que la sucesión 
+ 	\[
+	\xymatrix{
+	 0\ar[r] 
+	 & \hom_R(M,A)
+	 \ar[r]^-{f_*}
+	 & \hom_R(M,B)
+	 \ar[r]^-{g_*}
+	 & \hom_R(M,C)\ar[r]
+	 & 0
+	 }
+	\]
+	de grupos abelianos y morfismos
+	es también exacta.
+
+
+\begin{proposition}
+	Si la sucesión exacta
+		\[
+	\xymatrix{
+	 0\ar[r] 
+	 & A
+	 \ar[r]^-{f}
+	 & B
+	 \ar[r]^-{g}
+	 & C\ar[r]
+	 & 0
+	 }
+	\]
+	se parte, entonces 
+	 \[
+	\xymatrix{
+	 0\ar[r] 
+	 & \Hom_R(M,A)
+	 \ar[r]^-{f_*}
+	 & \Hom_R(M,B)
+	 \ar[r]^-{g_*}
+	 & \Hom_R(M,C)\ar[r]
+	 & 0
+	 }
+	\]
+	también se parte.
+\end{proposition}
+
+\begin{proof}
+Debemos demostrar que $g_*$ es sobreyectiva. Por hipótesis sabemos que existe $h\in\Hom_R(C,B)$ tal que
+$g\circ h=\id_C$. 
+Si $f\in\Hom_R(M,C)$, entonces
+\[
+(g_*\circ h_*)(f)=g_*(h_*(f))=g_*(h\circ f)=g\circ (h\circ f)=(g\circ h)\circ f=\id_B\circ f=f.
+\]
+Como $g_*\circ h_*=\id$, se concluye que $g_*$ es sobreyectiva y que la sucesión exacta además se parte. 
+% Si $h\in\Hom_R(C,B)$ es tal que $g\circ h=\id_C$, entonces $g_*\circ h_*=\id$ pues
+% \[
+% (g_*\circ h_*)(\alpha)=g\circ (h\circ\alpha)=(g\circ h)\circ\alpha=\id_C\circ \alpha=\alpha
+% \]
+% para todo $\alpha\in\Hom_R(M,C)$. 
+\end{proof}
+
+De la misma forma se define el funtor $\Hom_R(-,M)$. 
+Para cada 
+módulo $N$ el funtor nos devolverá el módulo $\Hom_R(N,M)$ y para cada
+morfismo $f\in\Hom_R(A,B)$ nos devoverá un morfismo $f^*\colon\Hom_R(A,M)\to\Hom_R(B,M)$, 
+$f^*(\alpha)=\alpha\circ f$. Tal como demostramos la proposición anterior
+puede verse que
+si la sucesión exacta
+		\[
+	\xymatrix{
+	 0\ar[r] 
+	 & A
+	 \ar[r]^-{f}
+	 & B
+	 \ar[r]^-{g}
+	 & C\ar[r]
+	 & 0
+	 }
+	\]
+	se parte, entonces 
+	 \[
+	\xymatrix{
+	 0\ar[r] 
+	 & \hom_R(C,M)
+	 \ar[r]^-{g^*}
+	 & \hom_R(B,M)
+	 \ar[r]^-{f^*}
+	 & \hom_R(A,M)\ar[r]
+	 & 0
+	 }
+	\]
+también se parte. 
+
+\begin{example}
+Si usamos el resultado anterior
+con la sucesión exacta
+\[
+	\xymatrix{
+	 0\ar[r] 
+	 & B
+	 \ar[r]^-{i_B}
+	 & A\oplus B
+	 \ar[r]^-{p_A}
+	 & A\ar[r]
+	 & 0
+	 }
+	\]
+donde $i_B(b)=(0,b)$ y $p_A(a,b)=a$,  
+podemos demostrar que  
+\begin{equation}
+\label{eq:hom1}
+\Hom_R(A\oplus B,M)\simeq \Hom_R(A,M)\times\Hom_R(B,M).
+\end{equation}
+Puede verificarse que el isomorfismo está dado por $f\mapsto (f\circ i_A,f\circ i_B)$, 
+donde $i_A\colon A\to A\oplus B$, $i_A(a)=(a,0)$ y 
+$i_B\colon B\to A\oplus B$, $i_B(b)=(0,b)$.
+\end{example}
+
+\begin{example}
+Tal como se hizo en el ejemplo anterior, puede demostrarse que 
+\begin{equation}
+\label{eq:hom2}	
+\Hom_R(M,A\times B)\simeq \Hom_R(M,A)\times\Hom_R(M,B).	
+\end{equation}
+En este caso el isomorfismo es $f\mapsto (p_A\circ f,p_B\circ f)$, 
+donde $p_A\colon A\oplus B\to A$, $p_A(a,b)=a$ y  
+$p_B\colon A\oplus B\to B$, $p_B(a,b)=b$. 
+\end{example}
+
+Para entender mejor por qué usamos sumas y productos en las fórmulas~\eqref{eq:hom1} y~\eqref{eq:hom2} 
+mencionamos que pueden demostrarse las fórmulas  
+\begin{align*}
+&\Hom_R\left(\bigoplus_{i\in I}M_i,M\right)\simeq \prod_{i\in I}\Hom_R(M_i,M),\\
+&\Hom_R\left(M,\prod_{i\in I}M_i\right)\simeq \prod_{i\in I}\Hom_R(M,M_i).	
+\end{align*}
+
+
+

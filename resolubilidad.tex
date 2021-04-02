@@ -1,0 +1,116 @@
+\chapter{Grupos resolubles}
+
+Una forma de atacar ciertos aspectos de la estrucura de los grupos se basa en estudiar propiedades de los factores que aparecen en las series de composición. El caso que estudiaremos en este capítulo involucra factores abelianos. Nos concentraremos en el caso de los grupos finitos. 
+
+\begin{definition}
+\index{Grupo!resoluble}
+Diremos que un grupo finito $G$ es \textbf{resoluble} si los factores de su serie de composición son abealianos. 	
+\end{definition}
+
+La definición anterior trivialmente implica que todo grupo abeliano finito será resoluble. En cambio, grupos simples finitos no abelianos no serán resolubles. 
+
+\begin{example}
+Si $p$ es primo, $\D_p$ es resoluble pues $\D_p\supseteq\langle r\rangle\supseteq\{1\}$ es una serie de composición. 	
+\end{example}
+
+\begin{example}
+El grupo simétrico $\Sym_3$ es resoluble pues $\Sym_3\supseteq\Alt_3\supseteq\{\id\}$ es una serie de composición.	
+\end{example}
+
+\begin{example}
+	Si $n\geq5$ el grupo simétrico $\Sym_n$ no es resoluble. Una serie de composición para $\Sym_n$ es $\Sym_n\supseteq\Alt_n\supseteq\{\id\}$. 
+\end{example}
+
+\begin{example}
+Todo grupo $G$ de orden 20 es resoluble. Por el primer teorema de Sylow sabemos que existe $P\in\Syl_2(G)$, es decir
+$|P|=4$. Por el teorema de Cauchy sabemos que existe $x\in P$ tal que $x$ tiene orden 2. Entonces $G$ es resoluble pues la serie de composición  
+$G\supseteq P\supseteq\langle x\rangle\supseteq \{1\}$ tiene factores abelianos. 
+\end{example}
+
+Vamos a dar una caracterización de la resolubilidad de un grupo $G$. Para eso definimos la siguiente sucesión de conmutadores:
+\[
+G^{(0)}=G,\quad
+G^{(k+1)}=[G^{(k)},G^{(k)}]
+\]
+para $k\geq0$. La sucesión $G=G^{(0)}\supseteq G^{(1)}\supseteq\cdots$ se conoce como la \textbf{serie derivada} de $G$ o sucesión de conmutadores de $G$. 
+
+\begin{theorem}
+Sea $G$ un grupo finito. Las siguientes afirmaciones son equivalentes:
+\begin{enumerate}
+	\item $G$ es resoluble.
+	\item $G$ admite una sucesión $G=G_0\supseteq G_1\supseteq\cdots\supseteq G_n=\{1\}$ de subgrupos tal que $G_i\unlhd G_{i-1}$ para todo $i$ y además $G_{i-1}/G_i$ es abeliano para todo $i$. 
+	\item $G^{(n)}=\{1\}$ para algún $n\in\N$. 
+\end{enumerate}	
+\end{theorem}
+
+\begin{proof}
+	La implicación $(1)\implies(2)$ es trivial, solamente basta con utilizar una serie de composición para el grupo.
+	
+	Demostremos ahora que $(2)\implies(3)$. Veamos por inducción que $G^{(i)}\subseteq G_i$ para todo $i\geq0$. El caso $i=0$ es trivial. Si el resultado
+	vale para algún $i\geq0$, entonces, como $G_i/G_{i+1}$ es abeliano, $[G_i,G_i]\subseteq G_{i+1}$ y luego
+	\[
+	G^{(i+1)}=[G^{(i)},G^{(i)}]\subseteq [G_i,G_i]\subseteq G_{i+1}.
+	\]
+	En particular, $G^{(n)}\subseteq G_n=\{1\}$.   
+	
+	La implicación $(3)\implies(2)$ es trivial.
+	
+	Por último, demostraremos que $(2)\implies(1)$. Sea 
+	\begin{equation}
+	\label{eq:sucesion}
+		G=H_0\supseteq H_1\supseteq\cdots\supseteq H_n=\{1\}		
+	\end{equation}
+	una sucesión de subgrups de $G$ tal que
+	$H_i\unlhd H_{i-1}$ para todo $i$ y además $H_{i-1}/H_i$ es abeliano para todo $i$, donde $n$ se tomará lo mayor posible. Entonces cada
+	cociente $H_{i-1}/H_i$ es simple, pues de lo contrario existirá $N\unlhd H_{i-1}$ tal que $H_i\subsetneq N\subsetneq H_{i-1}$ 
+	y la sucesión
+	\[
+	G=H_0\supseteq H_1\supseteq\cdots\supseteq H_{i-1}\supseteq N\supseteq H_i\supseteq\cdots\supseteq H_n=\{1\}
+	\]
+	tendrá longitud $>n$, ya que $N/H_i$ es abeliano por ser un subgrupo de $H_{i-1}/H_i$ y 
+	\[
+	H_{i-1}/N\simeq \frac{H_{i-1}/H_i}{N/H_i}
+	\]
+	es también abeliano,
+	una contradicción. En conclusión, la sucesión~\eqref{eq:sucesion} es una serie de composición con factores abelianos. 
+\end{proof}
+
+Un grupo infinito se dirá resoluble si se satisface el segundo o tercer ítem del teorema anterior. El teorema siguiente ya no requiere la finitud del grupo $G$.
+
+\begin{theorem}
+Sea $G$ un grupo y $H$ un subgrupo de $G$.
+\begin{enumerate}
+	\item Si $G$ es resoluble, $H$ es resoluble.
+	\item Si $K\unlhd G$. Entonces $G$ es resoluble si y sólo si $K$ y $G/K$ son resolubles. 
+\end{enumerate}	
+\end{theorem}
+
+\begin{proof}
+La primera afirmación se obtiene de la inclusión $H^{(i)}\subseteq G^{(i)}$ para todo $i\geq0$. Para demostrar la segunda, sea $Q=G/K$ y sea
+$\pi\colon G\to Q$ el morfismo canónico. 
+
+Afirmamos que $\pi(G^{(i)})=Q^{(i)}$ para todo $i\geq 0$. El caso $i=0$ es fácil pues $\pi$ es sobreyectivo. Si el resultado vale para un cierto $i\geq0$, entonces
+\[
+\pi(G^{(i+1)})=\pi([G^{(i)},G^{(i)}])=[\pi(G^{(i)}),\pi(G^{(i)})]=[Q^{(i)},Q^{(i)}]=Q^{(i+1)}
+\]
+
+Supongamos primero que $K$ y $Q$ son resolubles. Entonces que $Q^{(n)}=\{1\}$ para algún $n\in\N$. Como $\pi(G^{(n)})=Q^{(n)}=\{1\}$, entonces $G^{(n)}\subseteq K=\ker\pi$. Como $K$ es resoluble, 
+existe $m\in\N$ tal que $K^{(m)}=\{1\}$. Luego
+\[
+G^{(n+m)}\subseteq \left(G^{(n)}\right)^{(m)}\subseteq K^{(m)}=\{1\}.
+\]
+
+Supngamos ahora que $G$ es resoluble, es decir $G^{(n)}=\{1\}$ para algún $n\in\N$. Entonces $Q^{(n)}=\pi(G^{(n)})=\pi(\{1\})=\{1\}$ y luego $Q$ es resoluble. La resolubiildad 
+del subgrupo $K$ se obtiene a partir del primer ítem del teorema.
+\end{proof}
+
+La siguiente proposición nos da muchos ejemplos de grupos resolubles.
+
+\begin{proposition}
+Sea $p$ un número primo. Si $G$ es un $p$-grupo, entonces $G$ es resoluble.
+\end{proposition}
+
+\begin{proof}
+Procederemos por inducción en el order de $G$. Si $|G|=1$, el resultado es trivialmente cierto. Supongamos entonces que la proposición vale para todos los $p$-grupos de tamaño $<|G|$. Si $G$ es abeliano, $G$ es resoluble. De lo contrario, $1<|Z(G)|<|G|$ pues $Z(G)\ne\{1\}$ porque $G$ es un $p$-grupo. Como $Z(G)$ es resoluble (por ser abeliano) y $G/Z(G)$ es resoluble (por hipótesis inductiva), $G$ es resoluble gracias al teorema anterior. 
+\end{proof}
+

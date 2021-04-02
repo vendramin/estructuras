@@ -1,0 +1,157 @@
+\chapter{Anillos noetherianos}
+
+\begin{definition}
+\index{Anillo!noetheriano}
+Sea $R$ un anillo. Diremos que $R$ es \textbf{noetheriano} si toda sucesión de ideales $I_1\subseteq I_2\subseteq\cdots $ se estabiliza, es decir que existe $m\in\N$ tal que 
+$I_n=I_m$ para todo $n\geq m$. 
+\end{definition}
+
+Análogamente se definen anillos noetherianos a izquierda y a derecha. 
+
+%\begin{definition}
+%Sea $R$ un anillo. Diremos que $R$ es \textbf{artiniano} si toda sucesión de ideales $I_1\supseteq I_2\supseteq\cdots $ se estabiliza, es decir que existe $m\in\N$ tal que 
+%$I_n=I_m$ para todo $n\geq m$. 	
+%\end{definition}
+
+\begin{example}
+$\Z$ es noetheriano.
+\end{example}
+
+%\begin{example}
+%$\Z$ no es artiniano pues la sucesión $(2)\supsetneq (4)\supsetneq (8)\supsetneq\cdots$ no se estabiliza.	
+%\end{example}
+%
+\begin{example}
+Sea $R$ el anillo de funciones $[0,1]\to\R$ 
+con las operaciones usuales punto a punto. Para cada $n\in\N$ sean  
+\[
+I_n=\{f\in R:f|_{[0,1/n]}=0\}.
+%\quad
+%J_n=\{f\in A:f|_{[1/n,1]}=0\}.
+\]
+Como $I_1\subsetneq I_2\subsetneq\cdots$, $R$ no es noetheriano. 
+%Como $J_1\supsetneq J_2\supsetneq\cdots$, $A$ no es artiniano.  	
+\end{example}
+
+\begin{theorem}
+	Sea $R$ un anillo. Entonces $R$ es noetheriano si y sólo si todo ideal de $R$ es finitamente generado.
+\end{theorem}
+
+\begin{proof}
+	Vamos a demostrar primero que vale $\implies$. Sea $I$ un ideal de $R$ que no es finitamente generado. En particular, $I\ne\{0\}$. Existe entonces
+	$x_1\in I\setminus\{0\}$. Si $I_1=(x_1)$, entonces $\{0\}\subsetneq I_1\subsetneq I$. Si los ideales 
+	$I_0,I_1,\dots,I_{k-1}$ fueron construidos, sea $x_k\in I\setminus I_{k-1}$ y sea $I_k=(x_1,\dots,x_k)$. De esta forma pudimos construir una sucesión
+	\[
+	I_0\subsetneq I_1\subsetneq I_2\subsetneq\cdots 
+	\]
+	que no se estabiliza.   
+	
+	Demostremos ahora la recíproca. Supongamos que tenemos una sucesión
+	\[
+	I_0\subsetneq I_1\subsetneq I_2\cdots
+	\]
+	de ideales de $R$. Vimos que entonces $I=\cup_{i\geq0}I_i$ es un ideal de $R$. Como por hipótesis todo ideal es finitamente generado, podemos
+	escribir $I=(x_1,\dots,x_n)$ para ciertos $x_1,\dots,x_n\in R$. Sin perder generalidad podemos suponer además que $x_j\in I_{i_j}$ para todo $j\in\{1,\dots,n\}$. Si 
+	$N=\max\{i_1,\dots,i_n\}$ y $n\geq N$, entonces 
+	$I_N\subseteq I\subseteq I_N\subseteq I_n$ y el resultado queda demostrado. 
+\end{proof}
+
+\begin{example}
+Todo anillo de ideales principales es noetheriano. En particular, $\Z$, $\Z/n$ y $\R[X]$ son noetherianos. 	
+\end{example}
+
+\begin{exercise}
+Sea $R$ un anillo noetheriano. Si $I$ es un ideal de $R$, entonces $R/I$ también es noetheriano.	
+\end{exercise}
+
+\begin{theorem}[Hilbert]
+\index{Teorema!de Hilbert}
+Si $R$ es noetheriano entonces $R[X]$ también lo es.
+\end{theorem}
+
+\begin{proof}
+	Tenemos que demostrar que todo ideal $I$ de $R[X]$ es finitamente generado. Sin perder generalidad podemos suponer que
+	$I$ es no nulo. Sea entonces $f_1\in I$ de grado mínimo. Para $i>1$, 
+	sea $f_i\in I$ de menor grado tal que $f_i\not\in (f_1,\dots,f_{i-1})$. Para cada $i$, sea $a_i$ el coeficiente principal del polinomio $f_i$. 
+	Si la sucesión de los $f_i$ 	nunca se estabiliza, sea $J=(a_1,a_2,\dots)$ el ideal generado por los coeficientes principales de los $f_i$.  Como $R$ es noetheriano, 
+	$J=(a_1,\dots,a_m)$ para algún $m$. Luego
+	\[
+	a_{m+1}=\sum_{i=1}^m u_ia_i
+	\]
+	para ciertos $u_1,\dots,u_m\in R$. Escribimos 
+	\[
+	f_i=a_iX^{n_i}+\cdots\text{ (términos de grado menor)} 
+	\]
+	para cada $i$ y entonces
+	\[
+	g=\sum_{i=1}^m u_if_iX^{\deg(f_{m+1})-n_i}\in (f_1,\dots,f_m).
+	\]
+	El coeficiente principal de $g$ es entonces $a_{m+1}$ y además $\deg g=\deg(f_{m+1})$ pues
+	\begin{align*}
+	g&=\sum_{i=1}^m u_i(a_iX^{n_i}+\cdots)X^{\deg(f_{m+1})-n_i}
+	=\sum_{i=1}^m u_ia_i(X^{\deg(f_{m+1})}+\cdots)
+%	=X^{\deg(f_{m+1})}\sum_{i=1}^m u_ia_i+\cd
+\end{align*}
+	donde nuevamente los puntos suspensivos representantes un polinomio de grado menor. 
+	Pero $g-f_{m+1}\not\in(f_1,\dots,f_m)$ pues por construcción $f_{m+1}\not\in (f_1,\dots,f_m)$ y además $\deg(g-f_{m+1})<\deg(f_{m+1})$, una contradicción
+	a la minimalidad del grado de $f_{m+1}$. 
+\end{proof}
+
+\begin{corollary}
+	Si $R$ es un anillo noetheriano, entonces $R[X_1,\dots,X_n]$ también es noetheriano.
+\end{corollary}
+
+\begin{proof}[Bosquejo de la demostración]
+La demostración quedará como ejercicio, hay que utilizar inducción y que $R[X_1,\dots,X_{n-1}][X_n]\simeq R[X_1,\dots,X_n]$.  	
+\end{proof}
+
+Veamos algunas aplicaciones sencillas.
+
+\begin{example}
+$\Z[\sqrt{N}]$ es noetheriano pues $\Z[\sqrt{N}]\simeq\Z[X]/(X^2-N)$ y $\Z[X]$ es noetheriano gracias al teorema de Hilbert.	
+\end{example}
+
+\begin{example}
+$\Z[X,X^{-1}]\simeq\Z[X,Y]/(XY-1)$ es noetheriano ya que $\Z[X,Y]$ es noetheriano por el teorema de Hilbert. 	
+\end{example}
+
+\begin{proposition}
+Si $R$ es noetheriano y $f\colon R\to R$ es un morfismo de anillos sobreyectivo, entonces $f$ es un isomorfismo.	
+\end{proposition}
+
+\begin{proof}
+	Si escribimos $f^n=f\circ\cdots\circ f$ ($n$-veces), entonces $f^n$ es sobreyectivo. Para cada $n$ sea $K_n=\ker(f^n)$. Entonces 
+	\[
+	K_1\subseteq K_2\subseteq K_3\subseteq\cdots
+	\] 
+	es una sucesión de ideales de $R$. Como $R$ es noetheriano, $K_m=K_{m+1}$ para algún $m$. Sea $y\in\ker f=K_1$. Como $f^m$ es
+	sobreyectivo, $y=f^m(x)$ para algún $x\in R$. Entonces
+	$0=f(y)=f(f^m(x))$ 
+	y luego 
+	\[
+	x\in \ker(f^{m+1})=K_{m+1}=K_m=\ker f^m,
+	\]
+	es decir $y=0$ y luego $\ker f=\{0\}$. 
+\end{proof}
+
+Veamos ahora un ejemplo de ideal no finitamente generado.
+
+\begin{example}
+	Sea $R=\C[X_1,X_2,\dots]$ es anillo de polinomios en infinitas variables. Vamos a demostrar que el ideal 
+	$I=(X_1,X_2,\dots)$ generado por esas infinitas variables no es finitamente generado. Observemos que $I$ es el conjunto de polinomios con término constante nulo.  
+	
+	Si $I$ fuera finitamente generado, digamos 
+	$I=(f_1,\dots,f_n)$ para ciertos $f_i$, hay que observar que cada $f_i$ involucra únicamente una cantidad finita de variables, por lo que entonces
+	existe $m\in\N$ tal que todas las $X_i$ aparecen en alguno de los $f_1,\dots,f_n$ con $i<m$. Sea $\varphi\colon R\to\C$ 
+	dado por
+	\[
+	\varphi(X_i)=
+	\begin{cases}
+		0 & \text{si $i<m$},\\
+		1 & \text{si $i\geq m$}.
+	\end{cases}
+	\]
+	Entonces $\varphi(f_i)=0$ para todo $i\in\{1,\dots,n\}$, lo que implica que $\varphi(I)=0$. Por otro lado, $\varphi(X_m)=1$, lo que implica que $X_m\not\in I$, una contradicción. 		
+\end{example}
+
+
