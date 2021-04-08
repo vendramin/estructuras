@@ -202,18 +202,27 @@ Sea $G$ un grupo finito y $p$ un número primo. Entonces $n_p(G)\equiv 1\bmod p$
 \end{theorem}
 
 \begin{proof}
+    Supongamos que $|G|=p^{\alpha}m$ con $m$ un entero no divisible por $p$. 
 	Sea $P\in\Syl_p(G)$, que sabemos que existe por el primer teorema de Sylow, y sea $n=n_p(G)$, Consideramos
 	el conjunto
 	\[
 	X=\{gPg^{-1}:g\in G\}=\{P=P_1,P_2,\dots,P_n\}.
 	\] 
+    El segundo teorema de Sylow implica que $|X|=n$. 
+
 	Si hacemos actuar a $G$ en $X$ por conjugación, $P$ también actúa en $X$ por conjugación. 
 	Entonces todas las $P$-órbitas tiene tamaño una potencia del primo $p$. 
 	
-	Afirmamos que $\{P\}$ es la única $P$-órbita de tamaño 1. En efecto, como $xPx^{-1}=P$ si $x\in P$, tenemos que $\{P\}$ es una $P$-órbita. Sea $P_i$ una $P$-órbita de tamaño 1. Entonces
+	Afirmamos que $\{P\}$ es la única $P$-órbita de tamaño 1. En efecto, como $xPx^{-1}=P$ si $x\in P$, tenemos que $\{P\}$ es una $P$-órbita. 
+	Sea $\{P_i\}$ una $P$-órbita de tamaño 1. Entonces
 	$xP_ix^{-1}=P_i$ para todo $x\in P$ y luego $P\subseteq N_G(P_i)$. El grupo
-	$N_G(P_i)/P_i$ tiene orden no divisible por $p$, pues $P_i\in\Syl_p(G)$. Si $xP_i\in N_G(P_i)/P_i$ con $x\in P$, entonces $xP_i=P_i$, es decir $x\in P_i$. Esto implica
-	que $P\subseteq P_i$ y luego $P=P_i$. Ahora tenemos 
+	$N_G(P_i)/P_i$ tiene orden no divisible por $p$, pues $P_i\in\Syl_p(G)$. 
+	Si $xP_i\in N_G(P_i)/P_i$ con $x\in P$, entonces $xP_i=P_i$, es decir $x\in P_i$, pues
+	como $(xP_i)^{p^{\alpha}}=x^{p^{\alpha}}P_i=P_i$, entonces $|xP_i|$ divide a $p^{\alpha}$. Luego $|xP_i|=1$, 
+	pues $N_G(P_i)/P_i$ tiene orden coprimo con $p$, 
+	y entonces $x\in P_i$. 
+	Esto implica
+	que $P\subseteq P_i$ y luego $P=P_i$ ya que ambos conjuntos tienen tamaño $p^{\alpha}$. Ahora tenemos 
 	\[
 	X=\{P\}\cup \underbrace{\mathcal{O}_1\cup\mathcal{O}_2\cup\cdots\cup\mathcal{O}_k}_{\text{de tamaño $>1$ divisible por $p$}},
 	\]
