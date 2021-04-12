@@ -34,7 +34,18 @@ Si $R$ es un anillo, entonces
 \[
 R[X]=\left\{\sum_{i=0}^n a_iX^i:n\in\N_0,\,a_0,\dots,a_n\in R\right\}
 \]
-es un anillo con las operaciones usuales.    	
+es un anillo con las operaciones usuales. Un polinomio es una expresión formal 
+de la forma 
+\[
+a_nX^n+a_{n-1}X^{n-1}+\cdots+a_1X+a_0,
+\]
+no una función $R\to R$. 
+Por ejemplo, si $R=\Z/2$ hay cuatro funciones $R\to R$ 
+pero infintios polinomios con coeficientes en $R$. Veamos un polinomio concreto que 
+además nos recuerda cuál es la notación que utilizaremos:
+\[
+1x^3+0x^2+x-5=x^3+x-5\in\R[X].
+\]
 \end{example}
 
 Como dijimos al principio del capítulo, los anillos no conmutativos tienen gran importancia dentro de la matemática. Para convencernos, 
@@ -53,7 +64,9 @@ las operaciones
 Si $R$ es un anillo, es fácil verificar las siguientes propiedades:
 \begin{enumerate}
 	\item $x0=0x=0$ para todo $x\in R$.
-	\item $x(-y)=-xy$ para todo $x,y\in R$.
+	\item $-x=(-1)x=x(-1)$ para todo $x\in R$.
+	\item $x(-y)=-xy=(-x)y$ para todo $x,y\in R$.
+	\item $(-x)(-y)=xy$ para todo $x,y\in R$.
 	\item Si $1=0$, entonces $|R|=1$. Este anillo se conoce como el \textbf{anillo nulo}.
 \end{enumerate}
 
@@ -105,8 +118,9 @@ Si un elemento $x$ es una unidad, entonces el inverso $y$ tal que $xy=yx=1$ es �
 escribir $y=x^{-1}$.  
 El \textbf{grupo de unidades} de $R$ se define como
 \[
-\mathcal{U}(R)=\{x\in R:x\text{ es una unidad}\}.
+\mathcal{U}(R)=\{x\in R:x\text{ es una unidad}\},
 \]
+que forma un grupo con la multiplicación de $R$.
 
 En anillos no conmutativos conviene distinguir unidades, unidades a derecha y unidades a izquierda, ya que todos
 estos conceptos son diferentes. Veamos un ejemplo. Sea $R=\End(V)$, donde $V$ es un espacio vectorial
@@ -141,7 +155,7 @@ $i^2=j^2=k^2=-1$, $ij=k$, $jk=i$, $ki=j$.
 
 \begin{definition}
 \index{Cuerpo}
-Un \textbf{cuerpo} es un anillo de división conmutativo. 	
+Un \textbf{cuerpo} es un anillo de división conmutativo tal que $1\ne 0$.
 \end{definition}
 
 \begin{examples}
@@ -151,6 +165,7 @@ $\Q$, $\R$ y $\C$ son cuerpos. Si $p$ es un número primo, entonces $\Z/p$ es un
 \begin{example}
 $\Q[\sqrt{2}]=\{x+\sqrt{2}y:x,y\in\Q\}$ es un cuerpo con las operaciones usuales. 	
 \end{example}
+
 
 
 
