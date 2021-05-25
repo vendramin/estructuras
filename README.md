@@ -5,3 +5,8 @@ Estas notas fueron utilizadas en el curso Álgebra II del Departamento de Matem�
 
 ## PDF
 [Acá](https://github.com/vendramin/estructuras/blob/main/estructuras.pdf) está la última versión, 7 de abril de 2021.
+
+## Licencia
+
+Licencia [Atribución-NoComercial-SinDerivadas 4.0 Internacional (CC BY-NC-ND 4.0)](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es).
+
