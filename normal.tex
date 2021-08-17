@@ -117,29 +117,16 @@ En el ejercicio siguiente nos encontramos con un caso particular del producto se
 
 \begin{exercise}
 \index{Producto!semidirecto}
-Sea $G=\Z/p\times(\Z/p)^\times$ el grupo dado por la operación 
+Sea $G=\R\times\R^\times$ el grupo dado por la operación 
 \[
 (x,y)(u,v)=(x+yu,yv).
 \]	
-Demuestre que $\{(x,1):x\in\Z/p\}$ es normal en $G$ y que $\{(0,y):y\in(\Z/p)^\times\}$ no es normal en $G$. 
+Demuestre que $\{(x,1):x\in\R\}$ es normal en $G$ y que $\{(0,y):y\in(\R)^\times\}$ no es normal en $G$. 
 \end{exercise}
 
-El siguiente ejercicio es útil:
-
-\begin{exercise}
-\index{Normalizador!de un subgrupo}
-Si $S$ es un subgrupo de $G$, se define el \textbf{normalizador} de $S$ en $G$ al subgrupo
-\[
-N_G(S)=\{g\in G:gSg^{-1}=S\}.
-\]	
-Demuestre que valen las siguientes afirmaciones:
-\begin{enumerate}
-\item $S\unlhd N_G(S)$.
-\item Si $S\leq T\leq G$ y $S\unlhd T$, entonces $T\leq N_G(S)$.
-\end{enumerate}
-\end{exercise}
-
-El ejercicio anterior nos dice que el normalizador de un subgrupo $S$ en $G$ es el mayor subgrupo de $G$ que contiene a $S$ como subgrupo normal. 
+En el ejemplo anterior el cuerpo $\R$ puede reemplazarse por cualquier otro cuerpo, por ejemplo 
+el cuerpo finito $\Z/p$ para cualquier número primo $p$. 
+ 
  
 Veamos algunos ejemplos de subgrupos normales un poco más difíciles. Primero calcularemos los subgrupos normales de $\Alt_4$. 
 
@@ -332,6 +319,23 @@ $n$ es en particular una potencia de $p$ y, en consecuencia, $n$ no posee diviso
 en particular $g^n\in H$.  	
 \end{proof}
 
+El siguiente ejercicio es útil. 
+
+\begin{exercise}
+\index{Normalizador!de un subgrupo}
+Si $S$ es un subgrupo de $G$, se define el \textbf{normalizador} de $S$ en $G$ al subgrupo
+\[
+N_G(S)=\{g\in G:gSg^{-1}=S\}.
+\]	
+Demuestre que valen las siguientes afirmaciones:
+\begin{enumerate}
+\item $S\unlhd N_G(S)$.
+\item Si $S\leq T\leq G$ y $S\unlhd T$, entonces $T\leq N_G(S)$.
+\end{enumerate}
+\end{exercise}
+
+El ejercicio anterior nos dice que el normalizador de un subgrupo $S$ en $G$ es el mayor subgrupo de $G$ que contiene a $S$ como subgrupo normal. 
+
 Terminamos el capítulo con una definición importante. 
 
 \begin{definition}
@@ -341,5 +345,4 @@ son $G$ y $\{1\}$.
 \end{definition}
 
 Por ahora, nos quedaremos conformes al observar que si $p$ es un número primo, entonces $\Z/p$ es un grupo simple. Veremos otros ejemplos más adelante.  
-
 
