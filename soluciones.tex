@@ -51,6 +51,31 @@ una contradicción. De la misma forma vemos que $yx\ne xy^2$.
 	$\pi_S^{-1}(T/S)=T$. 
 \end{sol}
 
+\section*{Grupos de automorfismos}
+
+\begin{sol}{xca:autgeq2}
+Como la identidad es siempre un automorfismo, es necesario encontrar otro automorfismo de $G$. 
+Supongamos primero que $G$ es no abeliano. Sea $g\in G\setminus Z(G)$ y sea $\gamma_g$ la conjugación
+por $g$, es decir $x\mapsto gxg^{-1}$. Como $g$ no es central, entonces 
+$\gamma_g$ es un automorfismo no trivial de $G$ y luego $|\Aut(G)|\geq2$. 
+
+Supongamos ahora que $G$ es abeliano. Si existe $g\in G$ tal que $g^2\ne 1$, entonces
+la función $x\mapsto x^{-1}$ es un automorfismo no trivial de $G$ y luego 
+$|\Aut(G)|\geq2$. Supongamos entonces que $g^2=1$ para todo $g\in G$. En este caso, 
+$G$ es un espacio vectorial sobre $\Z/2$. Como $|G|>2$, entonces
+$\dim_{\Z/p} G>1$. Sea $\{x_i:i\in I\}$ una base de $G$. Como esta base tiene al menos dos elementos,
+sean $i,j\in I$ elementos distintos. Sea $f\colon G\to G$ la transformación lineal dada por 
+\[
+f(x_k)=\begin{cases}
+x_j & \text{si $k=i$},\\
+x_i & \text{si $k=j$},\\
+x_k & \text{en otro caso}.	
+\end{cases}
+\]
+Como $f$ es una transformación lineal inversible,  
+$f$ es un automorfismo de $G$ no trivial. Luego $|\Aut(G)|\geq2$.   
+\end{sol}
+
 \section*{Ideales}
 
 \begin{sol}{xca:PcapQ} 

@@ -71,24 +71,6 @@ El \textbf{orden} $|G|$ de un grupo $G$ es el cardinal de $G$. Un grupo $G$ se d
 si $|G|$ es finito e infinito en caso contrario. 
 \end{definition}
 
-\begin{notation}
-	Sea $G$ un grupo y sea $g\in G$. Si $k\in\Z\setminus\{0\}$, escribimos 
-	\begin{align*}
-		& g^k=g\cdots g\quad (k-\text{veces}) && \text{si $k>0$},\\
-		& g^k=g^{-1}\cdots g^{-1}\quad (|k|-\text{veces}) && \text{si $k<0$}.
-	\end{align*}
-	Por convención, además, $g^0=1$. 
-\end{notation}
-
-\begin{exercise}
-	Si $G$ es un grupo, entonces
-	\begin{enumerate}
-		\item $(g^k)^l=g^{kl}$ para todo $g\in G$ y todo $k,l\in\Z$. 
-		\item Si $G$ es abeliano, entonces $(gh)^k=g^kh^k$ para todo $g,h\in G$
-			y todo $k\in\Z$. 
-	\end{enumerate}
-\end{exercise}
-
 \begin{exercise}
 	Sean $G$ un grupo y $g\in G$. Demuestre que las funciones $L_g\colon G\to
 	G$, $x\mapsto gx$, y $R_g\colon G\to G$, $x\mapsto xg$, son biyectivas.
@@ -132,6 +114,39 @@ i^2=j^2=k^2=ijk=-1.
 \]
 Dejamos como ejercicio calcular la tabla de $H$ y verificar que $H$ es un grupo. 
 \end{example}
+
+Vimos que $\Z$ con la suma usual forma un grupo. 
+Veamos la versión multiplicativa del mismo fenómeno.  
+Primero, un poco de notación. 
+Sea $G$ un grupo y sea $g\in G$. Si $k\in\Z\setminus\{0\}$, escribimos 
+\begin{align*}
+		& g^k=g\cdots g\quad (k-\text{veces}) && \text{si $k>0$},\\
+		& g^k=g^{-1}\cdots g^{-1}\quad (|k|-\text{veces}) && \text{si $k<0$}.
+\end{align*}
+Por convención, además, $g^0=1$. 
+
+\begin{exercise}
+	Si $G$ es un grupo, entonces
+	\begin{enumerate}
+		\item $(g^k)^l=g^{kl}$ para todo $g\in G$ y todo $k,l\in\Z$. 
+		\item Si $G$ es abeliano, entonces $(gh)^k=g^kh^k$ para todo $g,h\in G$
+			y todo $k\in\Z$. 
+	\end{enumerate}
+\end{exercise}
+
+Ahora sí, el ejemplo. 
+
+\begin{example}
+Fijemos formalmente un símbolo $g$ y 
+consideremos el conjunto de potencias enteras de $g$, 
+\[
+\langle g\rangle=\{g^k:k\in\Z\}
+\]
+con la convención $g^0=1$. Entonces $\langle g\rangle$ 
+con la operación $g^ig^j=g^{i+j}$ es un grupo abeliano. 
+\end{example}
+
+Más adelante veremos que $\Z$ y el grupo que vimos en el ejemplo anterior son objetos indistinguibles para la teoría de grupos, aunque como conjuntos sean completament distintos.  
 
 \begin{example}
 	Sea $n\in\N$. El conjunto $G_n=\{z\in\C:z^n=1\}$ es un grupo abeliano con
@@ -180,6 +195,7 @@ Dejamos como ejercicio calcular la tabla del grupo de Klein.
 \end{example}
 
 \begin{example}
+\label{exa:S3}
 \index{Grupo!simétrico $\Sym_3$}
 	Sabemos que el conjunto $\Sym_3$ de funciones $\{1,2,3\}\to\{1,2,3\}$
 	biyectivas es un grupo con la composición. El grupo $\Sym_3$ tiene orden
@@ -198,6 +214,37 @@ Dejamos como ejercicio calcular la tabla del grupo de Klein.
 \end{example}
 
 Más adelante veremos que la notación de una permutación como producto de ciclos disjuntos es de gran utilidad. 
+
+\begin{example}
+\label{exa:otroS3}
+El conjunto
+de funciones
+\[
+G=\left\{x,\frac{1}{x},1-x,\frac{1}{1-x},\frac{x}{x-1},\frac{x-1}{x}\right\}
+\]	
+es un grupo no abeliano con la composición usual de funciones. 
+
+Si definimos $\overline{\R}=\R\cup\{\infty\}$ y suponemos que valen 
+las reglas $1/\infty=0$, $1/\infty$, 
+$\infty/\infty=1$, $1-\infty=\infty-1=\infty$, entonces
+vemos que $G$ es el conjunto de funciones biyectivas $\{0,1,\infty\}\to\{0,1,\infty\}$. Observemos
+por ejemplo que la función $x\mapsto\frac{1}{x}$ puede itentificarse con la permutación del conjunto
+$\{0,1,\infty\}$ que intercambia $0$ y $\infty$ y fija al $1$. Similarmente, 
+la función $\frac{1}{1-x}$ puede identificarse con la permutación que permuta cíclicamente
+los elementos de $\{0,1,\infty\}$, es decir
+\[\begin{tikzcd}
+	0 \\
+	& 1 \\
+	\infty
+	\arrow[from=1-1, to=2-2]
+	\arrow[from=2-2, to=3-1]
+	\arrow[from=3-1, to=1-1]
+\end{tikzcd}\]
+\end{example}
+
+Más adelante veremos que las similitudes entre los grupos que aparecen en 
+los ejemplos~\ref{exa:S3} y~\ref{exa:otroS3} no son accidentes, tenemos distintas    
+representaciones para objetos indistinguibles desde la teoría de grupos.
 
 \begin{example}
 Sea $n\in\N$. Las unidades de $\Z/n$ forman un grupo con la multiplicación usual módulo $n$. La notación que utilizaremos es

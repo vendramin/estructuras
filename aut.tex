@@ -38,7 +38,22 @@ G/Z(G)\simeq \gamma(G)=\Inn(G).
 \]
 \end{example}
 
-Puede demostrarse que $\Inn(G)$ es un subgrupo normal de $\Aut(G)$. El cociente $\Aut(G)/Inn(G)$ se conoce como el grupo de \textbf{automorfismos exteriores} de $G$. 
+Puede demostrarse que $\Inn(G)$ es un subgrupo normal de $\Aut(G)$. El cociente $\Aut(G)/\Inn(G)$ se conoce como el grupo de \textbf{automorfismos exteriores} de $G$. Observemos que
+\[
+\Inn(G)\text{ es cíclico}\Longleftrightarrow
+|\Inn(G)|=1\Longleftrightarrow
+G\text{ es abeliano.}
+\]
+
+\begin{example}
+	Si $G$ es no abeliano, entonces $\Aut(G)$ no es cíclico.	 En efecto, si $\Aut(G)$ es cíclico,
+	entonces $G/Z(G)\simeq\Inn(G)$ es cíclico (por ser subgrupo de un cíclico) y luego
+	$G$ es abeliano. 
+\end{example}
+
+\begin{exercise}
+	Si $G$ es finito, entonces $\Aut(G)$ es finito.	
+\end{exercise}
 
 \begin{example}
 Veamos que $\Aut(\Sym_3)\simeq\Sym_3$. Sabemos que $Z(\Sym_3)=\{\id\}$. El ejemplo anterior nos permite entonces demostrar que
@@ -230,3 +245,37 @@ también los $n+1$ elementos
 \]
 son raíces distintas de $X^n-1$, una contradicción al lema~\ref{lem:X^n-1}. 
 \end{proof}
+
+Terminamos el capítulo con algunos ejercicios sobre grupos de automorfismos.
+
+\begin{exercise}
+\label{xca:autgeq2}
+	Si $G$ es un grupo tal que $|G|\geq3$, entonces $|\Aut(G)|\geq2$. 	
+\end{exercise}
+
+
+\begin{exercise}
+\label{xca:aut_impar}
+	No existe un grupo finito cuyo grupo de automorfismos sea no trivial cíclico y de orden impar.	
+\end{exercise}
+
+\begin{exercise}
+\label{xca:p2dividesAut}
+	Sea $p$ un número primo.
+	Si $G$ es un $p$-grupo no abeliano, entonces $p^2$ divide a $|\Aut(G)|$. 	
+\end{exercise}
+
+\begin{exercise}
+	\label{xca:Aut(H)}
+	Si $G=H\times K$, entonces $\Aut(H)$ es isomorfo a un subgrupo de $\Aut(G)$. 	
+\end{exercise}
+
+\begin{exercise}
+\label{xca:aut_trivial_center}
+	Si $G$ tiene centro trivial, entonces $\Aut(G)$ también. 	
+\end{exercise}
+
+
+
+
+
