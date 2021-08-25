@@ -283,7 +283,11 @@ es
 	el \textbf{producto directo} de $G$ y $H$. 
 \end{exercise}
 
-Si se utiliza la inducción, el ejemplo anterior puede generalizarse productos finitos de tres o más grupos. 
+Si se utiliza la inducción, el ejemplo anterior 
+puede generalizarse productos finitos de tres o más grupos. 
+
+
+
 
 \begin{definition}
 	Un subconjunto $S$ de $G$ es un \textbf{subgrupo} de $G$ si se satisfacen
@@ -357,6 +361,66 @@ es un subgrupo es la siguiente:
 $\SL_n(\R)=\{a\in\GL_n(\R):\det(a)=1\}\leq\GL_n(\R)$. En efecto, la matriz identidad pertenece a $\SL_2(\R)$ y luego $\SL_2(\R)$ es no vacío. Además si $a,b\in\SL_n(\R)$, 
 entonces $ab^{-1}\in\SL_2(\R)$ pues $\det(ab^{-1})=\det(a)\det(b)^{-1}=1	$. 
 \end{example}
+
+\begin{example}
+Sea $n\in\N$ y sean 
+\[
+r=\begin{pmatrix}	
+\cos(2\pi/n) & -\sin(2\pi/n)\\
+\sin(2\pi/n) & \cos(2\pi/n)
+\end{pmatrix},
+\quad
+s=\begin{pmatrix}
+	1 & 0\\
+	0 & -1
+\end{pmatrix}.
+\]
+Se define el \textbf{grupo diedral} $\D_n$ como
+el subgrupo de $\GL_2(\C)$ generado por $r$ y $s$, 
+es decir $\D_n=\langle r,s\rangle$. Un cálculo sencillo muestra que
+\[
+r^n=s^2=\begin{pmatrix}
+	1&0\\
+	0&1
+\end{pmatrix},
+\quad
+srs=r^{-1}.
+\] 
+Un elemento arbitrario de $\D_n$ es una palabra  
+de la forma $r^{i_1}s^{j_1}r^{i_2}s^{j_2}\cdots$, donde $i_1,i_2,\dots\in\{0,1,\dots,n-1\}$ y 
+$j_1,j_2,\dots\in\{0,1\}$. Como $rs=sr^{-1}$, se concluye que 
+todo elemento de $\D_n$ puede escribirse como $r^is_j$, 
+donde $i\in\{0,\dots,n-1\}$ y $j\in\{0,1\}$. Luego  
+$|\D_n|=2n$. 
+\end{example}
+
+Para fijar ideas es conveniente hacer el ejemplo anterior en algunos casos particulares. 
+En el caso $n=3$, tendríamos
+\[
+r=\begin{pmatrix}	
+-1/2 & -\sqrt{3}/2\\
+\sqrt{3}/2 & -1/2
+\end{pmatrix},
+\quad
+s=\begin{pmatrix}
+	1 & 0\\
+	0 & -1
+\end{pmatrix}.
+\]
+y obtnedríamos otra representación para el grupo de simetrías de un triángulo regular. En el caso
+$n=4$ tendríamos
+\[
+r=\begin{pmatrix}	
+0 & -1\\
+1 & 0
+\end{pmatrix},
+\quad
+s=\begin{pmatrix}
+	1 & 0\\
+	0 & -1
+\end{pmatrix}.
+\]
+y obtendríamos el grupo de simetrías de un cuadrado. 
 
 \begin{exercise}
 	La intersección de subgrupos es también un subgrupo.
