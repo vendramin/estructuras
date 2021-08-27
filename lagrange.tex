@@ -62,9 +62,9 @@ a+S=\{a+nq:q\in\Z\}=\{k\in\Z:k\equiv a\bmod n\}.
 
 \begin{example}
 Los subgrupos de $\Sym_3$ son $\{\id\}$, $\Sym_3$, los subgrupos $\langle(12)\rangle$, $\langle(13)\rangle$ y $\langle(23)\rangle$ de orden dos 
-y el subgrupo $\langle(123)\rangle=\{\id,(123),(132)\}$ de orden tres.  	Si $H=\langle(12)\rangle=\{id,(12)\}$, entonces
+y el subgrupo $\langle(123)\rangle=\{\id,(123),(132)\}$ de orden tres.  	Si $H=\langle(12)\rangle=\{\id,(12)\}$, entonces
 \begin{align*}
-&H=(12)H=\{id,(12)\},\\
+&H=(12)H=\{\id,(12)\},\\
 &(123)H=(13)H=\{(13),(123)\},\\
 &(132)H=(23)H=\{(23),(132)\}.
 \end{align*}
@@ -163,7 +163,8 @@ El pequeño teorema de Fermat es un caso particular del teorema de Lagrange.
 \end{exercise}
 
 El siguiente corolario utiliza la función $\varphi$ de Euler. Recordemos que
-$\varphi(n)$ es la cantidad de enteros positivos coprimos con $n$. El grupo de
+$\varphi(n)$ es la cantidad de enteros positivos $k\in\{1,\dots,n\}$ 
+coprimos con $n$. El grupo de
 unidades de $\Z/n$ tiene $\varphi(n)$ elementos (pues $x\in\Z/n$ es inversible
 si y sólo si $x$ es coprimo con $n$). 
 
@@ -181,7 +182,7 @@ Consideremos el grupo alternado
 \Alt_4=\{\id,(234),(243),(12)(34),(123),(124),\\(132),(134),(13)(24),(142),(143),(14)(23)\}\leq\Sym_4.	
 \end{multline*}
 Vamos a demostrar que $\Alt_4$ no tiene subgrupos de orden seis. Si $H\leq\Alt_4$ es tal que 
-$|H|=6$, entonces, como $(\Alt_4:H)=6$, para todo $x\not\in H$ podríamos descomponer a $\Alt_4$ como $\Alt_4=H\cup xH$ (unión disjunta). 
+$|H|=6$, entonces, como $(\Alt_4:H)=2$, para todo $x\not\in H$ podríamos descomponer a $\Alt_4$ como $\Alt_4=H\cup xH$ (unión disjunta). 
 
 Afirmamos que
 para todo $g\in\Alt_4$ vale que $g^2\in H$ (pues si $g\not\in H$, entonces, como $g^2\in\Alt_4=H\cup gH$, se concluye que $g^2\in H$). En particular, como
