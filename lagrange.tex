@@ -1,14 +1,16 @@
 \chapter{El teorema de Lagrange}
 
 Sean $G$ un grupo y $H$ un subgrupo de $G$. Diremos que dos elementos $x,y\in
-G$ son equivalentes a izquierda módulo $H$ si $x^{-1}y\in H$.  Usaremos la siguiente notación:
+G$ son equivalentes a izquierda módulo $H$ si $x^{-1}y\in H$.  
+Usaremos la siguiente notación:
 \[
 x\equiv y\bmod
 H\Longleftrightarrow x^{-1}y\in H.
 \]  
 
 \begin{exercise}
-	Demuestre que hemos definido una relación de equivalencia. Esto significa que se tienen las siguientes propiedades:
+	Demuestre que hemos definido una relación de equivalencia. 
+	Esto significa que se tienen las siguientes propiedades:
 	\begin{enumerate}
 	\item $x\equiv x\bmod H$ para todo $x$.
 	\item Si $x\equiv y\bmod H$, entonces $y\equiv x\bmod H$.
@@ -22,7 +24,29 @@ pues la clase de un cierto elemento $x\in G$ es el conjunto
 \[
 	\{y\in G:x\equiv y\bmod H\}=\{y\in G:x^{-1}y\in H\}=\{y\in G:y\in xH\}=xH.
 \]
-El conjunto $xH$ se llama \textbf{coclase a izquierda} de $H$ en $G$. 
+El conjunto $xH$ se 
+llama \textbf{coclase a izquierda} de $H$ en $G$. 
+
+\begin{proposition}
+Sean $G$ un grupo y $H$ un subgrupo de $G$.  
+\begin{enumerate}
+\item Si $xH\cap yH\ne\emptyset$, entonces $xH=yH$. 	
+\item El grupo $G$ puede descomponerse como unión disjunta
+de distintas coclases a izquierda de $H$. 
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Demostremos la primera afirmación. 
+Si $g\in xH\cap yH$, escribimos
+$g=xh$ para algún $h\in H$ y entonces
+\[
+gH=(xh)H=x(hH)=xH.
+\]
+Similarmente, $gH=yH$. En consecuencia, $xH=yH$.
+
+La segunda afirmación se obtiene inmediatamente de la primera.  
+\end{proof}
 
 Podríamos haber definido coclases a derecha mediante la relación $x\equiv
 y\bmod H$ si y sólo si $xy^{-1}\in H$. En este caso, las clases de equivalencia
