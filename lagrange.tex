@@ -3,13 +3,14 @@
 Sean $G$ un grupo y $H$ un subgrupo de $G$. Diremos que dos elementos $x,y\in
 G$ son equivalentes a izquierda módulo $H$ si $x^{-1}y\in H$.  
 Usaremos la siguiente notación:
-\[
+\begin{equation}
+\label{eq:modH}	
 x\equiv y\bmod
 H\Longleftrightarrow x^{-1}y\in H.
-\]  
+\end{equation}
 
 \begin{exercise}
-	Demuestre que hemos definido una relación de equivalencia. 
+	Demuestre que~\eqref{eq:modH} una relación de equivalencia. 
 	Esto significa que se tienen las siguientes propiedades:
 	\begin{enumerate}
 	\item $x\equiv x\bmod H$ para todo $x$.
@@ -26,6 +27,10 @@ pues la clase de un cierto elemento $x\in G$ es el conjunto
 \]
 El conjunto $xH$ se 
 llama \textbf{coclase a izquierda} de $H$ en $G$. 
+
+Tener una relación de equivalencia módulo $H$ nos permite escribir a $G$ como
+unión disjunta de coclases distintas de $H$ en $G$, pues dos
+coclases cualesquiera son iguales o disjuntas. 
 
 \begin{proposition}
 Sean $G$ un grupo y $H$ un subgrupo de $G$.  
@@ -103,15 +108,10 @@ Sea $G=\R^2$ con la suma usual y sea $v\in\R^2$. La recta $L=\{\lambda v:\lambda
 para cada $p\in R^2$, la coclase $p+L$ es la recta paralela a $L$ que pasa por el punto $p$.  	
 \end{example}
 
-
 \begin{definition}
 	Si $H$ es un subgrupo de $G$, se define el \textbf{índice} de $H$ en $G$
 	como la cantidad $(G:H)$ de coclases a izquierda (o a derecha) de $H$ en $G$. 
 \end{definition}
-
-Tener una relación de equivalencia módulo $H$ nos permite escribir a $G$ como
-unión disjunta de coclases a izquierda (o a derecha) de $H$ en $G$. Además dos
-coclases cualesquiera son iguales o disjuntas. 
 
 \begin{theorem}[Lagrange]
 \index{Teorema!de Lagrange}
