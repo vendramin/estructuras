@@ -169,7 +169,7 @@ Demuestre que si $f\colon \Q\to\Q$ es un morfismo de anillos, entonces $f=\id$.
 \end{exercise}
 
 \begin{exercise}
-Demuestre que si $f\colon\R[X_1,\dots,X_n]\to\R$ es un morfismo de anillos tal que la restricción $f|_R$ es la identidad, entonces $f=\operatorname{ev}_{p}$ para algún $p\in\R^n$. 	
+Demuestre que si $f\colon\R[X_1,\dots,X_n]\to\R$ es un morfismo de anillos tal que la restricción $f|_{\R}$ es la identidad, entonces $f=\operatorname{ev}_{p}$ para algún $p\in\R^n$. 	
 \end{exercise}
 
 Para definir cocientes de anillos utilizaremos ideales. Si $I$ es
@@ -393,7 +393,8 @@ Demuestre que no existe un ideal $I$ de $\Z[i]$ tal que $\Z[i]/I\simeq\Z/15$.
 \begin{theorem}
 \index{Teorema!de la correspondencia}
 Si $f\colon R\to S$ es un morfismo sobreyectivo de anillos con $K=\ker f$, existe una correspondencia biyectiva entre los ideales de $R$ que contienen a $K$ y los ideales de $S$. 
-La correspondencia está dada por $I\mapsto f(I)$ y $f^{-1}(J)\mapsfrom J$ y vale además que $R/I\simeq S/J$.  
+La correspondencia está dada por $I\mapsto f(I)$ y $f^{-1}(J)\mapsfrom J$. Más aún, si 
+$f(I)=J$, entonces $R/I\simeq S/J$.  
 \end{theorem}
 
 \begin{proof}[Bosquejo de la demostración]
@@ -401,10 +402,13 @@ Hay que demostrar las siguientes afirmaciones:
 \begin{enumerate}
 \item $f(I)\subseteq S$ es un ideal.
 \item $f^{-1}(J)\subseteq R$ es un ideal que contiene a $K$.
-\item $f(f^{-1}(I))=J$ y además $f^{-1}(f(I))=I$.
+\item $f(f^{-1}(J))=J$ y además $f^{-1}(f(I))=I$.
 \item Si $f(I)=J$, entonces $R/I\simeq S/J$.	
 \end{enumerate}
-Las primeras tres afirmaciones quedarán como ejercicio. Demostremos (4). Sea $\pi\colon S\to S/J$ el morfismo canónico y sea 
+Las primeras tres afirmaciones quedarán como ejercicio. 
+Demostremos (4). Primero obervamos que la tercera afirmación implica que
+$f(I)=J$ si y sólo si $I=f^{-1}(J)$. Sea $\pi\colon S\to S/J$ 
+el morfismo canónico y sea 
 $g=\pi\circ f$. Como
 \[
 \ker g=\{x\in R:g(x)=0\}=\{x\in R:f(x)\in J\}=\{x\in R:x\in f^{-1}(J)=I\}=I,
