@@ -2,7 +2,8 @@
 
 \begin{definition}
 \index{Anillo!noetheriano}
-Sea $R$ un anillo. Diremos que $R$ es \textbf{noetheriano} si toda sucesión de ideales $I_1\subseteq I_2\subseteq\cdots $ se estabiliza, es decir que existe $m\in\N$ tal que 
+Sea $R$ un anillo. Diremos que $R$ es \textbf{noetheriano} si toda sucesión de ideales $I_1\subseteq I_2\subseteq\cdots $ de $R$ 
+se estabiliza, es decir que existe $m\in\N$ tal que 
 $I_n=I_m$ para todo $n\geq m$. 
 \end{definition}
 
@@ -29,7 +30,7 @@ I_n=\{f\in R:f|_{[0,1/n]}=0\}.
 %\quad
 %J_n=\{f\in A:f|_{[1/n,1]}=0\}.
 \]
-Como $I_1\subsetneq I_2\subsetneq\cdots$, $R$ no es noetheriano. 
+Como $I_1\subsetneq I_2\subsetneq\cdots$ no se estabiliza, $R$ no es noetheriano. 
 %Como $J_1\supsetneq J_2\supsetneq\cdots$, $A$ no es artiniano.  	
 \end{example}
 
@@ -70,30 +71,36 @@ Si $R$ es noetheriano entonces $R[X]$ también lo es.
 \end{theorem}
 
 \begin{proof}
-	Tenemos que demostrar que todo ideal $I$ de $R[X]$ es finitamente generado. Sin perder generalidad podemos suponer que
-	$I$ es no nulo. Sea entonces $f_1\in I$ de grado mínimo. Para $i>1$, 
-	sea $f_i\in I$ de menor grado tal que $f_i\not\in (f_1,\dots,f_{i-1})$. Para cada $i$, sea $a_i$ el coeficiente principal del polinomio $f_i$. 
-	Si la sucesión de los $f_i$ 	nunca se estabiliza, sea $J=(a_1,a_2,\dots)$ el ideal generado por los coeficientes principales de los $f_i$.  Como $R$ es noetheriano, 
+	Tenemos que demostrar que todo ideal $I$ de $R[X]$ es finitamente generado. Supongamos
+	entonces que existe un ideal $I$ que no es finitamente generado. En particular, 
+	$I$ es no nulo. Sea $f_1\in I$ de grado mínimo. Como $I$ no es finitamente generado, para $i>1$ 
+	existe $f_i\in I$ de menor grado 
+	tal que $f_i\not\in (f_1,\dots,f_{i-1})$. 
+	Para cada $i$, sea $a_i$ el coeficiente principal del polinomio $f_i$, es decir 
+	\[
+	f_i=a_iX^{n_i}+\cdots\text{ (términos de grado menor)}, 
+	\]
+    lo que implica que $a_i\ne 0$ y que $\deg f_i=n_i$.
+	Sea $J=(a_1,a_2,\dots)$ el ideal generado por los coeficientes principales de los $f_i$.  
+	Como $R$ es noetheriano, 
+	podemos suponer sin perder generalidad que 
 	$J=(a_1,\dots,a_m)$ para algún $m$. Luego
 	\[
 	a_{m+1}=\sum_{i=1}^m u_ia_i
 	\]
-	para ciertos $u_1,\dots,u_m\in R$. Escribimos 
-	\[
-	f_i=a_iX^{n_i}+\cdots\text{ (términos de grado menor)} 
-	\]
-	para cada $i$ y entonces
+	para ciertos $u_1,\dots,u_m\in R$. 
+	En particular, el coeficiente principal del polinomio 
 	\[
 	g=\sum_{i=1}^m u_if_iX^{\deg(f_{m+1})-n_i}\in (f_1,\dots,f_m).
 	\]
-	El coeficiente principal de $g$ es entonces $a_{m+1}$ y además $\deg g=\deg(f_{m+1})$ pues
+	es entonces $a_{m+1}$ y además $\deg(g)=\deg(f_{m+1})$ pues
 	\begin{align*}
 	g&=\sum_{i=1}^m u_i(a_iX^{n_i}+\cdots)X^{\deg(f_{m+1})-n_i}
 	=\sum_{i=1}^m u_ia_i(X^{\deg(f_{m+1})}+\cdots)
 %	=X^{\deg(f_{m+1})}\sum_{i=1}^m u_ia_i+\cd
 \end{align*}
-	donde nuevamente los puntos suspensivos representantes un polinomio de grado menor. 
-	Pero $g-f_{m+1}\not\in(f_1,\dots,f_m)$ pues por construcción $f_{m+1}\not\in (f_1,\dots,f_m)$ y además $\deg(g-f_{m+1})<\deg(f_{m+1})$, una contradicción
+	donde los puntos suspensivos representantes un polinomio de grado $<n_i$. 
+	Observemos que $g-f_{m+1}\not\in(f_1,\dots,f_m)$, pues por construcción $f_{m+1}\not\in (f_1,\dots,f_m)$. Además  $\deg(g-f_{m+1})<\deg(f_{m+1})$, una contradicción
 	a la minimalidad del grado de $f_{m+1}$. 
 \end{proof}
 
@@ -153,5 +160,9 @@ Veamos ahora un ejemplo de ideal no finitamente generado.
 	\]
 	Entonces $\varphi(f_i)=0$ para todo $i\in\{1,\dots,n\}$, lo que implica que $\varphi(I)=0$. Por otro lado, $\varphi(X_m)=1$, lo que implica que $X_m\not\in I$, una contradicción. 		
 \end{example}
+
+\begin{exercise}
+Si $R$ es noetheriano, entonces $R[[X]]$ es noetheriano.
+\end{exercise}
 
 

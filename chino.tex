@@ -104,13 +104,13 @@ R/(I_1\cap\cdots\cap I_n)\simeq (R/I_1)\times\cdots\times (R/I_n).
 
 Un hecho sorprendente. El teorema de interpolación de Lagrange es en realidad un caso particular del teorema chino del resto en el anillo de polinomios $R=\R[X]$. En efecto,
 si $x_1,\dots,x_k\in\R$ son tales que $x_i\ne x_j$ y fijamos elementos $y_1,\dots,y_k\in\R$, entonces, gracias a la versión abstracta del teorema chino del resto aplicado
-a los ideales coprimos $I_j=(X-x_j)$ para $j\in\{1,\dots,k\}$, se garantizará la existencia de una única solución 
-módulo $(X-x_1)\cdots (X-x_k)$ del sistema
+a los ideales coprimos $I_j=(X-x_j)$ para $j\in\{1,\dots,k\}$, se garantizará la existencia de una solución $f$ 
+(única módulo el ideal generado por $(X-x_1)\cdots (X-x_k)$) del sistema
 \[
 \begin{cases}
 f\equiv y_1\bmod (X-x_1),\\
 f\equiv y_1\bmod (X-x_2),\\
-\vdots\\
+\phantom{f}\vdots\\
 f\equiv y_1\bmod (X-x_k).	
 \end{cases}
 \]

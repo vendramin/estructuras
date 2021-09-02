@@ -112,7 +112,8 @@ cuentas con mayor facilidad, utilizaremos la siguiente herramienta sobre el anil
 libre de cuadrados. Utilizaremos la siguiente notación: si $n\in\N$, entonces $\sqrt{-n}=\sqrt{n}i$. 
 
 \begin{lemma}
-Sea $d\in\Z$ libre de cuadrados y sea $N(a+b\sqrt{d})=|a^2-db^2|$. 
+Sea $d\in\Z$ libre de cuadrados. Para cada $\alpha=a+b\sqrt{d}\in\Z[\sqrt{d}]$ 
+sea $N(\alpha)=|a^2-db^2|$. 
 \begin{enumerate}
 \item $N(\alpha)=0\Longleftrightarrow \alpha=0$.
 \item $N(\alpha\beta)=N(\alpha)N(\beta)$ para todo $\alpha,\beta\in\Z[\sqrt{d}]$. 
@@ -137,35 +138,41 @@ $\beta\in\mathcal{U}(\Z[\sqrt{d}])$ o bien $\gamma\in\mathcal{U}(\Z[\sqrt{d}])$ 
 \end{proof}
 
 \begin{example}
-$\mathcal{U}(\Z[i])=\{-1,1,i,-i\}$ pues si $a+bi\in\Z[i]$ es una unidad, entonces $N(a+bi)=a^2+b^2=1$. 	
+Sea $R=\Z[i]$. 
+\begin{enumerate}
+    \item $\mathcal{U}(R)=\{-1,1,i,-i\}$ pues si $a+bi\in R$ es una unidad, entonces, gracias al lema anterior, $N(a+bi)=a^2+b^2=1$.
+    \item $3$ es irreducible en $R$. Si $3=\alpha\beta$, entonces
+$9=N(\alpha\beta)=N(\alpha)N(\beta)$. Luego $N(\alpha)\in\{1,3,9\}$. Supongamos que $\alpha=a+bi$. Si $N(\alpha)=3$, entonces $|a^2+b^2|=3$, una contradicción pues $a,b\in\Z$. Luego $N(\alpha)\in\{1,9\}$. Si $N(\alpha)=1$, entonces $\alpha$ es una unidad. Si no, $N(\beta)=1$ y $\beta$ es una unidad. 	
+\item $2\in R$ no es irreducible. En efecto, alcanza con observar que $2=(1+i)(1-i)$, que 
+$1+i$ y $1-i$ no son unidades pues $N(1+ i)=N(1-i)=2\ne 1$. 
+\end{enumerate}
 \end{example}
 
 \begin{example}
-Veamos que $1+\sqrt{-5}$ es irreducible en $\Z[\sqrt{-5}]$. Si $1+\sqrt{-5}=\alpha\beta$, entonces 
-$6=N(1+\sqrt{-5})=N(\alpha)N(\beta)$. Esto implica que $N(\alpha)\in\{1,2,3,6\}$. Si $N(\alpha)\in\{1,6\}$, entonces
-$\alpha$ es una unidad o $\beta$ es una unidad. Supongamos entonces 
-$\alpha=x+y\sqrt{-5}$. Entonces 
+Sea $R=\Z[\sqrt{-5}]$. 
+\begin{enumerate}
+\item $1+\sqrt{-5}$ es irreducible en $R$. Dejamos como ejercicio verificar que $1+\sqrt{-5}$ no es una unidad. 
+Si $1+\sqrt{-5}=\alpha\beta$ para ciertos $\alpha,
+\beta\in R$, entonces 
+\[
+6=N(1+\sqrt{-5})=N(\alpha)N(\beta).
+\]
+Esto implica que $N(\alpha)\in\{1,2,3,6\}$. Si $N(\alpha)\in\{1,6\}$, entonces
+$\alpha$ es una unidad o bien $\beta$ es una unidad. Si 
+$\alpha=x+y\sqrt{-5}$, entonces  
 $x^2+5y^2=N(\alpha)\in\{2,3\}$, una contradicción. De la misma forma puede demostrarse que $1-\sqrt{-5}$ 
 es irreducible. 
-
-Veamos que los números 
-$2$, $3$, $1+\sqrt{-5}$ y $1-\sqrt{-5}$ no son asociados. En efecto, $2$, $3$ y $1+\sqrt{-5}$ no son asociados
-pues tienen todos distinta norma. Tampoco son asociados $1+\sqrt{-5}$ y $1-\sqrt{-5}$, pues la igualdad  
-$1+\sqrt{-5}=u(1-\sqrt{-5})$ implica que $u\in\mathcal{U}(\Z[\sqrt{-5}])=\{-1,1\}$. 
-\end{example}
-
-\begin{example}
-Sea $R=\Z[i]$. 
-Veamos que $3$ es irreducible en $R$. Si $3=\alpha\beta$, entonces
-$9=N(\alpha\beta)=N(\alpha)N(\beta)$. Luego $N(\alpha)\in\{1,3,9\}$. Supongamos que $\alpha=a+bi$. Si $N(\alpha)=3$, entonces $|a^2+b^2|=3$, una contradicción pues $a,b\in\Z$. Luego $N(\alpha)\in\{1,9\}$. Si $N(\alpha)=1$, entonces $\alpha$ es una unidad. Si no, $N(\beta)=1$ y $\beta$ es una unidad. 	
-
-Veamos ahora que $2\in\Z[i]$ no es irreducible. En efecto, alcanza con observar que $2=(1+i)(1-i)$, que 
-$1\pm i$ no son unidades pues $N(1\pm i)=2\ne 1$. 
+\item $2$, $3$, $1+\sqrt{-5}$ y $1-\sqrt{-5}$ no son asociados en $R$. En efecto, $2$, $3$ y $1+\sqrt{-5}$ no son asociados
+pues tienen todos distinta norma. Tampoco son asociados $1+\sqrt{-5}$ y $1-\sqrt{-5}$, pues $1+\sqrt{-5}=u(1-\sqrt{-5})$ 
+para $u\in\mathcal{U}(R)$
+da una contradicción. %$u\in\mathcal{U}(R)=\{-1,1\}$. 
+\end{enumerate}
 \end{example}
 
 \begin{example}
 Sea $R=\Z[\sqrt{-3}]$ y sea $x=1+\sqrt{-3}$. Entonces $x$ es irreducible. En efecto,
-si $1+\sqrt{-3}=\alpha\beta$, entonces $4=N(\alpha)N(\beta)$. Si $x=a+b\sqrt{-3}$, entonces
+si $1+\sqrt{-3}=\alpha\beta$, entonces $4=N(\alpha)N(\beta)$. 
+Supongamos que $N(\alpha)=2$. Si $\alpha=a+b\sqrt{-3}$, entonces
 $a^2+3b^2=2$. Obviamente, los enteros $a$ y $b$ tienen que tener la misma paridad. 
 Si $a\equiv b\equiv 0\bmod 2$, digamos $a=2k$ y $b=2l$, entonces
 \[
@@ -212,9 +219,15 @@ Primero observemos que $I\ne\Z[X]$. En efecto, si $I=\Z[X]$, entonces
 \]
 para ciertos $f,g\in\Z[X]$. En particular, al utilizar el grado, $0=\deg f+1+\deg g$, una contradicción. 
 Si existe $h\in\Z[X]$ tal que $I=(h)$, entonces, en particular, $2=hg$ y además $X=hf$ para ciertos $f,h\in\Z[X]$. 
-En particular, $\deg h=0$ y luego, como $2=h(1)g(1)$, vemos que $h(1)\in\{-2,2\}$ pues $h(1)\not\in\{-1,1\}$ ya que $\pm1\not\in I$. 
-Esto implica que $X=\pm 2f$. Si escribimos 
-$f=a_0+a_1X+\cdots+a_nX^n$, donde $a_0,a_1,\dots,a_n\in\Z$, entonces, al comparar el coeficiente de $X$ vemos que 
+En particular, $\deg h=0$ y luego $h$ es la constante $h(1)$. Como $2=h(1)g(1)$, tenemos 
+$h=h(1)\in\{-1,1,2,-2\}$. Como $I$ es un ideal propio,
+$h=h(1)\not\in\{-1,1\}$. Luego  
+$X=\pm 2f$. Si escribimos 
+\[
+f=a_0+a_1X+\cdots+a_nX^n,
+\]
+donde $a_0,a_1,\dots,a_n\in\Z$, entonces, al comparar el coeficiente de $X$ en $X=\pm 2f$ 
+vemos que 
 $1=\pm 2a_1$, una contradicción pues $a_1\in\Z$. 
 \end{example}
 
@@ -230,9 +243,14 @@ para ciertos $x,y,u,v\in\Z$. Luego
 0=2y+u+v,
 \]
 que implica que $1=2(x+y+u-2v)$, una contradicción pues $x+y+u-2v\in\Z$. 
-Si $I=(x)$, entonces $x\mid 2$ y además $x\mid 1+\sqrt{-5}$. Luego
-$N(x)\mid N(2)=4$ y además $N(x)\mid N(1+\sqrt{-5})=6$. Si $x=a+b\sqrt{-5}$, entonces $N(x)=a^2+5b^2$. 
-Luego $x$ es una unidad, pues $N(x)=1$, y entonces $I=\Z[\sqrt{-5}]$.  
+Si $I=(\alpha)$, entonces 
+$N(\alpha)\mid N(2)$, pues 
+$\alpha\mid 2$, y además  
+$N(\alpha)\mid N(1+\sqrt{-5})$, pues 
+$\alpha\mid 1+\sqrt{-5}$. 
+Observemos que entonces se tiene que $N(\alpha)\in\{1,2\}$, pues $N(2)=4$ y $N(1+\sqrt{-5})=6$. 
+Si $\alpha=a+b\sqrt{-5}$, entonces, como $N(\alpha)=a^2+5b^2$, se concluye que $N(\alpha)=1$. Luego 
+$\alpha$ es una unidad y entonces $I=\Z[\sqrt{-5}]$, una contradicción.   
 \end{example}
 
 \begin{proposition}
