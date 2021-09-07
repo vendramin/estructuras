@@ -106,11 +106,20 @@ $\SL_n(\R)$ es normal en $\GL_n(\R)$ pues si $g\in\GL_n(\R)$ y $x\in\SL_n(\R)$, 
 
 \begin{example}
 \index{Grupo!de Klein}
-El grupo de Klein $K=\{\id,(12)(34),(13)(24),(14)(23)\}$ es normal en $\Sym_4$. 
+El grupo de Klein $K=\{\id,(12)(34),(13)(24),(14)(23)\}$ es normal en $\Sym_4$. Para verificar la afirmación 
+tenemos que ver que $\sigma K\sigma^{-1}\subseteq K$ para todo $\sigma\in\Sym_4$. En principio, 
+tendríamos que chequear la contención para cada uno de los elementos de $\Sym_4$. Por suerte, hay algo mejor para hacer. Recordemos
+que, por ejemplo, $\Sym_4$ está generado por $(12)$ y $(1234)$.  Como 
+entonces todo elemento de $\Sym_4$ es una palabra en $(12)$ y 
+$(1234)$, 
+si vemos que $\sigma K\sigma^{-1}\subseteq K$ para todo $\sigma\in\{(12),(1234)\}$, 
+habremos probado que $K$ es normal en $\Sym_4$. Dejamos como ejercicio verificar que
+\[
+(12)K(12)^{-1}\subseteq K,\quad
+(1234)K(1234)^{-1}\subseteq K.
+\]  
 \end{example}
 
-%\begin{example}
-%\end{example}
 
 \index{Producto!semidirecto}
 En el ejercicio siguiente nos encontramos con un caso particular del producto semidirecto de dos grupos, una construcción general que resulta de mucha utilidad. 
