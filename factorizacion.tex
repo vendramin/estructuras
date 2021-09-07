@@ -390,10 +390,14 @@ Tal como pasa en $\Z$ y $K[X]$, el tener algoritmo de división nos permite demo
 \end{theorem}
 
 \begin{proof}
-	Sea $I$ un ideal no nulo de $R$ y sea $y\in I$ donde la función $\varphi(x)$ con $x\in I\setminus\{0\}$ alcanza su mínimo. 
+	Sea $I$ un ideal no nulo de $R$ y sea $y\in I$ no nulo donde la función $x\mapsto\varphi(x)$ alcanza su mínimo. 
 	Si $z\in I$, entonces $z=yq+r$ donde $r=0$ o bien $\varphi(r)<\varphi(y)$. La minimalidad de $y$ implica que $r=0$ y 
 	luego $z=yq$. Tenemos entonces $I\subseteq Ry\subseteq (y)\subseteq I$ y luego $I=(y)$.     
 \end{proof}
+
+\begin{example}
+El anillo $\Z[\sqrt{-5}]$ no es euclidiano ya que no es principal. 
+\end{example}
 
 Nos interesa poder reconocer anillos de la forma $\Z[\sqrt{d}]$, con $d$ libre de cuadrados, que se parezcan al anillo $\Z$. Ya vimos
 que hay muchas similitudes, pero en $\Z[\sqrt{d}]$ no siempre valdrá el teorema de la factorización única.
@@ -411,13 +415,19 @@ una permutación $\sigma\in\Sym_n$ tal que $c_i$ y $d_{\sigma(i)}$ son asociados
 
 El ejemplo típico de domino de factorización única es $\Z$. 
 
-Intentaremos explicar mejor la diferencia entre tener factorización y tener factorización única. Supongamos que $R$ es un dominio íntegro noetheriano. Podemos demostrar entonces que $R$ tendrá factorización, aunque no necesariamente única. En efecto, si $x\in R$ no admite una factorización, entonces $x$ no será 
-producto de irreducibles. Podremos escribir entonces $x=yz$, donde $y$ o bien $z$ no es factorizable. Al repetir este procedimiento 
-nos encontramos con una sucesión de la forma
-\[
-(x)\subsetneq (x_1)\subsetneq (x_2)\subsetneq\cdots
-\]
-que no se estabiliza, una contradicción a la noetherianidad. 
+Intentaremos explicar mejor la diferencia entre tener factorización y tener factorización única. Supongamos que $R$ es un dominio íntegro noetheriano. Podemos demostrar entonces que $R$ tendrá factorización, aunque no necesariamente única. Sea $x\in R$ no nulo tal que
+$x\not\in\mathcal{U}(R)$. Si $x$ es irreducible, no hay nada para demostrar. En caso contrario, podemos
+escribir 
+$x=x_1x_2$ con $x_1,x_2\not\in\mathcal{U}(R)$. Si $x_1$ y $x_2$ son ambos irreducibles, 
+significa que $x$ pudo factorizarse en irreducibles. En caso
+contrario, digamos si $x_1$ no es irreducible, entonces
+podemos escribir $x_1=x_{11}x_{12}$ para $x_{11},x_{12}\not\in\mathcal{U}(R)$. Nos interesa demostrar 
+que este procedimiento en algún momento tiene que terminarse en una cantidad finita de pasos y eso
+pasa porque, así como la factorización $x=x_1x_2$ nos da la sucesión 
+$(x)\subsetneq (x_1)\subsetneq (x_{11})$, el procedimiento general
+nos da la sucesión
+$(x)\subsetneq (x_1)\subsetneq (x_{11})\subseteq\cdots$, 
+que tiene que estabilizarse pues $R$ es noetheriano. 
 
 \begin{example}
 Gracias al teorema de Hilbert sabemos que $\Z[i]$ y $\Z[\sqrt{-6}]$ son ambos noetherianos, lo que nos dice que 
@@ -432,11 +442,14 @@ Entonces $R$ es un dominio de factorización única.
 \begin{proof}
 Primero demostraremos que $R$ es noetheriano. Como todos los ideales de $R$ son principales, toda sucesión de ideales es
 de la forma $(a_1)\subsetneq (a_2)\subsetneq\cdots$. Fijada esa sucesión, la unión 
-$J=\cup_{i\geq 1}(a_i)$ es un ideal de $R$. Como $R$ es principal, $J=(x)$ para algún $x\in R$. En particular, como $x\in (a_i)$ para algún $i\geq1$, 
-podemos concluir que $(x)\subseteq (a_i)$. Por otro lado, $(a_i)\subseteq (a_{i+1})\subset (x)$. Luego
-$(x)=(a_i)=(a_{i+1})$ y entonces la sucesión de ideales principales se estabiliza. 
+$J=\cup_{i\geq 1}(a_i)$ es un ideal de $R$. Como $R$ es principal, $J=(x)$ para algún $x\in R$. 
+En particular, como $x\in (a_i)$ para algún $i\geq1$, 
+podemos concluir que $(a_k)\subseteq J=(x)\subseteq (a_i)$ para todo $k$. 
 
-Sabemos que en $R$ todo irreducible es primo. Sea $x\in R$. Gracias a la noetherianidad de $R$ sabemos que $x$ puede factorizarse. Supongamos que 
+Como $R$ es noetheriano, $R$ admite 
+factorización en irreducibles. 
+
+Nos falta demostrar la unicidad. Sea $x\in R$ y supongamos que 
 \[
 x=c_1\cdots c_n=d_1\cdots d_m
 \]
@@ -447,7 +460,7 @@ entonces $c_1$ divide a alguno de los $d_j$, digamos $c_1\mid d_1$, sin perder g
 Como $d_1$ es irreducible y $c_1\not\in\mathcal{U}(R)$, 
 $c_1$ y $d_1$ son asociados, es decir $c_1=ud_1$ para algún $u\in\mathcal{U}(R)$. Como entonces 
 \[
-c_1c_2\cdots c_n=(ud_1)c_2\cdots c_m=d_1d_2d_3\cdots d_m,
+c_1c_2\cdots c_n=(ud_1)c_2\cdots c_n=d_1d_2d_3\cdots d_m,
 \]
 se sigue que 
 \[
@@ -491,10 +504,9 @@ es también irreducible en $\Z[\sqrt{-6}]$.
 Queda como ejercicio demostrar que $2+\sqrt{-6}$ y $2-\sqrt{-6}$ son irreducibles,.
 \end{example}
 
-\begin{exercise}
-Demuestre que $\Z[\sqrt{-5}]$ no es un dominio de factorización única.
-\end{exercise}
-
+% \begin{exercise}
+% Demuestre que $\Z[\sqrt{-5}]$ no es un dominio de factorización única.
+% \end{exercise}
 % 6=2\cdot 3=(1+\sqrt{-5})(1-\sqrt{-5})
 
 Terminamos el capítulo con una aplicación a la teoría de números.
@@ -525,10 +537,12 @@ Demostremos ahora que $(2)\implies(3)$. Si $a^2\equiv -1\bmod p$, entonces $a^2+
 $(a-i)(a+i)=a^2+1=kp$, entonces $p\mid (a-i)(a+i)$. Afirmamos que $p\nmid a+i$ en $\Z[i]$. Si $p\mid a+i$, entonces
 $a+i=p(e+fi)$ para ciertos $e,f\in\Z$. Luego $1=pf$, una contradicción. De la misma forma se demuestra que $p\nmid a-i$. 
 Sabemos entonces que $p\mid (a-i)(a+i)$ pero $p\nmid a-i$ y $p\nmid a+i$, es decir $p$ no es un primo de $\Z[i]$, por lo que 
-tampoco será un irreducible de $\Z[i]$. 
+tampoco será un irreducible de $\Z[i]$ (recordemos que $\Z[i]$ es un dominio de ideales principal y en dominios de ideales
+principales primos e irreducibles son equivalentes).  
 
-Veamos ahora que $(3)\implies(4)$. Si $p=(a+bi)(c+di)$ con $a+bi\not\in\mathcal{U}(\Z[i])$ y $c+di\not\in\mathcal{U}(\Z[i])$, 
-es decir $N(a+bi)\ne 1$ y $N(c+di)\ne 1$, entonces
+Veamos ahora que $(3)\implies(4)$. Como $p$ no es irreducible en $\Z[i]$, escribimos
+$p=(a+bi)(c+di)$ con $a+bi\not\in\mathcal{U}(\Z[i])$ y $c+di\not\in\mathcal{U}(\Z[i])$, 
+es decir $N(a+bi)\ne 1$ y $N(c+di)\ne 1$, y entonces
 \[
 p^2=N(p)=N(a+bi)N(c+di)=(a^2+b^2)(c^2+d^2).
 \]
