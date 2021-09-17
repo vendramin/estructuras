@@ -264,12 +264,12 @@ $\sum (r_i-s_i)\cdot m_i=0$. La independencia lineal del conjunto $\{m_i:i\in I\
 
 \begin{proposition}
 \label{pro:libre}
-Sea $M$ libre con base $\{m_i:i\in I\}$ y sea $N$ un submódulo de $M$. Si $\{n_i:i\in I\}$ es un módulo, existe
+Sea $M$ libre con base $\{m_i:i\in I\}$ y sea $N$ un submódulo de $M$. Si $\{n_i:i\in I\}\subseteq N$ es un subcobjunto, existe
 un único $f\in\Hom_R(M,N)$ tal que $f(m_i)=n_i$ para todo $i\in I$.  
 \end{proposition}
 
 \begin{proof}[Bosquejo de la demostración]
-Basta con observar que el único morfismo $f\colon M\to N$ debe definirse como $f(\sum r_im_i)=\sum r_i\cdot n_i$.  	
+Basta con observar que el único morfismo $f\colon M\to N$ debe definirse como $f(\sum r_i\cdot m_i)=\sum r_i\cdot n_i$.  	
 \end{proof}
 
 Una aplicación sencilla de la proposición anterior:
@@ -323,7 +323,7 @@ $\{m:m\in M\}$ y sea $L=R^{(I)}$. Entonces $L$ es libre y $f\colon R^{(I)}\to M$
 Otra propiedad importante de los módulos libres:
 
 \begin{proposition}
-	Si $M$ es un módulo libre, $f\in\Hom_r(N,T)$ es un epimorfismo y $h\in\Hom_R(M,T)$, entonces existe
+	Si $M$ es un módulo libre, $f\in\Hom_R(N,T)$ es un epimorfismo y $h\in\Hom_R(M,T)$, entonces existe
 	$\varphi\in\Hom_R(M,N)$ tal que $f\circ \varphi=h$. 
 	% todo: diagrama
 \end{proposition}
@@ -382,7 +382,7 @@ verificar que con estas operaciones $K(R)$ es un cuerpo.
 
 \begin{theorem}
 Sea $R$ un dominio íntegro. 
-Si $M$ es un módulo libre y finitamente generado, entonces dos bases cualesquiera de $M$ 
+Si $M$ es un módulo libre con base finita, entonces dos bases cualesquiera de $M$ 
 tienen la misma cantidad de elementos.
 \end{theorem}
 

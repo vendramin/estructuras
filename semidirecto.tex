@@ -53,7 +53,7 @@ Sea $G=\Sym_3$ y sea $K=\langle (123)\rangle\unlhd G$. Los subgrupos $\langle (1
 
 El ejemplo anterior nos muestra que los complementos no son únicos. Sin embargo, sí son únicos salvo isomorfismos pues cualquier complemento será isomorfo a $G/K$. En efecto, gracias a los teoremas de isomorfismo, 
 \[
-G/K\simeq KQ/K\simeq Q/K\cap Q=Q/\{1\}\simeq Q.
+G/K= KQ/K\simeq Q/K\cap Q=Q/\{1\}\simeq Q.
 \] 
 
 \begin{definition}
@@ -68,18 +68,20 @@ Sea $K$ un subgrupo normal de $G$. Las siguientes afirmaciones son equivalentes:
 \begin{enumerate}
 \item $K$ admite un complemento en $G$.
 \item Existe 	un subgrupo $Q$ de $G$ tal que cada $g\in G$ se escribe unívocamente como $g=xy$ con $x\in K$ e $y\in Q$.
-\item Existe un morfismo $s\colon G/K\to G$ tal que $\pi\circ s=\id_{G/K}$, donde $\pi\colon G\to G/K$, $g\mapsto Kg$,' es el morfismo canónico.
+\item Existe un morfismo $s\colon G/K\to G$ tal que $\pi\circ s=\id_{G/K}$, donde $\pi\colon G\to G/K$, $g\mapsto Kg$, es el morfismo canónico.
 \item Existe un morfismo $\rho\colon G\to G$ tal que $\ker\rho=K$ y la restricción $\rho|_{\rho(G)}$ es igual a la identidad.  
 \end{enumerate}
 \end{proposition}
 
 \begin{proof}
-Veamos que $(1)\implies(2)$. Si $Q$ es un complemento de $K$, entonces $G=KQ$ y $K\cap Q=\{1\}$. En particular, si $g\in G$, entonces $g=xy$ para $x\in K$ e $y\in Q$. Y la escritura es única pues si además $g=x_1y_1$ con $x_1\in K$ e $y_1\in Q$, entonces $x_1^{-1}x=yy_1^{-1}\in K\cap Q=\{1\}$ y luego $x=x_1$ y también $y=y_1$.  
+Veamos que $(1)\implies(2)$. Si $Q$ es un complemento de $K$, entonces $G=KQ$ y $K\cap Q=\{1\}$. En particular, si $g\in G$, entonces $g=xy$ para $x\in K$ e $y\in Q$. Y la escritura es única pues si además $g=x_1y_1$ con $x_1\in K$ e $y_1\in Q$, entonces $x_1^{-1}x=yy_1^{-1}\in K\cap Q=\{1\}$ y luego $x=x_1$ y también $y=y_1$. 
+
+Dejamos como ejercicio verificar que $(2)\implies(1)$.
 
 Veamos que $(2)\implies(3)$. Sea $s\colon G/K\to G$, $s(Kg)=y$ si $g=xy$ con $x\in K$ e $y\in Q$. (Es importante observar que 
 acá, para definir $s$, nos es conveniente utilizar coclases a derecha.) Veamos que $s$ está bien definida. Para eso, tenemos que ver que si $Kg=Kg_1$, entonces $s(Kg)=s(Kg_1)$. Si escribimos $g=xy$ y $g_1=x_1y_1$ con $x,x_1\in K$ e $y,y_1\in Q$, entonces
 Como $Kg=Kg_1$, sabemos que $xyy_1^{-1}x_1^{-1}=gg_1^{-1}\in K$, es decir $yy_1^{-1}\in x^{-1}Kx_1=K$ pues $x,x_1\in K$. Luego $yy_1^{-1}\in K\cap Q=\{1\}$ y entonces $y=y_1$. Veamos ahora que $\pi\circ s=\id_{G/K}$. Si $g=xy$ con $x\in K$ e $y\in Q$, entonces  
-$(\pi\circ s)(Kg)=\pi(y)=Ky=Kxy=Kg$.
+$(\pi\circ s)(Kg)=\pi(y)=Ky=Kxy=Kg$. Queda como ejercicio demostrar que $s$ es un morfismo de grupos. 
 
 Veamos ahora que $(3)\implies(4)$. Sea $\rho=s\circ\pi$. Es claro que $\rho$ es un morfismo, pues es composición de morfismos. Calculamos:
 \[
@@ -89,7 +91,11 @@ Por último, calculamos $\ker\rho$. Si $g\in\ker\rho$, entonces $s(\pi(g))=\rho(
 \[
 \pi(g)=\pi(s(\pi(g)))=\pi(1)=1_{G/K},
 \]  
-es decir $g\in\ker\pi=K$. 
+es decir $g\in\ker\pi=K$. Recíprocamente, si $x\in K$, entonces
+\[
+\rho(x)=\rho(s(Kx))=\rho(s(K))=\rho(1)=1
+\]
+y luego $x\in\ker\rho$. 
 
 Por último, demostremos que $(4)\implies(1)$. Afirmamos que $Q=\rho(G)$ es un complemento para $K$ en $G$. Veamos primero que $K\cap Q=\{1\}$: si $x\in K\cap Q$, entonces $x=\rho(g)$ para algún $g\in G$ y además 
 \[
