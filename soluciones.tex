@@ -229,21 +229,6 @@ Como $M/N$ es un módulo libre, el módulo $M/S$ es proyectivo. Existe entonces 
 que $\pi\circ s=\id_{M/N}$. En particular, $M\simeq N\oplus M/N$. 	
 \end{sol}
 
-\begin{sol}{xca:ss_idempotente}
-Si $\prescript{}{R}R$ es semisimple e $I$ es un ideal de $R$, sabemos que existe un submódulo $J$ (es decir, $J$ es ideal a izquierda de $R$) tal que $R=I\oplus J$. En particular, 
-existen $e\in I$ y $f\in J$ tales que $1=e+f$. Como $ef\in I\cap J=\{0\}$, entonces
-\[
-e=e1=e^2+ef=e^2.
-\]
-Veamos que $I=Re$. Si $x\in I$, entonces $x=x1=xe+xf=xe\in Re$ pues $xf=x-xe\in I\cap J=\{0\}$. 
-
-Si $I=Re$ para algún idempotente $e\in R$, entonces $J=R(1-e)$ es tal que $R=I\oplus J$. En efecto, $R=I+J$, pues 
-$r=re+r(1-e)$. Además $I\cap J=\{0\}$ pues si $r=xe=y(1-e)$, entonces 
-\[
-r=xe=xe^2=y(1-e)e=0.
-\]
-\end{sol}
-
 \begin{sol}{xca:I^2}
 Si existe un ideal $J$ de $R$ tal que $R=I\oplus J$, entonces $1=u+v$ para ciertos $u\in I$ y $v\in V$. Veamos que $I=(u)$. Si $x\in I$,
 entonces $x=x1=xu+xv$. Como $xv\in I\cap J=\{0\}$, se concluye que $x=xu\in (u)$. Además 
@@ -266,6 +251,26 @@ Si $\lambda\in R$, entonces
 Si $J=(1-e)$, entonces $R=I\oplus J$, pues ya vimos que
 $I\cap J=\{0\}$ y $R=I+J$.  	
 \end{sol}
+
+\begin{sol}{xca:ss_idempotente}
+Si $\prescript{}{R}R$ es semisimple e $I$ es un ideal de $R$, sabemos que existe un submódulo $J$ (es decir, $J$ es ideal a izquierda de $R$) tal que $R=I\oplus J$. En particular, 
+existen $e\in I$ y $f\in J$ tales que $1=e+f$. Como $ef\in I\cap J=\{0\}$, entonces
+\[
+e=e1=e^2+ef=e^2.
+\]
+Veamos que $I=Re$. Si $x\in I$, entonces 
+\[
+	x=x1=xe+xf=xe\in Re,
+\]
+pues $xf=x-xe\in I\cap J=\{0\}$. 
+
+Si $I=Re$ para algún idempotente $e\in R$, entonces $J=R(1-e)$ es tal que $R=I\oplus J$. En efecto, $R=I+J$, pues 
+$r=re+r(1-e)$. Además $I\cap J=\{0\}$ pues si $r=xe=y(1-e)$, entonces 
+\[
+r=xe=xe^2=y(1-e)e=0.
+\]
+\end{sol}
+
 
 \begin{sol}{xca:proyectivo1}
 	Como $P$ es proyectivo existe un morfismo $\beta\colon P\to P'$ tal que $g'\circ \beta=g$.
