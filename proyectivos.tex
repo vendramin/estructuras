@@ -254,13 +254,19 @@ $M\simeq p(R^n)$ y $p^2=p$.
 \end{proposition}
 
 \begin{proof}
-	Supongamos primero que $M$ es proyectivo. Como todo módulo $M$ es cociente de un libre, 
-	existen $n\in\N$ y un epimorfismo $\varphi\colon R^n\to M$. Como $M$ es proyectivo, existe una sección 
-	$s\colon M\to R^n$ y luego $R^n=s(M)\oplus N$ para algún submódulo $N$ de $M$. Sea $p=s\circ\varphi\in\Hom_R(R^n,R^n)$. Entonces
-	\[
-	p(R^n)=s(\varphi(R^n))=s(M)\simeq M,
-	\]
-	pues $s$ es inyectiva. Además $p^2=s\circ(\varphi\circ s)\circ\varphi=s\circ\varphi=p$.   
+	Supongamos primero que $M$ es proyectivo. Entonces 
+	$M$ es sumando directo de $R^n$, digamos $R^n=M\oplus N$ para algún modulo $N$. 
+	La función $p\colon R^n\to R^n$, $p(m,n)=m$, es un morfismo 
+	de módulos
+	tal que $p^2=p$ y $p(R^n)=M$. 
+	
+% 	todo módulo $M$ es cociente de un libre, 
+% 	existen $n\in\N$ y un epimorfismo $\varphi\colon R^n\to M$. Como $M$ es proyectivo, existe una sección 
+% 	$s\colon M\to R^n$ y luego $R^n=s(M)\oplus N$ para algún submódulo $N$ de $M$. Sea $p=s\circ\varphi\in\Hom_R(R^n,R^n)$. Entonces
+% 	\[
+% 	p(R^n)=s(\varphi(R^n))=s(M)\simeq M,
+% 	\]
+% 	pues $s$ es inyectiva. Además $p^2=s\circ(\varphi\circ s)\circ\varphi=s\circ\varphi=p$.   
 	
 	Recíprocamente, si existe $p\in\Hom_R(R^n,R^n)$ tal que $p^2=p$ y $p(R^n)\simeq M$, entonces $p\circ (\id-p)=0$. Esto nos
 	permite descomponer al anillo $R^n$ en idempotentes ortogonales, es decir
